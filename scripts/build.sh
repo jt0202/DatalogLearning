@@ -6,13 +6,5 @@ pushd popl2020-artifact
         ./configure
         make -j 8
     popd
-
-    pushd difflog
-        sbt compile
-    popd
-
-    pushd alps
-        make -j 4
-    popd
 popd
 
