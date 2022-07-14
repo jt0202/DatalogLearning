@@ -114,10 +114,10 @@ with open(problemDirName + '/rules.t') as fin:
         
 
 
-f = open("rules.dl", "w")
-f_ne = open("rules_notexists.dl", "w")
-f_e = open("rules_exists.dl", "w")
-rn = open("ruleNames.txt", "w")
+f = open(problemDirName +"/rules.dl", "w")
+f_ne = open(problemDirName +"/rules_notexists.dl", "w")
+f_e = open(problemDirName +"/rules_exists.dl", "w")
+rn = open(problemDirName + "/ruleNames.small.txt", "w")
 
 for t in types:
     if t != "number":

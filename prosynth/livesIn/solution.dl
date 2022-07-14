@@ -1,0 +1,18 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl isCitizenOf(v0: V, v1: V)
+.input isCitizenOf
+
+.decl isInterestedIn(v0: V, v1: V)
+.input isInterestedIn
+
+.decl IlivesIn(v0: V, v1: V)
+.input IlivesIn
+
+.decl livesIn(v0: V, v1: V)
+.output livesIn
+
+livesIn(v0, v1) :- isCitizenOf(v0, v1), Rule(0).

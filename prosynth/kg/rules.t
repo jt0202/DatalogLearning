@@ -1,0 +1,7 @@
+*years(V,V)
+*yearOfRelease(V,V)
+*year(V,V)
+*writer(V,V)
+*wikisourcelangProperty(V,V)
+*Igenre(V,V)
+genre(V,V)

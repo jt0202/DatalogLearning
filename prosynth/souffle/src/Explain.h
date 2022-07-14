@@ -317,7 +317,7 @@ private:
             std::cout << "###" << std::endl << std::flush;
             return;
         }
-        std::cout << prompt << std::endl << "###" << std::endl << std::flush;
+        std::cout << prompt << "!" << std::endl << "###" << std::endl << std::flush;
     }
 
     /* Print a tree */

@@ -29,6 +29,7 @@ import re
 import subprocess
 import sys
 import time
+from unicodedata import decomposition
 import z3
 import copy
 import atexit
@@ -69,6 +70,9 @@ idbRelationsExpected = { name for name in os.listdir(problemDirName) if name.end
 idbRelationsExpected = { name[:-len('.expected')] for name in idbRelationsExpected }
 idbRelationsExpected = { name: loadRelation(problemDirName + '/' + name + '.expected') for name in idbRelationsExpected }
 
+idbRelationsNotExpected = { name for name in os.listdir(problemDirName) if name.endswith('.notexpected') }
+idbRelationsNotExpected = { name[:-len('.notexpected')] for name in idbRelationsNotExpected }
+idbRelationsNotExpected = { name: loadRelation(problemDirName + '/' + name + '.notexpected') for name in idbRelationsNotExpected }
 # 1b. Initialize the constraint solver
 
 solver = z3.Solver()
@@ -84,17 +88,19 @@ def satisfyingRuleSet(default):
     if prevConstraints == currConstraints:
         logging.info('Loop detected')
         numLoops = numLoops + 1
-        if numLoops > 500: sys.exit(1)
+        if numLoops > 500: 
+            logging.info("Too many loops. Exit")
+            sys.exit(1)
         # sys.exit(1)
     else: logging.info(f'{prevConstraints}, {currConstraints}')
     prevConstraints = currConstraints
     if solver.check() == z3.unsat or time.clock_gettime(0) - scriptStartTime > 3600:
         dataLogStr = "{" + f"name: '{problemDirName}', " + \
-                           f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
-                           f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
-                           f"setting_delta: {setting_delta}" + "}"
+                        f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
+                        f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
+                        f"setting_delta: {setting_delta}" + "}"
         with open(data_file, 'a+') as f: print(dataLogStr, file=f)
-        print('Z3 reports error in generating a model. Problem unsat.')
+        print('Z3 reports error in generating a model. Problem unsat. in satisfying rulese')
         sys.exit(1)
     m = solver.model()
     logging.info("z3 model generated")
@@ -112,19 +118,21 @@ def doSanity():
     global prevConstraints
     global currConstraints
     try:
+        print("doSanityTry")
         solver.push()
         if solver.check() == z3.unsat:
             dataLogStr = "{" + f"name: '{problemDirName}', " + \
-                               f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
-                               f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
-                               f"setting_delta: {setting_delta}" + "}"
+                            f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
+                            f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
+                            f"setting_delta: {setting_delta}" + "}"
             with open(data_file, 'a+') as f: print(dataLogStr, file=f)
-            print('Z3 reports error in generating a model. Problem unsat.')
+            logging.info('Z3 reports error in generating a model. Problem unsat. in doSanity')
             sys.exit(1)
         solver.model()
         solver.pop()
         return True
     except z3.Z3Exception:
+        logging.info("doSanityExcept")
         return False
 doSanity()
 
@@ -163,11 +171,14 @@ while True:
     printRuleEDB(currRuleSetLarge)
     logging.info("rPlus printed to Rule.facts")
 
+    def endTest():
+        pass
+
     currTime = time.clock_gettime(0)
     with subprocess.Popen([ problemDirName + '/souffle.small.out', '-F', problemDirName, '-D', problemDirName ], \
-                          stdin=subprocess.PIPE, \
-                          stdout=subprocess.PIPE, \
-                          universal_newlines=True) as souffleProc:
+                        stdin=subprocess.PIPE, \
+                        stdout=subprocess.PIPE, \
+                        universal_newlines=True) as souffleProc:
 
         ################################################################################################################
         # 3a. Set up communication with Souffle
@@ -248,13 +259,13 @@ while True:
                         provenance = { 'axiom': provenance['premises'] }
                     else: provenance = { key: squashDesirableConclusions(value) for key, value in provenance.items() }
             elif type(provenance) is list:
-               provenance = [ squashDesirableConclusions(elem) for elem in provenance ]
+                provenance = [ squashDesirableConclusions(elem) for elem in provenance ]
             return provenance
 
         def collectIntermediateConclusions(provenance):
             if type(provenance) is dict:
                 premises = { premise for key, value in provenance.items() \
-                                     for premise in collectIntermediateConclusions(value) }
+                                    for premise in collectIntermediateConclusions(value) }
                 if 'premises' in provenance: premises = premises | { parseSouffleString(provenance['premises']) }
                 return premises
             elif type(provenance) is list:
@@ -301,7 +312,7 @@ while True:
             #        return None
             rules = collectRules(provenance)
             #logging.info('Tuple {} depends on rules {}'.format((relName, t), sorted(rules)))
-           
+        
             ans = z3.BoolVal(True)
             currentRuleList = []
             for ruleName in rules: 
@@ -456,36 +467,41 @@ while True:
 
         for relName in idbRelationsExpected:
             relProduced = loadRelation(problemDirName + '/' + relName + '.csv')
+            print("Loaded: " +  str(len(relProduced)))
 
             # 3c(i) Tuples which are expected and produced
             # We do not have anything to learn from these tuples
             #for t in relProduced & idbRelationsExpected[relName]:
-                #logging.info('Solution produces desirable tuple: ' + printSouffleString(relName, t))
+            #    logging.info('Solution produces desirable tuple: ' + printSouffleString(relName, t))
 
             # 3c(ii) Tuples which are unexpected but still produced
             # Here, we ask the question: ``Why was this tuple produced?''
             
             newWhys = 0
-            currUndesiredTuples = list(relProduced - idbRelationsExpected[relName])
-            random.shuffle(currUndesiredTuples)
-            for t in currUndesiredTuples:
-                solved = False
-                whyRelT = why(relName, t)
-                if whyRelT[0] == "error reading":
-                    logging.info("\n")
-                    logging.info(t)
-                    logging.info('Error reading 6')
-                    break
-                elif whyRelT[1] != None:     
-                    solver.add(z3.Not(whyRelT[1]))
-                    currConstraints = currConstraints + 1
-                    numWhy+=1
-                    newWhys+=1
-                    doSanity()
-                if newWhys > 30:
-                    break
+            # This means that all tuples that are not specified are unexpected and is probably not 
+            # what was intended in the original paper
+            # currUndesiredTuples = list(relProduced - idbRelationsExpected[relName])
+            if relName in idbRelationsNotExpected.keys():
+                currUndesiredTuples = list(idbRelationsNotExpected[relName] - (idbRelationsNotExpected[relName] - relProduced))
+                random.shuffle(currUndesiredTuples)
+                for t in currUndesiredTuples:
+                    solved = False
+                    whyRelT = why(relName, t)
+                    if whyRelT[0] == "error reading":
+                        logging.info("\n")
+                        logging.info(t)
+                        logging.info('Error reading 6')
+                        break
+                    elif whyRelT[1] != None:     
+                        solver.add(z3.Not(whyRelT[1]))
+                        currConstraints = currConstraints + 1
+                        numWhy+=1
+                        newWhys+=1
+                        doSanity()
+                    if newWhys > 30:
+                        break
 
-            # 3c(iii) Tuples which were expected but not produced
+
             # Here, we ask the question: ``Why was this tuple not produced?''
             unproducedDesirable = False
             oldCRSL = copy.deepcopy(currRuleSetLarge)
@@ -512,11 +528,11 @@ while True:
                         doSanity()
                     except:
                         dataLogStr = "{" + f"name: '{problemDirName}', " + \
-                                           f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
-                                           f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
-                                           f"setting_delta: {setting_delta}" + "}"
+                                        f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
+                                        f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
+                                        f"setting_delta: {setting_delta}" + "}"
                         with open(data_file, 'a+') as f: print(dataLogStr, file=f)
-                        print('Z3 reports error in generating a model. Problem unsat.')
+                        logging.info('Z3 reports error in generating a model. Problem unsat. In whyNot')
                         quit()
                 break
 
@@ -525,20 +541,31 @@ while True:
 
         if solved:
             dataLogStr = "{" + f"name: '{problemDirName}', " + \
-                               f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
-                               f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
-                               f"setting_delta: {setting_delta}" + "}"
+                            f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
+                            f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
+                            f"setting_delta: {setting_delta}" + "}"
             with open(data_file, 'a+') as f: print(dataLogStr, file=f)
 
             ans = { ruleName for relName in idbRelationsExpected \
-                             for t in idbRelationsExpected[relName] \
-                             for ruleName in collectRules(getProvenance(relName, t)) }
+                            for t in idbRelationsExpected[relName] \
+                            for ruleName in collectRules(getProvenance(relName, t)) }
             ans = '|'.join(ans)
             ans = r'Rule\(({})\)'.format(ans)
             logging.info(ans)
             ans = re.compile(ans)
-            ans = { line.strip() for line in open(problemDirName + '/rules.small.dl') if ans.search(line) }
-            for line in ans: print(line)
+            ans = { line.strip() for line in open(problemDirName + '/rules.dl') if ans.search(line) }
+            print(len(ans))
+            with open(problemDirName + "/solution.dl", "w") as solutionFile:
+                with open(problemDirName + "/rules.dl", "r") as rules:
+                    lastline =""
+                    for line in rules:
+                        if lastline == "\n" and line == "\n":
+                            break
+                        solutionFile.write(line)
+                        lastline = line
+                for line in ans:
+                    logging.info(line)
+                    solutionFile.write(line)
 
             logging.info(f'Calls to Z3: {callsToZ3}, Calls to Souffle: {callsToSouffle}')
             break

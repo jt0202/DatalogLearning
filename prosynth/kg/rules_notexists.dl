@@ -1,0 +1,402 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl years(v0: V, v1: V)
+.input years
+
+.decl yearOfRelease(v0: V, v1: V)
+.input yearOfRelease
+
+.decl year(v0: V, v1: V)
+.input year
+
+.decl writer(v0: V, v1: V)
+.input writer
+
+.decl wikisourcelangProperty(v0: V, v1: V)
+.input wikisourcelangProperty
+
+.decl Igenre(v0: V, v1: V)
+.input Igenre
+
+.decl years_notexists(v0: V, v1: V, r: number)
+.output years_notexists
+
+.decl yearOfRelease_notexists(v0: V, v1: V, r: number)
+.output yearOfRelease_notexists
+
+.decl year_notexists(v0: V, v1: V, r: number)
+.output year_notexists
+
+.decl writer_notexists(v0: V, v1: V, r: number)
+.output writer_notexists
+
+.decl wikisourcelangProperty_notexists(v0: V, v1: V, r: number)
+.output wikisourcelangProperty_notexists
+
+.decl Igenre_notexists(v0: V, v1: V, r: number)
+.output Igenre_notexists
+
+.decl genre_notexists(v0: V, v1: V, r: number)
+.output genre_notexists
+
+
+
+years_notexists(v0, v1, r) :- years(v0, v1), Rule(r).
+yearOfRelease_notexists(v0, v1, r) :- yearOfRelease(v0, v1), Rule(r).
+year_notexists(v0, v1, r) :- year(v0, v1), Rule(r).
+writer_notexists(v0, v1, r) :- writer(v0, v1), Rule(r).
+wikisourcelangProperty_notexists(v0, v1, r) :- wikisourcelangProperty(v0, v1), Rule(r).
+Igenre_notexists(v0, v1, r) :- Igenre(v0, v1), Rule(r).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), Rule(r), r != 0, Rule(0).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), Rule(r), r != 1, Rule(1).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), Rule(r), r != 2, Rule(2).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), Rule(r), r != 3, Rule(3).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v1, r), Rule(r), r != 4, Rule(4).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v0, r), Rule(r), r != 5, Rule(5).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v1, r), Rule(r), r != 6, Rule(6).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v0, r), Rule(r), r != 7, Rule(7).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v1, r), Rule(r), r != 8, Rule(8).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v0, r), Rule(r), r != 9, Rule(9).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v0, v1, r), Rule(r), r != 10, Rule(10).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v1, v0, r), Rule(r), r != 11, Rule(11).
+genre_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), Rule(r), r != 12, Rule(12).
+genre_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), Rule(r), r != 13, Rule(13).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), years_notexists(v0, v1, r), Rule(r), r != 14, Rule(14).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), years_notexists(v1, v0, r), Rule(r), r != 15, Rule(15).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), years_notexists(v1, v0, r), Rule(r), r != 16, Rule(16).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), years_notexists(v0, v1, r), Rule(r), r != 17, Rule(17).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), years_notexists(v0, v2, r), Rule(r), r != 18, Rule(18).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), years_notexists(v2, v0, r), Rule(r), r != 19, Rule(19).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), years_notexists(v1, v2, r), Rule(r), r != 20, Rule(20).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), years_notexists(v2, v1, r), Rule(r), r != 21, Rule(21).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), years_notexists(v1, v2, r), Rule(r), r != 22, Rule(22).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), years_notexists(v2, v1, r), Rule(r), r != 23, Rule(23).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), years_notexists(v2, v0, r), Rule(r), r != 24, Rule(24).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), years_notexists(v0, v2, r), Rule(r), r != 25, Rule(25).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), yearOfRelease_notexists(v0, v1, r), Rule(r), r != 26, Rule(26).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), yearOfRelease_notexists(v1, v0, r), Rule(r), r != 27, Rule(27).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), yearOfRelease_notexists(v1, v0, r), Rule(r), r != 28, Rule(28).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), yearOfRelease_notexists(v0, v1, r), Rule(r), r != 29, Rule(29).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), yearOfRelease_notexists(v0, v2, r), Rule(r), r != 30, Rule(30).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), yearOfRelease_notexists(v2, v0, r), Rule(r), r != 31, Rule(31).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), yearOfRelease_notexists(v1, v2, r), Rule(r), r != 32, Rule(32).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), yearOfRelease_notexists(v2, v1, r), Rule(r), r != 33, Rule(33).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), yearOfRelease_notexists(v1, v2, r), Rule(r), r != 34, Rule(34).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), yearOfRelease_notexists(v2, v1, r), Rule(r), r != 35, Rule(35).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), yearOfRelease_notexists(v2, v0, r), Rule(r), r != 36, Rule(36).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), yearOfRelease_notexists(v0, v2, r), Rule(r), r != 37, Rule(37).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), year_notexists(v0, v1, r), Rule(r), r != 38, Rule(38).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), year_notexists(v1, v0, r), Rule(r), r != 39, Rule(39).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), year_notexists(v1, v0, r), Rule(r), r != 40, Rule(40).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), year_notexists(v0, v1, r), Rule(r), r != 41, Rule(41).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), year_notexists(v0, v2, r), Rule(r), r != 42, Rule(42).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), year_notexists(v2, v0, r), Rule(r), r != 43, Rule(43).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), year_notexists(v1, v2, r), Rule(r), r != 44, Rule(44).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), year_notexists(v2, v1, r), Rule(r), r != 45, Rule(45).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), year_notexists(v1, v2, r), Rule(r), r != 46, Rule(46).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), year_notexists(v2, v1, r), Rule(r), r != 47, Rule(47).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), year_notexists(v2, v0, r), Rule(r), r != 48, Rule(48).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), year_notexists(v0, v2, r), Rule(r), r != 49, Rule(49).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), writer_notexists(v0, v1, r), Rule(r), r != 50, Rule(50).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), writer_notexists(v1, v0, r), Rule(r), r != 51, Rule(51).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), writer_notexists(v1, v0, r), Rule(r), r != 52, Rule(52).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), writer_notexists(v0, v1, r), Rule(r), r != 53, Rule(53).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), writer_notexists(v0, v2, r), Rule(r), r != 54, Rule(54).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), writer_notexists(v2, v0, r), Rule(r), r != 55, Rule(55).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), writer_notexists(v1, v2, r), Rule(r), r != 56, Rule(56).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), writer_notexists(v2, v1, r), Rule(r), r != 57, Rule(57).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), writer_notexists(v1, v2, r), Rule(r), r != 58, Rule(58).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), writer_notexists(v2, v1, r), Rule(r), r != 59, Rule(59).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), writer_notexists(v2, v0, r), Rule(r), r != 60, Rule(60).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), writer_notexists(v0, v2, r), Rule(r), r != 61, Rule(61).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), wikisourcelangProperty_notexists(v0, v1, r), Rule(r), r != 62, Rule(62).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), wikisourcelangProperty_notexists(v1, v0, r), Rule(r), r != 63, Rule(63).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), wikisourcelangProperty_notexists(v1, v0, r), Rule(r), r != 64, Rule(64).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), wikisourcelangProperty_notexists(v0, v1, r), Rule(r), r != 65, Rule(65).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), wikisourcelangProperty_notexists(v0, v2, r), Rule(r), r != 66, Rule(66).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), wikisourcelangProperty_notexists(v2, v0, r), Rule(r), r != 67, Rule(67).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), wikisourcelangProperty_notexists(v1, v2, r), Rule(r), r != 68, Rule(68).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), wikisourcelangProperty_notexists(v2, v1, r), Rule(r), r != 69, Rule(69).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), wikisourcelangProperty_notexists(v1, v2, r), Rule(r), r != 70, Rule(70).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), wikisourcelangProperty_notexists(v2, v1, r), Rule(r), r != 71, Rule(71).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), wikisourcelangProperty_notexists(v2, v0, r), Rule(r), r != 72, Rule(72).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), wikisourcelangProperty_notexists(v0, v2, r), Rule(r), r != 73, Rule(73).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), Igenre_notexists(v0, v1, r), Rule(r), r != 74, Rule(74).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), Igenre_notexists(v1, v0, r), Rule(r), r != 75, Rule(75).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), Igenre_notexists(v1, v0, r), Rule(r), r != 76, Rule(76).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), Igenre_notexists(v0, v1, r), Rule(r), r != 77, Rule(77).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), Igenre_notexists(v0, v2, r), Rule(r), r != 78, Rule(78).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), Igenre_notexists(v2, v0, r), Rule(r), r != 79, Rule(79).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), Igenre_notexists(v1, v2, r), Rule(r), r != 80, Rule(80).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), Igenre_notexists(v2, v1, r), Rule(r), r != 81, Rule(81).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), Igenre_notexists(v1, v2, r), Rule(r), r != 82, Rule(82).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), Igenre_notexists(v2, v1, r), Rule(r), r != 83, Rule(83).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), Igenre_notexists(v2, v0, r), Rule(r), r != 84, Rule(84).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), Igenre_notexists(v0, v2, r), Rule(r), r != 85, Rule(85).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), genre_notexists(v0, v1, r), Rule(r), r != 86, Rule(86).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v1, r), genre_notexists(v1, v0, r), Rule(r), r != 87, Rule(87).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), genre_notexists(v1, v0, r), Rule(r), r != 88, Rule(88).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v0, r), genre_notexists(v0, v1, r), Rule(r), r != 89, Rule(89).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), genre_notexists(v0, v2, r), Rule(r), r != 90, Rule(90).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), genre_notexists(v2, v0, r), Rule(r), r != 91, Rule(91).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), genre_notexists(v1, v2, r), Rule(r), r != 92, Rule(92).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v0, r), genre_notexists(v2, v1, r), Rule(r), r != 93, Rule(93).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), genre_notexists(v1, v2, r), Rule(r), r != 94, Rule(94).
+genre_notexists(v0, v1, r) :- years_notexists(v0, v2, r), genre_notexists(v2, v1, r), Rule(r), r != 95, Rule(95).
+genre_notexists(v0, v1, r) :- years_notexists(v2, v1, r), genre_notexists(v2, v0, r), Rule(r), r != 96, Rule(96).
+genre_notexists(v0, v1, r) :- years_notexists(v1, v2, r), genre_notexists(v0, v2, r), Rule(r), r != 97, Rule(97).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), yearOfRelease_notexists(v0, v1, r), Rule(r), r != 98, Rule(98).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), yearOfRelease_notexists(v1, v0, r), Rule(r), r != 99, Rule(99).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), yearOfRelease_notexists(v1, v0, r), Rule(r), r != 100, Rule(100).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), yearOfRelease_notexists(v0, v1, r), Rule(r), r != 101, Rule(101).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), yearOfRelease_notexists(v0, v2, r), Rule(r), r != 102, Rule(102).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), yearOfRelease_notexists(v2, v0, r), Rule(r), r != 103, Rule(103).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), yearOfRelease_notexists(v1, v2, r), Rule(r), r != 104, Rule(104).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), yearOfRelease_notexists(v2, v1, r), Rule(r), r != 105, Rule(105).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), yearOfRelease_notexists(v1, v2, r), Rule(r), r != 106, Rule(106).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), yearOfRelease_notexists(v2, v1, r), Rule(r), r != 107, Rule(107).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), yearOfRelease_notexists(v2, v0, r), Rule(r), r != 108, Rule(108).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), yearOfRelease_notexists(v0, v2, r), Rule(r), r != 109, Rule(109).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), year_notexists(v0, v1, r), Rule(r), r != 110, Rule(110).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), year_notexists(v1, v0, r), Rule(r), r != 111, Rule(111).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), year_notexists(v1, v0, r), Rule(r), r != 112, Rule(112).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), year_notexists(v0, v1, r), Rule(r), r != 113, Rule(113).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), year_notexists(v0, v2, r), Rule(r), r != 114, Rule(114).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), year_notexists(v2, v0, r), Rule(r), r != 115, Rule(115).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), year_notexists(v1, v2, r), Rule(r), r != 116, Rule(116).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), year_notexists(v2, v1, r), Rule(r), r != 117, Rule(117).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), year_notexists(v1, v2, r), Rule(r), r != 118, Rule(118).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), year_notexists(v2, v1, r), Rule(r), r != 119, Rule(119).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), year_notexists(v2, v0, r), Rule(r), r != 120, Rule(120).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), year_notexists(v0, v2, r), Rule(r), r != 121, Rule(121).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), writer_notexists(v0, v1, r), Rule(r), r != 122, Rule(122).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), writer_notexists(v1, v0, r), Rule(r), r != 123, Rule(123).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), writer_notexists(v1, v0, r), Rule(r), r != 124, Rule(124).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), writer_notexists(v0, v1, r), Rule(r), r != 125, Rule(125).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), writer_notexists(v0, v2, r), Rule(r), r != 126, Rule(126).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), writer_notexists(v2, v0, r), Rule(r), r != 127, Rule(127).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), writer_notexists(v1, v2, r), Rule(r), r != 128, Rule(128).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), writer_notexists(v2, v1, r), Rule(r), r != 129, Rule(129).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), writer_notexists(v1, v2, r), Rule(r), r != 130, Rule(130).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), writer_notexists(v2, v1, r), Rule(r), r != 131, Rule(131).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), writer_notexists(v2, v0, r), Rule(r), r != 132, Rule(132).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), writer_notexists(v0, v2, r), Rule(r), r != 133, Rule(133).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), wikisourcelangProperty_notexists(v0, v1, r), Rule(r), r != 134, Rule(134).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), wikisourcelangProperty_notexists(v1, v0, r), Rule(r), r != 135, Rule(135).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), wikisourcelangProperty_notexists(v1, v0, r), Rule(r), r != 136, Rule(136).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), wikisourcelangProperty_notexists(v0, v1, r), Rule(r), r != 137, Rule(137).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), wikisourcelangProperty_notexists(v0, v2, r), Rule(r), r != 138, Rule(138).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), wikisourcelangProperty_notexists(v2, v0, r), Rule(r), r != 139, Rule(139).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), wikisourcelangProperty_notexists(v1, v2, r), Rule(r), r != 140, Rule(140).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), wikisourcelangProperty_notexists(v2, v1, r), Rule(r), r != 141, Rule(141).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), wikisourcelangProperty_notexists(v1, v2, r), Rule(r), r != 142, Rule(142).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), wikisourcelangProperty_notexists(v2, v1, r), Rule(r), r != 143, Rule(143).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), wikisourcelangProperty_notexists(v2, v0, r), Rule(r), r != 144, Rule(144).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), wikisourcelangProperty_notexists(v0, v2, r), Rule(r), r != 145, Rule(145).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), Igenre_notexists(v0, v1, r), Rule(r), r != 146, Rule(146).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), Igenre_notexists(v1, v0, r), Rule(r), r != 147, Rule(147).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), Igenre_notexists(v1, v0, r), Rule(r), r != 148, Rule(148).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), Igenre_notexists(v0, v1, r), Rule(r), r != 149, Rule(149).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), Igenre_notexists(v0, v2, r), Rule(r), r != 150, Rule(150).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), Igenre_notexists(v2, v0, r), Rule(r), r != 151, Rule(151).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), Igenre_notexists(v1, v2, r), Rule(r), r != 152, Rule(152).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), Igenre_notexists(v2, v1, r), Rule(r), r != 153, Rule(153).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), Igenre_notexists(v1, v2, r), Rule(r), r != 154, Rule(154).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), Igenre_notexists(v2, v1, r), Rule(r), r != 155, Rule(155).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), Igenre_notexists(v2, v0, r), Rule(r), r != 156, Rule(156).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), Igenre_notexists(v0, v2, r), Rule(r), r != 157, Rule(157).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), genre_notexists(v0, v1, r), Rule(r), r != 158, Rule(158).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v1, r), genre_notexists(v1, v0, r), Rule(r), r != 159, Rule(159).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), genre_notexists(v1, v0, r), Rule(r), r != 160, Rule(160).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v0, r), genre_notexists(v0, v1, r), Rule(r), r != 161, Rule(161).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), genre_notexists(v0, v2, r), Rule(r), r != 162, Rule(162).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), genre_notexists(v2, v0, r), Rule(r), r != 163, Rule(163).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), genre_notexists(v1, v2, r), Rule(r), r != 164, Rule(164).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v0, r), genre_notexists(v2, v1, r), Rule(r), r != 165, Rule(165).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), genre_notexists(v1, v2, r), Rule(r), r != 166, Rule(166).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v0, v2, r), genre_notexists(v2, v1, r), Rule(r), r != 167, Rule(167).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v2, v1, r), genre_notexists(v2, v0, r), Rule(r), r != 168, Rule(168).
+genre_notexists(v0, v1, r) :- yearOfRelease_notexists(v1, v2, r), genre_notexists(v0, v2, r), Rule(r), r != 169, Rule(169).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v1, r), year_notexists(v0, v1, r), Rule(r), r != 170, Rule(170).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v1, r), year_notexists(v1, v0, r), Rule(r), r != 171, Rule(171).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v0, r), year_notexists(v1, v0, r), Rule(r), r != 172, Rule(172).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v0, r), year_notexists(v0, v1, r), Rule(r), r != 173, Rule(173).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v1, r), year_notexists(v0, v2, r), Rule(r), r != 174, Rule(174).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v2, r), year_notexists(v2, v0, r), Rule(r), r != 175, Rule(175).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v0, r), year_notexists(v1, v2, r), Rule(r), r != 176, Rule(176).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v0, r), year_notexists(v2, v1, r), Rule(r), r != 177, Rule(177).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v2, r), year_notexists(v1, v2, r), Rule(r), r != 178, Rule(178).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v2, r), year_notexists(v2, v1, r), Rule(r), r != 179, Rule(179).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v1, r), year_notexists(v2, v0, r), Rule(r), r != 180, Rule(180).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v2, r), year_notexists(v0, v2, r), Rule(r), r != 181, Rule(181).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v1, r), writer_notexists(v0, v1, r), Rule(r), r != 182, Rule(182).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v1, r), writer_notexists(v1, v0, r), Rule(r), r != 183, Rule(183).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v0, r), writer_notexists(v1, v0, r), Rule(r), r != 184, Rule(184).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v0, r), writer_notexists(v0, v1, r), Rule(r), r != 185, Rule(185).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v1, r), writer_notexists(v0, v2, r), Rule(r), r != 186, Rule(186).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v2, r), writer_notexists(v2, v0, r), Rule(r), r != 187, Rule(187).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v0, r), writer_notexists(v1, v2, r), Rule(r), r != 188, Rule(188).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v0, r), writer_notexists(v2, v1, r), Rule(r), r != 189, Rule(189).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v2, r), writer_notexists(v1, v2, r), Rule(r), r != 190, Rule(190).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v2, r), writer_notexists(v2, v1, r), Rule(r), r != 191, Rule(191).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v1, r), writer_notexists(v2, v0, r), Rule(r), r != 192, Rule(192).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v2, r), writer_notexists(v0, v2, r), Rule(r), r != 193, Rule(193).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v1, r), wikisourcelangProperty_notexists(v0, v1, r), Rule(r), r != 194, Rule(194).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v1, r), wikisourcelangProperty_notexists(v1, v0, r), Rule(r), r != 195, Rule(195).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v0, r), wikisourcelangProperty_notexists(v1, v0, r), Rule(r), r != 196, Rule(196).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v0, r), wikisourcelangProperty_notexists(v0, v1, r), Rule(r), r != 197, Rule(197).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v1, r), wikisourcelangProperty_notexists(v0, v2, r), Rule(r), r != 198, Rule(198).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v2, r), wikisourcelangProperty_notexists(v2, v0, r), Rule(r), r != 199, Rule(199).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v0, r), wikisourcelangProperty_notexists(v1, v2, r), Rule(r), r != 200, Rule(200).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v0, r), wikisourcelangProperty_notexists(v2, v1, r), Rule(r), r != 201, Rule(201).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v2, r), wikisourcelangProperty_notexists(v1, v2, r), Rule(r), r != 202, Rule(202).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v2, r), wikisourcelangProperty_notexists(v2, v1, r), Rule(r), r != 203, Rule(203).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v1, r), wikisourcelangProperty_notexists(v2, v0, r), Rule(r), r != 204, Rule(204).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v2, r), wikisourcelangProperty_notexists(v0, v2, r), Rule(r), r != 205, Rule(205).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v1, r), Igenre_notexists(v0, v1, r), Rule(r), r != 206, Rule(206).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v1, r), Igenre_notexists(v1, v0, r), Rule(r), r != 207, Rule(207).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v0, r), Igenre_notexists(v1, v0, r), Rule(r), r != 208, Rule(208).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v0, r), Igenre_notexists(v0, v1, r), Rule(r), r != 209, Rule(209).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v1, r), Igenre_notexists(v0, v2, r), Rule(r), r != 210, Rule(210).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v2, r), Igenre_notexists(v2, v0, r), Rule(r), r != 211, Rule(211).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v0, r), Igenre_notexists(v1, v2, r), Rule(r), r != 212, Rule(212).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v0, r), Igenre_notexists(v2, v1, r), Rule(r), r != 213, Rule(213).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v2, r), Igenre_notexists(v1, v2, r), Rule(r), r != 214, Rule(214).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v2, r), Igenre_notexists(v2, v1, r), Rule(r), r != 215, Rule(215).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v1, r), Igenre_notexists(v2, v0, r), Rule(r), r != 216, Rule(216).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v2, r), Igenre_notexists(v0, v2, r), Rule(r), r != 217, Rule(217).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v1, r), genre_notexists(v0, v1, r), Rule(r), r != 218, Rule(218).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v1, r), genre_notexists(v1, v0, r), Rule(r), r != 219, Rule(219).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v0, r), genre_notexists(v1, v0, r), Rule(r), r != 220, Rule(220).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v0, r), genre_notexists(v0, v1, r), Rule(r), r != 221, Rule(221).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v1, r), genre_notexists(v0, v2, r), Rule(r), r != 222, Rule(222).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v2, r), genre_notexists(v2, v0, r), Rule(r), r != 223, Rule(223).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v0, r), genre_notexists(v1, v2, r), Rule(r), r != 224, Rule(224).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v0, r), genre_notexists(v2, v1, r), Rule(r), r != 225, Rule(225).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v2, r), genre_notexists(v1, v2, r), Rule(r), r != 226, Rule(226).
+genre_notexists(v0, v1, r) :- year_notexists(v0, v2, r), genre_notexists(v2, v1, r), Rule(r), r != 227, Rule(227).
+genre_notexists(v0, v1, r) :- year_notexists(v2, v1, r), genre_notexists(v2, v0, r), Rule(r), r != 228, Rule(228).
+genre_notexists(v0, v1, r) :- year_notexists(v1, v2, r), genre_notexists(v0, v2, r), Rule(r), r != 229, Rule(229).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v1, r), writer_notexists(v0, v1, r), Rule(r), r != 230, Rule(230).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v1, r), writer_notexists(v1, v0, r), Rule(r), r != 231, Rule(231).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v0, r), writer_notexists(v1, v0, r), Rule(r), r != 232, Rule(232).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v0, r), writer_notexists(v0, v1, r), Rule(r), r != 233, Rule(233).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v1, r), writer_notexists(v0, v2, r), Rule(r), r != 234, Rule(234).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v2, r), writer_notexists(v2, v0, r), Rule(r), r != 235, Rule(235).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v0, r), writer_notexists(v1, v2, r), Rule(r), r != 236, Rule(236).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v0, r), writer_notexists(v2, v1, r), Rule(r), r != 237, Rule(237).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v2, r), writer_notexists(v1, v2, r), Rule(r), r != 238, Rule(238).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v2, r), writer_notexists(v2, v1, r), Rule(r), r != 239, Rule(239).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v1, r), writer_notexists(v2, v0, r), Rule(r), r != 240, Rule(240).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v2, r), writer_notexists(v0, v2, r), Rule(r), r != 241, Rule(241).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v1, r), wikisourcelangProperty_notexists(v0, v1, r), Rule(r), r != 242, Rule(242).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v1, r), wikisourcelangProperty_notexists(v1, v0, r), Rule(r), r != 243, Rule(243).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v0, r), wikisourcelangProperty_notexists(v1, v0, r), Rule(r), r != 244, Rule(244).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v0, r), wikisourcelangProperty_notexists(v0, v1, r), Rule(r), r != 245, Rule(245).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v1, r), wikisourcelangProperty_notexists(v0, v2, r), Rule(r), r != 246, Rule(246).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v2, r), wikisourcelangProperty_notexists(v2, v0, r), Rule(r), r != 247, Rule(247).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v0, r), wikisourcelangProperty_notexists(v1, v2, r), Rule(r), r != 248, Rule(248).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v0, r), wikisourcelangProperty_notexists(v2, v1, r), Rule(r), r != 249, Rule(249).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v2, r), wikisourcelangProperty_notexists(v1, v2, r), Rule(r), r != 250, Rule(250).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v2, r), wikisourcelangProperty_notexists(v2, v1, r), Rule(r), r != 251, Rule(251).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v1, r), wikisourcelangProperty_notexists(v2, v0, r), Rule(r), r != 252, Rule(252).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v2, r), wikisourcelangProperty_notexists(v0, v2, r), Rule(r), r != 253, Rule(253).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v1, r), Igenre_notexists(v0, v1, r), Rule(r), r != 254, Rule(254).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v1, r), Igenre_notexists(v1, v0, r), Rule(r), r != 255, Rule(255).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v0, r), Igenre_notexists(v1, v0, r), Rule(r), r != 256, Rule(256).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v0, r), Igenre_notexists(v0, v1, r), Rule(r), r != 257, Rule(257).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v1, r), Igenre_notexists(v0, v2, r), Rule(r), r != 258, Rule(258).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v2, r), Igenre_notexists(v2, v0, r), Rule(r), r != 259, Rule(259).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v0, r), Igenre_notexists(v1, v2, r), Rule(r), r != 260, Rule(260).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v0, r), Igenre_notexists(v2, v1, r), Rule(r), r != 261, Rule(261).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v2, r), Igenre_notexists(v1, v2, r), Rule(r), r != 262, Rule(262).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v2, r), Igenre_notexists(v2, v1, r), Rule(r), r != 263, Rule(263).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v1, r), Igenre_notexists(v2, v0, r), Rule(r), r != 264, Rule(264).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v2, r), Igenre_notexists(v0, v2, r), Rule(r), r != 265, Rule(265).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v1, r), genre_notexists(v0, v1, r), Rule(r), r != 266, Rule(266).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v1, r), genre_notexists(v1, v0, r), Rule(r), r != 267, Rule(267).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v0, r), genre_notexists(v1, v0, r), Rule(r), r != 268, Rule(268).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v0, r), genre_notexists(v0, v1, r), Rule(r), r != 269, Rule(269).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v1, r), genre_notexists(v0, v2, r), Rule(r), r != 270, Rule(270).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v2, r), genre_notexists(v2, v0, r), Rule(r), r != 271, Rule(271).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v0, r), genre_notexists(v1, v2, r), Rule(r), r != 272, Rule(272).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v0, r), genre_notexists(v2, v1, r), Rule(r), r != 273, Rule(273).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v2, r), genre_notexists(v1, v2, r), Rule(r), r != 274, Rule(274).
+genre_notexists(v0, v1, r) :- writer_notexists(v0, v2, r), genre_notexists(v2, v1, r), Rule(r), r != 275, Rule(275).
+genre_notexists(v0, v1, r) :- writer_notexists(v2, v1, r), genre_notexists(v2, v0, r), Rule(r), r != 276, Rule(276).
+genre_notexists(v0, v1, r) :- writer_notexists(v1, v2, r), genre_notexists(v0, v2, r), Rule(r), r != 277, Rule(277).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v1, r), wikisourcelangProperty_notexists(v0, v1, r), Rule(r), r != 278, Rule(278).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v1, r), wikisourcelangProperty_notexists(v1, v0, r), Rule(r), r != 279, Rule(279).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v0, r), wikisourcelangProperty_notexists(v1, v0, r), Rule(r), r != 280, Rule(280).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v0, r), wikisourcelangProperty_notexists(v0, v1, r), Rule(r), r != 281, Rule(281).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v1, r), wikisourcelangProperty_notexists(v0, v2, r), Rule(r), r != 282, Rule(282).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v2, r), wikisourcelangProperty_notexists(v2, v0, r), Rule(r), r != 283, Rule(283).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v0, r), wikisourcelangProperty_notexists(v1, v2, r), Rule(r), r != 284, Rule(284).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v0, r), wikisourcelangProperty_notexists(v2, v1, r), Rule(r), r != 285, Rule(285).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v2, r), wikisourcelangProperty_notexists(v1, v2, r), Rule(r), r != 286, Rule(286).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v2, r), wikisourcelangProperty_notexists(v2, v1, r), Rule(r), r != 287, Rule(287).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v1, r), wikisourcelangProperty_notexists(v2, v0, r), Rule(r), r != 288, Rule(288).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v2, r), wikisourcelangProperty_notexists(v0, v2, r), Rule(r), r != 289, Rule(289).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v1, r), Igenre_notexists(v0, v1, r), Rule(r), r != 290, Rule(290).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v1, r), Igenre_notexists(v1, v0, r), Rule(r), r != 291, Rule(291).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v0, r), Igenre_notexists(v1, v0, r), Rule(r), r != 292, Rule(292).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v0, r), Igenre_notexists(v0, v1, r), Rule(r), r != 293, Rule(293).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v1, r), Igenre_notexists(v0, v2, r), Rule(r), r != 294, Rule(294).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v2, r), Igenre_notexists(v2, v0, r), Rule(r), r != 295, Rule(295).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v0, r), Igenre_notexists(v1, v2, r), Rule(r), r != 296, Rule(296).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v0, r), Igenre_notexists(v2, v1, r), Rule(r), r != 297, Rule(297).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v2, r), Igenre_notexists(v1, v2, r), Rule(r), r != 298, Rule(298).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v2, r), Igenre_notexists(v2, v1, r), Rule(r), r != 299, Rule(299).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v1, r), Igenre_notexists(v2, v0, r), Rule(r), r != 300, Rule(300).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v2, r), Igenre_notexists(v0, v2, r), Rule(r), r != 301, Rule(301).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v1, r), genre_notexists(v0, v1, r), Rule(r), r != 302, Rule(302).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v1, r), genre_notexists(v1, v0, r), Rule(r), r != 303, Rule(303).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v0, r), genre_notexists(v1, v0, r), Rule(r), r != 304, Rule(304).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v0, r), genre_notexists(v0, v1, r), Rule(r), r != 305, Rule(305).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v1, r), genre_notexists(v0, v2, r), Rule(r), r != 306, Rule(306).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v2, r), genre_notexists(v2, v0, r), Rule(r), r != 307, Rule(307).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v0, r), genre_notexists(v1, v2, r), Rule(r), r != 308, Rule(308).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v0, r), genre_notexists(v2, v1, r), Rule(r), r != 309, Rule(309).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v2, r), genre_notexists(v1, v2, r), Rule(r), r != 310, Rule(310).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v0, v2, r), genre_notexists(v2, v1, r), Rule(r), r != 311, Rule(311).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v2, v1, r), genre_notexists(v2, v0, r), Rule(r), r != 312, Rule(312).
+genre_notexists(v0, v1, r) :- wikisourcelangProperty_notexists(v1, v2, r), genre_notexists(v0, v2, r), Rule(r), r != 313, Rule(313).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v0, v1, r), Igenre_notexists(v0, v1, r), Rule(r), r != 314, Rule(314).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v0, v1, r), Igenre_notexists(v1, v0, r), Rule(r), r != 315, Rule(315).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v1, v0, r), Igenre_notexists(v1, v0, r), Rule(r), r != 316, Rule(316).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v1, v0, r), Igenre_notexists(v0, v1, r), Rule(r), r != 317, Rule(317).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v2, v1, r), Igenre_notexists(v0, v2, r), Rule(r), r != 318, Rule(318).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v1, v2, r), Igenre_notexists(v2, v0, r), Rule(r), r != 319, Rule(319).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v2, v0, r), Igenre_notexists(v1, v2, r), Rule(r), r != 320, Rule(320).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v2, v0, r), Igenre_notexists(v2, v1, r), Rule(r), r != 321, Rule(321).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v0, v2, r), Igenre_notexists(v1, v2, r), Rule(r), r != 322, Rule(322).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v0, v2, r), Igenre_notexists(v2, v1, r), Rule(r), r != 323, Rule(323).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v2, v1, r), Igenre_notexists(v2, v0, r), Rule(r), r != 324, Rule(324).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v1, v2, r), Igenre_notexists(v0, v2, r), Rule(r), r != 325, Rule(325).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v0, v1, r), genre_notexists(v0, v1, r), Rule(r), r != 326, Rule(326).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v0, v1, r), genre_notexists(v1, v0, r), Rule(r), r != 327, Rule(327).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v1, v0, r), genre_notexists(v1, v0, r), Rule(r), r != 328, Rule(328).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v1, v0, r), genre_notexists(v0, v1, r), Rule(r), r != 329, Rule(329).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v2, v1, r), genre_notexists(v0, v2, r), Rule(r), r != 330, Rule(330).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v1, v2, r), genre_notexists(v2, v0, r), Rule(r), r != 331, Rule(331).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v2, v0, r), genre_notexists(v1, v2, r), Rule(r), r != 332, Rule(332).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v2, v0, r), genre_notexists(v2, v1, r), Rule(r), r != 333, Rule(333).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v0, v2, r), genre_notexists(v1, v2, r), Rule(r), r != 334, Rule(334).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v0, v2, r), genre_notexists(v2, v1, r), Rule(r), r != 335, Rule(335).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v2, v1, r), genre_notexists(v2, v0, r), Rule(r), r != 336, Rule(336).
+genre_notexists(v0, v1, r) :- Igenre_notexists(v1, v2, r), genre_notexists(v0, v2, r), Rule(r), r != 337, Rule(337).
+genre_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), genre_notexists(v0, v1, r), Rule(r), r != 338, Rule(338).
+genre_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), genre_notexists(v1, v0, r), Rule(r), r != 339, Rule(339).
+genre_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), genre_notexists(v1, v0, r), Rule(r), r != 340, Rule(340).
+genre_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), genre_notexists(v0, v1, r), Rule(r), r != 341, Rule(341).
+genre_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), genre_notexists(v0, v2, r), Rule(r), r != 342, Rule(342).
+genre_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), genre_notexists(v2, v0, r), Rule(r), r != 343, Rule(343).
+genre_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), genre_notexists(v1, v2, r), Rule(r), r != 344, Rule(344).
+genre_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), genre_notexists(v2, v1, r), Rule(r), r != 345, Rule(345).
+genre_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), genre_notexists(v1, v2, r), Rule(r), r != 346, Rule(346).
+genre_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), genre_notexists(v2, v1, r), Rule(r), r != 347, Rule(347).
+genre_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), genre_notexists(v2, v0, r), Rule(r), r != 348, Rule(348).
+genre_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), genre_notexists(v0, v2, r), Rule(r), r != 349, Rule(349).

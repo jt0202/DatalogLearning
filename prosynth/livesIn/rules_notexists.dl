@@ -1,0 +1,159 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl isCitizenOf(v0: V, v1: V)
+.input isCitizenOf
+
+.decl isInterestedIn(v0: V, v1: V)
+.input isInterestedIn
+
+.decl IlivesIn(v0: V, v1: V)
+.input IlivesIn
+
+.decl isCitizenOf_notexists(v0: V, v1: V, r: number)
+.output isCitizenOf_notexists
+
+.decl isInterestedIn_notexists(v0: V, v1: V, r: number)
+.output isInterestedIn_notexists
+
+.decl IlivesIn_notexists(v0: V, v1: V, r: number)
+.output IlivesIn_notexists
+
+.decl livesIn_notexists(v0: V, v1: V, r: number)
+.output livesIn_notexists
+
+
+
+isCitizenOf_notexists(v0, v1, r) :- isCitizenOf(v0, v1), Rule(r).
+isInterestedIn_notexists(v0, v1, r) :- isInterestedIn(v0, v1), Rule(r).
+IlivesIn_notexists(v0, v1, r) :- IlivesIn(v0, v1), Rule(r).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v1, r), Rule(r), r != 0, Rule(0).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v0, r), Rule(r), r != 1, Rule(1).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v1, r), Rule(r), r != 2, Rule(2).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v0, r), Rule(r), r != 3, Rule(3).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v0, v1, r), Rule(r), r != 4, Rule(4).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v1, v0, r), Rule(r), r != 5, Rule(5).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v0, v1, r), Rule(r), r != 6, Rule(6).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v1, v0, r), Rule(r), r != 7, Rule(7).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v1, r), isCitizenOf_notexists(v0, v1, r), Rule(r), r != 8, Rule(8).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v1, r), isCitizenOf_notexists(v1, v0, r), Rule(r), r != 9, Rule(9).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v0, r), isCitizenOf_notexists(v1, v0, r), Rule(r), r != 10, Rule(10).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v0, r), isCitizenOf_notexists(v0, v1, r), Rule(r), r != 11, Rule(11).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v1, r), isCitizenOf_notexists(v0, v2, r), Rule(r), r != 12, Rule(12).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v2, r), isCitizenOf_notexists(v2, v0, r), Rule(r), r != 13, Rule(13).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v0, r), isCitizenOf_notexists(v1, v2, r), Rule(r), r != 14, Rule(14).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v0, r), isCitizenOf_notexists(v2, v1, r), Rule(r), r != 15, Rule(15).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v2, r), isCitizenOf_notexists(v1, v2, r), Rule(r), r != 16, Rule(16).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v2, r), isCitizenOf_notexists(v2, v1, r), Rule(r), r != 17, Rule(17).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v1, r), isCitizenOf_notexists(v2, v0, r), Rule(r), r != 18, Rule(18).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v2, r), isCitizenOf_notexists(v0, v2, r), Rule(r), r != 19, Rule(19).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v1, r), isInterestedIn_notexists(v0, v1, r), Rule(r), r != 20, Rule(20).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v1, r), isInterestedIn_notexists(v1, v0, r), Rule(r), r != 21, Rule(21).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v0, r), isInterestedIn_notexists(v1, v0, r), Rule(r), r != 22, Rule(22).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v0, r), isInterestedIn_notexists(v0, v1, r), Rule(r), r != 23, Rule(23).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v1, r), isInterestedIn_notexists(v0, v2, r), Rule(r), r != 24, Rule(24).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v2, r), isInterestedIn_notexists(v2, v0, r), Rule(r), r != 25, Rule(25).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v0, r), isInterestedIn_notexists(v1, v2, r), Rule(r), r != 26, Rule(26).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v0, r), isInterestedIn_notexists(v2, v1, r), Rule(r), r != 27, Rule(27).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v2, r), isInterestedIn_notexists(v1, v2, r), Rule(r), r != 28, Rule(28).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v2, r), isInterestedIn_notexists(v2, v1, r), Rule(r), r != 29, Rule(29).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v1, r), isInterestedIn_notexists(v2, v0, r), Rule(r), r != 30, Rule(30).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v2, r), isInterestedIn_notexists(v0, v2, r), Rule(r), r != 31, Rule(31).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v1, r), IlivesIn_notexists(v0, v1, r), Rule(r), r != 32, Rule(32).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v1, r), IlivesIn_notexists(v1, v0, r), Rule(r), r != 33, Rule(33).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v0, r), IlivesIn_notexists(v1, v0, r), Rule(r), r != 34, Rule(34).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v0, r), IlivesIn_notexists(v0, v1, r), Rule(r), r != 35, Rule(35).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v1, r), IlivesIn_notexists(v0, v2, r), Rule(r), r != 36, Rule(36).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v2, r), IlivesIn_notexists(v2, v0, r), Rule(r), r != 37, Rule(37).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v0, r), IlivesIn_notexists(v1, v2, r), Rule(r), r != 38, Rule(38).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v0, r), IlivesIn_notexists(v2, v1, r), Rule(r), r != 39, Rule(39).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v2, r), IlivesIn_notexists(v1, v2, r), Rule(r), r != 40, Rule(40).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v2, r), IlivesIn_notexists(v2, v1, r), Rule(r), r != 41, Rule(41).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v1, r), IlivesIn_notexists(v2, v0, r), Rule(r), r != 42, Rule(42).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v2, r), IlivesIn_notexists(v0, v2, r), Rule(r), r != 43, Rule(43).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v1, r), livesIn_notexists(v0, v1, r), Rule(r), r != 44, Rule(44).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v1, r), livesIn_notexists(v1, v0, r), Rule(r), r != 45, Rule(45).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v0, r), livesIn_notexists(v1, v0, r), Rule(r), r != 46, Rule(46).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v0, r), livesIn_notexists(v0, v1, r), Rule(r), r != 47, Rule(47).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v1, r), livesIn_notexists(v0, v2, r), Rule(r), r != 48, Rule(48).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v2, r), livesIn_notexists(v2, v0, r), Rule(r), r != 49, Rule(49).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v0, r), livesIn_notexists(v1, v2, r), Rule(r), r != 50, Rule(50).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v0, r), livesIn_notexists(v2, v1, r), Rule(r), r != 51, Rule(51).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v2, r), livesIn_notexists(v1, v2, r), Rule(r), r != 52, Rule(52).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v0, v2, r), livesIn_notexists(v2, v1, r), Rule(r), r != 53, Rule(53).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v2, v1, r), livesIn_notexists(v2, v0, r), Rule(r), r != 54, Rule(54).
+livesIn_notexists(v0, v1, r) :- isCitizenOf_notexists(v1, v2, r), livesIn_notexists(v0, v2, r), Rule(r), r != 55, Rule(55).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v1, r), isInterestedIn_notexists(v0, v1, r), Rule(r), r != 56, Rule(56).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v1, r), isInterestedIn_notexists(v1, v0, r), Rule(r), r != 57, Rule(57).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v0, r), isInterestedIn_notexists(v1, v0, r), Rule(r), r != 58, Rule(58).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v0, r), isInterestedIn_notexists(v0, v1, r), Rule(r), r != 59, Rule(59).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v1, r), isInterestedIn_notexists(v0, v2, r), Rule(r), r != 60, Rule(60).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v2, r), isInterestedIn_notexists(v2, v0, r), Rule(r), r != 61, Rule(61).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v0, r), isInterestedIn_notexists(v1, v2, r), Rule(r), r != 62, Rule(62).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v0, r), isInterestedIn_notexists(v2, v1, r), Rule(r), r != 63, Rule(63).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v2, r), isInterestedIn_notexists(v1, v2, r), Rule(r), r != 64, Rule(64).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v2, r), isInterestedIn_notexists(v2, v1, r), Rule(r), r != 65, Rule(65).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v1, r), isInterestedIn_notexists(v2, v0, r), Rule(r), r != 66, Rule(66).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v2, r), isInterestedIn_notexists(v0, v2, r), Rule(r), r != 67, Rule(67).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v1, r), IlivesIn_notexists(v0, v1, r), Rule(r), r != 68, Rule(68).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v1, r), IlivesIn_notexists(v1, v0, r), Rule(r), r != 69, Rule(69).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v0, r), IlivesIn_notexists(v1, v0, r), Rule(r), r != 70, Rule(70).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v0, r), IlivesIn_notexists(v0, v1, r), Rule(r), r != 71, Rule(71).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v1, r), IlivesIn_notexists(v0, v2, r), Rule(r), r != 72, Rule(72).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v2, r), IlivesIn_notexists(v2, v0, r), Rule(r), r != 73, Rule(73).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v0, r), IlivesIn_notexists(v1, v2, r), Rule(r), r != 74, Rule(74).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v0, r), IlivesIn_notexists(v2, v1, r), Rule(r), r != 75, Rule(75).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v2, r), IlivesIn_notexists(v1, v2, r), Rule(r), r != 76, Rule(76).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v2, r), IlivesIn_notexists(v2, v1, r), Rule(r), r != 77, Rule(77).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v1, r), IlivesIn_notexists(v2, v0, r), Rule(r), r != 78, Rule(78).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v2, r), IlivesIn_notexists(v0, v2, r), Rule(r), r != 79, Rule(79).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v1, r), livesIn_notexists(v0, v1, r), Rule(r), r != 80, Rule(80).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v1, r), livesIn_notexists(v1, v0, r), Rule(r), r != 81, Rule(81).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v0, r), livesIn_notexists(v1, v0, r), Rule(r), r != 82, Rule(82).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v0, r), livesIn_notexists(v0, v1, r), Rule(r), r != 83, Rule(83).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v1, r), livesIn_notexists(v0, v2, r), Rule(r), r != 84, Rule(84).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v2, r), livesIn_notexists(v2, v0, r), Rule(r), r != 85, Rule(85).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v0, r), livesIn_notexists(v1, v2, r), Rule(r), r != 86, Rule(86).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v0, r), livesIn_notexists(v2, v1, r), Rule(r), r != 87, Rule(87).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v2, r), livesIn_notexists(v1, v2, r), Rule(r), r != 88, Rule(88).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v0, v2, r), livesIn_notexists(v2, v1, r), Rule(r), r != 89, Rule(89).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v2, v1, r), livesIn_notexists(v2, v0, r), Rule(r), r != 90, Rule(90).
+livesIn_notexists(v0, v1, r) :- isInterestedIn_notexists(v1, v2, r), livesIn_notexists(v0, v2, r), Rule(r), r != 91, Rule(91).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v0, v1, r), IlivesIn_notexists(v0, v1, r), Rule(r), r != 92, Rule(92).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v0, v1, r), IlivesIn_notexists(v1, v0, r), Rule(r), r != 93, Rule(93).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v1, v0, r), IlivesIn_notexists(v1, v0, r), Rule(r), r != 94, Rule(94).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v1, v0, r), IlivesIn_notexists(v0, v1, r), Rule(r), r != 95, Rule(95).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v2, v1, r), IlivesIn_notexists(v0, v2, r), Rule(r), r != 96, Rule(96).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v1, v2, r), IlivesIn_notexists(v2, v0, r), Rule(r), r != 97, Rule(97).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v2, v0, r), IlivesIn_notexists(v1, v2, r), Rule(r), r != 98, Rule(98).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v2, v0, r), IlivesIn_notexists(v2, v1, r), Rule(r), r != 99, Rule(99).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v0, v2, r), IlivesIn_notexists(v1, v2, r), Rule(r), r != 100, Rule(100).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v0, v2, r), IlivesIn_notexists(v2, v1, r), Rule(r), r != 101, Rule(101).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v2, v1, r), IlivesIn_notexists(v2, v0, r), Rule(r), r != 102, Rule(102).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v1, v2, r), IlivesIn_notexists(v0, v2, r), Rule(r), r != 103, Rule(103).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v0, v1, r), livesIn_notexists(v0, v1, r), Rule(r), r != 104, Rule(104).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v0, v1, r), livesIn_notexists(v1, v0, r), Rule(r), r != 105, Rule(105).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v1, v0, r), livesIn_notexists(v1, v0, r), Rule(r), r != 106, Rule(106).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v1, v0, r), livesIn_notexists(v0, v1, r), Rule(r), r != 107, Rule(107).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v2, v1, r), livesIn_notexists(v0, v2, r), Rule(r), r != 108, Rule(108).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v1, v2, r), livesIn_notexists(v2, v0, r), Rule(r), r != 109, Rule(109).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v2, v0, r), livesIn_notexists(v1, v2, r), Rule(r), r != 110, Rule(110).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v2, v0, r), livesIn_notexists(v2, v1, r), Rule(r), r != 111, Rule(111).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v0, v2, r), livesIn_notexists(v1, v2, r), Rule(r), r != 112, Rule(112).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v0, v2, r), livesIn_notexists(v2, v1, r), Rule(r), r != 113, Rule(113).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v2, v1, r), livesIn_notexists(v2, v0, r), Rule(r), r != 114, Rule(114).
+livesIn_notexists(v0, v1, r) :- IlivesIn_notexists(v1, v2, r), livesIn_notexists(v0, v2, r), Rule(r), r != 115, Rule(115).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v0, v1, r), livesIn_notexists(v0, v1, r), Rule(r), r != 116, Rule(116).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v0, v1, r), livesIn_notexists(v1, v0, r), Rule(r), r != 117, Rule(117).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v1, v0, r), livesIn_notexists(v1, v0, r), Rule(r), r != 118, Rule(118).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v1, v0, r), livesIn_notexists(v0, v1, r), Rule(r), r != 119, Rule(119).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v2, v1, r), livesIn_notexists(v0, v2, r), Rule(r), r != 120, Rule(120).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v1, v2, r), livesIn_notexists(v2, v0, r), Rule(r), r != 121, Rule(121).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v2, v0, r), livesIn_notexists(v1, v2, r), Rule(r), r != 122, Rule(122).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v2, v0, r), livesIn_notexists(v2, v1, r), Rule(r), r != 123, Rule(123).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v0, v2, r), livesIn_notexists(v1, v2, r), Rule(r), r != 124, Rule(124).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v0, v2, r), livesIn_notexists(v2, v1, r), Rule(r), r != 125, Rule(125).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v2, v1, r), livesIn_notexists(v2, v0, r), Rule(r), r != 126, Rule(126).
+livesIn_notexists(v0, v1, r) :- livesIn_notexists(v1, v2, r), livesIn_notexists(v0, v2, r), Rule(r), r != 127, Rule(127).

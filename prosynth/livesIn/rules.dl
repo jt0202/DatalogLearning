@@ -1,0 +1,71 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl isCitizenOf(v0: V, v1: V)
+.input isCitizenOf
+
+.decl isInterestedIn(v0: V, v1: V)
+.input isInterestedIn
+
+.decl IlivesIn(v0: V, v1: V)
+.input IlivesIn
+
+.decl livesIn(v0: V, v1: V)
+.output livesIn
+
+
+
+livesIn(v0, v1) :- isCitizenOf(v0, v1), Rule(0).
+livesIn(v0, v1) :- isCitizenOf(v1, v0), Rule(1).
+livesIn(v0, v1) :- isInterestedIn(v0, v1), Rule(2).
+livesIn(v0, v1) :- isInterestedIn(v1, v0), Rule(3).
+livesIn(v0, v1) :- livesIn(v1, v0), Rule(7).
+livesIn(v0, v1) :- isCitizenOf(v0, v1), isCitizenOf(v0, v1), Rule(8).
+livesIn(v0, v1) :- isCitizenOf(v0, v1), isCitizenOf(v1, v0), Rule(9).
+livesIn(v0, v1) :- isCitizenOf(v1, v0), isCitizenOf(v1, v0), Rule(10).
+livesIn(v0, v1) :- isCitizenOf(v1, v0), isCitizenOf(v0, v1), Rule(11).
+livesIn(v0, v1) :- isCitizenOf(v2, v1), isCitizenOf(v0, v2), Rule(12).
+livesIn(v0, v1) :- isCitizenOf(v1, v2), isCitizenOf(v2, v0), Rule(13).
+livesIn(v0, v1) :- isCitizenOf(v2, v0), isCitizenOf(v1, v2), Rule(14).
+livesIn(v0, v1) :- isCitizenOf(v0, v2), isCitizenOf(v2, v1), Rule(17).
+livesIn(v0, v1) :- isCitizenOf(v0, v1), isInterestedIn(v0, v1), Rule(20).
+livesIn(v0, v1) :- isCitizenOf(v0, v1), isInterestedIn(v1, v0), Rule(21).
+livesIn(v0, v1) :- isCitizenOf(v1, v0), isInterestedIn(v1, v0), Rule(22).
+livesIn(v0, v1) :- isCitizenOf(v1, v0), isInterestedIn(v0, v1), Rule(23).
+livesIn(v0, v1) :- isCitizenOf(v2, v1), isInterestedIn(v0, v2), Rule(24).
+livesIn(v0, v1) :- isCitizenOf(v1, v2), isInterestedIn(v2, v0), Rule(25).
+livesIn(v0, v1) :- isCitizenOf(v2, v0), isInterestedIn(v1, v2), Rule(26).
+livesIn(v0, v1) :- isCitizenOf(v0, v2), isInterestedIn(v2, v1), Rule(29).
+livesIn(v0, v1) :- isCitizenOf(v1, v2), IlivesIn(v2, v0), Rule(37).
+livesIn(v0, v1) :- isCitizenOf(v2, v0), IlivesIn(v1, v2), Rule(38).
+livesIn(v0, v1) :- isCitizenOf(v0, v2), IlivesIn(v2, v1), Rule(41).
+livesIn(v0, v1) :- isCitizenOf(v0, v1), livesIn(v1, v0), Rule(45).
+livesIn(v0, v1) :- isCitizenOf(v1, v0), livesIn(v1, v0), Rule(46).
+livesIn(v0, v1) :- isCitizenOf(v1, v2), livesIn(v2, v0), Rule(49).
+livesIn(v0, v1) :- isCitizenOf(v2, v0), livesIn(v1, v2), Rule(50).
+livesIn(v0, v1) :- isCitizenOf(v0, v2), livesIn(v2, v1), Rule(53).
+livesIn(v0, v1) :- isInterestedIn(v0, v1), isInterestedIn(v0, v1), Rule(56).
+livesIn(v0, v1) :- isInterestedIn(v0, v1), isInterestedIn(v1, v0), Rule(57).
+livesIn(v0, v1) :- isInterestedIn(v1, v0), isInterestedIn(v1, v0), Rule(58).
+livesIn(v0, v1) :- isInterestedIn(v1, v0), isInterestedIn(v0, v1), Rule(59).
+livesIn(v0, v1) :- isInterestedIn(v2, v1), isInterestedIn(v0, v2), Rule(60).
+livesIn(v0, v1) :- isInterestedIn(v1, v2), isInterestedIn(v2, v0), Rule(61).
+livesIn(v0, v1) :- isInterestedIn(v2, v0), isInterestedIn(v1, v2), Rule(62).
+livesIn(v0, v1) :- isInterestedIn(v0, v2), isInterestedIn(v2, v1), Rule(65).
+livesIn(v0, v1) :- isInterestedIn(v1, v2), IlivesIn(v2, v0), Rule(73).
+livesIn(v0, v1) :- isInterestedIn(v2, v0), IlivesIn(v1, v2), Rule(74).
+livesIn(v0, v1) :- isInterestedIn(v0, v2), IlivesIn(v2, v1), Rule(77).
+livesIn(v0, v1) :- isInterestedIn(v0, v1), livesIn(v1, v0), Rule(81).
+livesIn(v0, v1) :- isInterestedIn(v1, v0), livesIn(v1, v0), Rule(82).
+livesIn(v0, v1) :- isInterestedIn(v1, v2), livesIn(v2, v0), Rule(85).
+livesIn(v0, v1) :- isInterestedIn(v2, v0), livesIn(v1, v2), Rule(86).
+livesIn(v0, v1) :- isInterestedIn(v0, v2), livesIn(v2, v1), Rule(89).
+livesIn(v0, v1) :- IlivesIn(v1, v2), IlivesIn(v2, v0), Rule(97).
+livesIn(v0, v1) :- IlivesIn(v2, v0), IlivesIn(v1, v2), Rule(98).
+livesIn(v0, v1) :- IlivesIn(v1, v2), livesIn(v2, v0), Rule(109).
+livesIn(v0, v1) :- IlivesIn(v2, v0), livesIn(v1, v2), Rule(110).
+livesIn(v0, v1) :- livesIn(v1, v0), livesIn(v1, v0), Rule(118).
+livesIn(v0, v1) :- livesIn(v1, v2), livesIn(v2, v0), Rule(121).
+livesIn(v0, v1) :- livesIn(v2, v0), livesIn(v1, v2), Rule(122).
