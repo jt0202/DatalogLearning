@@ -30,9 +30,9 @@ RUN cd root; \
 RUN pip install networkx
 
 RUN git clone https://github.com/jt0202/DatalogLearning && \
-    ./popl2020-artifact/scripts/build.sh
-
-CMD /bin/bash
+    ./DatalogLearning/scripts/build.sh && \
+	cd DatalogLearning/prosynth
+CMD ./scripts/main.py
 
 ########################################################################################################################
 

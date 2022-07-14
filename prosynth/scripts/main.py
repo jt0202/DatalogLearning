@@ -10,8 +10,10 @@ import re
 
 
 scriptPath = sys.argv[0]
-problemDirName = sys.argv[1]
-outputRelation = sys.argv[2]
+problemDirName = "yago"
+#problemDirName = sys.argv[1]
+#outputRelation = sys.argv[2]
+outputRelation = "livesIn"
 fileName = "kb.tsv" 
 width = 2
 numberOfInventedPredicates = 0
