@@ -16,9 +16,9 @@ problemDirName = "yago"
 outputRelation = "livesIn"
 fileName = "kb.tsv" 
 width = 2
-numberOfInventedPredicates = 0
+numberOfInventedPredicates = 1
 relevancethreshhold = 0.01
-negativeExampleAmount = 1
+negativeExampleAmount = 5
 train_test_split = 0
 
 
@@ -106,7 +106,7 @@ relations = list(dict.fromkeys(relations))
 print(relations)
 
 def isConnected(rule):
-    graph = nx.DiGraph()
+    graph = nx.Graph()
     head, body = rule.split(":")
     match = re.compile('\((\w+), (\w+)\)')
 
@@ -136,7 +136,7 @@ with open(problemDirName + "/"+ "rules.t", "w+") as ruleFile:
 
     for i in range(0, numberOfInventedPredicates):
         ruleFile.write("inv_" + str(i) + "(V,V)\n")
-    ruleFile.write(relation + "(V,V)\n" )
+    ruleFile.write(outputRelation + "(V,V)\n" )
 
 subprocess.run(["./scripts/rule-gen/generate-fast", problemDirName, str(width)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 
@@ -177,7 +177,7 @@ print("Evaluating Rules")
 
 #taken from prosynth
 def runSouffle(command):
-    with subprocess.Popen([ problemDirName + command, '-F', problemDirName, '-D', problemDirName, '-j', '2' ], \
+    with subprocess.Popen([ problemDirName + command, '-F', problemDirName, '-D', problemDirName, '-j', '8' ], \
                             stdin=subprocess.PIPE, \
                             stdout=subprocess.PIPE, \
                             universal_newlines=True) as souffleProc:

@@ -20,4 +20,4 @@ RULES=$3
 SOUFFLE=$PWD/souffle/src/souffle
 
 cd $PROBLEM_DIR
-$SOUFFLE -j2 -t explain -o$OUTPUT $RULES
+$SOUFFLE -j8 -t explain -o$OUTPUT $RULES
