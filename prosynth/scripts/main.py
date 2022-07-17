@@ -19,8 +19,7 @@ numberOfInventedPredicates = 1
 relevancethreshhold = 0.01
 negativeExampleAmount = 5
 train_test_split = 0.25
-multipleRelations = True
-
+multipleRelations = False
 
 kb = open(problemDirName + "/" + fileName, encoding = "utf-8")
 kbSize = Path(problemDirName + "/" + fileName).stat().st_size
@@ -147,6 +146,10 @@ for rel in outputRelations:
             ruleFile.write("inv_" + str(i) + "(V,V)\n")
         ruleFile.write(outputRelation + "(V,V)\n" )
 
+    #delete previous rules
+    with open(problemDirName + "/rules.dl", "w") as file:
+        pass
+
     subprocess.run(["./scripts/rule-gen/generate-fast", problemDirName, str(width)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 
 
@@ -179,6 +182,8 @@ for rel in outputRelations:
 
     print("generatedRules")
 
+    if os.path.exists(problemDirName + "\souffle.small.out"):
+        os.remove(problemDirName + "\souffle.small.out")
 
     subprocess.run(["./scripts/prepare", problemDirName, "souffle.small.out", "rules.dl"], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 
@@ -228,7 +233,8 @@ for rel in outputRelations:
         print("No mining possible")
         with open(problemDirName + "/evaluation_" +  outputRelation + ".txt", "w") as evFile:
             evFile.write("No Mining possible")
-        quit()
+            relations.remove("I" + outputRelation)
+        continue
 
     with open(problemDirName + "/" + outputRelation + ".expected", "w") as file:
         for line in goal:
@@ -253,9 +259,11 @@ for rel in outputRelations:
                 evFile.write(line + "\n")
         produced = set(open(problemDirName + "/" + outputRelation + ".csv"))
         expected = set(open(problemDirName + "/test.csv"))
+        
+        relations.remove("I" + outputRelation)
 
         if len(expected) == 0:
-            quit()
+            continue
 
         truePredictions = len(expected.intersection(produced))
 
@@ -269,5 +277,4 @@ for rel in outputRelations:
         evFile.write("Unknown predictions:\t" + str(len(produced)- truePredictions - falsePredictions) + "\n")
 
         evFile.write("Retrieved:\t" + str(truePredictions/len(expected)) + "\n" )
-
 

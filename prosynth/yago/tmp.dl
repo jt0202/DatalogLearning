@@ -1,0 +1,97 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl islocatedin(v0: V, v1: V)
+.input islocatedin
+
+.decl directed(v0: V, v1: V)
+.input directed
+
+.decl haschild(v0: V, v1: V)
+.input haschild
+
+.decl diedin(v0: V, v1: V)
+.input diedin
+
+.decl created(v0: V, v1: V)
+.input created
+
+.decl influences(v0: V, v1: V)
+.input influences
+
+.decl hasgeonamesid(v0: V, v1: V)
+.input hasgeonamesid
+
+.decl haswonprize(v0: V, v1: V)
+.input haswonprize
+
+.decl ismarriedto(v0: V, v1: V)
+.input ismarriedto
+
+.decl participatedin(v0: V, v1: V)
+.input participatedin
+
+.decl actedin(v0: V, v1: V)
+.input actedin
+
+.decl Iwasbornin(v0: V, v1: V)
+.input Iwasbornin
+
+.decl inv_0(v0: V, v1: V)
+.output inv_0
+
+.decl wasbornin(v0: V, v1: V)
+.output wasbornin
+
+
+
+inv_0(v0, v1) :- islocatedin(v0, v1), Rule(0).
+inv_0(v0, v1) :- islocatedin(v1, v0), Rule(1).
+inv_0(v0, v1) :- directed(v0, v1), Rule(2).
+inv_0(v0, v1) :- directed(v1, v0), Rule(3).
+inv_0(v0, v1) :- haschild(v0, v1), Rule(4).
+inv_0(v0, v1) :- haschild(v1, v0), Rule(5).
+inv_0(v0, v1) :- diedin(v0, v1), Rule(6).
+inv_0(v0, v1) :- diedin(v1, v0), Rule(7).
+inv_0(v0, v1) :- created(v0, v1), Rule(8).
+inv_0(v0, v1) :- created(v1, v0), Rule(9).
+inv_0(v0, v1) :- influences(v0, v1), Rule(10).
+inv_0(v0, v1) :- influences(v1, v0), Rule(11).
+inv_0(v0, v1) :- hasgeonamesid(v0, v1), Rule(12).
+inv_0(v0, v1) :- hasgeonamesid(v1, v0), Rule(13).
+inv_0(v0, v1) :- haswonprize(v0, v1), Rule(14).
+inv_0(v0, v1) :- haswonprize(v1, v0), Rule(15).
+inv_0(v0, v1) :- ismarriedto(v0, v1), Rule(16).
+inv_0(v0, v1) :- ismarriedto(v1, v0), Rule(17).
+inv_0(v0, v1) :- participatedin(v0, v1), Rule(18).
+inv_0(v0, v1) :- participatedin(v1, v0), Rule(19).
+inv_0(v0, v1) :- actedin(v0, v1), Rule(20).
+inv_0(v0, v1) :- actedin(v1, v0), Rule(21).
+inv_0(v0, v1) :- inv_0(v1, v0), Rule(25).
+wasbornin(v0, v1) :- islocatedin(v0, v1), Rule(26).
+wasbornin(v0, v1) :- islocatedin(v1, v0), Rule(27).
+wasbornin(v0, v1) :- directed(v0, v1), Rule(28).
+wasbornin(v0, v1) :- directed(v1, v0), Rule(29).
+wasbornin(v0, v1) :- haschild(v0, v1), Rule(30).
+wasbornin(v0, v1) :- haschild(v1, v0), Rule(31).
+wasbornin(v0, v1) :- diedin(v0, v1), Rule(32).
+wasbornin(v0, v1) :- diedin(v1, v0), Rule(33).
+wasbornin(v0, v1) :- created(v0, v1), Rule(34).
+wasbornin(v0, v1) :- created(v1, v0), Rule(35).
+wasbornin(v0, v1) :- influences(v0, v1), Rule(36).
+wasbornin(v0, v1) :- influences(v1, v0), Rule(37).
+wasbornin(v0, v1) :- hasgeonamesid(v0, v1), Rule(38).
+wasbornin(v0, v1) :- hasgeonamesid(v1, v0), Rule(39).
+wasbornin(v0, v1) :- haswonprize(v0, v1), Rule(40).
+wasbornin(v0, v1) :- haswonprize(v1, v0), Rule(41).
+wasbornin(v0, v1) :- ismarriedto(v0, v1), Rule(42).
+wasbornin(v0, v1) :- ismarriedto(v1, v0), Rule(43).
+wasbornin(v0, v1) :- participatedin(v0, v1), Rule(44).
+wasbornin(v0, v1) :- participatedin(v1, v0), Rule(45).
+wasbornin(v0, v1) :- actedin(v0, v1), Rule(46).
+wasbornin(v0, v1) :- actedin(v1, v0), Rule(47).
+wasbornin(v0, v1) :- inv_0(v0, v1), Rule(50).
+wasbornin(v0, v1) :- inv_0(v1, v0), Rule(51).
+wasbornin(v0, v1) :- wasbornin(v1, v0), Rule(53).

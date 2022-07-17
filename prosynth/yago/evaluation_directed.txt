@@ -1,0 +1,99 @@
+.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl haschild(v0: V, v1: V)
+
+.input haschild
+
+
+
+.decl diedin(v0: V, v1: V)
+
+.input diedin
+
+
+
+.decl created(v0: V, v1: V)
+
+.input created
+
+
+
+.decl influences(v0: V, v1: V)
+
+.input influences
+
+
+
+.decl hasgeonamesid(v0: V, v1: V)
+
+.input hasgeonamesid
+
+
+
+.decl haswonprize(v0: V, v1: V)
+
+.input haswonprize
+
+
+
+.decl ismarriedto(v0: V, v1: V)
+
+.input ismarriedto
+
+
+
+.decl participatedin(v0: V, v1: V)
+
+.input participatedin
+
+
+
+.decl actedin(v0: V, v1: V)
+
+.input actedin
+
+
+
+.decl wasbornin(v0: V, v1: V)
+
+.input wasbornin
+
+
+
+.decl islocatedin(v0: V, v1: V)
+
+.input islocatedin
+
+
+
+.decl Idirected(v0: V, v1: V)
+
+.input Idirected
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl directed(v0: V, v1: V)
+
+.output directed
+
+
+
+directed(v0, v1) :- actedin(v0, v1), Rule(42).directed(v0, v1) :- created(v0, v1), Rule(30).
+True predictions:	74
+False predictions:	30
+Unknown predictions:	14425
+Retrieved:	0.34579439252336447

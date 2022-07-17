@@ -1,0 +1,151 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl islocatedin(v0: V, v1: V)
+.input islocatedin
+
+.decl directed(v0: V, v1: V)
+.input directed
+
+.decl haschild(v0: V, v1: V)
+.input haschild
+
+.decl diedin(v0: V, v1: V)
+.input diedin
+
+.decl created(v0: V, v1: V)
+.input created
+
+.decl influences(v0: V, v1: V)
+.input influences
+
+.decl hasgeonamesid(v0: V, v1: V)
+.input hasgeonamesid
+
+.decl haswonprize(v0: V, v1: V)
+.input haswonprize
+
+.decl ismarriedto(v0: V, v1: V)
+.input ismarriedto
+
+.decl participatedin(v0: V, v1: V)
+.input participatedin
+
+.decl actedin(v0: V, v1: V)
+.input actedin
+
+.decl Iwasbornin(v0: V, v1: V)
+.input Iwasbornin
+
+.decl islocatedin_notexists(v0: V, v1: V, r: number)
+.output islocatedin_notexists
+
+.decl directed_notexists(v0: V, v1: V, r: number)
+.output directed_notexists
+
+.decl haschild_notexists(v0: V, v1: V, r: number)
+.output haschild_notexists
+
+.decl diedin_notexists(v0: V, v1: V, r: number)
+.output diedin_notexists
+
+.decl created_notexists(v0: V, v1: V, r: number)
+.output created_notexists
+
+.decl influences_notexists(v0: V, v1: V, r: number)
+.output influences_notexists
+
+.decl hasgeonamesid_notexists(v0: V, v1: V, r: number)
+.output hasgeonamesid_notexists
+
+.decl haswonprize_notexists(v0: V, v1: V, r: number)
+.output haswonprize_notexists
+
+.decl ismarriedto_notexists(v0: V, v1: V, r: number)
+.output ismarriedto_notexists
+
+.decl participatedin_notexists(v0: V, v1: V, r: number)
+.output participatedin_notexists
+
+.decl actedin_notexists(v0: V, v1: V, r: number)
+.output actedin_notexists
+
+.decl Iwasbornin_notexists(v0: V, v1: V, r: number)
+.output Iwasbornin_notexists
+
+.decl inv_0_notexists(v0: V, v1: V, r: number)
+.output inv_0_notexists
+
+.decl wasbornin_notexists(v0: V, v1: V, r: number)
+.output wasbornin_notexists
+
+
+
+islocatedin_notexists(v0, v1, r) :- islocatedin(v0, v1), Rule(r).
+directed_notexists(v0, v1, r) :- directed(v0, v1), Rule(r).
+haschild_notexists(v0, v1, r) :- haschild(v0, v1), Rule(r).
+diedin_notexists(v0, v1, r) :- diedin(v0, v1), Rule(r).
+created_notexists(v0, v1, r) :- created(v0, v1), Rule(r).
+influences_notexists(v0, v1, r) :- influences(v0, v1), Rule(r).
+hasgeonamesid_notexists(v0, v1, r) :- hasgeonamesid(v0, v1), Rule(r).
+haswonprize_notexists(v0, v1, r) :- haswonprize(v0, v1), Rule(r).
+ismarriedto_notexists(v0, v1, r) :- ismarriedto(v0, v1), Rule(r).
+participatedin_notexists(v0, v1, r) :- participatedin(v0, v1), Rule(r).
+actedin_notexists(v0, v1, r) :- actedin(v0, v1), Rule(r).
+Iwasbornin_notexists(v0, v1, r) :- Iwasbornin(v0, v1), Rule(r).
+inv_0_notexists(v0, v1, r) :- islocatedin_notexists(v0, v1, r), Rule(r), r != 0, Rule(0).
+inv_0_notexists(v0, v1, r) :- islocatedin_notexists(v1, v0, r), Rule(r), r != 1, Rule(1).
+inv_0_notexists(v0, v1, r) :- directed_notexists(v0, v1, r), Rule(r), r != 2, Rule(2).
+inv_0_notexists(v0, v1, r) :- directed_notexists(v1, v0, r), Rule(r), r != 3, Rule(3).
+inv_0_notexists(v0, v1, r) :- haschild_notexists(v0, v1, r), Rule(r), r != 4, Rule(4).
+inv_0_notexists(v0, v1, r) :- haschild_notexists(v1, v0, r), Rule(r), r != 5, Rule(5).
+inv_0_notexists(v0, v1, r) :- diedin_notexists(v0, v1, r), Rule(r), r != 6, Rule(6).
+inv_0_notexists(v0, v1, r) :- diedin_notexists(v1, v0, r), Rule(r), r != 7, Rule(7).
+inv_0_notexists(v0, v1, r) :- created_notexists(v0, v1, r), Rule(r), r != 8, Rule(8).
+inv_0_notexists(v0, v1, r) :- created_notexists(v1, v0, r), Rule(r), r != 9, Rule(9).
+inv_0_notexists(v0, v1, r) :- influences_notexists(v0, v1, r), Rule(r), r != 10, Rule(10).
+inv_0_notexists(v0, v1, r) :- influences_notexists(v1, v0, r), Rule(r), r != 11, Rule(11).
+inv_0_notexists(v0, v1, r) :- hasgeonamesid_notexists(v0, v1, r), Rule(r), r != 12, Rule(12).
+inv_0_notexists(v0, v1, r) :- hasgeonamesid_notexists(v1, v0, r), Rule(r), r != 13, Rule(13).
+inv_0_notexists(v0, v1, r) :- haswonprize_notexists(v0, v1, r), Rule(r), r != 14, Rule(14).
+inv_0_notexists(v0, v1, r) :- haswonprize_notexists(v1, v0, r), Rule(r), r != 15, Rule(15).
+inv_0_notexists(v0, v1, r) :- ismarriedto_notexists(v0, v1, r), Rule(r), r != 16, Rule(16).
+inv_0_notexists(v0, v1, r) :- ismarriedto_notexists(v1, v0, r), Rule(r), r != 17, Rule(17).
+inv_0_notexists(v0, v1, r) :- participatedin_notexists(v0, v1, r), Rule(r), r != 18, Rule(18).
+inv_0_notexists(v0, v1, r) :- participatedin_notexists(v1, v0, r), Rule(r), r != 19, Rule(19).
+inv_0_notexists(v0, v1, r) :- actedin_notexists(v0, v1, r), Rule(r), r != 20, Rule(20).
+inv_0_notexists(v0, v1, r) :- actedin_notexists(v1, v0, r), Rule(r), r != 21, Rule(21).
+inv_0_notexists(v0, v1, r) :- Iwasbornin_notexists(v0, v1, r), Rule(r), r != 22, Rule(22).
+inv_0_notexists(v0, v1, r) :- Iwasbornin_notexists(v1, v0, r), Rule(r), r != 23, Rule(23).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v0, v1, r), Rule(r), r != 24, Rule(24).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v1, v0, r), Rule(r), r != 25, Rule(25).
+wasbornin_notexists(v0, v1, r) :- islocatedin_notexists(v0, v1, r), Rule(r), r != 26, Rule(26).
+wasbornin_notexists(v0, v1, r) :- islocatedin_notexists(v1, v0, r), Rule(r), r != 27, Rule(27).
+wasbornin_notexists(v0, v1, r) :- directed_notexists(v0, v1, r), Rule(r), r != 28, Rule(28).
+wasbornin_notexists(v0, v1, r) :- directed_notexists(v1, v0, r), Rule(r), r != 29, Rule(29).
+wasbornin_notexists(v0, v1, r) :- haschild_notexists(v0, v1, r), Rule(r), r != 30, Rule(30).
+wasbornin_notexists(v0, v1, r) :- haschild_notexists(v1, v0, r), Rule(r), r != 31, Rule(31).
+wasbornin_notexists(v0, v1, r) :- diedin_notexists(v0, v1, r), Rule(r), r != 32, Rule(32).
+wasbornin_notexists(v0, v1, r) :- diedin_notexists(v1, v0, r), Rule(r), r != 33, Rule(33).
+wasbornin_notexists(v0, v1, r) :- created_notexists(v0, v1, r), Rule(r), r != 34, Rule(34).
+wasbornin_notexists(v0, v1, r) :- created_notexists(v1, v0, r), Rule(r), r != 35, Rule(35).
+wasbornin_notexists(v0, v1, r) :- influences_notexists(v0, v1, r), Rule(r), r != 36, Rule(36).
+wasbornin_notexists(v0, v1, r) :- influences_notexists(v1, v0, r), Rule(r), r != 37, Rule(37).
+wasbornin_notexists(v0, v1, r) :- hasgeonamesid_notexists(v0, v1, r), Rule(r), r != 38, Rule(38).
+wasbornin_notexists(v0, v1, r) :- hasgeonamesid_notexists(v1, v0, r), Rule(r), r != 39, Rule(39).
+wasbornin_notexists(v0, v1, r) :- haswonprize_notexists(v0, v1, r), Rule(r), r != 40, Rule(40).
+wasbornin_notexists(v0, v1, r) :- haswonprize_notexists(v1, v0, r), Rule(r), r != 41, Rule(41).
+wasbornin_notexists(v0, v1, r) :- ismarriedto_notexists(v0, v1, r), Rule(r), r != 42, Rule(42).
+wasbornin_notexists(v0, v1, r) :- ismarriedto_notexists(v1, v0, r), Rule(r), r != 43, Rule(43).
+wasbornin_notexists(v0, v1, r) :- participatedin_notexists(v0, v1, r), Rule(r), r != 44, Rule(44).
+wasbornin_notexists(v0, v1, r) :- participatedin_notexists(v1, v0, r), Rule(r), r != 45, Rule(45).
+wasbornin_notexists(v0, v1, r) :- actedin_notexists(v0, v1, r), Rule(r), r != 46, Rule(46).
+wasbornin_notexists(v0, v1, r) :- actedin_notexists(v1, v0, r), Rule(r), r != 47, Rule(47).
+wasbornin_notexists(v0, v1, r) :- Iwasbornin_notexists(v0, v1, r), Rule(r), r != 48, Rule(48).
+wasbornin_notexists(v0, v1, r) :- Iwasbornin_notexists(v1, v0, r), Rule(r), r != 49, Rule(49).
+wasbornin_notexists(v0, v1, r) :- inv_0_notexists(v0, v1, r), Rule(r), r != 50, Rule(50).
+wasbornin_notexists(v0, v1, r) :- inv_0_notexists(v1, v0, r), Rule(r), r != 51, Rule(51).
+wasbornin_notexists(v0, v1, r) :- wasbornin_notexists(v0, v1, r), Rule(r), r != 52, Rule(52).
+wasbornin_notexists(v0, v1, r) :- wasbornin_notexists(v1, v0, r), Rule(r), r != 53, Rule(53).

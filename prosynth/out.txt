@@ -1,0 +1,3 @@
+Converted kb into souffle syntax
+['exports', 'islocatedin', 'directed', 'haschild', 'hasmusicalrole', 'diedin', 'graduatedfrom', 'created', 'influences', 'hasgeonamesid', 'haswonprize', 'ismarriedto', 'participatedin', 'actedin', 'wasbornin', 'iscitizenof', 'produced', 'Ilivesin', 'livesin']
+generatedRules

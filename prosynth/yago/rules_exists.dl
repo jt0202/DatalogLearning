@@ -1,0 +1,249 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl islocatedin(v0: V, v1: V)
+.input islocatedin
+
+.decl directed(v0: V, v1: V)
+.input directed
+
+.decl haschild(v0: V, v1: V)
+.input haschild
+
+.decl diedin(v0: V, v1: V)
+.input diedin
+
+.decl created(v0: V, v1: V)
+.input created
+
+.decl influences(v0: V, v1: V)
+.input influences
+
+.decl hasgeonamesid(v0: V, v1: V)
+.input hasgeonamesid
+
+.decl haswonprize(v0: V, v1: V)
+.input haswonprize
+
+.decl ismarriedto(v0: V, v1: V)
+.input ismarriedto
+
+.decl participatedin(v0: V, v1: V)
+.input participatedin
+
+.decl actedin(v0: V, v1: V)
+.input actedin
+
+.decl Iwasbornin(v0: V, v1: V)
+.input Iwasbornin
+
+.decl inv_0(v0: V, v1: V)
+.decl wasbornin(v0: V, v1: V)
+.decl islocatedin_exists(v0: V, v1: V, r: number)
+.output islocatedin_exists
+
+.decl directed_exists(v0: V, v1: V, r: number)
+.output directed_exists
+
+.decl haschild_exists(v0: V, v1: V, r: number)
+.output haschild_exists
+
+.decl diedin_exists(v0: V, v1: V, r: number)
+.output diedin_exists
+
+.decl created_exists(v0: V, v1: V, r: number)
+.output created_exists
+
+.decl influences_exists(v0: V, v1: V, r: number)
+.output influences_exists
+
+.decl hasgeonamesid_exists(v0: V, v1: V, r: number)
+.output hasgeonamesid_exists
+
+.decl haswonprize_exists(v0: V, v1: V, r: number)
+.output haswonprize_exists
+
+.decl ismarriedto_exists(v0: V, v1: V, r: number)
+.output ismarriedto_exists
+
+.decl participatedin_exists(v0: V, v1: V, r: number)
+.output participatedin_exists
+
+.decl actedin_exists(v0: V, v1: V, r: number)
+.output actedin_exists
+
+.decl Iwasbornin_exists(v0: V, v1: V, r: number)
+.output Iwasbornin_exists
+
+.decl inv_0_exists(v0: V, v1: V, r: number)
+.output inv_0_exists
+
+.decl wasbornin_exists(v0: V, v1: V, r: number)
+.output wasbornin_exists
+
+
+
+inv_0(v0, v1) :- islocatedin(v0, v1), Rule(0).
+inv_0_exists(v0, v1, r) :- islocatedin(v0, v1), r = 0, Rule(0).
+inv_0_exists(v0, v1, r) :- islocatedin_exists(v0, v1, r), Rule(r), Rule(0).
+inv_0(v0, v1) :- islocatedin(v1, v0), Rule(1).
+inv_0_exists(v0, v1, r) :- islocatedin(v1, v0), r = 1, Rule(1).
+inv_0_exists(v0, v1, r) :- islocatedin_exists(v1, v0, r), Rule(r), Rule(1).
+inv_0(v0, v1) :- directed(v0, v1), Rule(2).
+inv_0_exists(v0, v1, r) :- directed(v0, v1), r = 2, Rule(2).
+inv_0_exists(v0, v1, r) :- directed_exists(v0, v1, r), Rule(r), Rule(2).
+inv_0(v0, v1) :- directed(v1, v0), Rule(3).
+inv_0_exists(v0, v1, r) :- directed(v1, v0), r = 3, Rule(3).
+inv_0_exists(v0, v1, r) :- directed_exists(v1, v0, r), Rule(r), Rule(3).
+inv_0(v0, v1) :- haschild(v0, v1), Rule(4).
+inv_0_exists(v0, v1, r) :- haschild(v0, v1), r = 4, Rule(4).
+inv_0_exists(v0, v1, r) :- haschild_exists(v0, v1, r), Rule(r), Rule(4).
+inv_0(v0, v1) :- haschild(v1, v0), Rule(5).
+inv_0_exists(v0, v1, r) :- haschild(v1, v0), r = 5, Rule(5).
+inv_0_exists(v0, v1, r) :- haschild_exists(v1, v0, r), Rule(r), Rule(5).
+inv_0(v0, v1) :- diedin(v0, v1), Rule(6).
+inv_0_exists(v0, v1, r) :- diedin(v0, v1), r = 6, Rule(6).
+inv_0_exists(v0, v1, r) :- diedin_exists(v0, v1, r), Rule(r), Rule(6).
+inv_0(v0, v1) :- diedin(v1, v0), Rule(7).
+inv_0_exists(v0, v1, r) :- diedin(v1, v0), r = 7, Rule(7).
+inv_0_exists(v0, v1, r) :- diedin_exists(v1, v0, r), Rule(r), Rule(7).
+inv_0(v0, v1) :- created(v0, v1), Rule(8).
+inv_0_exists(v0, v1, r) :- created(v0, v1), r = 8, Rule(8).
+inv_0_exists(v0, v1, r) :- created_exists(v0, v1, r), Rule(r), Rule(8).
+inv_0(v0, v1) :- created(v1, v0), Rule(9).
+inv_0_exists(v0, v1, r) :- created(v1, v0), r = 9, Rule(9).
+inv_0_exists(v0, v1, r) :- created_exists(v1, v0, r), Rule(r), Rule(9).
+inv_0(v0, v1) :- influences(v0, v1), Rule(10).
+inv_0_exists(v0, v1, r) :- influences(v0, v1), r = 10, Rule(10).
+inv_0_exists(v0, v1, r) :- influences_exists(v0, v1, r), Rule(r), Rule(10).
+inv_0(v0, v1) :- influences(v1, v0), Rule(11).
+inv_0_exists(v0, v1, r) :- influences(v1, v0), r = 11, Rule(11).
+inv_0_exists(v0, v1, r) :- influences_exists(v1, v0, r), Rule(r), Rule(11).
+inv_0(v0, v1) :- hasgeonamesid(v0, v1), Rule(12).
+inv_0_exists(v0, v1, r) :- hasgeonamesid(v0, v1), r = 12, Rule(12).
+inv_0_exists(v0, v1, r) :- hasgeonamesid_exists(v0, v1, r), Rule(r), Rule(12).
+inv_0(v0, v1) :- hasgeonamesid(v1, v0), Rule(13).
+inv_0_exists(v0, v1, r) :- hasgeonamesid(v1, v0), r = 13, Rule(13).
+inv_0_exists(v0, v1, r) :- hasgeonamesid_exists(v1, v0, r), Rule(r), Rule(13).
+inv_0(v0, v1) :- haswonprize(v0, v1), Rule(14).
+inv_0_exists(v0, v1, r) :- haswonprize(v0, v1), r = 14, Rule(14).
+inv_0_exists(v0, v1, r) :- haswonprize_exists(v0, v1, r), Rule(r), Rule(14).
+inv_0(v0, v1) :- haswonprize(v1, v0), Rule(15).
+inv_0_exists(v0, v1, r) :- haswonprize(v1, v0), r = 15, Rule(15).
+inv_0_exists(v0, v1, r) :- haswonprize_exists(v1, v0, r), Rule(r), Rule(15).
+inv_0(v0, v1) :- ismarriedto(v0, v1), Rule(16).
+inv_0_exists(v0, v1, r) :- ismarriedto(v0, v1), r = 16, Rule(16).
+inv_0_exists(v0, v1, r) :- ismarriedto_exists(v0, v1, r), Rule(r), Rule(16).
+inv_0(v0, v1) :- ismarriedto(v1, v0), Rule(17).
+inv_0_exists(v0, v1, r) :- ismarriedto(v1, v0), r = 17, Rule(17).
+inv_0_exists(v0, v1, r) :- ismarriedto_exists(v1, v0, r), Rule(r), Rule(17).
+inv_0(v0, v1) :- participatedin(v0, v1), Rule(18).
+inv_0_exists(v0, v1, r) :- participatedin(v0, v1), r = 18, Rule(18).
+inv_0_exists(v0, v1, r) :- participatedin_exists(v0, v1, r), Rule(r), Rule(18).
+inv_0(v0, v1) :- participatedin(v1, v0), Rule(19).
+inv_0_exists(v0, v1, r) :- participatedin(v1, v0), r = 19, Rule(19).
+inv_0_exists(v0, v1, r) :- participatedin_exists(v1, v0, r), Rule(r), Rule(19).
+inv_0(v0, v1) :- actedin(v0, v1), Rule(20).
+inv_0_exists(v0, v1, r) :- actedin(v0, v1), r = 20, Rule(20).
+inv_0_exists(v0, v1, r) :- actedin_exists(v0, v1, r), Rule(r), Rule(20).
+inv_0(v0, v1) :- actedin(v1, v0), Rule(21).
+inv_0_exists(v0, v1, r) :- actedin(v1, v0), r = 21, Rule(21).
+inv_0_exists(v0, v1, r) :- actedin_exists(v1, v0, r), Rule(r), Rule(21).
+inv_0(v0, v1) :- Iwasbornin(v0, v1), Rule(22).
+inv_0_exists(v0, v1, r) :- Iwasbornin(v0, v1), r = 22, Rule(22).
+inv_0_exists(v0, v1, r) :- Iwasbornin_exists(v0, v1, r), Rule(r), Rule(22).
+inv_0(v0, v1) :- Iwasbornin(v1, v0), Rule(23).
+inv_0_exists(v0, v1, r) :- Iwasbornin(v1, v0), r = 23, Rule(23).
+inv_0_exists(v0, v1, r) :- Iwasbornin_exists(v1, v0, r), Rule(r), Rule(23).
+inv_0(v0, v1) :- inv_0(v0, v1), Rule(24).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v1), r = 24, Rule(24).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), Rule(r), Rule(24).
+inv_0(v0, v1) :- inv_0(v1, v0), Rule(25).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v0), r = 25, Rule(25).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), Rule(r), Rule(25).
+wasbornin(v0, v1) :- islocatedin(v0, v1), Rule(26).
+wasbornin_exists(v0, v1, r) :- islocatedin(v0, v1), r = 26, Rule(26).
+wasbornin_exists(v0, v1, r) :- islocatedin_exists(v0, v1, r), Rule(r), Rule(26).
+wasbornin(v0, v1) :- islocatedin(v1, v0), Rule(27).
+wasbornin_exists(v0, v1, r) :- islocatedin(v1, v0), r = 27, Rule(27).
+wasbornin_exists(v0, v1, r) :- islocatedin_exists(v1, v0, r), Rule(r), Rule(27).
+wasbornin(v0, v1) :- directed(v0, v1), Rule(28).
+wasbornin_exists(v0, v1, r) :- directed(v0, v1), r = 28, Rule(28).
+wasbornin_exists(v0, v1, r) :- directed_exists(v0, v1, r), Rule(r), Rule(28).
+wasbornin(v0, v1) :- directed(v1, v0), Rule(29).
+wasbornin_exists(v0, v1, r) :- directed(v1, v0), r = 29, Rule(29).
+wasbornin_exists(v0, v1, r) :- directed_exists(v1, v0, r), Rule(r), Rule(29).
+wasbornin(v0, v1) :- haschild(v0, v1), Rule(30).
+wasbornin_exists(v0, v1, r) :- haschild(v0, v1), r = 30, Rule(30).
+wasbornin_exists(v0, v1, r) :- haschild_exists(v0, v1, r), Rule(r), Rule(30).
+wasbornin(v0, v1) :- haschild(v1, v0), Rule(31).
+wasbornin_exists(v0, v1, r) :- haschild(v1, v0), r = 31, Rule(31).
+wasbornin_exists(v0, v1, r) :- haschild_exists(v1, v0, r), Rule(r), Rule(31).
+wasbornin(v0, v1) :- diedin(v0, v1), Rule(32).
+wasbornin_exists(v0, v1, r) :- diedin(v0, v1), r = 32, Rule(32).
+wasbornin_exists(v0, v1, r) :- diedin_exists(v0, v1, r), Rule(r), Rule(32).
+wasbornin(v0, v1) :- diedin(v1, v0), Rule(33).
+wasbornin_exists(v0, v1, r) :- diedin(v1, v0), r = 33, Rule(33).
+wasbornin_exists(v0, v1, r) :- diedin_exists(v1, v0, r), Rule(r), Rule(33).
+wasbornin(v0, v1) :- created(v0, v1), Rule(34).
+wasbornin_exists(v0, v1, r) :- created(v0, v1), r = 34, Rule(34).
+wasbornin_exists(v0, v1, r) :- created_exists(v0, v1, r), Rule(r), Rule(34).
+wasbornin(v0, v1) :- created(v1, v0), Rule(35).
+wasbornin_exists(v0, v1, r) :- created(v1, v0), r = 35, Rule(35).
+wasbornin_exists(v0, v1, r) :- created_exists(v1, v0, r), Rule(r), Rule(35).
+wasbornin(v0, v1) :- influences(v0, v1), Rule(36).
+wasbornin_exists(v0, v1, r) :- influences(v0, v1), r = 36, Rule(36).
+wasbornin_exists(v0, v1, r) :- influences_exists(v0, v1, r), Rule(r), Rule(36).
+wasbornin(v0, v1) :- influences(v1, v0), Rule(37).
+wasbornin_exists(v0, v1, r) :- influences(v1, v0), r = 37, Rule(37).
+wasbornin_exists(v0, v1, r) :- influences_exists(v1, v0, r), Rule(r), Rule(37).
+wasbornin(v0, v1) :- hasgeonamesid(v0, v1), Rule(38).
+wasbornin_exists(v0, v1, r) :- hasgeonamesid(v0, v1), r = 38, Rule(38).
+wasbornin_exists(v0, v1, r) :- hasgeonamesid_exists(v0, v1, r), Rule(r), Rule(38).
+wasbornin(v0, v1) :- hasgeonamesid(v1, v0), Rule(39).
+wasbornin_exists(v0, v1, r) :- hasgeonamesid(v1, v0), r = 39, Rule(39).
+wasbornin_exists(v0, v1, r) :- hasgeonamesid_exists(v1, v0, r), Rule(r), Rule(39).
+wasbornin(v0, v1) :- haswonprize(v0, v1), Rule(40).
+wasbornin_exists(v0, v1, r) :- haswonprize(v0, v1), r = 40, Rule(40).
+wasbornin_exists(v0, v1, r) :- haswonprize_exists(v0, v1, r), Rule(r), Rule(40).
+wasbornin(v0, v1) :- haswonprize(v1, v0), Rule(41).
+wasbornin_exists(v0, v1, r) :- haswonprize(v1, v0), r = 41, Rule(41).
+wasbornin_exists(v0, v1, r) :- haswonprize_exists(v1, v0, r), Rule(r), Rule(41).
+wasbornin(v0, v1) :- ismarriedto(v0, v1), Rule(42).
+wasbornin_exists(v0, v1, r) :- ismarriedto(v0, v1), r = 42, Rule(42).
+wasbornin_exists(v0, v1, r) :- ismarriedto_exists(v0, v1, r), Rule(r), Rule(42).
+wasbornin(v0, v1) :- ismarriedto(v1, v0), Rule(43).
+wasbornin_exists(v0, v1, r) :- ismarriedto(v1, v0), r = 43, Rule(43).
+wasbornin_exists(v0, v1, r) :- ismarriedto_exists(v1, v0, r), Rule(r), Rule(43).
+wasbornin(v0, v1) :- participatedin(v0, v1), Rule(44).
+wasbornin_exists(v0, v1, r) :- participatedin(v0, v1), r = 44, Rule(44).
+wasbornin_exists(v0, v1, r) :- participatedin_exists(v0, v1, r), Rule(r), Rule(44).
+wasbornin(v0, v1) :- participatedin(v1, v0), Rule(45).
+wasbornin_exists(v0, v1, r) :- participatedin(v1, v0), r = 45, Rule(45).
+wasbornin_exists(v0, v1, r) :- participatedin_exists(v1, v0, r), Rule(r), Rule(45).
+wasbornin(v0, v1) :- actedin(v0, v1), Rule(46).
+wasbornin_exists(v0, v1, r) :- actedin(v0, v1), r = 46, Rule(46).
+wasbornin_exists(v0, v1, r) :- actedin_exists(v0, v1, r), Rule(r), Rule(46).
+wasbornin(v0, v1) :- actedin(v1, v0), Rule(47).
+wasbornin_exists(v0, v1, r) :- actedin(v1, v0), r = 47, Rule(47).
+wasbornin_exists(v0, v1, r) :- actedin_exists(v1, v0, r), Rule(r), Rule(47).
+wasbornin(v0, v1) :- Iwasbornin(v0, v1), Rule(48).
+wasbornin_exists(v0, v1, r) :- Iwasbornin(v0, v1), r = 48, Rule(48).
+wasbornin_exists(v0, v1, r) :- Iwasbornin_exists(v0, v1, r), Rule(r), Rule(48).
+wasbornin(v0, v1) :- Iwasbornin(v1, v0), Rule(49).
+wasbornin_exists(v0, v1, r) :- Iwasbornin(v1, v0), r = 49, Rule(49).
+wasbornin_exists(v0, v1, r) :- Iwasbornin_exists(v1, v0, r), Rule(r), Rule(49).
+wasbornin(v0, v1) :- inv_0(v0, v1), Rule(50).
+wasbornin_exists(v0, v1, r) :- inv_0(v0, v1), r = 50, Rule(50).
+wasbornin_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), Rule(r), Rule(50).
+wasbornin(v0, v1) :- inv_0(v1, v0), Rule(51).
+wasbornin_exists(v0, v1, r) :- inv_0(v1, v0), r = 51, Rule(51).
+wasbornin_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), Rule(r), Rule(51).
+wasbornin(v0, v1) :- wasbornin(v0, v1), Rule(52).
+wasbornin_exists(v0, v1, r) :- wasbornin(v0, v1), r = 52, Rule(52).
+wasbornin_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), Rule(r), Rule(52).
+wasbornin(v0, v1) :- wasbornin(v1, v0), Rule(53).
+wasbornin_exists(v0, v1, r) :- wasbornin(v1, v0), r = 53, Rule(53).
+wasbornin_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), Rule(r), Rule(53).
