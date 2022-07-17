@@ -13,13 +13,13 @@ scriptPath = sys.argv[0]
 problemDirName = "yago"
 #problemDirName = sys.argv[1]
 #outputRelation = sys.argv[2]
-outputRelation = "livesIn"
+outputRelation = "livesin"
 fileName = "kb.tsv" 
-width = 2
+width = 1
 numberOfInventedPredicates = 1
 relevancethreshhold = 0.01
 negativeExampleAmount = 5
-train_test_split = 0
+train_test_split = 0.25
 
 
 kb = open(problemDirName + "/" + fileName, encoding = "utf-8")
@@ -96,10 +96,10 @@ for pair in pairs:
         current = current + 1
 if "I" + outputRelation in relations:
     relations.remove("I"+ outputRelation) 
-    relations.append("I"+ outputRelation)
+relations.append("I"+ outputRelation)
 if  outputRelation in relations:
     relations.remove(outputRelation)
-    relations.append(outputRelation)
+relations.append(outputRelation)
 
 #preserve order and have the output at the back. Important for the rule generation
 relations = list(dict.fromkeys(relations))
@@ -153,6 +153,12 @@ with open(problemDirName + "/rules.dl", "r+") as ruleFile:
                 # prevent v(x, y) :- v(y,x) and v(x,y) :- Iv(y,x) from occuring
                 if "I" + outputRelation + "(v1, v0)" in line:
                     continue
+                # same as previously but with invented predicates
+                if re.match("inv_\d+\(v0, v1\)", line) != None:
+                    if "I" + outputRelation + "(v1, v0)" in line:
+                        continue
+                    if "I" + outputRelation + "(v0, v1)" in line:
+                        continue
                 if not isConnected(line):
                     continue
             tmp.write(line)
@@ -177,7 +183,7 @@ print("Evaluating Rules")
 
 #taken from prosynth
 def runSouffle(command):
-    with subprocess.Popen([ problemDirName + command, '-F', problemDirName, '-D', problemDirName, '-j', '8' ], \
+    with subprocess.Popen([ problemDirName + command, '-F', problemDirName, '-D', problemDirName, '-j', '512' ], \
                             stdin=subprocess.PIPE, \
                             stdout=subprocess.PIPE, \
                             universal_newlines=True) as souffleProc:
@@ -247,8 +253,9 @@ with open(problemDirName + "/evaluation_" +  outputRelation + ".txt", "w") as ev
     truePredictions = len(expected.intersection(produced))
 
     expectedEntities = {element.split("\t")[0] for element in produced}
-
-    falsePredictions = len(entities.intersection(expectedEntities)) - truePredictions
+    trueEntities = {element.split("\t")[0] for element in  expected.intersection(produced)}
+    
+    falsePredictions = len(entities.intersection(expectedEntities)) - len(trueEntities)
 
     evFile.write("True predictions:\t" + str(truePredictions) + "\n")
     evFile.write("False predictions:\t" + str(falsePredictions) + "\n")
