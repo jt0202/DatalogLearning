@@ -7,14 +7,19 @@ from pathlib import Path
 import random
 import networkx as nx
 import re
+import time
 
 
 
 scriptPath = sys.argv[0]
 problemDirName = sys.argv[1]
 outputRelation = sys.argv[2]
+if len(sys.argv) > 3:
+    types = sys.argv[3]
+else:
+    types = None
 fileName = "kb.tsv" 
-width = 1
+width = 2
 numberOfInventedPredicates = 1
 relevancethreshhold = 0.01
 negativeExampleAmount = 5
@@ -49,6 +54,7 @@ else:
 print("Converted kb into souffle syntax")
 
 for rel in outputRelations:
+    starttime = time.time()
     outputRelation = rel
     #generate negative examples
     subjects = []
@@ -92,10 +98,6 @@ for rel in outputRelations:
                             test_file.write(line)
                             entities.add(line.split("\t")[0])
 
-
-
-
-
     max_size = 5
     current = 0
     for pair in pairs:
@@ -112,6 +114,21 @@ for rel in outputRelations:
     #preserve order and have the output at the back. Important for the rule generation
     relations = list(dict.fromkeys(relations))
     print(relations)
+
+    #generateRules
+    with open(problemDirName + "/"+ "rules.t", "w+") as ruleFile:
+        for relation in relations:
+            if relation == outputRelation:
+                #ruleFile.write(relation + "(V,V)\n" )
+                pass
+            else:
+                ruleFile.write("*" + relation + "(V,V)\n")
+
+        for i in range(0, numberOfInventedPredicates):
+            ruleFile.write("inv_" + str(i) + "(V,V)\n")
+        ruleFile.write(outputRelation + "(V,V)\n" )
+
+    subprocess.run(["./scripts/rule-gen/generate-fast", problemDirName, str(width)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 
     def isConnected(rule):
         graph = nx.Graph()
@@ -133,47 +150,91 @@ for rel in outputRelations:
         else:
             return False
 
-    #generateRules
-    with open(problemDirName + "/"+ "rules.t", "w+") as ruleFile:
-        for relation in relations:
-            if relation == outputRelation:
-                #ruleFile.write(relation + "(V,V)\n" )
-                pass
-            else:
-                ruleFile.write("*" + relation + "(V,V)\n")
+    relationtypes = {}
 
-        for i in range(0, numberOfInventedPredicates):
-            ruleFile.write("inv_" + str(i) + "(V,V)\n")
-        ruleFile.write(outputRelation + "(V,V)\n" )
+    if types != None:
+        print("Type analysis")
+        with open(problemDirName + "/" + types) as typeFile:
+            for line in typeFile:
+                if len(line.split()) >= 3:
+                    elements = line.split()
+                    if elements[1] == "rdfs:domain":
+                        if elements[0] not in relationtypes.keys():
+                            relationtypes[elements[0]] = [elements[2], ""]
+                        else:
+                            relationtypes[elements[0]][0] = elements[2]
+                    elif elements[1] == "rdfs:range":
+                        if elements[0] not in relationtypes.keys():
+                            relationtypes[elements[0]] = ["", elements[2]]
+                        else:
+                            relationtypes[elements[0]][1] = elements[2]
+    relationtypes["I" + outputRelation] = relationtypes[outputRelation]
 
     #delete previous rules
     with open(problemDirName + "/rules.dl", "w") as file:
         pass
 
     subprocess.run(["./scripts/rule-gen/generate-fast", problemDirName, str(width)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
+    relationPattern = re.compile('([a-zA-Z0-9_]+)\((v\d), (v\d)\)')
 
+    print(relationtypes)
 
     # Remove rules of the form A(x,y) :- A(x,y), B(x,y) as they don't offer any additional information
     with open(problemDirName + "/rules.dl", "r+") as ruleFile:
         with open(problemDirName + "/tmp.dl", "w") as tmp:
-            for line in ruleFile:
-                if ":-" in line:
-                    # Remove all lines where head (before :) appears also in the body. [:-1] is necessary as there is a 
-                    # blankspace after the head, but a , in the body.
-                    if line.count(line.split(":")[0].split()[0][:-1]) >= 2:
-                        continue
-                    # prevent v(x, y) :- v(y,x) and v(x,y) :- Iv(y,x) from occuring
-                    if "I" + outputRelation + "(v1, v0)" in line:
-                        continue
-                    # same as previously but with invented predicates
-                    if re.match("inv_\d+\(v0, v1\)", line) != None:
+            with open(problemDirName + "/tmp2.dl", "w") as tmp2:
+                for line in ruleFile:
+                    if ":-" in line:
+                        type_error = False
+                        # Remove all lines where head (before :) appears also in the body. [:-1] is necessary as there is a 
+                        # blankspace after the head, but a comma in the body.
+                        if line.count(line.split(":")[0][:-1]) >= 2:
+                            tmp2.write("Head twice \n")
+                            tmp2.write(line)
+                            continue
+                        # prevent v(x, y) :- v(y,x) and v(x,y) :- Iv(y,x) from occuring
                         if "I" + outputRelation + "(v1, v0)" in line:
+                            tmp2.write("input prevent\n")
+                            tmp2.write(line)
                             continue
-                        if "I" + outputRelation + "(v0, v1)" in line:
+                        # same as previously but with invented predicates
+                        if re.match("inv_\d+\(v0, v1\)", line) != None:
+                            if "I" + outputRelation + "(v1, v0)" in line:
+                                tmp2.write("invent_error\n")
+                                tmp2.write(line)
+                                continue
+                            if "I" + outputRelation + "(v0, v1)" in line:
+                                tmp2.write("invent_error\n")
+                                tmp2.write(line)
+                                continue
+                        if not isConnected(line):
+                            tmp2.write("Not connected\n")
+                            tmp2.write(line)
                             continue
-                    if not isConnected(line):
-                        continue
-                tmp.write(line)
+                        #remove obviously false rules as the types don't match
+                        result = re.findall(relationPattern, line)
+                        designatedtypes = {}
+                        for match in result:
+                            if match[0] not in relationtypes.keys():
+                                continue
+                            if match[1] in designatedtypes.keys():
+                                designatedtypes[match[1]].add(relationtypes[match[0]][0])
+                            else:
+                                designatedtypes[match[1]] = {relationtypes[match[0]][0]}
+                                designatedtypes[match[1]]
+                            if match[2] in designatedtypes.keys():
+                                designatedtypes[match[2]].add(relationtypes[match[0]][1])
+                            else:
+                                designatedtypes[match[2]] = {relationtypes[match[0]][1]}
+                        for relation in designatedtypes.keys():
+                            if len(designatedtypes[relation]) >= 2:
+                                type_error = True
+                                break
+                        if type_error:
+                            tmp2.write("type error\n")
+                            tmp2.write(line)
+                            continue 
+                    tmp.write(line)
 
     with open(problemDirName + "/tmp.dl", "r") as tmp:
         with open(problemDirName + "/rules.dl", "w") as ruleFile:
@@ -246,6 +307,8 @@ for rel in outputRelations:
 
     print("finished Mining")
 
+    endtime = time.time() - starttime
+
     #evaluate
     with open(problemDirName + "/evaluation_" +  outputRelation + ".txt", "w") as evFile:
         #evaluate whole program
@@ -277,4 +340,7 @@ for rel in outputRelations:
         evFile.write("Unknown predictions:\t" + str(len(produced)- truePredictions - falsePredictions) + "\n")
 
         evFile.write("Retrieved:\t" + str(truePredictions/len(expected)) + "\n" )
+
+        evFile.write("Time spent (in min): " +str(endtime / 60))
+        evFile.write("Time spent (in s): " +str(endtime ))
 
