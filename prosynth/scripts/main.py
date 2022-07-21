@@ -168,14 +168,15 @@ for rel in outputRelations:
                             relationtypes[elements[0]] = ["", elements[2]]
                         else:
                             relationtypes[elements[0]][1] = elements[2]
-    relationtypes["I" + outputRelation] = relationtypes[outputRelation]
+        if outputRelation in relationtypes.keys():
+            relationtypes["I" + outputRelation] = relationtypes[outputRelation]
 
     #delete previous rules
     with open(problemDirName + "/rules.dl", "w") as file:
         pass
 
     subprocess.run(["./scripts/rule-gen/generate-fast", problemDirName, str(width)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
-    relationPattern = re.compile('([a-zA-Z0-9_]+)\((v\d), (v\d)\)')
+    relationPattern = re.compile('([a-zA-Z0-9_]+)\((v\d+), (v\d+)\)')
 
     print(relationtypes)
 
@@ -218,14 +219,17 @@ for rel in outputRelations:
                             if match[0] not in relationtypes.keys():
                                 continue
                             if match[1] in designatedtypes.keys():
-                                designatedtypes[match[1]].add(relationtypes[match[0]][0])
+                                if relationtypes[match[0]][0] != "":
+                                    designatedtypes[match[1]].add(relationtypes[match[0]][0])
                             else:
-                                designatedtypes[match[1]] = {relationtypes[match[0]][0]}
-                                designatedtypes[match[1]]
+                                if relationtypes[match[0]][0] != "":
+                                    designatedtypes[match[1]] = {relationtypes[match[0]][0]}
                             if match[2] in designatedtypes.keys():
-                                designatedtypes[match[2]].add(relationtypes[match[0]][1])
+                                if relationtypes[match[0]][1] != "":
+                                    designatedtypes[match[2]].add(relationtypes[match[0]][1])
                             else:
-                                designatedtypes[match[2]] = {relationtypes[match[0]][1]}
+                                if relationtypes[match[0]][1] != "":
+                                    designatedtypes[match[2]] = {relationtypes[match[0]][1]}
                         for relation in designatedtypes.keys():
                             if len(designatedtypes[relation]) >= 2:
                                 type_error = True
@@ -258,7 +262,7 @@ for rel in outputRelations:
 
     #taken from prosynth
     def runSouffle(command):
-        with subprocess.Popen([ problemDirName + command, '-F', problemDirName, '-D', problemDirName, '-j', '512' ], \
+        with subprocess.Popen([ problemDirName + command, '-F', problemDirName, '-D', problemDirName, '-j', '32' ], \
                                 stdin=subprocess.PIPE, \
                                 stdout=subprocess.PIPE, \
                                 universal_newlines=True) as souffleProc:
@@ -317,9 +321,12 @@ for rel in outputRelations:
 
         runSouffle("/program.small.out")
 
+        rules = []
+
         with open(problemDirName + "/solution.dl") as solFile:
             for line in solFile:
                 evFile.write(line + "\n")
+                rules.append(line)
         produced = set(open(problemDirName + "/" + outputRelation + ".csv"))
         expected = set(open(problemDirName + "/test.csv"))
         
@@ -340,6 +347,62 @@ for rel in outputRelations:
         evFile.write("Unknown predictions:\t" + str(len(produced)- truePredictions - falsePredictions) + "\n")
 
         evFile.write("Retrieved:\t" + str(truePredictions/len(expected)) + "\n" )
+        
+        with open(problemDirName + "/" + outputRelation + ".csv", "w") as file:
+            pass
+
+        #evaluate single rules
+        for rule in rules:
+            if "inv" in rules:
+                continue
+            rulerelations = {}
+
+            result = re.findall(relationPattern, line)
+            for match in result:
+                rulerelations.add(match[0])
+
+            #support
+            with open(problemDirName + "/rule.dl", "w") as ruleFile:
+                ruleFile.write(".type V\n\n")
+                for rel in rulerelations:
+                    if rel == outputRelation:
+                        continue
+                    if rel == "Rule":
+                        ruleFile.write(".decl " +  relation + "(v0: number)\n" + ".input " + relation + "\n\n")
+                        continue
+                    ruleFile.write(".decl " +  relation + "(v0: V, v1: V)\n" + ".input " + relation + "\n\n")
+                ruleFile.write(".decl " +  relation + "\n" + ".output " + relation + "\n\n")
+                ruleFile.write(rule)
+            subprocess.run(["./scripts/prepare", problemDirName, "rule.small.out", "rule.dl"],\
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
+
+            runSouffle("/rule.small.out")
+
+            support = 0
+            with open(problemDirName + "/" + outputRelation + ".csv", "w") as file:
+                support = support + 1
+            evFile.write(rule + " Support: " + str(support) + "\n")
+
+            #confidence
+            with open(problemDirName + "/rule.dl", "w") as ruleFile:
+                ruleFile.write(".type V\n\n")
+                for rel in rulerelations:
+                    if rel == outputRelation:
+                        continue
+                    if rel == "Rule":
+                        ruleFile.write(".decl " +  relation + "(v0: number)\n" + ".input " + relation + "\n\n")
+                        continue
+                    ruleFile.write(".decl " +  relation + "(v0: V, v1: V)\n" + ".input " + relation + "\n\n")
+                ruleFile.write(".decl out(v0: V, v1: V)\n" + ".output " + relation + "\n\n")
+                ruleFile.write("out(v0, v1):" + rule.split(":")[:-2] + ", " + outputRelation + "(v0, v1).\n")
+            subprocess.run(["./scripts/prepare", problemDirName, "rule.small.out", "rule.dl"],\
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
+
+            confidence = 0
+            with open(problemDirName + "/" + outputRelation + ".csv", "w") as file:
+                confidence = support + 1
+            confidence = confidence / support
+            evFile.write(rule + " Support: " + str(support) + "\n")
 
         evFile.write("Time spent (in min): " +str(endtime / 60))
         evFile.write("Time spent (in s): " +str(endtime ))
