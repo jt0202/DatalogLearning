@@ -6,7 +6,7 @@
 
 // Simple datalog example.
 
-.type the_type
+.type the_type <: symbol
 
 .decl the_input(x:the_type)
 .input the_input()

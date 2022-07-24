@@ -1,15 +1,16 @@
 //
-// Test-case for string matching
+// Test-case for string matching with valid regex
 //
 
-.type String
+.type String <: symbol
 
 .decl inputData   (t:String)
 .decl pattern   (t:String)
 .decl outputData  (t:String)
 .output outputData  ()
 
-outputData(x) :- pattern(y), inputData(x), match(y, x).
+pattern("a.*").
+pattern("b.*").
 
 inputData("aaaa").
 inputData("a").
@@ -18,6 +19,4 @@ inputData("bcab").
 inputData("bdab").
 inputData("cdab").
 
-pattern("a.*").
-pattern("b.*").
-pattern("b.*[").
+outputData(x) :- pattern(y), inputData(x), match(y, x).

@@ -7,7 +7,7 @@ Warning: No rules/facts defined for relation C in file rule_arity.dl at line 5
 Warning: No rules/facts defined for relation D in file rule_arity.dl at line 6
 .decl D (x:N)
 ------^-------
-Error: Mismatching arity of relation B in file rule_arity.dl at line 8
+Error: Mismatching arity of relation B (expected 1, got 2) in file rule_arity.dl at line 8
 A (x, y, z) :- B(x), C(y), D(z), B(x,y).
 ---------------------------------^-------
 1 errors generated, evaluation aborted

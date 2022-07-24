@@ -1,8 +1,8 @@
 
 .comp X {
-	.decl p(x:symbol)
-.output p()
-    p(cat(x,x)) :- p(x).            // this one should not cause an issue
+      .decl p(x:symbol)
+      .output p()
+      p(cat(x,x)) :- p(x).            // this one should not cause an issue
 }
 
 .init x = X

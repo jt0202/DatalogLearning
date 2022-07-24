@@ -1,5 +1,5 @@
 // Operators supported in binary relations
-.number_type N
+.type N <: number
 
 .decl Path (a:N, b:N)
 .decl Edge (a:N, b:N)

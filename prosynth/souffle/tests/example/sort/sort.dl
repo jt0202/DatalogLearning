@@ -8,8 +8,8 @@
 // Due to limitations of input format,
 // repeated values in input are not supported
 
-.number_type value
-.number_type index
+.type value <: number
+.type index <: number
 
 .type list = [
     head : value,
@@ -63,7 +63,7 @@ ToCat(s_b,[h,s_a]) :-
 
 // Assign each value a unique index; 0,1,2,...
 .decl Indexed(x : value, i : index)
-Indexed(x, $) :- InputVals(x).
+Indexed(x, autoinc()) :- InputVals(x).
 
 // Build the list
 .decl InList(l : list, i : index)

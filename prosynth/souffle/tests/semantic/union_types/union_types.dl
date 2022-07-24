@@ -6,9 +6,9 @@
 // expands to different primitive types".
 //
 
-.number_type one
-.number_type two
-.symbol_type three
+.type one <: number
+.type two <: number
+.type three <: symbol
 
 .type all = one | two
 
@@ -27,9 +27,10 @@ A(2).
 B(2).
 B(3).
 
+// A(X) is a source and is more general than sink F(X), so it's ok.
 F(X) :- A(X). // no error
 F(X) :- B(X). // no error
-G(X) :- E(X). // no error
+G(X) :- E(X). // error
 
 E(X) :- F(X), !A(X), !B(X). // no error
 E(X) :- F(X), A(X), B(X). // error

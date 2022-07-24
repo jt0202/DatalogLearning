@@ -4,9 +4,9 @@
 // - https://opensource.org/licenses/UPL
 // - <souffle root>/licenses/SOUFFLE-UPL.txt
 
-.type Letter
-.number_type Pos
-.number_type Cost
+.type Letter <: symbol
+.type Pos <: number
+.type Cost <: number
 
 .decl String1			(p:Pos, a:Letter)
 .decl String2			(p:Pos, a:Letter)

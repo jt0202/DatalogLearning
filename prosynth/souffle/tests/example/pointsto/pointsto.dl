@@ -1,7 +1,7 @@
 // simple call-insensitive field-sensitive points-to analysis in Datalog
-.type Variable
-.type Allocation
-.type Field
+.type Variable <: symbol
+.type Allocation <: symbol
+.type Field <: symbol
 
 .decl AssignAlloc(var:Variable, heap:Allocation)
 .output AssignAlloc()

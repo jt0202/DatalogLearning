@@ -6,7 +6,7 @@
 
 // : defines a directed graph
 .decl _?(x:number, y:number)
-.input _?()
+.input _?(filename="input.facts")
 
 // ? defines the transitive closure
 .decl ?(x:number, y:number)
@@ -19,11 +19,11 @@
 really_really_long_relation_string(A, B) :- ?(A, C), ?(A, D), ?(C, B), ?(D, B), !?(C,D), !?(D,C).
 
 .decl a_1234_?another_one_(x:number, y:number)
-.output a_1234_?another_one_()
+.output a_1234_?another_one_(filename="a_1234_another_one_.csv")
 a_1234_?another_one_(A,B) :- really_really_long_relation_string(A,C), really_really_long_relation_string(C,B).
 
 .decl a_?_extended?_relation_name(x:number, y:number)
-.output a_?_extended?_relation_name()
+.output a_?_extended?_relation_name(filename="a__extended_relation_name.csv")
 a_?_extended?_relation_name(A,B) :- really_really_long_relation_string(C,A), really_really_long_relation_string(C,B), A != B.
 a_?_extended?_relation_name(A,B) :- really_really_long_relation_string(A, B), a_?_extended?_relation_name(A,C), a_?_extended?_relation_name(C,B).
 a_?_extended?_relation_name(A,B) :- really_really_long_relation_string(A, B), a_?_extended?_relation_name(A,C), a_?_extended?_relation_name(B,C).

@@ -9,8 +9,8 @@
 //
 
 
-.type Stop
-.type Line
+.type Stop <: symbol
+.type Line <: symbol
 
 .decl AdjacentStops(s1:Stop, s2:Stop, l:Line)
 

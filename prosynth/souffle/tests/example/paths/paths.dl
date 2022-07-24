@@ -3,7 +3,7 @@
 //
 // Datalog Formulation
 
-.type Node
+.type Node <: symbol
 
 .decl path   (node1:Node, node2:Node)
 .output path   ()

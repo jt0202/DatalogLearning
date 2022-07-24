@@ -1,6 +1,6 @@
 /*
  * Souffle - A Datalog Compiler
- * Copyright (c) 2019 The Souffle Developers. All Rights reserved
+ * Copyright (c) 2019 The Souffle Developers. All rights reserved
  * Licensed under the Universal Permissive License v 1.0 as shown at:
  * - https://opensource.org/licenses/UPL
  * - <souffle root>/licenses/SOUFFLE-UPL.txt
@@ -9,7 +9,7 @@
 
 .decl Prime, D(x:number)
 
-Prime(2). 
+Prime(2).
 Prime(3).
 Prime(5).
 Prime(7).
@@ -18,4 +18,4 @@ Prime(11).
 // Sums all prime sums that are less than 10. So 2 + 3 is fine, but 2 + 3 + 5 + 7 is not.
 D(s) :- s = sum y : { Prime(n), y = sum z : { Prime(z), z < n }, y < 10 }.
 
-.output Prime, D() 
+.output Prime, D()

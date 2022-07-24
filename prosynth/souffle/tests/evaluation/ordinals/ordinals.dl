@@ -1,4 +1,4 @@
-.type Name
+.type Name <: symbol
 
 
 .decl n ( x : Name )

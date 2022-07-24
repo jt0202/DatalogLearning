@@ -5,7 +5,7 @@
 // - <souffle root>/licenses/SOUFFLE-UPL.txt
 
 // Find the shorted outward edge for every Node
-.type Node
+.type Node <: symbol
 
 .decl Edge(n:Node, m:Node, w:number)
 .input Edge()

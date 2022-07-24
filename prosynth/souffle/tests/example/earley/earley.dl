@@ -4,13 +4,13 @@
 // - https://opensource.org/licenses/UPL
 // - <souffle root>/licenses/SOUFFLE-UPL.txt
 
-.number_type Label
+.type Label <: number
 
-.symbol_type NT
-.symbol_type Letter
+.type NT <: symbol
+.type Letter <: symbol
 .type Symbol = NT | Letter
 
-.number_type Pos
+.type Pos <: number
 
 // Head stored in position 0 of prod
 .decl Prod				(x:Label, p:Pos, s:Symbol)
@@ -32,7 +32,7 @@ EndString(c + 1) :- String(c, _), !NotEndString(c).
 
 // Adapted from Earley parser - Wikipedia
 
-// Current parse position in the string is c, production x has been matched 
+// Current parse position in the string is c, production x has been matched
 // up to position p in the body starting at position j in the input string.
 .decl State			(c:Pos, x:Label, p:Pos, j:Pos)
 
@@ -48,7 +48,7 @@ State(c + 1, x, p + 1, j) :- String(c, a), State(c, x, p, j), Prod(x, p, a).
 // Completion
 State(c, x, p + 1, j) :- State(c, y, q, k), EndProd(y, q), Prod(y, 0, n), State(k, x, p, j), Prod(x, p, n).
 
-.type Answer
+.type Answer <: symbol
 .decl Accept			(s:Answer)
 
 Accept("Yes") :- State(c, 1, q, 1), EndString(c), EndProd(1, q).

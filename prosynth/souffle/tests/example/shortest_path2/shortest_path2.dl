@@ -1,0 +1,40 @@
+// Souffle - A Datalog Compiler
+// Copyright (c) 2021, The Souffle Developers. All rights reserved
+// Licensed under the Universal Permissive License v 1.0 as shown at:
+// - https://opensource.org/licenses/UPL
+// - <souffle root>/licenses/SOUFFLE-UPL.txt
+
+// define edge relation of a directed graph
+.decl e(x:number, y:number, c:number)
+
+e(1,2,1).
+e(2,2,1).
+e(2,3,1).
+e(3,4,1).
+e(1,4,100).
+
+// define shortest path relation
+.decl sp(x:number, y:number, c:number) btree_delete
+
+//
+// subsumption
+//
+// A longer path is subsumed by a shorter path, i.e.,
+// the longer path is discarded from the relation.
+sp(x,y,c1) <= sp(x,y, c2) :-
+  c2 <= c1.
+
+//
+// base case
+//
+sp(x,y,c) :-
+  e(x,y,c).
+
+//
+// inductive case
+//
+sp(x,z,c1 + c2) :-
+  sp(x,y,c1),
+  e(y,z,c2).
+
+.output sp

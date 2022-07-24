@@ -16,8 +16,7 @@ A(0).
 A(i+1) :- A(i), i<100.			// this is sequential
 
 // use list to fill another in parallel
-B($,i) :- A(i).				// this may be parallel
+B(autoinc(),i) :- A(i).			// this may be parallel
 
-// make sure the $ was consistently used
+// make sure the autoinc() produced the right range of numbers
 C(i,j) :- B(c,i), B(c,j), i!=j.
-

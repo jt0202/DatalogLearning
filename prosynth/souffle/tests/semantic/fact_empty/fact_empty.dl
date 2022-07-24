@@ -1,5 +1,5 @@
 // Check whether empty facts are detected
-.type Node
+.type Node <: symbol
 
 .decl reachable   (node1:Node, node2:Node)
 .input reachable   ()

@@ -34,7 +34,9 @@ void error(std::string txt) {
  */
 int main(int argc, char** argv) {
     // check number of arguments
-    if (argc != 2) error("wrong number of arguments!");
+    if (argc != 2) {
+        error("wrong number of arguments!");
+    }
 
     // create instance of program "load_print"
     if (SouffleProgram* prog = ProgramFactory::newInstance("load_print")) {

@@ -4,7 +4,7 @@
 // - https://opensource.org/licenses/UPL
 // - <souffle root>/licenses/SOUFFLE-UPL.txt
 
-.type Text
+.type Text <: symbol
 
 .decl food(name:Text, carbs:number, fat:number, protein:number, per:number, measure:Text)
 .input food()

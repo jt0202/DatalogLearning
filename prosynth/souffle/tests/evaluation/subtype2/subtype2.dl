@@ -3,13 +3,13 @@
 .type B = C
 .type C = D
 .type D = E
-.type E
+.type E <: symbol
 
 .type BA = CA
 .type BB = CB
 
-.type CA
-.type CB
+.type CA <: symbol
+.type CB <: symbol
 
 .decl R_A(a:A)
 .output R_A()

@@ -1,6 +1,6 @@
 
 
-.number_type N
+.type N <: number
 .type P = [ a : N , b : N ]
 
 

@@ -6,7 +6,7 @@
 
 // tests the proper handling of aliases
 
-.number_type N
+.type N <: number
 
 
 .decl n ( a : N )

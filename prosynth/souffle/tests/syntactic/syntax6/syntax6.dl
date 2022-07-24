@@ -1,7 +1,7 @@
 // Check that location is reported correctly
 // when included file has an error on the first line
 +
-.type Node
+.type Node <: symbol
 
 reachable (node1:Node, node2:Node)
 .input reachable ()

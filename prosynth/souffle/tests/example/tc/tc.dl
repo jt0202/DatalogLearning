@@ -1,7 +1,7 @@
 //// Reproduced from [FD92]
 //// Adopted from DES
 
-.type Node
+.type Node <: symbol
 
 .decl tcl  (node1:Node, node2:Node)
 .output tcl  ()

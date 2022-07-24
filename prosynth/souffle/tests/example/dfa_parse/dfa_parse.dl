@@ -6,9 +6,9 @@
 
 // Simulates a Deterministic Finite Automata to parse strings
 
-.type state
-.type string
-.number_type index
+.type state <: symbol
+.type string <: symbol
+.type index <: number
 
 .decl transition(from : state, on : string, to : state)
 .input transition

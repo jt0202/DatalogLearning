@@ -30,7 +30,7 @@
 // the list as a sort of associative list.
 //
 
-.type Wire
+.type Wire <: symbol
 .type Wire_state = [id : Wire, val : number]
 .type Wire_list = [head : Wire_state, tail: Wire_list]
 
@@ -81,14 +81,14 @@ final_gen_wire_states(l) :-
     gen_wire_states(l),
     l = [[x,xv],tail],
     last(x).
-	
+
 //extract a wire's value from the array (associative array type)
 .decl get_by_key(key : Wire, val : number, rec : Wire_list, conf: Wire_list)
 get_by_key(k, v, tail, [[a,av], tail]) :-
 	in(a), bin(av), a=k, av=v, gen_wire_states([[a,av], tail]), last(a).
 get_by_key(k, v, tail, conf) :-
 	in(k), bin(v), get_by_key(_, _, [[k, v], tail], conf).
-	
+
 .decl required_out(ws : Wire_state)
 required_out([w, v]) :- required_out_fi(w, v).
 //which wires are required to have certain values
@@ -122,7 +122,7 @@ evaluate(cs, [k, lnot av]) :-
 satisfy(conf, [var, val]) :-
 	required_out([var, val]),
 	evaluate(conf, [var, val]).
-	
+
 // print the required inputs to reach the configuration (turned off atm, as the souffle tester cannot handle the output of records)
 .decl sat_print(var : Wire, val : number, conf : Wire_list)
 sat_print(var, val, conf) :-
@@ -133,4 +133,4 @@ sat_print(var, val, conf) :-
 .output print_states()
 print_states(val) :-
 	val = count : { sat_print(_, _, _) }.
-	
+

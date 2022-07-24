@@ -16,289 +16,152 @@
 
 #pragma once
 
-#include <cassert>
-#include <iostream>
+#include "souffle/TypeAttribute.h"
+#include <cstdlib>
+#include <functional>
+#include <iosfwd>
+#include <string>
+#include <string_view>
+#include <vector>
 
 namespace souffle {
 
 enum class FunctorOp {
     /** Unary Functor Operators */
-    ORD,       // ordinal number of a string
-    STRLEN,    // length of a string
-    NEG,       // numeric negation
-    BNOT,      // bitwise negation
-    LNOT,      // logical negation
-    TONUMBER,  // convert string to number
-    TOSTRING,  // convert number to string
+    ORD,     // ordinal number of a string
+    STRLEN,  // length of a string
+    NEG,     // Signed numeric negation
+    FNEG,    // Float numeric negation
+    BNOT,    // Signed bitwise negation
+    UBNOT,   // Unsigned bitwise negation
+    LNOT,    // Signed logical negation
+    ULNOT,   // Unsigned logical negation
+
+    F2F,  // float     to float     (identity)
+    F2I,  // float     to signed
+    F2S,  // float     to symbol
+    F2U,  // float     to unsigned
+
+    I2I,  // signed    to signed     (identity)
+    I2F,  // signed    to float
+    I2S,  // signed    to symbol     (overload base case)
+    I2U,  // signed    to unsigned
+
+    S2S,  // symbol    to symbol     (identity)
+    S2F,  // symbol    to float      (overload base case)
+    S2I,  // symbol    to signed     (overload base case)
+    S2U,  // symbol    to unsigned   (overload base case)
+
+    U2U,  // unsigned  to unsigned   (identity)
+    U2F,  // unsigned  to float
+    U2I,  // unsigned  to signed
+    U2S,  // unsigned  to symbol
 
     /** Binary Functor Operators */
-    ADD,   // addition
-    SUB,   // subtraction
-    MUL,   // multiplication
-    DIV,   // division
-    EXP,   // exponent
-    MOD,   // modulus
-    BAND,  // bitwise and
-    BOR,   // bitwise or
-    BXOR,  // bitwise exclusive or
-    LAND,  // logical and
-    LOR,   // logical or
-    MAX,   // max of two numbers
-    MIN,   // min of two numbers
-    CAT,   // string concatenation
+    ADD,                 // addition
+    SUB,                 // subtraction
+    MUL,                 // multiplication
+    DIV,                 // division
+    EXP,                 // exponent
+    MAX,                 // max of two numbers
+    MIN,                 // min of two numbers
+    MOD,                 // modulus
+    BAND,                // bitwise and
+    BOR,                 // bitwise or
+    BXOR,                // bitwise exclusive or
+    BSHIFT_L,            // bitwise shift left
+    BSHIFT_R,            // bitwise shift right
+    BSHIFT_R_UNSIGNED,   // bitwise shift right (unsigned)
+    LAND,                // logical and
+    LOR,                 // logical or
+    LXOR,                // logical xor
+    UADD,                // addition
+    USUB,                // subtraction
+    UMUL,                // multiplication
+    UDIV,                // division
+    UEXP,                // exponent
+    UMAX,                // max of two numbers
+    UMIN,                // min of two numbers
+    UMOD,                // modulus
+    UBAND,               // bitwise and
+    UBOR,                // bitwise or
+    UBXOR,               // bitwise exclusive or
+    UBSHIFT_L,           // bitwise shift right
+    UBSHIFT_R,           // bitwise shift right
+    UBSHIFT_R_UNSIGNED,  // bitwise shift right (unsigned)
+    ULAND,               // logical and
+    ULOR,                // logical or
+    ULXOR,               // logical xor
+    FADD,                // addition
+    FSUB,                // subtraction
+    FMUL,                // multiplication
+    FDIV,                // division
+    FEXP,                // exponent
+    FMAX,                // max of two floats
+    FMIN,                // min of two floats
+    SMAX,                // max of two symbols
+    SMIN,                // min of two symbols
+
+    // Produces values within a numeric range. Format is `range(bgn, endExcl, step = 1)`.
+    // e.g. `range(0, 5)` produces the sequence `0, 1, 2, 3, 4`.
+    //      `range(5, 3.75, -0.5)` produces the sequence `5, 4.5, 4`.
+    //      `range(5, x, 0)` produces the sequence `5` iff `x` != 5.
+    RANGE,
+    URANGE,
+    FRANGE,
+
+    CAT,  // string concatenation
 
     /** Ternary Functor Operators */
-    SUBSTR,  // addition
-
-    /** Undefined */
-    __UNDEFINED__,  // undefined operator
+    SUBSTR,  // substring
 };
 
-/**
- * Checks whether a functor operation can have a given argument count.
- */
-inline bool isValidFunctorOpArity(FunctorOp op, size_t arity) {
-    switch (op) {
-        /** Unary Functor Operators */
-        case FunctorOp::ORD:
-        case FunctorOp::STRLEN:
-        case FunctorOp::NEG:
-        case FunctorOp::BNOT:
-        case FunctorOp::LNOT:
-        case FunctorOp::TONUMBER:
-        case FunctorOp::TOSTRING:
-            return arity == 1;
+std::ostream& operator<<(std::ostream& os, FunctorOp op);
 
-        /** Binary Functor Operators */
-        case FunctorOp::ADD:
-        case FunctorOp::SUB:
-        case FunctorOp::MUL:
-        case FunctorOp::DIV:
-        case FunctorOp::EXP:
-        case FunctorOp::MOD:
-        case FunctorOp::BAND:
-        case FunctorOp::BOR:
-        case FunctorOp::BXOR:
-        case FunctorOp::LAND:
-        case FunctorOp::LOR:
-            return arity == 2;
+struct IntrinsicFunctorInfo {
+    std::string symbol;
+    std::vector<TypeAttribute> params;
+    TypeAttribute result;
+    FunctorOp op;
+    bool variadic = false;  // varadic => params.size() == 1
+    bool multipleResults = false;
+};
 
-        /** Ternary Functor Operators */
-        case FunctorOp::SUBSTR:
-            return arity == 3;
+using IntrinsicFunctors = std::vector<std::reference_wrapper<const IntrinsicFunctorInfo>>;
+IntrinsicFunctors functorBuiltIn(FunctorOp);
+IntrinsicFunctors functorBuiltIn(std::string_view symbol);
+IntrinsicFunctors functorBuiltIn(std::string_view symbol, const std::vector<TypeAttribute>& params);
 
-        /** Non-fixed */
-        case FunctorOp::MAX:
-        case FunctorOp::MIN:
-        case FunctorOp::CAT:
-            return arity >= 2;
-
-        /** Undefined */
-        default:
-            break;
-    }
-
-    assert(false && "unsupported operator");
-    return false;
-}
-
-inline std::string getSymbolForFunctorOp(FunctorOp op) {
-    switch (op) {
-        /** Unary Functor Operators */
-        case FunctorOp::ORD:
-            return "ord";
-        case FunctorOp::STRLEN:
-            return "strlen";
-        case FunctorOp::NEG:
-            return "-";
-        case FunctorOp::BNOT:
-            return "bnot";
-        case FunctorOp::LNOT:
-            return "lnot";
-        case FunctorOp::TONUMBER:
-            return "to_number";
-        case FunctorOp::TOSTRING:
-            return "to_string";
-
-        /** Binary Functor Operators */
-        case FunctorOp::ADD:
-            return "+";
-        case FunctorOp::SUB:
-            return "-";
-        case FunctorOp::MUL:
-            return "*";
-        case FunctorOp::DIV:
-            return "/";
-        case FunctorOp::EXP:
-            return "^";
-        case FunctorOp::MOD:
-            return "%";
-        case FunctorOp::BAND:
-            return "band";
-        case FunctorOp::BOR:
-            return "bor";
-        case FunctorOp::BXOR:
-            return "bxor";
-        case FunctorOp::LAND:
-            return "land";
-        case FunctorOp::LOR:
-            return "lor";
-        case FunctorOp::MAX:
-            return "max";
-        case FunctorOp::MIN:
-            return "min";
-        case FunctorOp::CAT:
-            return "cat";
-
-        /** Ternary Functor Operators */
-        case FunctorOp::SUBSTR:
-            return "substr";
-
-        /** Undefined */
-        default:
-            break;
-    }
-
-    assert(false && "unsupported operator");
-    return "?";
-}
+// Checks whether a functor operation can have a given argument count.
+bool isValidFunctorOpArity(std::string_view symbol, std::size_t arity);
 
 /**
- * Determines whether the given operator has a numeric return value
+ * Indicate whether a functor is overloaded.
+ * At the moment, the signed versions are treated as representatives (because parser always returns a signed
+ * version).
  */
-inline bool isNumericFunctorOp(const FunctorOp op) {
-    switch (op) {
-        /** Unary Functor Operators */
-        case FunctorOp::ORD:
-        case FunctorOp::STRLEN:
-        case FunctorOp::NEG:
-        case FunctorOp::BNOT:
-        case FunctorOp::LNOT:
-        case FunctorOp::TONUMBER:
-            return true;
-        case FunctorOp::TOSTRING:
-            return false;
+bool isOverloadedFunctor(std::string_view symbol);
 
-        /** Binary Functor Operators */
-        case FunctorOp::ADD:
-        case FunctorOp::SUB:
-        case FunctorOp::MUL:
-        case FunctorOp::DIV:
-        case FunctorOp::EXP:
-        case FunctorOp::BAND:
-        case FunctorOp::BOR:
-        case FunctorOp::BXOR:
-        case FunctorOp::LAND:
-        case FunctorOp::LOR:
-        case FunctorOp::MOD:
-        case FunctorOp::MAX:
-        case FunctorOp::MIN:
-            return true;
-        case FunctorOp::CAT:
-            return false;
-
-        /** Ternary Functor Operators */
-        case FunctorOp::SUBSTR:
-            return false;
-
-        /** Undefined */
-        default:
-            break;
-    }
-
-    assert(false && "unsupported operator");
-    return false;
-}
-
-/*
- * Determines whether the operator has a symbolic return value.
- */
-inline bool isSymbolicFunctorOp(const FunctorOp op) {
-    return !isNumericFunctorOp(op);
-}
-
-/**
- * Determines whether an argument has a number value
- */
-inline bool functorOpAcceptsNumbers(size_t arg, const FunctorOp op) {
-    switch (op) {
-        /** Unary Functor Operators */
-        case FunctorOp::NEG:
-        case FunctorOp::BNOT:
-        case FunctorOp::LNOT:
-        case FunctorOp::TOSTRING:
-            assert(arg < 1 && "unary functor argument out of bounds");
-            return true;
-        case FunctorOp::ORD:
-        case FunctorOp::STRLEN:
-        case FunctorOp::TONUMBER:
-            assert(arg < 1 && "unary functor argument out of bounds");
-            return false;
-
-        /** Binary Functor Operators */
-        case FunctorOp::ADD:
-        case FunctorOp::SUB:
-        case FunctorOp::MUL:
-        case FunctorOp::DIV:
-        case FunctorOp::EXP:
-        case FunctorOp::BAND:
-        case FunctorOp::BOR:
-        case FunctorOp::BXOR:
-        case FunctorOp::LAND:
-        case FunctorOp::LOR:
-        case FunctorOp::MOD:
-            assert(arg < 2 && "binary functor argument out of bounds");
-            return true;
-
-        /** Ternary Functor Operators */
-        case FunctorOp::SUBSTR:
-            assert(arg < 3 && "ternary functor argument out of bounds");
-            return arg == 1 || arg == 2;
-
-        /** Non-fixed Functor Operators */
-        case FunctorOp::MAX:
-        case FunctorOp::MIN:
-            return true;
-        case FunctorOp::CAT:
-            return false;
-
-        /** Undefined */
-        default:
-            break;
-    }
-
-    assert(false && "unsupported operator");
-    return false;
-}
-
-/**
- * Determines whether an argument has a symbolic value
- */
-inline bool functorOpAcceptsSymbols(size_t arg, const FunctorOp op) {
-    return !functorOpAcceptsNumbers(arg, op);
-}
+// Prefix negation operator is a special case. There are no other unary symbolic
+// operators. Internally we name it `negate`, but when pretty printing we want
+// to special case this and emit `-`.
+constexpr char FUNCTOR_INTRINSIC_PREFIX_NEGATE_NAME[] = "negate";
 
 /**
  * Determines whether a functor should be written using infix notation (e.g. `a + b + c`)
  * or prefix notation (e.g. `+(a,b,c)`)
+ *
+ * Generally follow Haskell convention: functions w/ symbolic names are infix, otherwise prefix.
+ * NOTE:  The surface syntax occasionally uses alpha infix operators
+ *        For backwards compatibility we translate these into symbolic ops.
  */
-inline bool isInfixFunctorOp(const FunctorOp op) {
-    switch (op) {
-        case FunctorOp::ADD:
-        case FunctorOp::SUB:
-        case FunctorOp::MUL:
-        case FunctorOp::DIV:
-        case FunctorOp::EXP:
-        case FunctorOp::BAND:
-        case FunctorOp::BOR:
-        case FunctorOp::BXOR:
-        case FunctorOp::LAND:
-        case FunctorOp::LOR:
-        case FunctorOp::MOD:
-            return true;
-        default:
-            return false;
-    }
-}
+bool isInfixFunctorOp(std::string_view symbol);
+bool isInfixFunctorOp(FunctorOp op);
 
+/**
+ * Given a type of an an attribute it returns the appropriate min/max functor operation
+ */
+
+FunctorOp getMinOp(const std::string& type);
+FunctorOp getMaxOp(const std::string& type);
 }  // end of namespace souffle

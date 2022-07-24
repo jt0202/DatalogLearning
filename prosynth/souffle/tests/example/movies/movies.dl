@@ -5,7 +5,7 @@
 // - <souffle root>/licenses/SOUFFLE-UPL.txt
 
 
-.type Text
+.type Text <: symbol
 
 .decl Movie(id:number,title:Text,rating:Text)
 .decl MovieActors(movieid:number,actorsid:number)

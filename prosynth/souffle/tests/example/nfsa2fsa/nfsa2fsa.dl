@@ -11,8 +11,8 @@
 /* The inputs: alphabet, set of states and transition relation */
 /* By convention: state 1 is initial state, last state is the final accepting state */
 
-.number_type N
-.type Letter
+.type N <: number
+.type Letter <: symbol
 
 .decl state(n : N)
 .input state()
@@ -34,10 +34,10 @@
 	.decl element(x: T)	// contains all valid elements for this vector
 
 	// output relations:
-	.decl len(list: TList, result: number)
+	.decl len(list: TList, result: N)
 	.decl sublist(list: TList)	// is 'list' a list of given size, or any smaller?
 	.decl vector(list: TList)	// is 'list' our vector, i.e. list of given size
-	.decl member_at(list: TList, index: number, member: T)	// is 'member' at given index position, 1-based index
+	.decl member_at(list: TList, index: N, member: T)	// is 'member' at given index position, 1-based index
 
 	len(nil, 0).
 	len([h, t], l+1) :-  sublist([h, t]), len(t, l).
@@ -155,7 +155,7 @@ not_fsa_tr(s, q, a) :-
 // cannot be used for testing purposes. For that reason, we convert the states
 // into strings, e.g. "01011" and words too.
 
-.type String
+.type String <: symbol
 .decl fsa_state_to_str(state: NumberList, str: String)
 fsa_state_to_str(nil, " ").
 fsa_state_to_str([0,t], cat("0", str)) :- FsaState.sublist(t), fsa_state_to_str(t, str).

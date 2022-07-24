@@ -5,7 +5,7 @@
 // - <souffle root>/licenses/SOUFFLE-UPL.txt
 
 // Find the shortest paths between all nodes, the slow way
-.type Node
+.type Node <: symbol
 
 .decl Edge(n:Node, m:Node, w:number)
 .input Edge()

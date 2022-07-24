@@ -1,11 +1,11 @@
 /*
  * Souffle - A Datalog Compiler
- * Copyright (c) 2019 The Souffle Developers. All Rights reserved
+ * Copyright (c) 2019 The Souffle Developers. All rights reserved
  * Licensed under the Universal Permissive License v 1.0 as shown at:
  * - https://opensource.org/licenses/UPL
  * - <souffle root>/licenses/SOUFFLE-UPL.txt
  */
-// Test that nested aggregates can become grounded from the outside scope.
+// Test that multi-valued aggregates can become grounded from the outside scope.
 
 .decl W(x:number, y:number)
 .decl X(n:number)

@@ -1,7 +1,7 @@
 //// Farmer-Wolf-Goat-Cabbage Puzzle
 //// Adopted from DES
 
-.type Node
+.type Node <: symbol
 
 .decl safe  (node1:Node, node2:Node, node3:Node, node4:Node)
 .output safe  ()

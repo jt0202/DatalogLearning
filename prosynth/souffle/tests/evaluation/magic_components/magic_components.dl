@@ -10,7 +10,7 @@
 
 // ---- some type definitions -----
 
-.type node
+.type node <: symbol
 
 
 // ---------------------------------

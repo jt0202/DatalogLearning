@@ -8,7 +8,7 @@
 // Check semantics of binary relations
 //
 
-.number_type n
+.type n <: number
 
 .decl A (x:n, y:n)
 .output A ()

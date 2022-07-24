@@ -1,4 +1,4 @@
-.type D
+.type D <: symbol
 .type C = D
 .type B = C
 .type A = B

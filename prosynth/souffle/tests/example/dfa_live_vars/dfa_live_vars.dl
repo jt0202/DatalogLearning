@@ -7,14 +7,14 @@
 
 //// --- definitions --- ////
 
-.type Node
+.type Node <: symbol
 
 // control flow graph (input)
 .decl cf_edge(x:Node,y:Node)
 
 
 // mark nodes in the graph using and defining variables
-.type Var
+.type Var <: symbol
 
 .decl use(x:Node, v:Var)
 .decl def(x:Node, v:Var)

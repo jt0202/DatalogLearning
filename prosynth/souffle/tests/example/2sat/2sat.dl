@@ -4,11 +4,11 @@
 // - https://opensource.org/licenses/UPL
 // - <souffle root>/licenses/SOUFFLE-UPL.txt
 
-.type Var
-.type Neg
-.type Val
-.number_type Card
-.type Ans
+.type Var <: symbol
+.type Neg <: symbol
+.type Val <: symbol
+.type Card <: number
+.type Ans <: symbol
 
 .decl Clause		(m:Neg, u:Var, n:Neg, v:Var)
 .input Clause

@@ -7,17 +7,17 @@
 // Tests the use of component types in union type declarations
 
 .comp hello {
-    .type thing
+    .type thing <: symbol
 }
 
 .comp bye {
-    .type thing1
-    .type thing2
+    .type thing1 <: symbol
+    .type thing2 <: symbol
 
     .init subhello = hello
 }
 
-.type other_type
+.type other_type <: symbol
 
 .init helloinit = hello
 .init byeinit = bye

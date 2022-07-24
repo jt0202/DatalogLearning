@@ -17,24 +17,24 @@
 
 #include "souffle/SouffleInterface.h"
 #include <array>
+#include <csignal>
 #include <string>
 #include <vector>
-#include <signal.h>
 
 using namespace souffle;
 
 /**
  * Signal handler
  */
-void handler(int n) {
+void handler(int /* n */) {
     std::cerr << "handler invoked." << std::endl;
-    exit(1);
+    exit(0);
 }
 
 /**
  * Main program
  */
-int main(int argc, char** argv) {
+int main(int /* argc */, char** /* argv */) {
     // set default signal handler for SIGINT signal
     signal(SIGINT, handler);
 

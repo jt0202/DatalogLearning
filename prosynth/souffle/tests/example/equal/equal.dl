@@ -1,4 +1,4 @@
-.type Integer
+.type Integer <: symbol
 
 .decl succ (a:Integer, b:Integer)
 .decl equal(x:Integer, y:Integer, r:Integer)

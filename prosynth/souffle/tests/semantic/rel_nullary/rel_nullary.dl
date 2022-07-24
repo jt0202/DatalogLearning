@@ -89,7 +89,7 @@ Q() :- P().
 .decl R(x:number)
 .output R()
 R(10).
-R(x) :- S(), R(x).	
+R(x) :- S(), R(x).
 
 .decl S()
 S() :- R(_).

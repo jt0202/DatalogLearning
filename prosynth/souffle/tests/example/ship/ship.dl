@@ -1,6 +1,6 @@
 //// Test Case adopted from Ocaml datalog
 
-.type Node
+.type Node <: symbol
 
 .decl ship_to       (node1:Node, node2:Node)
 .output ship_to       ()

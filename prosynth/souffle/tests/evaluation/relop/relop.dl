@@ -5,7 +5,7 @@
 
 // Relations
 
-.type Node
+.type Node <: symbol
 
 .decl a  (node1:Node)
 .output a  ()

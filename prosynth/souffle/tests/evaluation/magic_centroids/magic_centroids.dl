@@ -8,8 +8,8 @@
 // the magic set transformation
 .pragma "magic-transform" "*"
 
-.type Node
-.number_type Card
+.type Node <: symbol
+.type Card <: number
 
 .decl Edge			(m:Node, n:Node)
 .input Edge

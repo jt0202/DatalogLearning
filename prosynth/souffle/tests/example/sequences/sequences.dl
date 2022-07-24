@@ -2,7 +2,7 @@
 // Examples of handling sequences over a given alphabet.
 //
 
-.type Letter
+.type Letter <: symbol
 
 
 // given: an alphabet

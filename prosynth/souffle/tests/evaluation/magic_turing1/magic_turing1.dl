@@ -4,9 +4,9 @@
 
 // Implementation of a Turing Maching in Souffle
 
-.type Alphabet
-.type State
-.type Direction
+.type Alphabet <: symbol
+.type State <: symbol
+.type Direction <: symbol
 
 //
 // Tape of the Turing Machine

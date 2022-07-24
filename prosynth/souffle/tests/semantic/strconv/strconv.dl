@@ -8,7 +8,7 @@
 // check correctness of string to number and number to string conversions
 //
 
-.decl A(x:number) 
+.decl A(x:number)
 
 A(x) :- x=to_number("10").
 A(x) :- x=to_number("-10").

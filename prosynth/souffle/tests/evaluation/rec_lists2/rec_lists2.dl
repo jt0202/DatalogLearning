@@ -1,4 +1,4 @@
-.number_type N
+.type N <: number
 .type list = [ x : number , y : list ]
 
 .decl p ( x : list )

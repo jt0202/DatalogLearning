@@ -1,4 +1,4 @@
-.type N
+.type N <: symbol
 
 .decl A (x:N, y:N, z:N)
 .decl B (x:N)

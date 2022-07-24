@@ -3,8 +3,8 @@
 // <Qualifiers>
 // output|input
 
-.type M
-.type N
+.type M <: symbol
+.type N <: symbol
 
 .decl A(a:M)
 .output A()

@@ -1,5 +1,5 @@
 
-.type Node
+.type Node <: symbol
 
 .decl father      (node1:Node, node2:Node)
 .decl mother      (node1:Node, node2:Node)

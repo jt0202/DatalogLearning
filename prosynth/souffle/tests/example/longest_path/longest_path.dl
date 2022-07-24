@@ -6,7 +6,7 @@
 
 // Finds the length of the path that visits the most nodes without overlapping itself
 
-.type node
+.type node <: symbol
 
 .decl edge(x : node, y : node)
 .input edge()

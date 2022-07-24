@@ -7,12 +7,12 @@
 // test arithmetic expression in Souffle
 
 // define tautology
-.type B
+.type B <: symbol
 .decl is_true(s:B)
 is_true("true").
 
 // define expressions
-.type txt
+.type txt <: symbol
 .decl e(x:number, t:txt, y:number)
 e(10 * 2, "10*2", 20) :- is_true(_).
 e(10 + 2, "10+2", 12) :- is_true(_).

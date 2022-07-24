@@ -17,7 +17,7 @@
 
 // Step A) model the input code
 
-.type Kind
+.type Kind <: symbol
 
 .decl kind(k:Kind)
 
@@ -30,7 +30,7 @@ kind("App").
 .decl term( id:number, k:Kind, i:number )
 
 
-.type Value
+.type Value <: symbol
 
 .decl lits( i:number, n:Value )
 
@@ -41,7 +41,7 @@ term( 0, "Lit", 0 ).
 term( 1, "Lit", 1 ).
 
 
-.type VarName
+.type VarName <: symbol
 .decl vars( i:number, n:VarName )
 
 vars( 0, "x" ).

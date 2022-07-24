@@ -15,8 +15,8 @@ Element(104).
 
 .decl Maximum(value:number)
 
-Maximum(MaxValue) :-	
+Maximum(MaxValue) :-
 	MaxValue = max ElementValue : Element(ElementValue).
 
 .output Maximum()
-				
+

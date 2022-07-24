@@ -1,4 +1,4 @@
-.type String
+.type String <: symbol
 
 .decl f(v:String, f:String)
 .decl succ (v:String, f:String)

@@ -1,5 +1,5 @@
 
-.type value
+.type value <: symbol
 
 
 // define three relations

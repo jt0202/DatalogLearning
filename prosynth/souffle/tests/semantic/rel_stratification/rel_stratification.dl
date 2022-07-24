@@ -1,5 +1,5 @@
 
-.type name
+.type name <: symbol
 
 .decl a(n:name)
 .output a()

@@ -2,7 +2,7 @@
 // Rafael Caballero-Rold\'an, 2007
 // Adopted from DES
 
-.type D
+.type D <: symbol
 
 .decl star    (x:D)
 .output star    ()

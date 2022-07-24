@@ -2,7 +2,7 @@
 // Tests various properties of a tic-tac-toe gameboard
 //
 
-.type Mark
+.type Mark <: symbol
 
 .decl player(x:Mark)
 
@@ -25,7 +25,7 @@ other("O","X").
 	a1:Mark, a2:Mark, a3:Mark,
 	b1:Mark, b2:Mark, b3:Mark,
 	c1:Mark, c2:Mark, c3:Mark,
-	
+
 	p:Mark
 )
 
@@ -43,7 +43,7 @@ all_states( a1,b1,c1,a2,b2,c2,a3,b3,c3, p ) :-
 	a1:Mark, a2:Mark, a3:Mark,
 	b1:Mark, b2:Mark, b3:Mark,
 	c1:Mark, c2:Mark, c3:Mark,
-	
+
 	p:Mark
 )
 
@@ -52,7 +52,7 @@ all_states( a1,b1,c1,a2,b2,c2,a3,b3,c3, p ) :-
 	ab1:Mark, ab2:Mark, ab3:Mark,
 	ac1:Mark, ac2:Mark, ac3:Mark,
 	a:Mark,
-	
+
 	ba1:Mark, ba2:Mark, ba3:Mark,
 	bb1:Mark, bb2:Mark, bb3:Mark,
 	bc1:Mark, bc2:Mark, bc3:Mark,
@@ -103,7 +103,7 @@ dig2( a1,b1,c1,a2,b2,c2,a3,b3,c3,  c1,b2,a3 ) :- all_states(a1,b1,c1,a2,b2,c2,a3
 	a1:Mark, a2:Mark, a3:Mark,
 	b1:Mark, b2:Mark, b3:Mark,
 	c1:Mark, c2:Mark, c3:Mark,
-	
+
 	x:Mark
 )
 
@@ -167,7 +167,7 @@ finished( a1,b1,c1,a2,b2,c2,a3,b3,c3 ) :- draw(a1,b1,c1,a2,b2,c2,a3,b3,c3).
 	ab1:Mark, ab2:Mark, ab3:Mark,
 	ac1:Mark, ac2:Mark, ac3:Mark,
 	a:Mark,
-	
+
 	ba1:Mark, ba2:Mark, ba3:Mark,
 	bb1:Mark, bb2:Mark, bb3:Mark,
 	bc1:Mark, bc2:Mark, bc3:Mark
@@ -200,9 +200,9 @@ state_succ(  aa1,ab1,ac1,aa2,ab2,ac2,aa3,ab3,ac3, a,  ba1,bb1,bc1,ba2,bb2,bc2,ba
 	a1:Mark, a2:Mark, a3:Mark,
 	b1:Mark, b2:Mark, b3:Mark,
 	c1:Mark, c2:Mark, c3:Mark,
-	
+
 	p:Mark,
-	
+
 	w:Mark
 )
 
@@ -221,9 +221,9 @@ possible_results( aa1,ab1,ac1,aa2,ab2,ac2,aa3,ab3,ac3, ap, x) :- state_succ( aa1
 	a1:Mark, a2:Mark, a3:Mark,
 	b1:Mark, b2:Mark, b3:Mark,
 	c1:Mark, c2:Mark, c3:Mark,
-	
+
 	p:Mark,
-	
+
 	w:Mark
 )
 .output decided_games()

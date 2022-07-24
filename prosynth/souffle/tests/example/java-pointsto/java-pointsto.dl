@@ -8,14 +8,14 @@
 // Types //
 ///////////
 
-.type Type
-.type VarRef
-.type InvocationRef
-.type HeapAllocationRef
-.type FieldSignatureRef
-.type MethodSignatureRef
-.type MethodDescriptorRef
-.type Int
+.type Type <: symbol
+.type VarRef <: symbol
+.type InvocationRef <: symbol
+.type HeapAllocationRef <: symbol
+.type FieldSignatureRef <: symbol
+.type MethodSignatureRef <: symbol
+.type MethodDescriptorRef <: symbol
+.type Int <: symbol
 
 
 /////////

@@ -1,4 +1,4 @@
-.type Node
+.type Node <: symbol
 
 .decl link(node1:Node, node2:Node, node3:Node)
 .decl St_Reachable(node1:Node, node2:Node)

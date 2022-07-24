@@ -6,9 +6,9 @@
 
 // Subtracts the number of `-` from the number of `+`
 
-.number_type index
-.number_type counter
-.type program
+.type index <: number
+.type counter <: number
+.type program <: symbol
 
 .decl torun(p : program)
 .input torun

@@ -1,7 +1,7 @@
 // Check if location is reported correctly
 // if error appears at the same line as good inclusion
 
-.type Node
+.type Node <: symbol
 
 .decl reachable   (node1:Node, node2:Node)
 .decl same_clique (node1:Node, node2:Node)

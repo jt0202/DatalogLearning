@@ -1,5 +1,5 @@
 
-.number_type N
+.type N <: number
 
 .decl a ( a : N , b : N , c : N )
 

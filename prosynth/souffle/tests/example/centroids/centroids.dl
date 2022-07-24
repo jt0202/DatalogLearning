@@ -4,8 +4,8 @@
 // - https://opensource.org/licenses/UPL
 // - <souffle root>/licenses/SOUFFLE-UPL.txt
 
-.type Node
-.number_type Card
+.type Node <: symbol
+.type Card <: number
 
 .decl Edge			(m:Node, n:Node)
 .input Edge
@@ -34,6 +34,6 @@ SubtreeCard(m, n, c) :- Edge(m, n), c = sum 1 : InSubtree(m, n, _).
 .decl NotCentroid	(n:Node)
 
 NotCentroid(n) :- TreeCard(c), SubtreeCard(n, _, d), d > c/2.
-Centroid(n) :- Edge(n, _), !NotCentroid(n). 
+Centroid(n) :- Edge(n, _), !NotCentroid(n).
 
 .output Centroid

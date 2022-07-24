@@ -1,5 +1,5 @@
 
-.type Node
+.type Node <: symbol
 
 .decl S      (node1:Node, node2:Node)
 .output S      ()

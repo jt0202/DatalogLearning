@@ -2,7 +2,7 @@
 //// Query: p(1)
 //// Adopted from DES
 
-.type Node
+.type Node <: symbol
 
 .decl p  (node1:Node)
 .output p  ()

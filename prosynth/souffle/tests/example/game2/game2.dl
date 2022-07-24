@@ -4,7 +4,7 @@
 // April, 2011
 // Adopted from DES
 
-.type Node
+.type Node <: symbol
 
 .decl move (node1:Node, node2:Node)
 .output move ()

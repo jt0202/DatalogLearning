@@ -5,17 +5,17 @@
 // - <souffle root>/licenses/SOUFFLE-UPL.txt
 
 // type/relation
-.symbol_type typerel
+.type typerel <: symbol
 .decl typerel(x : number)
 .output typerel()
 typerel(1).
 
 // type/component
-.number_type typecomp
+.type typecomp <: number
 .comp typecomp { }
 
 // type/instance
-.type typeinst
+.type typeinst <: symbol
 .init typeinst = typecomp
 
 // relation/component
@@ -40,7 +40,7 @@ relinst(2).
 
 // Nested names
 .comp nested {
-    .number_type nesteditem
+    .type nesteditem <: number
     .decl nesteditem(x:nesteditem)
     nesteditem(20).
 }
@@ -60,7 +60,7 @@ nesteditem(2).
 }
 
 .comp Child : Base {
-    .type alpha
+    .type alpha <: symbol
 }
 
 .init myChild = Child

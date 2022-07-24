@@ -16,20 +16,20 @@ Element(104).
 
 
 .decl TotalValue(value:number)
-TotalValue(value) :-	
+TotalValue(value) :-
 	value= sum ElementValue : Element(ElementValue).
 .output TotalValue()
 
 
 .decl NumberOfelements(value:number)
-NumberOfelements(value) :-	
+NumberOfelements(value) :-
 	value= count : Element(_).
 .output NumberOfelements()
 
 
 
 .decl Average(value:number)
-Average(f/d) :-	
+Average(f/d) :-
 	TotalValue(f), NumberOfelements(d).
 .output Average()
 

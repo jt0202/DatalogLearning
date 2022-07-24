@@ -13,12 +13,12 @@ Warning: No rules/facts defined for relation D in file rule_typecompat.dl at lin
 Warning: No rules/facts defined for relation E in file rule_typecompat.dl at line 10
 .decl E (r:R, s:S)
 ------^------------
-Error: Unable to deduce type for variable x in file rule_typecompat.dl at line 15
+Error: Atom's argument type is not a subtype of its declared type in file rule_typecompat.dl at line 15
 A(x) :- B(x).
 --^-----------
-Error: Unable to deduce type for variable x in file rule_typecompat.dl at line 15
-A(x) :- B(x).
-----------^---
+The argument's declared type is T in file rule_typecompat.dl at line 6
+.decl A (t:T)
+-----------^--
 Error: Unable to deduce type for variable x in file rule_typecompat.dl at line 18
 A(x) :- F(x,x).
 --^-------------
@@ -43,15 +43,12 @@ A(x) :- G(x,x).
 Warning: Variable y only occurs once in file rule_typecompat.dl at line 25
 A(x) :- G(x,y).
 ------------^---
-Error: Unable to deduce type for variable x in file rule_typecompat.dl at line 28
-G(x,x) :- A(x).
---^-------------
-Error: Unable to deduce type for variable x in file rule_typecompat.dl at line 28
+Error: Atom's argument type is not a subtype of its declared type in file rule_typecompat.dl at line 28
 G(x,x) :- A(x).
 ----^-----------
-Error: Unable to deduce type for variable x in file rule_typecompat.dl at line 28
-G(x,x) :- A(x).
-------------^---
+The argument's declared type is R in file rule_typecompat.dl at line 12
+.decl G (t:T, r:R)
+----------------^--
 Error: Ungrounded variable y in file rule_typecompat.dl at line 30
 G(x,y) :- A(x).
 ----^-----------
@@ -73,12 +70,12 @@ A(x) :- A(x), B(y), C(z).
 Warning: Variable z only occurs once in file rule_typecompat.dl at line 36
 A(x) :- A(x), B(y), C(z).
 ----------------------^---
-Error: Unable to deduce type for variable y in file rule_typecompat.dl at line 39
+Error: Atom's argument type is not a subtype of its declared type in file rule_typecompat.dl at line 39
 F(x,y) :- F(x,z), G(z,y).
 ----^---------------------
-Error: Unable to deduce type for variable y in file rule_typecompat.dl at line 39
-F(x,y) :- F(x,z), G(z,y).
-----------------------^---
+The argument's declared type is T in file rule_typecompat.dl at line 11
+.decl F (r:R, t:T)
+----------------^--
 Error: Ungrounded variable y in file rule_typecompat.dl at line 41
 F(x,y) :- F(x,z), G(z,x).
 ----^---------------------
@@ -128,29 +125,23 @@ Warning: Variable v only occurs once in file rule_typecompat.dl at line 53
 F(x,y) :- F(x,v), F(w,y), !H(w), !D(w).
 --------------^-------------------------
 Error: Unable to deduce type for variable x in file rule_typecompat.dl at line 57
-F(x,y) :- F(x,y),  x > y.
---^-----------------------
+F(x,y) :- F(x,y), x > y.
+--^----------------------
 Error: Unable to deduce type for variable y in file rule_typecompat.dl at line 57
-F(x,y) :- F(x,y),  x > y.
-----^---------------------
+F(x,y) :- F(x,y), x > y.
+----^--------------------
 Error: Unable to deduce type for variable x in file rule_typecompat.dl at line 57
-F(x,y) :- F(x,y),  x > y.
-------------^-------------
+F(x,y) :- F(x,y), x > y.
+------------^------------
 Error: Unable to deduce type for variable y in file rule_typecompat.dl at line 57
-F(x,y) :- F(x,y),  x > y.
---------------^-----------
-Error: Non-numerical operand for comparison in file rule_typecompat.dl at line 57
-F(x,y) :- F(x,y),  x > y.
--------------------^------
+F(x,y) :- F(x,y), x > y.
+--------------^----------
 Error: Unable to deduce type for variable x in file rule_typecompat.dl at line 57
-F(x,y) :- F(x,y),  x > y.
--------------------^------
-Error: Non-numerical operand for comparison in file rule_typecompat.dl at line 57
-F(x,y) :- F(x,y),  x > y.
------------------------^--
+F(x,y) :- F(x,y), x > y.
+------------------^------
 Error: Unable to deduce type for variable y in file rule_typecompat.dl at line 57
-F(x,y) :- F(x,y),  x > y.
------------------------^--
+F(x,y) :- F(x,y), x > y.
+----------------------^--
 Error: Unable to deduce type for variable v in file rule_typecompat.dl at line 59
 F(x,y) :- F(x,v), F(w,y), w != v.
 --------------^-------------------
@@ -163,28 +154,16 @@ F(x,y) :- F(x,v), F(w,y), w != v.
 Error: Unable to deduce type for variable v in file rule_typecompat.dl at line 59
 F(x,y) :- F(x,v), F(w,y), w != v.
 -------------------------------^--
-Error: Non-numerical operand for comparison in file rule_typecompat.dl at line 62
-F(x,y) :- F(x,y),  x > t.
--------------------^------
-Error: Non-numerical operand for comparison in file rule_typecompat.dl at line 62
-F(x,y) :- F(x,y),  x > t.
------------------------^--
 Error: Ungrounded variable t in file rule_typecompat.dl at line 62
-F(x,y) :- F(x,y),  x > t.
------------------------^--
+F(x,y) :- F(x,y), x > t.
+----------------------^--
 Warning: Variable t only occurs once in file rule_typecompat.dl at line 62
-F(x,y) :- F(x,y),  x > t.
------------------------^--
-Error: Non-numerical operand for comparison in file rule_typecompat.dl at line 63
-F(x,y) :- F(x,y),  t < x.
--------------------^------
+F(x,y) :- F(x,y), x > t.
+----------------------^--
 Error: Ungrounded variable t in file rule_typecompat.dl at line 63
-F(x,y) :- F(x,y),  t < x.
--------------------^------
+F(x,y) :- F(x,y), t < x.
+------------------^------
 Warning: Variable t only occurs once in file rule_typecompat.dl at line 63
-F(x,y) :- F(x,y),  t < x.
--------------------^------
-Error: Non-numerical operand for comparison in file rule_typecompat.dl at line 63
-F(x,y) :- F(x,y),  t < x.
------------------------^--
-46 errors generated, evaluation aborted
+F(x,y) :- F(x,y), t < x.
+------------------^------
+36 errors generated, evaluation aborted

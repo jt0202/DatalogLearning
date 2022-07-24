@@ -6,7 +6,7 @@
 
 //// Test Case adopted from Ocaml datalog
 
-.type Node
+.type Node <: symbol
 
 .decl reachable   (node1:Node, node2:Node)
 .output reachable   ()

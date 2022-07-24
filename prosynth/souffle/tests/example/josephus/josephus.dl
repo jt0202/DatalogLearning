@@ -38,7 +38,7 @@ Relation("c","a",0,"a").
 */
 
 .decl Josephus(a:symbol)
-Josephus(a) :- 	
+Josephus(a) :-
 			Relation(a, b, step, a),
 			Relation(b, a, step, a).
 .output Josephus

@@ -17,7 +17,7 @@ PROBLEM_DIR=$1
 OUTPUT=$2
 RULES=$3
 
-SOUFFLE=$PWD/souffle/src/souffle
+SOUFFLE=$PWD/souffle/build/src/souffle
 
 cd $PROBLEM_DIR
 $SOUFFLE -j64 -t explain -o$OUTPUT $RULES

@@ -45,7 +45,7 @@
 
 // -- a simple city map --
 
-.type city
+.type city <: symbol
 .init StreetMap = Net<city>
 
 StreetMap.e("A","B").

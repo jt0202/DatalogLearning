@@ -2,7 +2,7 @@
 // An example computing all palendroms of a given length.
 //
 
-.type Letter
+.type Letter <: symbol
 
 .decl str(id:number, a:number, l:Letter, b:number)
 .decl len(id:number, l:number)

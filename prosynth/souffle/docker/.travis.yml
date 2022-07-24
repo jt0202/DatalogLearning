@@ -1,6 +1,0 @@
-os: linux
-dist: trusty
-sudo: false
-language: generic
-services: docker
-script: make check

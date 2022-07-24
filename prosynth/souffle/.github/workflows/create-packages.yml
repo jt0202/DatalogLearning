@@ -1,0 +1,156 @@
+name: Create Packages
+on:
+  release:
+    types: [published]
+
+jobs:
+  CPack-Package-Build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - release: ubuntu-2004
+            extension: ".deb"
+            OS-name: "ubuntu/focal"
+          - release: oraclelinux-8
+            extension: ".rpm"
+            OS-name: "el/8"
+          - release: fedora-34
+            extension: ".rpm"
+            OS-name: "fedora/34"
+          # build issue on fedora 35
+          # - release: fedora-35
+          #   extension: ".rpm"
+          #   OS-name: "fedora/35"
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Build Container
+        run: docker build . -f ./.github/images/${{ matrix.release }}/Dockerfile  -t package_builder
+
+      - name: Packaging
+        run: docker run -e DOMAIN_SIZE="64bit" --name container -t package_builder 
+
+      - name: Extract
+        id: extract_pkg
+        run: |-
+          docker cp container:/souffle/build/ . &&
+          cd build &&
+          echo "::set-output name=pkg_name::$(ls *${{ matrix.extension }} | head -n1)"
+          echo "::set-output name=artifact_name::x86_64-${{ matrix.release }}-$(ls *${{ matrix.extension }} | head -n1)"
+
+      - name: Naming Artifact
+        run: cp build/${{ steps.extract_pkg.outputs.pkg_name }} build/${{ steps.extract_pkg.outputs.artifact_name }}
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ steps.extract_pkg.outputs.artifact_name }}
+          path: build/${{ steps.extract_pkg.outputs.artifact_name }}
+      
+  Arch-Package-Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Prepare
+        id: prepare
+        run: |-
+          echo "::set-output name=release_tag::$(git describe --tags --always | sed "s/-.*$//")"
+
+      - name: Build Container
+        run: docker build ./.github/images/arch-linux/ -t package_builder
+
+      - name: Packaging
+        run: >
+          docker run 
+          -e RELEASE_TAG=${{ steps.prepare.outputs.release_tag }}
+          -e REPO_OWNER=${{ github.repository_owner }}
+          --name container
+          -t package_builder
+
+      - name: Setup Credentials
+        uses: shimataro/ssh-key-action@v2
+        with:
+           key: ${{ secrets.AUR_PRIVATE_KEY }}
+           name: aur
+           known_hosts: ${{ secrets.AUR_KNOWN_HOSTS }}
+           config: |
+              Host aur.archlinux.org
+              IdentityFile ~/.ssh/aur
+              User aur
+
+
+      - name: Upload
+        run: |-
+          git clone ssh://aur@aur.archlinux.org/souffle.git && 
+          cd souffle && 
+          docker cp container:/home/builduser/PKGBUILD . && 
+          docker cp container:/home/builduser/.SRCINFO . && 
+          git config user.email "xihu5895@uni.sydney.edu.au" && 
+          git config user.name "Xiaowen Hu" && 
+          git add PKGBUILD .SRCINFO &&
+          git commit -m "release version ${{ steps.prepare.outputs.release_tag }}" &&
+          git push
+
+
+  Upload-Release-Assests:
+    needs: CPack-Package-Build
+    if: ${{ always() }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: ./downloads
+
+      - name: Create Checksum
+        run: |-
+          mkdir result && 
+          mv downloads/*/* result/ &&
+          cd result && 
+          sha512sum * > sha512sum.txt
+
+      - name: Upload Release Assests
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            result/*
+
+  Upload-Repo-Files:
+    needs: CPack-Package-Build
+    if: ${{ always() }}
+
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          clean: false
+
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: ./downloads
+
+      - name: Configure GPG Key
+        run: |-
+          .github/scripts/config_gpg.sh
+        env:
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+
+      - name: Upload Repo Files
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        run : |-
+          .github/scripts/updatePPA.sh

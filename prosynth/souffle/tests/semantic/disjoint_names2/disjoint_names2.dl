@@ -5,14 +5,14 @@
 // - <souffle root>/licenses/SOUFFLE-UPL.txt
 
 // type/relation
-.symbol_type typerel
+.type typerel <: symbol
 .decl typerel(x : number)
 .output typerel()
 typerel(1).
 
 // Nested names
 .comp nested {
-    .number_type nesteditem
+    .type nesteditem <: number
     .decl nesteditem(x:nesteditem)
     nesteditem(20).
 }

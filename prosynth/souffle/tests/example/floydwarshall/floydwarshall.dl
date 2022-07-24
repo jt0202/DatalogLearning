@@ -8,5 +8,5 @@
 
 .init fw = FloydWarshall
 
-.input fw.NumNodes, fw.Edge 
+.input fw.NumNodes, fw.Edge
 .output fw.ShortestPath, fw.ShortestPathWitness

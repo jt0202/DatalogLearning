@@ -7,7 +7,7 @@
 // Andersen's points-to analysis
 
 // Define the domain of variables
-.type var
+.type var <: symbol
 
 // Take addresses of other variables, i.e., y = &x;
 .decl AddressOf(y:var, x:var)

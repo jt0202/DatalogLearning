@@ -32,7 +32,7 @@ void error(std::string txt) {
 /**
  * Main program
  */
-int main(int argc, char** argv) {
+int main(int /* argc */, char** /* argv */) {
     // create an instance of program "insert_for"
     if (SouffleProgram* prog = ProgramFactory::newInstance("insert_for")) {
         // get input relation "edge"
@@ -58,7 +58,8 @@ int main(int argc, char** argv) {
             if (Relation* path = prog->getRelation("path")) {
                 // iterate over output relation
                 for (auto& output : *path) {
-                    std::string src, dest;
+                    std::string src;
+                    std::string dest;
 
                     // retrieve elements from tuple
                     output >> src >> dest;

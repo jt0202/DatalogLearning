@@ -1,4 +1,4 @@
-.type Node
+.type Node <: symbol
 
 .decl X (node1:Node)
 .output X ()

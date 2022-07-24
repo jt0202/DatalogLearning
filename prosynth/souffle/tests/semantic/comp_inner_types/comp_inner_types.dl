@@ -6,9 +6,9 @@
 
 // declare a component with inner types
 .comp Component {
-    .symbol_type T1
-    .number_type T2
-    .number_type T3
+    .type T1 <: symbol
+    .type T2 <: number
+    .type T3 <: number
 
     // define complex types that use the inner types T1 and T2
     .type InnerRecord = [t1: T1, t2: T2]
@@ -18,15 +18,18 @@
     .decl inner_rel(record: InnerRecord, union: InnerUnion)
     inner_rel(["x", 1], 1).
 
+    .decl union_helper(t: T3)
+    union_helper(1).
+
     .decl out0(x: T1, y: T2, z: T3)
-    out0(x,y,z) :- inner_rel([x,y],z).
+    out0(x,y,z) :- inner_rel([x,y],z), union_helper(z).
     .output out0()
 }
 
 // these should not interfere with the component inner types
-.number_type T1
-.symbol_type T2
-.symbol_type T3
+.type T1 <: number
+.type T2 <: symbol
+.type T3 <: symbol
 .type InnerRecord = [t1: T1, t2: T1]
 .type InnerUnion = T2 | T3
 

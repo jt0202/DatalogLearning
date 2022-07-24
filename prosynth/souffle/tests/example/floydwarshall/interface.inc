@@ -11,7 +11,7 @@
 .comp ShortestPathInterface {
 
   // Node type for shortest path
-  .number_type Node
+  .type Node <: number
 
   // input relations of this component
   .decl NumNodes(n:number)    // Number of nodes

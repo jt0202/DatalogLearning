@@ -1,4 +1,4 @@
-.type N
+.type N <: symbol
 .type R = [ f : N ]
 .type L = [ f : N , r : L ]
 

@@ -10,8 +10,8 @@
 //
 
 
-.type Var
-.type Bool
+.type Var <: symbol
+.type Bool <: symbol
 
 //bitwise gates
 .decl g_and(res : Var, o1 : Var, o2 : Var)

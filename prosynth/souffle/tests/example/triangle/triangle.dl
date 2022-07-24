@@ -6,7 +6,7 @@
 
 //triangle
 
-.type Text
+.type Text <: symbol
 
 .decl addrecurse(b:number, result:Text, level:number)
 

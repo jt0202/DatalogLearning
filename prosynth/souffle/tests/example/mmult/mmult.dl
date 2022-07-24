@@ -35,7 +35,7 @@ Product(i,j,k,value1*value2) :-
 .decl Mat3(row:number,column:number, value:number)
 
 Mat3(i,j, value) :-
-	Mat1(i,_,_), Mat2(_,j,_), value = sum x : Product(i,j,_,x). 
+	Mat1(i,_,_), Mat2(_,j,_), value = sum x : Product(i,j,_,x).
 
 .output Mat3()
 

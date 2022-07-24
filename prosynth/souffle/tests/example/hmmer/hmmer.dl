@@ -2,8 +2,8 @@
 // Preliminary Version of a points-to analysis for C
 //
 
-.type Var
-.type Obj
+.type Var <: symbol
+.type Obj <: symbol
 
 .decl DirectFlow(v:Var,w:Var)
 .input DirectFlow()

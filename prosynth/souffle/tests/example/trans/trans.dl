@@ -1,5 +1,5 @@
 // Type declarations
-.type S
+.type S <: symbol
 
 // Set output flag depending on stage
 .decl A (x:S, y:S)

@@ -1,37 +1,37 @@
-Error: Unable to deduce type for variable x in file comp_types.dl at line 26
+Error: Unable to deduce type for variable x in file comp_types.dl at line 32
 relX(x) :- relY(x).
 -----^--------------
-Error: Unable to deduce type for variable x in file comp_types.dl at line 26
+Error: Unable to deduce type for variable x in file comp_types.dl at line 32
 relX(x) :- relY(x).
 ----------------^---
-Error: Unable to deduce type for variable x in file comp_types.dl at line 27
+Error: Unable to deduce type for variable x in file comp_types.dl at line 33
 relX(x) :- relZ(x).
 -----^--------------
-Error: Unable to deduce type for variable x in file comp_types.dl at line 27
+Error: Unable to deduce type for variable x in file comp_types.dl at line 33
 relX(x) :- relZ(x).
 ----------------^---
-Error: Unable to deduce type for variable x in file comp_types.dl at line 29
+Error: Unable to deduce type for variable x in file comp_types.dl at line 35
 relY(x) :- relX(x).
 -----^--------------
-Error: Unable to deduce type for variable x in file comp_types.dl at line 29
+Error: Unable to deduce type for variable x in file comp_types.dl at line 35
 relY(x) :- relX(x).
 ----------------^---
-Error: Unable to deduce type for variable x in file comp_types.dl at line 31
+Error: Unable to deduce type for variable x in file comp_types.dl at line 37
 relY(x) :- relZ(x).
 -----^--------------
-Error: Unable to deduce type for variable x in file comp_types.dl at line 31
+Error: Unable to deduce type for variable x in file comp_types.dl at line 37
 relY(x) :- relZ(x).
 ----------------^---
-Error: Unable to deduce type for variable x in file comp_types.dl at line 33
+Error: Unable to deduce type for variable x in file comp_types.dl at line 39
 relZ(x) :- relX(x).
 -----^--------------
-Error: Unable to deduce type for variable x in file comp_types.dl at line 33
+Error: Unable to deduce type for variable x in file comp_types.dl at line 39
 relZ(x) :- relX(x).
 ----------------^---
-Error: Unable to deduce type for variable x in file comp_types.dl at line 34
+Error: Unable to deduce type for variable x in file comp_types.dl at line 40
 relZ(x) :- relY(x).
 -----^--------------
-Error: Unable to deduce type for variable x in file comp_types.dl at line 34
+Error: Unable to deduce type for variable x in file comp_types.dl at line 40
 relZ(x) :- relY(x).
 ----------------^---
 12 errors generated, evaluation aborted

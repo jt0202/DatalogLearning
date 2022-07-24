@@ -1,6 +1,6 @@
 //// Test Case adopted from Ocaml datalog
 
-.type Node
+.type Node <: symbol
 
 .decl mother   (node1:Node, node2:Node)
 .output mother   ()

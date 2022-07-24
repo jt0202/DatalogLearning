@@ -9,7 +9,7 @@
 //
 
 // attribute types
-.type Integer
+.type Integer <: symbol
 
 // declarations
 .decl succ (a:Integer, b:Integer)
