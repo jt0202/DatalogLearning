@@ -1,9 +1,0 @@
-A	isCitizenOf	Germany
-B	isCitizenOf	Poland
-C	isCitizenOf	France
-A	isInterestedIn	music
-B	isInterestedIn	football
-C	isInterestedIn	books
-A	livesIn	Germany
-B	livesIn	Germany
-C	livesIn	France
