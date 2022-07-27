@@ -40,6 +40,7 @@ numLoops = 0
 currRuleSetLarge = set()
 numWhy = 0
 numWhyNot = 0
+firstIt = True
 
 scriptPath = sys.argv[0]
 problemDirName = sys.argv[1]
@@ -175,7 +176,7 @@ while True:
         pass
 
     currTime = time.clock_gettime(0)
-    with subprocess.Popen([ problemDirName + '/souffle.small.out', '-F', problemDirName, '-D', problemDirName, '-j', '8' ], \
+    with subprocess.Popen([ problemDirName + '/souffle.small.out', '-F', problemDirName, '-D', problemDirName, '-j', '10000' ], \
                         stdin=subprocess.PIPE, \
                         stdout=subprocess.PIPE, \
                         universal_newlines=True) as souffleProc:
@@ -361,7 +362,7 @@ while True:
 
                     printRuleEDB(currRPlus)
                     # logging.info("currRPlus printed to Rule.facts [within whyNotDelta]")
-                    subproc = subprocess.Popen([ problemDirName + '/souffle.small.out', '-F', problemDirName, '-D', problemDirName , '-j', '8'], \
+                    subproc = subprocess.Popen([ problemDirName + '/souffle.small.out', '-F', problemDirName, '-D', problemDirName , '-j', '10000'], \
                                 stdin=subprocess.PIPE, \
                                 stdout=subprocess.PIPE, \
                                 universal_newlines=True)
@@ -469,6 +470,20 @@ while True:
             relProduced = loadRelation(problemDirName + '/' + relName + '.csv')
             print("Loaded: " +  str(len(relProduced)))
 
+            if firstIt:
+                goal = relProduced.intersection(idbRelationsExpected[relName])
+
+                if len(goal) == 0:
+                    dataLogStr = "{" + f"name: '{problemDirName}', " + \
+                                        f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
+                                        f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
+                                        f"setting_delta: {setting_delta}" + "}"
+                    with open(data_file, 'a+') as f: print(dataLogStr, file=f)
+                    logging.info('No possible derivations')
+                    quit()
+                idbRelationsExpected[relName] = goal
+                
+
             # 3c(i) Tuples which are expected and produced
             # We do not have anything to learn from these tuples
             #for t in relProduced & idbRelationsExpected[relName]:
@@ -535,7 +550,7 @@ while True:
                         logging.info('Z3 reports error in generating a model. Problem unsat. In whyNot')
                         quit()
                 break
-
+        firstIt = False       
         ################################################################################################################
         # 3d. Find useful rules
 

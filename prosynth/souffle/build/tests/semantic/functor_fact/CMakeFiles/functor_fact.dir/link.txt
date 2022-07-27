@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3   -shared -Wl,-soname,libfunctors.so -o libfunctors.so CMakeFiles/functor_fact.dir/functors.cpp.o 

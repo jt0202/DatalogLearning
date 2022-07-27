@@ -252,6 +252,34 @@ for rel in outputRelations:
 
     subprocess.run(["./scripts/prepare", problemDirName, "souffle.small.out", "rules.dl"], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 
+#taken from prosynth
+    def runSouffle(command):
+        with subprocess.Popen([ problemDirName + command, '-F', problemDirName, '-D', problemDirName, '-j', '32' ], \
+                                stdin=subprocess.PIPE, \
+                                stdout=subprocess.PIPE, \
+                                universal_newlines=True) as souffleProc:
+
+                while souffleProc.stdout.readline().strip() != '###': pass
+                while souffleProc.stdout.readline().strip() != '###': pass
+                def execSouffleCmd(cmd):
+                    #logging.info('prosynth to souffle: ' + cmd)
+                    print(cmd, file=souffleProc.stdin)
+                    souffleProc.stdin.flush()
+
+                    response = [ souffleProc.stdout.readline().strip() ]
+                    if response[-1] == '':
+                        return "error reading" #doesn't deal with underlying problem, just passes error through and skips question
+                        #return execSouffleCmd(cmd)
+                    while response[-1] != '###': 
+                        response.append(souffleProc.stdout.readline().strip())
+                    response = response[:-1]
+                    ans = '\n'.join(response)
+                    #logging.info('souffle to prosynth: ' + ans)
+                    return ans
+                execSouffleCmd('format json')
+                execSouffleCmd('setdepth 200000')
+
+    '''
     #generate ruleHelperRelation
     with open(problemDirName + "/Rule.facts", "w") as file:
         num_lines = sum(1 for line in open(problemDirName + '/rules.dl'))
@@ -300,11 +328,11 @@ for rel in outputRelations:
             evFile.write("No Mining possible")
             relations.remove("I" + outputRelation)
         continue
-
+    
     with open(problemDirName + "/" + outputRelation + ".expected", "w") as file:
         for line in goal:
             file.write(line)
-
+    '''
     print("Preparation finished!")
 
     subprocess.run(["./scripts/prosynth", problemDirName, "0", "1", "data.log"], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)

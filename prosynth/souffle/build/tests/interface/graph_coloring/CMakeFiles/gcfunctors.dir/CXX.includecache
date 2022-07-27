@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/johannes/test2/popl2020-artifact/prosynth/souffle/tests/interface/graph_coloring/functors.cpp
+cmath
+-
+cstdint
+-
+iostream
+-
+

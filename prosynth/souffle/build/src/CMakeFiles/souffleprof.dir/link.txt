@@ -1,0 +1,1 @@
+/usr/bin/c++  -O3    CMakeFiles/souffleprof.dir/souffle_prof.cpp.o  -o souffleprof 

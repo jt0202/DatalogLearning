@@ -1,0 +1,20 @@
+# CMake generated Testfile for 
+# Source directory: /home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests
+# Build directory: /home/johannes/test2/popl2020-artifact/prosynth/souffle/build/src/ram/tests
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(ram_condition_equal_clone "/home/johannes/test2/popl2020-artifact/prosynth/souffle/build/src/ram/tests/test_ram_condition_equal_clone")
+set_tests_properties(ram_condition_equal_clone PROPERTIES  LABELS "unit_test;ram" _BACKTRACE_TRIPLES "/home/johannes/test2/popl2020-artifact/prosynth/souffle/cmake/SouffleTests.cmake;315;add_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;9;souffle_add_binary_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;0;")
+add_test(ram_statement_equal_clone "/home/johannes/test2/popl2020-artifact/prosynth/souffle/build/src/ram/tests/test_ram_statement_equal_clone")
+set_tests_properties(ram_statement_equal_clone PROPERTIES  LABELS "unit_test;ram" _BACKTRACE_TRIPLES "/home/johannes/test2/popl2020-artifact/prosynth/souffle/cmake/SouffleTests.cmake;315;add_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;10;souffle_add_binary_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;0;")
+add_test(ram_expression_equal_clone "/home/johannes/test2/popl2020-artifact/prosynth/souffle/build/src/ram/tests/test_ram_expression_equal_clone")
+set_tests_properties(ram_expression_equal_clone PROPERTIES  LABELS "unit_test;ram" _BACKTRACE_TRIPLES "/home/johannes/test2/popl2020-artifact/prosynth/souffle/cmake/SouffleTests.cmake;315;add_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;11;souffle_add_binary_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;0;")
+add_test(ram_relation_equal_clone "/home/johannes/test2/popl2020-artifact/prosynth/souffle/build/src/ram/tests/test_ram_relation_equal_clone")
+set_tests_properties(ram_relation_equal_clone PROPERTIES  LABELS "unit_test;ram" _BACKTRACE_TRIPLES "/home/johannes/test2/popl2020-artifact/prosynth/souffle/cmake/SouffleTests.cmake;315;add_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;12;souffle_add_binary_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;0;")
+add_test(ram_type_conversion "/home/johannes/test2/popl2020-artifact/prosynth/souffle/build/src/ram/tests/test_ram_type_conversion")
+set_tests_properties(ram_type_conversion PROPERTIES  LABELS "unit_test;ram" _BACKTRACE_TRIPLES "/home/johannes/test2/popl2020-artifact/prosynth/souffle/cmake/SouffleTests.cmake;315;add_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;13;souffle_add_binary_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;0;")
+add_test(matching "/home/johannes/test2/popl2020-artifact/prosynth/souffle/build/src/ram/tests/test_matching")
+set_tests_properties(matching PROPERTIES  LABELS "unit_test;ram" _BACKTRACE_TRIPLES "/home/johannes/test2/popl2020-artifact/prosynth/souffle/cmake/SouffleTests.cmake;315;add_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;14;souffle_add_binary_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;0;")
+add_test(max_matching "/home/johannes/test2/popl2020-artifact/prosynth/souffle/build/src/ram/tests/test_max_matching")
+set_tests_properties(max_matching PROPERTIES  LABELS "unit_test;ram" _BACKTRACE_TRIPLES "/home/johannes/test2/popl2020-artifact/prosynth/souffle/cmake/SouffleTests.cmake;315;add_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;15;souffle_add_binary_test;/home/johannes/test2/popl2020-artifact/prosynth/souffle/src/ram/tests/CMakeLists.txt;0;")

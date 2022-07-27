@@ -1,0 +1,1 @@
+/usr/bin/c++  -O3    CMakeFiles/test_getopt_long.dir/getopt_long_test.cpp.o  -o test_getopt_long  /usr/lib/gcc/x86_64-linux-gnu/9/libgomp.so /usr/lib/x86_64-linux-gnu/libpthread.so 

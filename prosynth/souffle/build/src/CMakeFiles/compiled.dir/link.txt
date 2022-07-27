@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcompiled.a  CMakeFiles/compiled.dir/dummy.cpp.o
+/usr/bin/ranlib libcompiled.a
