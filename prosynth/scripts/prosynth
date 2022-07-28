@@ -479,7 +479,7 @@ while True:
                                         f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
                                         f"setting_delta: {setting_delta}" + "}"
                     with open(data_file, 'a+') as f: print(dataLogStr, file=f)
-                    logging.info('No possible derivations')
+                    logging.info('Problem unsat. No possible derivations')
                     quit()
                 idbRelationsExpected[relName] = goal
                 
