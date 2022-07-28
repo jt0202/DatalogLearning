@@ -3,3 +3,8 @@ qd
 scratch
 __pycache__
 souffle/target
+
+*.out
+*.facts
+*.expected
+*.notexpected
