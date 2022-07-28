@@ -3,6 +3,7 @@ qd
 scratch
 __pycache__
 souffle/target
+souffle/build
 
 *.out
 *.facts
