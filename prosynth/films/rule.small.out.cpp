@@ -794,7 +794,7 @@ o << prefix << "Upper-bound: " << stats_0.upper_bound.getHits() << "/" << stats_
 }
 };
 
-class Sf_program_small : public SouffleProgram {
+class Sf_rule_small : public SouffleProgram {
 private:
 static inline bool regex_wrapper(const std::string& pattern, const std::string& text) {
    bool result = false; 
@@ -998,7 +998,7 @@ souffle::RelationWrapper<24,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wra
 std::unique_ptr<t_btree_4__0_1_2_3__15> rel_28_inv_0 = std::make_unique<t_btree_4__0_1_2_3__15>();
 souffle::RelationWrapper<25,t_btree_4__0_1_2_3__15,Tuple<RamDomain,4>,4> wrapper_rel_28_inv_0;
 public:
-Sf_program_small() : 
+Sf_rule_small() : 
 wrapper_rel_1_Iactedin(*rel_1_Iactedin,symTable,"Iactedin",std::array<const char *,4>{{"s:V","s:V","i:number","i:number"}},std::array<const char *,4>{{"v0","v1","@rule_number","@level_number"}}),
 
 wrapper_rel_2_Rule(*rel_2_Rule,symTable,"Rule",std::array<const char *,3>{{"i:number","i:number","i:number"}},std::array<const char *,3>{{"n","@rule_number","@level_number"}}),
@@ -1077,7 +1077,7 @@ addRelation("actedin.@info.8",&wrapper_rel_26_actedin_info_8,false,false);
 addRelation("actedin.@info.9",&wrapper_rel_27_actedin_info_9,false,false);
 addRelation("inv_0",&wrapper_rel_28_inv_0,false,true);
 }
-~Sf_program_small() {
+~Sf_rule_small() {
 }
 private:
 void runFunction(std::string inputDirectory = ".", std::string outputDirectory = ".", size_t stratumIndex = (size_t) -1, bool performIO = false) {
@@ -1161,7 +1161,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,1,(max(max(@level_num_0,@lev
    Rule(336,_,@level_num_0),
    ismarriedto(v2,v1,_,@level_num_1),
    Iactedin(v2,v0,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:1-27:69])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:1-53:69])_");
 if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(336),0,0}});
@@ -1193,7 +1193,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,2,(max(max(@level_num_0,@lev
    Rule(516,_,@level_num_0),
    directed(v2,v1,_,@level_num_1),
    Iactedin(v2,v0,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:69-27:134])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:69-53:134])_");
 if(!(rel_1_Iactedin->empty()) && !(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(516),0,0}});
@@ -1224,7 +1224,7 @@ PARALLEL_END;
 SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,4,(max(@level_num_0,@level_num_1)+1)) :- 
    Rule(268,_,@level_num_0),
    produced(v0,v1,_,@level_num_1).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:198-27:245])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:198-53:245])_");
 if(!(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(268),0,0}});
@@ -1251,7 +1251,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,8,(max(max(@level_num_0,@lev
    Rule(333,_,@level_num_0),
    ismarriedto(v2,v0,_,@level_num_1),
    Iactedin(v2,v1,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:440-27:508])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:440-53:508])_");
 if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(333),0,0}});
@@ -1282,7 +1282,7 @@ PARALLEL_END;
 SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,10,(max(@level_num_0,@level_num_1)+1)) :- 
    Rule(270,_,@level_num_0),
    directed(v0,v1,_,@level_num_1).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:571-27:618])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:571-53:618])_");
 if(!(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(270),0,0}});
@@ -1308,7 +1308,7 @@ PARALLEL_END;
 SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,11,(max(@level_num_0,@level_num_1)+1)) :- 
    Rule(266,_,@level_num_0),
    created(v0,v1,_,@level_num_1).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:618-27:664])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:618-53:664])_");
 if(!(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(266),0,0}});
@@ -1335,7 +1335,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,12,(max(max(@level_num_0,@le
    Rule(331,_,@level_num_0),
    ismarriedto(v1,v2,_,@level_num_1),
    Iactedin(v2,v0,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:664-27:732])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:664-53:732])_");
 if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(331),0,0}});
@@ -1367,7 +1367,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,13,(max(max(@level_num_0,@le
    Rule(409,_,@level_num_0),
    created(v1,v2,_,@level_num_1),
    Iactedin(v0,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:732-27:796])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:732-53:796])_");
 if(!(rel_1_Iactedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(409),0,0}});
@@ -1375,8 +1375,8 @@ auto range = rel_2_Rule->equalRange_1(key);
 auto part = range.partition();
 PARALLEL_START;
 CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
 CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
 CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
 pfor(auto it = part.begin(); it<part.end(); ++it) { 
 try{
@@ -1399,7 +1399,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,15,(max(max(@level_num_0,@le
    Rule(550,_,@level_num_0),
    Iactedin(v0,v2,_,@level_num_1),
    Iactedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:863-27:928])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:863-53:928])_");
 if(!(rel_1_Iactedin->empty()) && !(rel_1_Iactedin->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(550),0,0}});
@@ -1430,7 +1430,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,16,(max(max(@level_num_0,@le
    Rule(408,_,@level_num_0),
    created(v2,v1,_,@level_num_1),
    Iactedin(v2,v0,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:928-27:992])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:928-53:992])_");
 if(!(rel_1_Iactedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(408),0,0}});
@@ -1438,8 +1438,8 @@ auto range = rel_2_Rule->equalRange_1(key);
 auto part = range.partition();
 PARALLEL_START;
 CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
 CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
 CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
 pfor(auto it = part.begin(); it<part.end(); ++it) { 
 try{
@@ -1462,7 +1462,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,17,(max(max(@level_num_0,@le
    Rule(468,_,@level_num_0),
    produced(v2,v1,_,@level_num_1),
    Iactedin(v2,v0,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:992-27:1057])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:992-53:1057])_");
 if(!(rel_1_Iactedin->empty()) && !(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(468),0,0}});
@@ -1497,7 +1497,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,3,(max(max(@level_num_0,@lev
    Rule(570,_,@level_num_0),
    Iactedin(v2,v1,_,@level_num_1),
    actedin(v0,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:134-27:198])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:134-53:198])_");
 if(!(rel_8_delta_actedin->empty()) && !(rel_1_Iactedin->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(570),0,0}});
@@ -1535,7 +1535,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,5,(max(max(@level_num_0,@lev
    Rule(358,_,@level_num_0),
    ismarriedto(v0,v2,_,@level_num_1),
    actedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:245-27:312])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:245-53:312])_");
 if(!(rel_8_delta_actedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(358),0,0}});
@@ -1573,7 +1573,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,6,(max(max(@level_num_0,@lev
    Rule(538,_,@level_num_0),
    directed(v0,v2,_,@level_num_1),
    actedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:312-27:376])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:312-53:376])_");
 if(!(rel_8_delta_actedin->empty()) && !(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(538),0,0}});
@@ -1611,7 +1611,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,7,(max(max(@level_num_0,@lev
    Rule(490,_,@level_num_0),
    produced(v0,v2,_,@level_num_1),
    actedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:376-27:440])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:376-53:440])_");
 if(!(rel_8_delta_actedin->empty()) && !(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(490),0,0}});
@@ -1649,7 +1649,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,9,(max(max(@level_num_0,@lev
    Rule(430,_,@level_num_0),
    created(v0,v2,_,@level_num_1),
    actedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:508-27:571])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:508-53:571])_");
 if(!(rel_8_delta_actedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(430),0,0}});
@@ -1687,7 +1687,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,14,(max(max(@level_num_0,@le
    Rule(356,_,@level_num_0),
    ismarriedto(v2,v0,_,@level_num_1),
    actedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:796-27:863])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:796-53:863])_");
 if(!(rel_8_delta_actedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(356),0,0}});
@@ -1725,7 +1725,7 @@ SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,18,(max(max(@level_num_0,@le
    Rule(426,_,@level_num_0),
    created(v2,v1,_,@level_num_1),
    actedin(v0,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:1057-27:1120])_");
+in file /home/johannes/DatalogLearning/prosynth/films/rule.dl [53:1057-53:1120])_");
 if(!(rel_8_delta_actedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(426),0,0}});
@@ -2653,8 +2653,8 @@ auto range = rel_2_Rule->equalRange_1(key);
 auto part = range.partition();
 PARALLEL_START;
 CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
 CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
 pfor(auto it = part.begin(); it<part.end(); ++it) { 
 try{
 for(const auto& env0 : *it) {
@@ -3048,8 +3048,8 @@ auto range = rel_2_Rule->equalRange_1(key);
 auto part = range.partition();
 PARALLEL_START;
 CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
 CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
 pfor(auto it = part.begin(); it<part.end(); ++it) { 
 try{
 for(const auto& env0 : *it) {
@@ -4535,25 +4535,25 @@ PARALLEL_END;
 return;
 }
 };
-SouffleProgram *newInstance_program_small(){return new Sf_program_small;}
-SymbolTable *getST_program_small(SouffleProgram *p){return &reinterpret_cast<Sf_program_small*>(p)->symTable;}
+SouffleProgram *newInstance_rule_small(){return new Sf_rule_small;}
+SymbolTable *getST_rule_small(SouffleProgram *p){return &reinterpret_cast<Sf_rule_small*>(p)->symTable;}
 
 #ifdef __EMBEDDED_SOUFFLE__
-class factory_Sf_program_small: public souffle::ProgramFactory {
+class factory_Sf_rule_small: public souffle::ProgramFactory {
 SouffleProgram *newInstance() {
-return new Sf_program_small();
+return new Sf_rule_small();
 };
 public:
-factory_Sf_program_small() : ProgramFactory("program_small"){}
+factory_Sf_rule_small() : ProgramFactory("rule_small"){}
 };
-static factory_Sf_program_small __factory_Sf_program_small_instance;
+static factory_Sf_rule_small __factory_Sf_rule_small_instance;
 }
 #else
 }
 int main(int argc, char** argv)
 {
 try{
-souffle::CmdOptions opt(R"(solution.dl)",
+souffle::CmdOptions opt(R"(rule.dl)",
 R"(.)",
 R"(.)",
 false,
@@ -4561,7 +4561,7 @@ R"()",
 5000,
 -1);
 if (!opt.parse(argc,argv)) return 1;
-souffle::Sf_program_small obj;
+souffle::Sf_rule_small obj;
 #if defined(_OPENMP) 
 obj.setNumThreads(opt.getNumJobs());
 

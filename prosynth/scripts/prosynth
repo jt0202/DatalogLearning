@@ -580,7 +580,7 @@ while True:
                         lastline = line
                 for line in ans:
                     logging.info(line)
-                    solutionFile.write(line)
+                    solutionFile.write(line + "\n")
 
             logging.info(f'Calls to Z3: {callsToZ3}, Calls to Souffle: {callsToSouffle}')
             break

@@ -31,6 +31,7 @@ kbSize = Path(problemDirName + "/" + fileName).stat().st_size
 
 relations = []
 
+
 # File assumed to be in tsv format and not include any '/' sign 
 for line in kb:
     line = line.split('\t')
@@ -128,7 +129,6 @@ for rel in outputRelations:
             ruleFile.write("inv_" + str(i) + "(V,V)\n")
         ruleFile.write(outputRelation + "(V,V)\n" )
 
-    subprocess.run(["./scripts/rule-gen/generate-fast", problemDirName, str(width)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 
     def isConnected(rule):
         graph = nx.Graph()
@@ -175,11 +175,11 @@ for rel in outputRelations:
     with open(problemDirName + "/rules.dl", "w") as file:
         pass
 
-    subprocess.run(["./scripts/rule-gen/generate-fast", problemDirName, str(width)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
+    #subprocess.run(["./scripts/rule-gen/generate-fast", problemDirName, str(width)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
     relationPattern = re.compile('([a-zA-Z0-9_]+)\((v\d+), (v\d+)\)')
 
     print(relationtypes)
-
+  
     # Remove rules of the form A(x,y) :- A(x,y), B(x,y) as they don't offer any additional information
     with open(problemDirName + "/rules.dl", "r+") as ruleFile:
         with open(problemDirName + "/tmp.dl", "w") as tmp:
@@ -253,43 +253,7 @@ for rel in outputRelations:
         os.remove(problemDirName + "\souffle.small.out")
 
     subprocess.run(["./scripts/prepare", problemDirName, "souffle.small.out", "rules.dl"], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
-
-#taken from prosynth
-    def runSouffle(command):
-        with subprocess.Popen([ problemDirName + command, '-F', problemDirName, '-D', problemDirName, '-j', '32' ], \
-                                stdin=subprocess.PIPE, \
-                                stdout=subprocess.PIPE, \
-                                universal_newlines=True) as souffleProc:
-
-                while souffleProc.stdout.readline().strip() != '###': pass
-                while souffleProc.stdout.readline().strip() != '###': pass
-                def execSouffleCmd(cmd):
-                    #logging.info('prosynth to souffle: ' + cmd)
-                    print(cmd, file=souffleProc.stdin)
-                    souffleProc.stdin.flush()
-
-                    response = [ souffleProc.stdout.readline().strip() ]
-                    if response[-1] == '':
-                        return "error reading" #doesn't deal with underlying problem, just passes error through and skips question
-                        #return execSouffleCmd(cmd)
-                    while response[-1] != '###': 
-                        response.append(souffleProc.stdout.readline().strip())
-                    response = response[:-1]
-                    ans = '\n'.join(response)
-                    #logging.info('souffle to prosynth: ' + ans)
-                    return ans
-                execSouffleCmd('format json')
-                execSouffleCmd('setdepth 200000')
-
-    '''
-    #generate ruleHelperRelation
-    with open(problemDirName + "/Rule.facts", "w") as file:
-        num_lines = sum(1 for line in open(problemDirName + '/rules.dl'))
-        for i in range(1, num_lines):
-            file.write(str(i)+ "\n")
-
-    print("Evaluating Rules")
-
+    
     #taken from prosynth
     def runSouffle(command):
         with subprocess.Popen([ problemDirName + command, '-F', problemDirName, '-D', problemDirName, '-j', '32' ], \
@@ -316,25 +280,15 @@ for rel in outputRelations:
                     return ans
                 execSouffleCmd('format json')
                 execSouffleCmd('setdepth 200000')
-    runSouffle('/souffle.small.out')
 
-    #assumed to fit in memory for a cleaner code. Works for the tested examples from DBpedia and YAGO
-    expected = set(open(problemDirName + "/" + outputRelation + ".expected"))
-    producable = set(open(problemDirName + "/" + outputRelation + ".csv"))
-
-    goal = expected.intersection(producable)
-
-    if len(goal) == 0:
-        print("No mining possible")
-        with open(problemDirName + "/evaluation_" +  outputRelation + ".txt", "w") as evFile:
-            evFile.write("No Mining possible")
-            relations.remove("I" + outputRelation)
-        continue
     
-    with open(problemDirName + "/" + outputRelation + ".expected", "w") as file:
-        for line in goal:
-            file.write(line)
-    '''
+    #generate ruleHelperRelation
+    with open(problemDirName + "/Rule.facts", "w") as file:
+        num_lines = sum(1 for line in open(problemDirName + '/rules.dl'))
+        for i in range(1, num_lines):
+            file.write(str(i)+ "\n")
+    
+   
     print("Preparation finished!")
 
     subprocess.run(["./scripts/prosynth", problemDirName, "0", "1", "data.log"], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
@@ -352,15 +306,21 @@ for rel in outputRelations:
         runSouffle("/program.small.out")
 
         rules = []
+        prefix = []
+        prefixdef = True
 
         with open(problemDirName + "/solution.dl") as solFile:
             for line in solFile:
+                if ":-" in line:
+                    prefixdef = False
                 evFile.write(line + "\n")
-                rules.append(line)
+                if prefixdef:
+                    prefix.append(line + "\n")
+                else:
+                    rules.append(line + "\n")
         produced = set(open(problemDirName + "/" + outputRelation + ".csv"))
         expected = set(open(problemDirName + "/test.csv"))
         
-        relations.remove("I" + outputRelation)
 
         if len(expected) == 0:
             continue
@@ -385,25 +345,11 @@ for rel in outputRelations:
         for rule in rules:
             if "inv" in rule:
                 continue
-            if ":" not in rule:
-                continue
-            rulerelations = set()
-
-            result = re.findall(relationPattern, rule)
-            for match in result:
-                rulerelations.add(match[0])
 
             #support
             with open(problemDirName + "/rule.dl", "w") as ruleFile:
-                ruleFile.write(".type V\n\n")
-                for rel in rulerelations:
-                    if rel == outputRelation:
-                        continue
-                    if rel == "Rule":
-                        ruleFile.write(".decl " +  relation + "(v0: number)\n" + ".input " + relation + "\n\n")
-                        continue
-                    ruleFile.write(".decl " +  relation + "(v0: V, v1: V)\n" + ".input " + relation + "\n\n")
-                ruleFile.write(".decl " +  relation + "\n" + ".output " + relation + "\n\n")
+                for line in prefix:
+                    ruleFile.write(line)
                 ruleFile.write(rule + "\n")
             subprocess.run(["./scripts/prepare", problemDirName, "rule.small.out", "rule.dl"],\
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
@@ -417,16 +363,10 @@ for rel in outputRelations:
 
             #confidence
             with open(problemDirName + "/rule.dl", "w") as ruleFile:
-                ruleFile.write(".type V\n\n")
-                for rel in rulerelations:
-                    if rel == outputRelation:
-                        continue
-                    if rel == "Rule":
-                        ruleFile.write(".decl " +  relation + "(v0: number)\n" + ".input " + relation + "\n\n")
-                        continue
-                    ruleFile.write(".decl " +  relation + "(v0: V, v1: V)\n" + ".input " + relation + "\n\n")
-                ruleFile.write(".decl out(v0: V, v1: V)\n" + ".output " + relation + "\n\n")
-                ruleFile.write("out(v0, v1):" + rule.split(":")[:-2] + ", " + outputRelation + "(v0, v1).\n")
+                for line in prefix:
+                    ruleFile.write(line)
+                ruleFile.write(".decl out(v0: V, v1: V)\n" + ".output out\n\n")
+                ruleFile.write("out(v0, v1):" + rule.split(":")[1][:-2] + ", " + outputRelation + "(v0, v1).\n")
             subprocess.run(["./scripts/prepare", problemDirName, "rule.small.out", "rule.dl"],\
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 
@@ -435,6 +375,8 @@ for rel in outputRelations:
                 confidence = support + 1
             confidence = confidence / support
             evFile.write(rule + " Support: " + str(support) + "\n")
+
+        relations.remove("I" + outputRelation)
 
         evFile.write("Time spent (in min): " +str(endtime / 60))
         evFile.write("Time spent (in s): " +str(endtime ))
