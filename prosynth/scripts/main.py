@@ -24,7 +24,7 @@ numberOfInventedPredicates = 1
 relevancethreshhold = 0.01
 negativeExampleAmount = 5
 train_test_split = 0.25
-multipleRelations = False
+multipleRelations = True
 
 kb = open(problemDirName + "/" + fileName, encoding = "utf-8")
 kbSize = Path(problemDirName + "/" + fileName).stat().st_size
