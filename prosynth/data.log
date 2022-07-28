@@ -85,3 +85,6 @@
 {name: 'yago', z3: 1, souffle: 1, runtime: 0.3137168884277344, setting_delta: 1}
 {name: 'yago', z3: 1, souffle: 1, runtime: 0.44434094429016113, setting_delta: 1}
 {name: 'yago', z3: 1, souffle: 1, runtime: 0.44458937644958496, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 145.02736926078796, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 144.34798097610474, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 144.54519391059875, setting_delta: 1}

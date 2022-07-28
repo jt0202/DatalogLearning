@@ -383,11 +383,13 @@ for rel in outputRelations:
 
         #evaluate single rules
         for rule in rules:
-            if "inv" in rules:
+            if "inv" in rule:
+                continue
+            if ":" not in rule:
                 continue
             rulerelations = set()
 
-            result = re.findall(relationPattern, line)
+            result = re.findall(relationPattern, rule)
             for match in result:
                 rulerelations.add(match[0])
 
@@ -402,7 +404,7 @@ for rel in outputRelations:
                         continue
                     ruleFile.write(".decl " +  relation + "(v0: V, v1: V)\n" + ".input " + relation + "\n\n")
                 ruleFile.write(".decl " +  relation + "\n" + ".output " + relation + "\n\n")
-                ruleFile.write(rule)
+                ruleFile.write(rule + "\n")
             subprocess.run(["./scripts/prepare", problemDirName, "rule.small.out", "rule.dl"],\
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 

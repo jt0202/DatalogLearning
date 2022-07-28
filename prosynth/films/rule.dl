@@ -1,0 +1,7 @@
+.type V
+
+.decl actedin
+.output actedin
+
+.decl Rule(n: number)
+

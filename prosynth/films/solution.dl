@@ -1,0 +1,27 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl ismarriedto(v0: V, v1: V)
+.input ismarriedto
+
+.decl created(v0: V, v1: V)
+.input created
+
+.decl produced(v0: V, v1: V)
+.input produced
+
+.decl directed(v0: V, v1: V)
+.input directed
+
+.decl Iactedin(v0: V, v1: V)
+.input Iactedin
+
+.decl inv_0(v0: V, v1: V)
+.output inv_0
+
+.decl actedin(v0: V, v1: V)
+.output actedin
+
+actedin(v0, v1) :- ismarriedto(v2, v1), Iactedin(v2, v0), Rule(336).actedin(v0, v1) :- directed(v2, v1), Iactedin(v2, v0), Rule(516).actedin(v0, v1) :- Iactedin(v2, v1), actedin(v0, v2), Rule(570).actedin(v0, v1) :- produced(v0, v1), Rule(268).actedin(v0, v1) :- ismarriedto(v0, v2), actedin(v1, v2), Rule(358).actedin(v0, v1) :- directed(v0, v2), actedin(v1, v2), Rule(538).actedin(v0, v1) :- produced(v0, v2), actedin(v1, v2), Rule(490).actedin(v0, v1) :- ismarriedto(v2, v0), Iactedin(v2, v1), Rule(333).actedin(v0, v1) :- created(v0, v2), actedin(v1, v2), Rule(430).actedin(v0, v1) :- directed(v0, v1), Rule(270).actedin(v0, v1) :- created(v0, v1), Rule(266).actedin(v0, v1) :- ismarriedto(v1, v2), Iactedin(v2, v0), Rule(331).actedin(v0, v1) :- created(v1, v2), Iactedin(v0, v2), Rule(409).actedin(v0, v1) :- ismarriedto(v2, v0), actedin(v1, v2), Rule(356).actedin(v0, v1) :- Iactedin(v0, v2), Iactedin(v1, v2), Rule(550).actedin(v0, v1) :- created(v2, v1), Iactedin(v2, v0), Rule(408).actedin(v0, v1) :- produced(v2, v1), Iactedin(v2, v0), Rule(468).actedin(v0, v1) :- created(v2, v1), actedin(v0, v2), Rule(426).
