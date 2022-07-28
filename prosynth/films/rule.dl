@@ -53,4 +53,4 @@
 .decl out(v0: V, v1: V)
 .output out
 
-out(v0, v1):- ismarriedto(v2, v1), Iactedin(v2, v0), Rule(336).actedin(v0, v1, actedin(v0, v1).
+out(v0, v1):- ismarriedto(v2, v0), actedin(v1, v2), Rule(356), actedin(v0, v1).

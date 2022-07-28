@@ -175,7 +175,7 @@ for rel in outputRelations:
     with open(problemDirName + "/rules.dl", "w") as file:
         pass
 
-    #subprocess.run(["./scripts/rule-gen/generate-fast", problemDirName, str(width)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
+    subprocess.run(["./scripts/rule-gen/generate-fast", problemDirName, str(width)], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
     relationPattern = re.compile('([a-zA-Z0-9_]+)\((v\d+), (v\d+)\)')
 
     print(relationtypes)
@@ -256,7 +256,7 @@ for rel in outputRelations:
     
     #taken from prosynth
     def runSouffle(command):
-        with subprocess.Popen([ problemDirName + command, '-F', problemDirName, '-D', problemDirName, '-j', '32' ], \
+        with subprocess.Popen([ problemDirName + command, '-F', problemDirName, '-D', problemDirName, '-j', '5000' ], \
                                 stdin=subprocess.PIPE, \
                                 stdout=subprocess.PIPE, \
                                 universal_newlines=True) as souffleProc:
@@ -357,24 +357,29 @@ for rel in outputRelations:
             runSouffle("/rule.small.out")
 
             support = 0
-            with open(problemDirName + "/" + outputRelation + ".csv", "w") as file:
-                support = support + 1
+            with open(problemDirName + "/" + outputRelation + ".csv", "r") as file:
+                for line in file:
+                    support = support + 1
             evFile.write(rule + " Support: " + str(support) + "\n")
+            
+            if support == 0:
+                continue
 
             #confidence
             with open(problemDirName + "/rule.dl", "w") as ruleFile:
                 for line in prefix:
                     ruleFile.write(line)
                 ruleFile.write(".decl out(v0: V, v1: V)\n" + ".output out\n\n")
-                ruleFile.write("out(v0, v1):" + rule.split(":")[1][:-2] + ", " + outputRelation + "(v0, v1).\n")
+                ruleFile.write("out(v0, v1):" + rule.split(":")[1].split(".")[0] + ", " + outputRelation + "(v0, v1).\n")
             subprocess.run(["./scripts/prepare", problemDirName, "rule.small.out", "rule.dl"],\
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 
             confidence = 0
-            with open(problemDirName + "/" + outputRelation + ".csv", "w") as file:
-                confidence = support + 1
+            with open(problemDirName + "/" + outputRelation + ".csv", "r") as file:
+                for line in file:
+                    confidence = confidence + 1
             confidence = confidence / support
-            evFile.write(rule + " Support: " + str(support) + "\n")
+            evFile.write(" Confidence: " + str(confidence) + "\n")
 
         relations.remove("I" + outputRelation)
 

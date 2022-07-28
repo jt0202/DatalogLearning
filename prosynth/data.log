@@ -88,3 +88,7 @@
 {name: 'films', z3: 1, souffle: 1, runtime: 145.02736926078796, setting_delta: 1}
 {name: 'films', z3: 1, souffle: 1, runtime: 144.34798097610474, setting_delta: 1}
 {name: 'films', z3: 1, souffle: 1, runtime: 144.54519391059875, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 145.79386973381042, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 146.02666068077087, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 208.3232011795044, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 208.4958667755127, setting_delta: 1}

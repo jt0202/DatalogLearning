@@ -176,7 +176,7 @@ while True:
         pass
 
     currTime = time.clock_gettime(0)
-    with subprocess.Popen([ problemDirName + '/souffle.small.out', '-F', problemDirName, '-D', problemDirName, '-j', '20000' ], \
+    with subprocess.Popen([ problemDirName + '/souffle.small.out', '-F', problemDirName, '-D', problemDirName, '-j', '30000' ], \
                         stdin=subprocess.PIPE, \
                         stdout=subprocess.PIPE, \
                         universal_newlines=True) as souffleProc:

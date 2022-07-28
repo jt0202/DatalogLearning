@@ -502,101 +502,6 @@ o << prefix << "Lower-bound: " << stats_0.lower_bound.getHits() << "/" << stats_
 o << prefix << "Upper-bound: " << stats_0.upper_bound.getHits() << "/" << stats_0.upper_bound.getMisses() << "/" << stats_0.upper_bound.getAccesses() << "\n";
 }
 };
-struct t_btree_6__0_1_2_3_4_5__63 {
-using t_tuple = Tuple<RamDomain, 6>;
-using t_ind_0 = btree_set<t_tuple, index_utils::comparator<0,1,2,3,4,5>>;
-t_ind_0 ind_0;
-using iterator = t_ind_0::iterator;
-struct context {
-t_ind_0::operation_hints hints_0;
-};
-context createContext() { return context(); }
-bool insert(const t_tuple& t) {
-context h;
-return insert(t, h);
-}
-bool insert(const t_tuple& t, context& h) {
-if (ind_0.insert(t, h.hints_0)) {
-return true;
-} else return false;
-}
-bool insert(const RamDomain* ramDomain) {
-RamDomain data[6];
-std::copy(ramDomain, ramDomain + 6, data);
-const t_tuple& tuple = reinterpret_cast<const t_tuple&>(data);
-context h;
-return insert(tuple, h);
-}
-bool insert(RamDomain a0,RamDomain a1,RamDomain a2,RamDomain a3,RamDomain a4,RamDomain a5) {
-RamDomain data[6] = {a0,a1,a2,a3,a4,a5};
-return insert(data);
-}
-template <typename T>
-void insertAll(T& other) {
-for (auto const& cur : other) {
-insert(cur);
-}
-}
-void insertAll(t_btree_6__0_1_2_3_4_5__63& other) {
-ind_0.insertAll(other.ind_0);
-}
-bool contains(const t_tuple& t, context& h) const {
-return ind_0.contains(t, h.hints_0);
-}
-bool contains(const t_tuple& t) const {
-context h;
-return contains(t, h);
-}
-std::size_t size() const {
-return ind_0.size();
-}
-iterator find(const t_tuple& t, context& h) const {
-return ind_0.find(t, h.hints_0);
-}
-iterator find(const t_tuple& t) const {
-context h;
-return find(t, h);
-}
-range<iterator> equalRange_0(const t_tuple& t, context& h) const {
-return range<iterator>(ind_0.begin(),ind_0.end());
-}
-range<iterator> equalRange_0(const t_tuple& t) const {
-return range<iterator>(ind_0.begin(),ind_0.end());
-}
-range<t_ind_0::iterator> equalRange_63(const t_tuple& t, context& h) const {
-auto pos = ind_0.find(t, h.hints_0);
-auto fin = ind_0.end();
-if (pos != fin) {fin = pos; ++fin;}
-return make_range(pos, fin);
-}
-range<t_ind_0::iterator> equalRange_63(const t_tuple& t) const {
-context h;
-return equalRange_63(t, h);
-}
-bool empty() const {
-return ind_0.empty();
-}
-std::vector<range<iterator>> partition() const {
-return ind_0.getChunks(400);
-}
-void purge() {
-ind_0.clear();
-}
-iterator begin() const {
-return ind_0.begin();
-}
-iterator end() const {
-return ind_0.end();
-}
-void printHintStatistics(std::ostream& o, const std::string prefix) const {
-const auto& stats_0 = ind_0.getHintStatistics();
-o << prefix << "arity 6 direct b-tree index [0,1,2,3,4,5]: (hits/misses/total)\n";
-o << prefix << "Insert: " << stats_0.inserts.getHits() << "/" << stats_0.inserts.getMisses() << "/" << stats_0.inserts.getAccesses() << "\n";
-o << prefix << "Contains: " << stats_0.contains.getHits() << "/" << stats_0.contains.getMisses() << "/" << stats_0.contains.getAccesses() << "\n";
-o << prefix << "Lower-bound: " << stats_0.lower_bound.getHits() << "/" << stats_0.lower_bound.getMisses() << "/" << stats_0.lower_bound.getAccesses() << "\n";
-o << prefix << "Upper-bound: " << stats_0.upper_bound.getHits() << "/" << stats_0.upper_bound.getMisses() << "/" << stats_0.upper_bound.getAccesses() << "\n";
-}
-};
 struct t_btree_5__0_1_2_3_4__31 {
 using t_tuple = Tuple<RamDomain, 5>;
 using t_ind_0 = btree_set<t_tuple, index_utils::comparator<0,1,2,3,4>>;
@@ -686,6 +591,101 @@ return ind_0.end();
 void printHintStatistics(std::ostream& o, const std::string prefix) const {
 const auto& stats_0 = ind_0.getHintStatistics();
 o << prefix << "arity 5 direct b-tree index [0,1,2,3,4]: (hits/misses/total)\n";
+o << prefix << "Insert: " << stats_0.inserts.getHits() << "/" << stats_0.inserts.getMisses() << "/" << stats_0.inserts.getAccesses() << "\n";
+o << prefix << "Contains: " << stats_0.contains.getHits() << "/" << stats_0.contains.getMisses() << "/" << stats_0.contains.getAccesses() << "\n";
+o << prefix << "Lower-bound: " << stats_0.lower_bound.getHits() << "/" << stats_0.lower_bound.getMisses() << "/" << stats_0.lower_bound.getAccesses() << "\n";
+o << prefix << "Upper-bound: " << stats_0.upper_bound.getHits() << "/" << stats_0.upper_bound.getMisses() << "/" << stats_0.upper_bound.getAccesses() << "\n";
+}
+};
+struct t_btree_6__0_1_2_3_4_5__63 {
+using t_tuple = Tuple<RamDomain, 6>;
+using t_ind_0 = btree_set<t_tuple, index_utils::comparator<0,1,2,3,4,5>>;
+t_ind_0 ind_0;
+using iterator = t_ind_0::iterator;
+struct context {
+t_ind_0::operation_hints hints_0;
+};
+context createContext() { return context(); }
+bool insert(const t_tuple& t) {
+context h;
+return insert(t, h);
+}
+bool insert(const t_tuple& t, context& h) {
+if (ind_0.insert(t, h.hints_0)) {
+return true;
+} else return false;
+}
+bool insert(const RamDomain* ramDomain) {
+RamDomain data[6];
+std::copy(ramDomain, ramDomain + 6, data);
+const t_tuple& tuple = reinterpret_cast<const t_tuple&>(data);
+context h;
+return insert(tuple, h);
+}
+bool insert(RamDomain a0,RamDomain a1,RamDomain a2,RamDomain a3,RamDomain a4,RamDomain a5) {
+RamDomain data[6] = {a0,a1,a2,a3,a4,a5};
+return insert(data);
+}
+template <typename T>
+void insertAll(T& other) {
+for (auto const& cur : other) {
+insert(cur);
+}
+}
+void insertAll(t_btree_6__0_1_2_3_4_5__63& other) {
+ind_0.insertAll(other.ind_0);
+}
+bool contains(const t_tuple& t, context& h) const {
+return ind_0.contains(t, h.hints_0);
+}
+bool contains(const t_tuple& t) const {
+context h;
+return contains(t, h);
+}
+std::size_t size() const {
+return ind_0.size();
+}
+iterator find(const t_tuple& t, context& h) const {
+return ind_0.find(t, h.hints_0);
+}
+iterator find(const t_tuple& t) const {
+context h;
+return find(t, h);
+}
+range<iterator> equalRange_0(const t_tuple& t, context& h) const {
+return range<iterator>(ind_0.begin(),ind_0.end());
+}
+range<iterator> equalRange_0(const t_tuple& t) const {
+return range<iterator>(ind_0.begin(),ind_0.end());
+}
+range<t_ind_0::iterator> equalRange_63(const t_tuple& t, context& h) const {
+auto pos = ind_0.find(t, h.hints_0);
+auto fin = ind_0.end();
+if (pos != fin) {fin = pos; ++fin;}
+return make_range(pos, fin);
+}
+range<t_ind_0::iterator> equalRange_63(const t_tuple& t) const {
+context h;
+return equalRange_63(t, h);
+}
+bool empty() const {
+return ind_0.empty();
+}
+std::vector<range<iterator>> partition() const {
+return ind_0.getChunks(400);
+}
+void purge() {
+ind_0.clear();
+}
+iterator begin() const {
+return ind_0.begin();
+}
+iterator end() const {
+return ind_0.end();
+}
+void printHintStatistics(std::ostream& o, const std::string prefix) const {
+const auto& stats_0 = ind_0.getHintStatistics();
+o << prefix << "arity 6 direct b-tree index [0,1,2,3,4,5]: (hits/misses/total)\n";
 o << prefix << "Insert: " << stats_0.inserts.getHits() << "/" << stats_0.inserts.getMisses() << "/" << stats_0.inserts.getAccesses() << "\n";
 o << prefix << "Contains: " << stats_0.contains.getHits() << "/" << stats_0.contains.getMisses() << "/" << stats_0.contains.getAccesses() << "\n";
 o << prefix << "Lower-bound: " << stats_0.lower_bound.getHits() << "/" << stats_0.lower_bound.getMisses() << "/" << stats_0.lower_bound.getAccesses() << "\n";
@@ -826,44 +826,50 @@ SymbolTable symTable
 {
 	R"_(v0,v1)_",
 	R"_(Rule)_",
-	R"_(ismarriedto,v2,v1)_",
+	R"_(produced,v0,v1)_",
+	R"_(actedin(v0,v1) :- 
+   Rule(268),
+   produced(v0,v1).)_",
+	R"_(created,v1,v2)_",
+	R"_(Iactedin,v0,v2)_",
+	R"_(actedin(v0,v1) :- 
+   Rule(409),
+   created(v1,v2),
+   Iactedin(v0,v2).)_",
+	R"_(produced,v2,v1)_",
 	R"_(Iactedin,v2,v0)_",
 	R"_(actedin(v0,v1) :- 
-   Rule(336),
-   ismarriedto(v2,v1),
+   Rule(468),
+   produced(v2,v1),
    Iactedin(v2,v0).)_",
 	R"_(directed,v2,v1)_",
 	R"_(actedin(v0,v1) :- 
    Rule(516),
    directed(v2,v1),
    Iactedin(v2,v0).)_",
-	R"_(Iactedin,v2,v1)_",
-	R"_(actedin,v0,v2)_",
+	R"_(Iactedin,v1,v2)_",
 	R"_(actedin(v0,v1) :- 
-   Rule(570),
-   Iactedin(v2,v1),
-   actedin(v0,v2).)_",
-	R"_(produced,v0,v1)_",
+   Rule(550),
+   Iactedin(v0,v2),
+   Iactedin(v1,v2).)_",
+	R"_(ismarriedto,v1,v2)_",
 	R"_(actedin(v0,v1) :- 
-   Rule(268),
-   produced(v0,v1).)_",
-	R"_(ismarriedto,v0,v2)_",
+   Rule(331),
+   ismarriedto(v1,v2),
+   Iactedin(v2,v0).)_",
+	R"_(ismarriedto,v2,v0)_",
 	R"_(actedin,v1,v2)_",
 	R"_(actedin(v0,v1) :- 
-   Rule(358),
-   ismarriedto(v0,v2),
+   Rule(356),
+   ismarriedto(v2,v0),
    actedin(v1,v2).)_",
-	R"_(directed,v0,v2)_",
+	R"_(created,v2,v1)_",
+	R"_(actedin,v0,v2)_",
 	R"_(actedin(v0,v1) :- 
-   Rule(538),
-   directed(v0,v2),
-   actedin(v1,v2).)_",
-	R"_(produced,v0,v2)_",
-	R"_(actedin(v0,v1) :- 
-   Rule(490),
-   produced(v0,v2),
-   actedin(v1,v2).)_",
-	R"_(ismarriedto,v2,v0)_",
+   Rule(426),
+   created(v2,v1),
+   actedin(v0,v2).)_",
+	R"_(Iactedin,v2,v1)_",
 	R"_(actedin(v0,v1) :- 
    Rule(333),
    ismarriedto(v2,v0),
@@ -873,48 +879,42 @@ SymbolTable symTable
    Rule(430),
    created(v0,v2),
    actedin(v1,v2).)_",
+	R"_(produced,v0,v2)_",
+	R"_(actedin(v0,v1) :- 
+   Rule(490),
+   produced(v0,v2),
+   actedin(v1,v2).)_",
 	R"_(directed,v0,v1)_",
 	R"_(actedin(v0,v1) :- 
    Rule(270),
    directed(v0,v1).)_",
+	R"_(ismarriedto,v2,v1)_",
+	R"_(actedin(v0,v1) :- 
+   Rule(336),
+   ismarriedto(v2,v1),
+   Iactedin(v2,v0).)_",
+	R"_(actedin(v0,v1) :- 
+   Rule(570),
+   Iactedin(v2,v1),
+   actedin(v0,v2).)_",
+	R"_(ismarriedto,v0,v2)_",
+	R"_(actedin(v0,v1) :- 
+   Rule(358),
+   ismarriedto(v0,v2),
+   actedin(v1,v2).)_",
 	R"_(created,v0,v1)_",
 	R"_(actedin(v0,v1) :- 
    Rule(266),
    created(v0,v1).)_",
-	R"_(ismarriedto,v1,v2)_",
-	R"_(actedin(v0,v1) :- 
-   Rule(331),
-   ismarriedto(v1,v2),
-   Iactedin(v2,v0).)_",
-	R"_(created,v1,v2)_",
-	R"_(Iactedin,v0,v2)_",
-	R"_(actedin(v0,v1) :- 
-   Rule(409),
-   created(v1,v2),
-   Iactedin(v0,v2).)_",
-	R"_(actedin(v0,v1) :- 
-   Rule(356),
-   ismarriedto(v2,v0),
-   actedin(v1,v2).)_",
-	R"_(Iactedin,v1,v2)_",
-	R"_(actedin(v0,v1) :- 
-   Rule(550),
-   Iactedin(v0,v2),
-   Iactedin(v1,v2).)_",
-	R"_(created,v2,v1)_",
 	R"_(actedin(v0,v1) :- 
    Rule(408),
    created(v2,v1),
    Iactedin(v2,v0).)_",
-	R"_(produced,v2,v1)_",
+	R"_(directed,v0,v2)_",
 	R"_(actedin(v0,v1) :- 
-   Rule(468),
-   produced(v2,v1),
-   Iactedin(v2,v0).)_",
-	R"_(actedin(v0,v1) :- 
-   Rule(426),
-   created(v2,v1),
-   actedin(v0,v2).)_",
+   Rule(538),
+   directed(v0,v2),
+   actedin(v1,v2).)_",
 };// -- Table: Iactedin
 std::unique_ptr<t_btree_4__0_1_3_2__1_0_2_3__1__2__3__15> rel_1_Iactedin = std::make_unique<t_btree_4__0_1_3_2__1_0_2_3__1__2__3__15>();
 souffle::RelationWrapper<0,t_btree_4__0_1_3_2__1_0_2_3__1__2__3__15,Tuple<RamDomain,4>,4> wrapper_rel_1_Iactedin;
@@ -941,17 +941,17 @@ std::unique_ptr<t_btree_4__1_0_2_3__2__15> rel_8_delta_actedin = std::make_uniqu
 // -- Table: @new_actedin
 std::unique_ptr<t_btree_4__1_0_2_3__2__15> rel_9_new_actedin = std::make_unique<t_btree_4__1_0_2_3__2__15>();
 // -- Table: actedin.@info.1
-std::unique_ptr<t_btree_6__0_1_2_3_4_5__63> rel_10_actedin_info_1 = std::make_unique<t_btree_6__0_1_2_3_4_5__63>();
-souffle::RelationWrapper<7,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wrapper_rel_10_actedin_info_1;
+std::unique_ptr<t_btree_5__0_1_2_3_4__31> rel_10_actedin_info_1 = std::make_unique<t_btree_5__0_1_2_3_4__31>();
+souffle::RelationWrapper<7,t_btree_5__0_1_2_3_4__31,Tuple<RamDomain,5>,5> wrapper_rel_10_actedin_info_1;
 // -- Table: actedin.@info.10
-std::unique_ptr<t_btree_5__0_1_2_3_4__31> rel_11_actedin_info_10 = std::make_unique<t_btree_5__0_1_2_3_4__31>();
-souffle::RelationWrapper<8,t_btree_5__0_1_2_3_4__31,Tuple<RamDomain,5>,5> wrapper_rel_11_actedin_info_10;
+std::unique_ptr<t_btree_6__0_1_2_3_4_5__63> rel_11_actedin_info_10 = std::make_unique<t_btree_6__0_1_2_3_4_5__63>();
+souffle::RelationWrapper<8,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wrapper_rel_11_actedin_info_10;
 // -- Table: actedin.@info.11
-std::unique_ptr<t_btree_5__0_1_2_3_4__31> rel_12_actedin_info_11 = std::make_unique<t_btree_5__0_1_2_3_4__31>();
-souffle::RelationWrapper<9,t_btree_5__0_1_2_3_4__31,Tuple<RamDomain,5>,5> wrapper_rel_12_actedin_info_11;
+std::unique_ptr<t_btree_6__0_1_2_3_4_5__63> rel_12_actedin_info_11 = std::make_unique<t_btree_6__0_1_2_3_4_5__63>();
+souffle::RelationWrapper<9,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wrapper_rel_12_actedin_info_11;
 // -- Table: actedin.@info.12
-std::unique_ptr<t_btree_6__0_1_2_3_4_5__63> rel_13_actedin_info_12 = std::make_unique<t_btree_6__0_1_2_3_4_5__63>();
-souffle::RelationWrapper<10,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wrapper_rel_13_actedin_info_12;
+std::unique_ptr<t_btree_5__0_1_2_3_4__31> rel_13_actedin_info_12 = std::make_unique<t_btree_5__0_1_2_3_4__31>();
+souffle::RelationWrapper<10,t_btree_5__0_1_2_3_4__31,Tuple<RamDomain,5>,5> wrapper_rel_13_actedin_info_12;
 // -- Table: actedin.@info.13
 std::unique_ptr<t_btree_6__0_1_2_3_4_5__63> rel_14_actedin_info_13 = std::make_unique<t_btree_6__0_1_2_3_4_5__63>();
 souffle::RelationWrapper<11,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wrapper_rel_14_actedin_info_13;
@@ -962,8 +962,8 @@ souffle::RelationWrapper<12,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wra
 std::unique_ptr<t_btree_6__0_1_2_3_4_5__63> rel_16_actedin_info_15 = std::make_unique<t_btree_6__0_1_2_3_4_5__63>();
 souffle::RelationWrapper<13,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wrapper_rel_16_actedin_info_15;
 // -- Table: actedin.@info.16
-std::unique_ptr<t_btree_6__0_1_2_3_4_5__63> rel_17_actedin_info_16 = std::make_unique<t_btree_6__0_1_2_3_4_5__63>();
-souffle::RelationWrapper<14,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wrapper_rel_17_actedin_info_16;
+std::unique_ptr<t_btree_5__0_1_2_3_4__31> rel_17_actedin_info_16 = std::make_unique<t_btree_5__0_1_2_3_4__31>();
+souffle::RelationWrapper<14,t_btree_5__0_1_2_3_4__31,Tuple<RamDomain,5>,5> wrapper_rel_17_actedin_info_16;
 // -- Table: actedin.@info.17
 std::unique_ptr<t_btree_6__0_1_2_3_4_5__63> rel_18_actedin_info_17 = std::make_unique<t_btree_6__0_1_2_3_4_5__63>();
 souffle::RelationWrapper<15,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wrapper_rel_18_actedin_info_17;
@@ -977,8 +977,8 @@ souffle::RelationWrapper<17,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wra
 std::unique_ptr<t_btree_6__0_1_2_3_4_5__63> rel_21_actedin_info_3 = std::make_unique<t_btree_6__0_1_2_3_4_5__63>();
 souffle::RelationWrapper<18,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wrapper_rel_21_actedin_info_3;
 // -- Table: actedin.@info.4
-std::unique_ptr<t_btree_5__0_1_2_3_4__31> rel_22_actedin_info_4 = std::make_unique<t_btree_5__0_1_2_3_4__31>();
-souffle::RelationWrapper<19,t_btree_5__0_1_2_3_4__31,Tuple<RamDomain,5>,5> wrapper_rel_22_actedin_info_4;
+std::unique_ptr<t_btree_6__0_1_2_3_4_5__63> rel_22_actedin_info_4 = std::make_unique<t_btree_6__0_1_2_3_4_5__63>();
+souffle::RelationWrapper<19,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wrapper_rel_22_actedin_info_4;
 // -- Table: actedin.@info.5
 std::unique_ptr<t_btree_6__0_1_2_3_4_5__63> rel_23_actedin_info_5 = std::make_unique<t_btree_6__0_1_2_3_4_5__63>();
 souffle::RelationWrapper<20,t_btree_6__0_1_2_3_4_5__63,Tuple<RamDomain,6>,6> wrapper_rel_23_actedin_info_5;
@@ -1013,13 +1013,13 @@ wrapper_rel_6_produced(*rel_6_produced,symTable,"produced",std::array<const char
 
 wrapper_rel_7_actedin(*rel_7_actedin,symTable,"actedin",std::array<const char *,4>{{"s:V","s:V","i:number","i:number"}},std::array<const char *,4>{{"v0","v1","@rule_number","@level_number"}}),
 
-wrapper_rel_10_actedin_info_1(*rel_10_actedin_info_1,symTable,"actedin.@info.1",std::array<const char *,6>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,6>{{"clause_num","head_vars","rel_0","rel_1","rel_2","clause_repr"}}),
+wrapper_rel_10_actedin_info_1(*rel_10_actedin_info_1,symTable,"actedin.@info.1",std::array<const char *,5>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,5>{{"clause_num","head_vars","rel_0","rel_1","clause_repr"}}),
 
-wrapper_rel_11_actedin_info_10(*rel_11_actedin_info_10,symTable,"actedin.@info.10",std::array<const char *,5>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,5>{{"clause_num","head_vars","rel_0","rel_1","clause_repr"}}),
+wrapper_rel_11_actedin_info_10(*rel_11_actedin_info_10,symTable,"actedin.@info.10",std::array<const char *,6>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,6>{{"clause_num","head_vars","rel_0","rel_1","rel_2","clause_repr"}}),
 
-wrapper_rel_12_actedin_info_11(*rel_12_actedin_info_11,symTable,"actedin.@info.11",std::array<const char *,5>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,5>{{"clause_num","head_vars","rel_0","rel_1","clause_repr"}}),
+wrapper_rel_12_actedin_info_11(*rel_12_actedin_info_11,symTable,"actedin.@info.11",std::array<const char *,6>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,6>{{"clause_num","head_vars","rel_0","rel_1","rel_2","clause_repr"}}),
 
-wrapper_rel_13_actedin_info_12(*rel_13_actedin_info_12,symTable,"actedin.@info.12",std::array<const char *,6>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,6>{{"clause_num","head_vars","rel_0","rel_1","rel_2","clause_repr"}}),
+wrapper_rel_13_actedin_info_12(*rel_13_actedin_info_12,symTable,"actedin.@info.12",std::array<const char *,5>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,5>{{"clause_num","head_vars","rel_0","rel_1","clause_repr"}}),
 
 wrapper_rel_14_actedin_info_13(*rel_14_actedin_info_13,symTable,"actedin.@info.13",std::array<const char *,6>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,6>{{"clause_num","head_vars","rel_0","rel_1","rel_2","clause_repr"}}),
 
@@ -1027,7 +1027,7 @@ wrapper_rel_15_actedin_info_14(*rel_15_actedin_info_14,symTable,"actedin.@info.1
 
 wrapper_rel_16_actedin_info_15(*rel_16_actedin_info_15,symTable,"actedin.@info.15",std::array<const char *,6>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,6>{{"clause_num","head_vars","rel_0","rel_1","rel_2","clause_repr"}}),
 
-wrapper_rel_17_actedin_info_16(*rel_17_actedin_info_16,symTable,"actedin.@info.16",std::array<const char *,6>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,6>{{"clause_num","head_vars","rel_0","rel_1","rel_2","clause_repr"}}),
+wrapper_rel_17_actedin_info_16(*rel_17_actedin_info_16,symTable,"actedin.@info.16",std::array<const char *,5>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,5>{{"clause_num","head_vars","rel_0","rel_1","clause_repr"}}),
 
 wrapper_rel_18_actedin_info_17(*rel_18_actedin_info_17,symTable,"actedin.@info.17",std::array<const char *,6>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,6>{{"clause_num","head_vars","rel_0","rel_1","rel_2","clause_repr"}}),
 
@@ -1037,7 +1037,7 @@ wrapper_rel_20_actedin_info_2(*rel_20_actedin_info_2,symTable,"actedin.@info.2",
 
 wrapper_rel_21_actedin_info_3(*rel_21_actedin_info_3,symTable,"actedin.@info.3",std::array<const char *,6>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,6>{{"clause_num","head_vars","rel_0","rel_1","rel_2","clause_repr"}}),
 
-wrapper_rel_22_actedin_info_4(*rel_22_actedin_info_4,symTable,"actedin.@info.4",std::array<const char *,5>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,5>{{"clause_num","head_vars","rel_0","rel_1","clause_repr"}}),
+wrapper_rel_22_actedin_info_4(*rel_22_actedin_info_4,symTable,"actedin.@info.4",std::array<const char *,6>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,6>{{"clause_num","head_vars","rel_0","rel_1","rel_2","clause_repr"}}),
 
 wrapper_rel_23_actedin_info_5(*rel_23_actedin_info_5,symTable,"actedin.@info.5",std::array<const char *,6>{{"i:number","s:symbol","s:symbol","s:symbol","s:symbol","s:symbol"}},std::array<const char *,6>{{"clause_num","head_vars","rel_0","rel_1","rel_2","clause_repr"}}),
 
@@ -1157,74 +1157,10 @@ IOSystem::getInstance().getReader(std::vector<bool>({1,1,0,0}), symTable, ioDire
 /* END STRATUM 5 */
 /* BEGIN STRATUM 6 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,1,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
-   Rule(336,_,@level_num_0),
-   ismarriedto(v2,v1,_,@level_num_1),
-   Iactedin(v2,v0,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:1-27:69])_");
-if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(336),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_5_ismarriedto) {
-const Tuple<RamDomain,4> key({{env1[0],0,0,0}});
-auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[1]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(1)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
-rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,2,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
-   Rule(516,_,@level_num_0),
-   directed(v2,v1,_,@level_num_1),
-   Iactedin(v2,v0,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:69-27:134])_");
-if(!(rel_1_Iactedin->empty()) && !(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(516),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_4_directed) {
-const Tuple<RamDomain,4> key({{env1[0],0,0,0}});
-auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[1]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(2)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
-rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,4,(max(@level_num_0,@level_num_1)+1)) :- 
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,1,(max(@level_num_0,@level_num_1)+1)) :- 
    Rule(268,_,@level_num_0),
    produced(v0,v1,_,@level_num_1).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:198-27:245])_");
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [27:1-27:48])_");
 if(!(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(268),0,0}});
@@ -1238,7 +1174,7 @@ pfor(auto it = part.begin(); it<part.end(); ++it) {
 try{
 for(const auto& env0 : *it) {
 for(const auto& env1 : *rel_6_produced) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(4)),static_cast<RamDomain>((std::max({env0[2], env1[3], })) + (RamDomain(1)))}});
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(1)),static_cast<RamDomain>((std::max({env0[2], env1[3], })) + (RamDomain(1)))}});
 rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
 }
 }
@@ -1247,127 +1183,11 @@ rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
 PARALLEL_END;
 }
 ();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,8,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
-   Rule(333,_,@level_num_0),
-   ismarriedto(v2,v0,_,@level_num_1),
-   Iactedin(v2,v1,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:440-27:508])_");
-if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(333),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_5_ismarriedto) {
-const Tuple<RamDomain,4> key({{env1[0],0,0,0}});
-auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(env2[1]),static_cast<RamDomain>(RamDomain(8)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
-rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,10,(max(@level_num_0,@level_num_1)+1)) :- 
-   Rule(270,_,@level_num_0),
-   directed(v0,v1,_,@level_num_1).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:571-27:618])_");
-if(!(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(270),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_4_directed) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(10)),static_cast<RamDomain>((std::max({env0[2], env1[3], })) + (RamDomain(1)))}});
-rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,11,(max(@level_num_0,@level_num_1)+1)) :- 
-   Rule(266,_,@level_num_0),
-   created(v0,v1,_,@level_num_1).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:618-27:664])_");
-if(!(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(266),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_3_created) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(11)),static_cast<RamDomain>((std::max({env0[2], env1[3], })) + (RamDomain(1)))}});
-rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,12,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
-   Rule(331,_,@level_num_0),
-   ismarriedto(v1,v2,_,@level_num_1),
-   Iactedin(v2,v0,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:664-27:732])_");
-if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(331),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_5_ismarriedto) {
-const Tuple<RamDomain,4> key({{env1[1],0,0,0}});
-auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[1]),static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(RamDomain(12)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
-rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,13,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,2,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
    Rule(409,_,@level_num_0),
    created(v1,v2,_,@level_num_1),
    Iactedin(v0,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:732-27:796])_");
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [28:1-28:65])_");
 if(!(rel_1_Iactedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(409),0,0}});
@@ -1385,7 +1205,7 @@ for(const auto& env1 : *rel_3_created) {
 const Tuple<RamDomain,4> key({{0,env1[1],0,0}});
 auto range = rel_1_Iactedin->equalRange_2(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
 for(const auto& env2 : range) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(RamDomain(13)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(RamDomain(2)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
 rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
 }
 }
@@ -1395,74 +1215,11 @@ rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
 PARALLEL_END;
 }
 ();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,15,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
-   Rule(550,_,@level_num_0),
-   Iactedin(v0,v2,_,@level_num_1),
-   Iactedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:863-27:928])_");
-if(!(rel_1_Iactedin->empty()) && !(rel_1_Iactedin->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(550),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_1_Iactedin) {
-const Tuple<RamDomain,4> key({{0,env1[1],0,0}});
-auto range = rel_1_Iactedin->equalRange_2(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(15)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
-rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,16,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
-   Rule(408,_,@level_num_0),
-   created(v2,v1,_,@level_num_1),
-   Iactedin(v2,v0,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:928-27:992])_");
-if(!(rel_1_Iactedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(408),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_3_created) {
-const Tuple<RamDomain,4> key({{env1[0],0,0,0}});
-auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[1]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(16)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
-rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,17,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,3,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
    Rule(468,_,@level_num_0),
    produced(v2,v1,_,@level_num_1),
    Iactedin(v2,v0,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:992-27:1057])_");
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [29:1-29:66])_");
 if(!(rel_1_Iactedin->empty()) && !(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(468),0,0}});
@@ -1480,6 +1237,249 @@ for(const auto& env1 : *rel_6_produced) {
 const Tuple<RamDomain,4> key({{env1[0],0,0,0}});
 auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
 for(const auto& env2 : range) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[1]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(3)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,4,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+   Rule(516,_,@level_num_0),
+   directed(v2,v1,_,@level_num_1),
+   Iactedin(v2,v0,_,@level_num_2).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [30:1-30:66])_");
+if(!(rel_1_Iactedin->empty()) && !(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(516),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_4_directed) {
+const Tuple<RamDomain,4> key({{env1[0],0,0,0}});
+auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[1]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(4)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,5,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+   Rule(550,_,@level_num_0),
+   Iactedin(v0,v2,_,@level_num_1),
+   Iactedin(v1,v2,_,@level_num_2).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [31:1-31:66])_");
+if(!(rel_1_Iactedin->empty()) && !(rel_1_Iactedin->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(550),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_1_Iactedin) {
+const Tuple<RamDomain,4> key({{0,env1[1],0,0}});
+auto range = rel_1_Iactedin->equalRange_2(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(5)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,6,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+   Rule(331,_,@level_num_0),
+   ismarriedto(v1,v2,_,@level_num_1),
+   Iactedin(v2,v0,_,@level_num_2).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [32:1-32:69])_");
+if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(331),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_5_ismarriedto) {
+const Tuple<RamDomain,4> key({{env1[1],0,0,0}});
+auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[1]),static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(RamDomain(6)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,9,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+   Rule(333,_,@level_num_0),
+   ismarriedto(v2,v0,_,@level_num_1),
+   Iactedin(v2,v1,_,@level_num_2).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [35:1-35:69])_");
+if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(333),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_5_ismarriedto) {
+const Tuple<RamDomain,4> key({{env1[0],0,0,0}});
+auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(env2[1]),static_cast<RamDomain>(RamDomain(9)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,12,(max(@level_num_0,@level_num_1)+1)) :- 
+   Rule(270,_,@level_num_0),
+   directed(v0,v1,_,@level_num_1).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [38:1-38:48])_");
+if(!(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(270),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_4_directed) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(12)),static_cast<RamDomain>((std::max({env0[2], env1[3], })) + (RamDomain(1)))}});
+rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,13,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+   Rule(336,_,@level_num_0),
+   ismarriedto(v2,v1,_,@level_num_1),
+   Iactedin(v2,v0,_,@level_num_2).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [39:1-39:69])_");
+if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(336),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_5_ismarriedto) {
+const Tuple<RamDomain,4> key({{env1[0],0,0,0}});
+auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[1]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(13)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,16,(max(@level_num_0,@level_num_1)+1)) :- 
+   Rule(266,_,@level_num_0),
+   created(v0,v1,_,@level_num_1).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [42:1-42:47])_");
+if(!(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(266),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_3_created) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(16)),static_cast<RamDomain>((std::max({env0[2], env1[3], })) + (RamDomain(1)))}});
+rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,17,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+   Rule(408,_,@level_num_0),
+   created(v2,v1,_,@level_num_1),
+   Iactedin(v2,v0,_,@level_num_2).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [43:1-43:65])_");
+if(!(rel_1_Iactedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(408),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_3_created) {
+const Tuple<RamDomain,4> key({{env1[0],0,0,0}});
+auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
 Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[1]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(17)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
 rel_7_actedin->insert(tuple,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
 }
@@ -1493,201 +1493,11 @@ PARALLEL_END;
 rel_8_delta_actedin->insertAll(*rel_7_actedin);
 iter = 0;
 for(;;) {
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,3,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
-   Rule(570,_,@level_num_0),
-   Iactedin(v2,v1,_,@level_num_1),
-   actedin(v0,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:134-27:198])_");
-if(!(rel_8_delta_actedin->empty()) && !(rel_1_Iactedin->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(570),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-CREATE_OP_CONTEXT(rel_8_delta_actedin_op_ctxt,rel_8_delta_actedin->createContext());
-CREATE_OP_CONTEXT(rel_9_new_actedin_op_ctxt,rel_9_new_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_1_Iactedin) {
-const Tuple<RamDomain,4> key({{0,env1[0],0,0}});
-auto range = rel_8_delta_actedin->equalRange_2(key,READ_OP_CONTEXT(rel_8_delta_actedin_op_ctxt));
-for(const auto& env2 : range) {
-if( !([&]() -> bool {
-auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env2[0],env1[1],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
-)) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(3)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
-rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,5,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
-   Rule(358,_,@level_num_0),
-   ismarriedto(v0,v2,_,@level_num_1),
-   actedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:245-27:312])_");
-if(!(rel_8_delta_actedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(358),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-CREATE_OP_CONTEXT(rel_8_delta_actedin_op_ctxt,rel_8_delta_actedin->createContext());
-CREATE_OP_CONTEXT(rel_9_new_actedin_op_ctxt,rel_9_new_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_5_ismarriedto) {
-const Tuple<RamDomain,4> key({{0,env1[1],0,0}});
-auto range = rel_8_delta_actedin->equalRange_2(key,READ_OP_CONTEXT(rel_8_delta_actedin_op_ctxt));
-for(const auto& env2 : range) {
-if( !([&]() -> bool {
-auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env1[0],env2[0],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
-)) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(5)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
-rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,6,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
-   Rule(538,_,@level_num_0),
-   directed(v0,v2,_,@level_num_1),
-   actedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:312-27:376])_");
-if(!(rel_8_delta_actedin->empty()) && !(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(538),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-CREATE_OP_CONTEXT(rel_8_delta_actedin_op_ctxt,rel_8_delta_actedin->createContext());
-CREATE_OP_CONTEXT(rel_9_new_actedin_op_ctxt,rel_9_new_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_4_directed) {
-const Tuple<RamDomain,4> key({{0,env1[1],0,0}});
-auto range = rel_8_delta_actedin->equalRange_2(key,READ_OP_CONTEXT(rel_8_delta_actedin_op_ctxt));
-for(const auto& env2 : range) {
-if( !([&]() -> bool {
-auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env1[0],env2[0],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
-)) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(6)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
-rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
 SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,7,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
-   Rule(490,_,@level_num_0),
-   produced(v0,v2,_,@level_num_1),
-   actedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:376-27:440])_");
-if(!(rel_8_delta_actedin->empty()) && !(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(490),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_6_produced_op_ctxt,rel_6_produced->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-CREATE_OP_CONTEXT(rel_8_delta_actedin_op_ctxt,rel_8_delta_actedin->createContext());
-CREATE_OP_CONTEXT(rel_9_new_actedin_op_ctxt,rel_9_new_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_6_produced) {
-const Tuple<RamDomain,4> key({{0,env1[1],0,0}});
-auto range = rel_8_delta_actedin->equalRange_2(key,READ_OP_CONTEXT(rel_8_delta_actedin_op_ctxt));
-for(const auto& env2 : range) {
-if( !([&]() -> bool {
-auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env1[0],env2[0],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
-)) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(7)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
-rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,9,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
-   Rule(430,_,@level_num_0),
-   created(v0,v2,_,@level_num_1),
-   actedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:508-27:571])_");
-if(!(rel_8_delta_actedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(430),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-CREATE_OP_CONTEXT(rel_8_delta_actedin_op_ctxt,rel_8_delta_actedin->createContext());
-CREATE_OP_CONTEXT(rel_9_new_actedin_op_ctxt,rel_9_new_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-for(const auto& env1 : *rel_3_created) {
-const Tuple<RamDomain,4> key({{0,env1[1],0,0}});
-auto range = rel_8_delta_actedin->equalRange_2(key,READ_OP_CONTEXT(rel_8_delta_actedin_op_ctxt));
-for(const auto& env2 : range) {
-if( !([&]() -> bool {
-auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env1[0],env2[0],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
-)) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(9)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
-rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,14,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
    Rule(356,_,@level_num_0),
    ismarriedto(v2,v0,_,@level_num_1),
    actedin(v1,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:796-27:863])_");
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [33:1-33:68])_");
 if(!(rel_8_delta_actedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(356),0,0}});
@@ -1710,7 +1520,7 @@ if( !([&]() -> bool {
 auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env1[1],env2[0],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
 if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
 )) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(14)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(7)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
 rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
 }
 }
@@ -1721,11 +1531,11 @@ rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
 PARALLEL_END;
 }
 ();}
-SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,18,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,8,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
    Rule(426,_,@level_num_0),
    created(v2,v1,_,@level_num_1),
    actedin(v0,v2,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/films/solution.dl [27:1057-27:1120])_");
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [34:1-34:64])_");
 if(!(rel_8_delta_actedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(426),0,0}});
@@ -1748,7 +1558,197 @@ if( !([&]() -> bool {
 auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env2[0],env1[1],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
 if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
 )) {
-Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(18)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(8)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,10,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+   Rule(430,_,@level_num_0),
+   created(v0,v2,_,@level_num_1),
+   actedin(v1,v2,_,@level_num_2).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [36:1-36:64])_");
+if(!(rel_8_delta_actedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(430),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+CREATE_OP_CONTEXT(rel_8_delta_actedin_op_ctxt,rel_8_delta_actedin->createContext());
+CREATE_OP_CONTEXT(rel_9_new_actedin_op_ctxt,rel_9_new_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_3_created) {
+const Tuple<RamDomain,4> key({{0,env1[1],0,0}});
+auto range = rel_8_delta_actedin->equalRange_2(key,READ_OP_CONTEXT(rel_8_delta_actedin_op_ctxt));
+for(const auto& env2 : range) {
+if( !([&]() -> bool {
+auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env1[0],env2[0],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
+)) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(10)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,11,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+   Rule(490,_,@level_num_0),
+   produced(v0,v2,_,@level_num_1),
+   actedin(v1,v2,_,@level_num_2).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [37:1-37:65])_");
+if(!(rel_8_delta_actedin->empty()) && !(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(490),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_6_produced_op_ctxt,rel_6_produced->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+CREATE_OP_CONTEXT(rel_8_delta_actedin_op_ctxt,rel_8_delta_actedin->createContext());
+CREATE_OP_CONTEXT(rel_9_new_actedin_op_ctxt,rel_9_new_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_6_produced) {
+const Tuple<RamDomain,4> key({{0,env1[1],0,0}});
+auto range = rel_8_delta_actedin->equalRange_2(key,READ_OP_CONTEXT(rel_8_delta_actedin_op_ctxt));
+for(const auto& env2 : range) {
+if( !([&]() -> bool {
+auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env1[0],env2[0],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
+)) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(11)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,14,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+   Rule(570,_,@level_num_0),
+   Iactedin(v2,v1,_,@level_num_1),
+   actedin(v0,v2,_,@level_num_2).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [40:1-40:65])_");
+if(!(rel_8_delta_actedin->empty()) && !(rel_1_Iactedin->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(570),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+CREATE_OP_CONTEXT(rel_8_delta_actedin_op_ctxt,rel_8_delta_actedin->createContext());
+CREATE_OP_CONTEXT(rel_9_new_actedin_op_ctxt,rel_9_new_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_1_Iactedin) {
+const Tuple<RamDomain,4> key({{0,env1[0],0,0}});
+auto range = rel_8_delta_actedin->equalRange_2(key,READ_OP_CONTEXT(rel_8_delta_actedin_op_ctxt));
+for(const auto& env2 : range) {
+if( !([&]() -> bool {
+auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env2[0],env1[1],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
+)) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(env1[1]),static_cast<RamDomain>(RamDomain(14)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,15,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+   Rule(358,_,@level_num_0),
+   ismarriedto(v0,v2,_,@level_num_1),
+   actedin(v1,v2,_,@level_num_2).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [41:1-41:68])_");
+if(!(rel_8_delta_actedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(358),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+CREATE_OP_CONTEXT(rel_8_delta_actedin_op_ctxt,rel_8_delta_actedin->createContext());
+CREATE_OP_CONTEXT(rel_9_new_actedin_op_ctxt,rel_9_new_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_5_ismarriedto) {
+const Tuple<RamDomain,4> key({{0,env1[1],0,0}});
+auto range = rel_8_delta_actedin->equalRange_2(key,READ_OP_CONTEXT(rel_8_delta_actedin_op_ctxt));
+for(const auto& env2 : range) {
+if( !([&]() -> bool {
+auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env1[0],env2[0],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
+)) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(15)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
+rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+SignalHandler::instance()->setMsg(R"_(actedin(v0,v1,18,(max(max(@level_num_0,@level_num_1),@level_num_2)+1)) :- 
+   Rule(538,_,@level_num_0),
+   directed(v0,v2,_,@level_num_1),
+   actedin(v1,v2,_,@level_num_2).
+in file /home/johannes_tantow/DatalogLearning/prosynth/films/solution.dl [44:1-44:65])_");
+if(!(rel_8_delta_actedin->empty()) && !(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(538),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+CREATE_OP_CONTEXT(rel_8_delta_actedin_op_ctxt,rel_8_delta_actedin->createContext());
+CREATE_OP_CONTEXT(rel_9_new_actedin_op_ctxt,rel_9_new_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+for(const auto& env1 : *rel_4_directed) {
+const Tuple<RamDomain,4> key({{0,env1[1],0,0}});
+auto range = rel_8_delta_actedin->equalRange_2(key,READ_OP_CONTEXT(rel_8_delta_actedin_op_ctxt));
+for(const auto& env2 : range) {
+if( !([&]() -> bool {
+auto existenceCheck = rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{env1[0],env2[0],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+if (existenceCheck.empty()) return false; else return (*existenceCheck.begin())[3] <= (std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1));}()
+)) {
+Tuple<RamDomain,4> tuple({{static_cast<RamDomain>(env1[0]),static_cast<RamDomain>(env2[0]),static_cast<RamDomain>(RamDomain(18)),static_cast<RamDomain>((std::max({std::max({env0[2], env1[3], }), env2[3], })) + (RamDomain(1)))}});
 rel_9_new_actedin->insert(tuple,READ_OP_CONTEXT(rel_9_new_actedin_op_ctxt));
 }
 }
@@ -1779,179 +1779,179 @@ IOSystem::getInstance().getWriter(std::vector<bool>({1,1,0,0}), symTable, ioDire
 /* END STRATUM 6 */
 /* BEGIN STRATUM 7 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.1(1,"v0,v1","Rule","ismarriedto,v2,v1","Iactedin,v2,v0","actedin(v0,v1) :- 
-   Rule(336),
-   ismarriedto(v2,v1),
-   Iactedin(v2,v0).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.1(1,"v0,v1","Rule","produced,v0,v1","actedin(v0,v1) :- 
+   Rule(268),
+   produced(v0,v1).").
 in file  [0:0-0:0])_");
-rel_10_actedin_info_1->insert(RamDomain(1),RamDomain(0),RamDomain(1),RamDomain(2),RamDomain(3),RamDomain(4));
+rel_10_actedin_info_1->insert(RamDomain(1),RamDomain(0),RamDomain(1),RamDomain(2),RamDomain(3));
 }();
 /* END STRATUM 7 */
 /* BEGIN STRATUM 8 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.10(10,"v0,v1","Rule","directed,v0,v1","actedin(v0,v1) :- 
-   Rule(270),
-   directed(v0,v1).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.10(10,"v0,v1","Rule","created,v0,v2","actedin,v1,v2","actedin(v0,v1) :- 
+   Rule(430),
+   created(v0,v2),
+   actedin(v1,v2).").
 in file  [0:0-0:0])_");
-rel_11_actedin_info_10->insert(RamDomain(10),RamDomain(0),RamDomain(1),RamDomain(23),RamDomain(24));
+rel_11_actedin_info_10->insert(RamDomain(10),RamDomain(0),RamDomain(1),RamDomain(24),RamDomain(17),RamDomain(25));
 }();
 /* END STRATUM 8 */
 /* BEGIN STRATUM 9 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.11(11,"v0,v1","Rule","created,v0,v1","actedin(v0,v1) :- 
-   Rule(266),
-   created(v0,v1).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.11(11,"v0,v1","Rule","produced,v0,v2","actedin,v1,v2","actedin(v0,v1) :- 
+   Rule(490),
+   produced(v0,v2),
+   actedin(v1,v2).").
 in file  [0:0-0:0])_");
-rel_12_actedin_info_11->insert(RamDomain(11),RamDomain(0),RamDomain(1),RamDomain(25),RamDomain(26));
+rel_12_actedin_info_11->insert(RamDomain(11),RamDomain(0),RamDomain(1),RamDomain(26),RamDomain(17),RamDomain(27));
 }();
 /* END STRATUM 9 */
 /* BEGIN STRATUM 10 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.12(12,"v0,v1","Rule","ismarriedto,v1,v2","Iactedin,v2,v0","actedin(v0,v1) :- 
-   Rule(331),
-   ismarriedto(v1,v2),
-   Iactedin(v2,v0).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.12(12,"v0,v1","Rule","directed,v0,v1","actedin(v0,v1) :- 
+   Rule(270),
+   directed(v0,v1).").
 in file  [0:0-0:0])_");
-rel_13_actedin_info_12->insert(RamDomain(12),RamDomain(0),RamDomain(1),RamDomain(27),RamDomain(3),RamDomain(28));
+rel_13_actedin_info_12->insert(RamDomain(12),RamDomain(0),RamDomain(1),RamDomain(28),RamDomain(29));
 }();
 /* END STRATUM 10 */
 /* BEGIN STRATUM 11 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.13(13,"v0,v1","Rule","created,v1,v2","Iactedin,v0,v2","actedin(v0,v1) :- 
-   Rule(409),
-   created(v1,v2),
-   Iactedin(v0,v2).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.13(13,"v0,v1","Rule","ismarriedto,v2,v1","Iactedin,v2,v0","actedin(v0,v1) :- 
+   Rule(336),
+   ismarriedto(v2,v1),
+   Iactedin(v2,v0).").
 in file  [0:0-0:0])_");
-rel_14_actedin_info_13->insert(RamDomain(13),RamDomain(0),RamDomain(1),RamDomain(29),RamDomain(30),RamDomain(31));
+rel_14_actedin_info_13->insert(RamDomain(13),RamDomain(0),RamDomain(1),RamDomain(30),RamDomain(8),RamDomain(31));
 }();
 /* END STRATUM 11 */
 /* BEGIN STRATUM 12 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.14(14,"v0,v1","Rule","ismarriedto,v2,v0","actedin,v1,v2","actedin(v0,v1) :- 
-   Rule(356),
-   ismarriedto(v2,v0),
-   actedin(v1,v2).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.14(14,"v0,v1","Rule","Iactedin,v2,v1","actedin,v0,v2","actedin(v0,v1) :- 
+   Rule(570),
+   Iactedin(v2,v1),
+   actedin(v0,v2).").
 in file  [0:0-0:0])_");
-rel_15_actedin_info_14->insert(RamDomain(14),RamDomain(0),RamDomain(1),RamDomain(19),RamDomain(13),RamDomain(32));
+rel_15_actedin_info_14->insert(RamDomain(14),RamDomain(0),RamDomain(1),RamDomain(22),RamDomain(20),RamDomain(32));
 }();
 /* END STRATUM 12 */
 /* BEGIN STRATUM 13 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.15(15,"v0,v1","Rule","Iactedin,v0,v2","Iactedin,v1,v2","actedin(v0,v1) :- 
-   Rule(550),
-   Iactedin(v0,v2),
-   Iactedin(v1,v2).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.15(15,"v0,v1","Rule","ismarriedto,v0,v2","actedin,v1,v2","actedin(v0,v1) :- 
+   Rule(358),
+   ismarriedto(v0,v2),
+   actedin(v1,v2).").
 in file  [0:0-0:0])_");
-rel_16_actedin_info_15->insert(RamDomain(15),RamDomain(0),RamDomain(1),RamDomain(30),RamDomain(33),RamDomain(34));
+rel_16_actedin_info_15->insert(RamDomain(15),RamDomain(0),RamDomain(1),RamDomain(33),RamDomain(17),RamDomain(34));
 }();
 /* END STRATUM 13 */
 /* BEGIN STRATUM 14 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.16(16,"v0,v1","Rule","created,v2,v1","Iactedin,v2,v0","actedin(v0,v1) :- 
-   Rule(408),
-   created(v2,v1),
-   Iactedin(v2,v0).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.16(16,"v0,v1","Rule","created,v0,v1","actedin(v0,v1) :- 
+   Rule(266),
+   created(v0,v1).").
 in file  [0:0-0:0])_");
-rel_17_actedin_info_16->insert(RamDomain(16),RamDomain(0),RamDomain(1),RamDomain(35),RamDomain(3),RamDomain(36));
+rel_17_actedin_info_16->insert(RamDomain(16),RamDomain(0),RamDomain(1),RamDomain(35),RamDomain(36));
 }();
 /* END STRATUM 14 */
 /* BEGIN STRATUM 15 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.17(17,"v0,v1","Rule","produced,v2,v1","Iactedin,v2,v0","actedin(v0,v1) :- 
-   Rule(468),
-   produced(v2,v1),
+SignalHandler::instance()->setMsg(R"_(actedin.@info.17(17,"v0,v1","Rule","created,v2,v1","Iactedin,v2,v0","actedin(v0,v1) :- 
+   Rule(408),
+   created(v2,v1),
    Iactedin(v2,v0).").
 in file  [0:0-0:0])_");
-rel_18_actedin_info_17->insert(RamDomain(17),RamDomain(0),RamDomain(1),RamDomain(37),RamDomain(3),RamDomain(38));
+rel_18_actedin_info_17->insert(RamDomain(17),RamDomain(0),RamDomain(1),RamDomain(19),RamDomain(8),RamDomain(37));
 }();
 /* END STRATUM 15 */
 /* BEGIN STRATUM 16 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.18(18,"v0,v1","Rule","created,v2,v1","actedin,v0,v2","actedin(v0,v1) :- 
-   Rule(426),
-   created(v2,v1),
-   actedin(v0,v2).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.18(18,"v0,v1","Rule","directed,v0,v2","actedin,v1,v2","actedin(v0,v1) :- 
+   Rule(538),
+   directed(v0,v2),
+   actedin(v1,v2).").
 in file  [0:0-0:0])_");
-rel_19_actedin_info_18->insert(RamDomain(18),RamDomain(0),RamDomain(1),RamDomain(35),RamDomain(8),RamDomain(39));
+rel_19_actedin_info_18->insert(RamDomain(18),RamDomain(0),RamDomain(1),RamDomain(38),RamDomain(17),RamDomain(39));
 }();
 /* END STRATUM 16 */
 /* BEGIN STRATUM 17 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.2(2,"v0,v1","Rule","directed,v2,v1","Iactedin,v2,v0","actedin(v0,v1) :- 
-   Rule(516),
-   directed(v2,v1),
-   Iactedin(v2,v0).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.2(2,"v0,v1","Rule","created,v1,v2","Iactedin,v0,v2","actedin(v0,v1) :- 
+   Rule(409),
+   created(v1,v2),
+   Iactedin(v0,v2).").
 in file  [0:0-0:0])_");
-rel_20_actedin_info_2->insert(RamDomain(2),RamDomain(0),RamDomain(1),RamDomain(5),RamDomain(3),RamDomain(6));
+rel_20_actedin_info_2->insert(RamDomain(2),RamDomain(0),RamDomain(1),RamDomain(4),RamDomain(5),RamDomain(6));
 }();
 /* END STRATUM 17 */
 /* BEGIN STRATUM 18 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.3(3,"v0,v1","Rule","Iactedin,v2,v1","actedin,v0,v2","actedin(v0,v1) :- 
-   Rule(570),
-   Iactedin(v2,v1),
-   actedin(v0,v2).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.3(3,"v0,v1","Rule","produced,v2,v1","Iactedin,v2,v0","actedin(v0,v1) :- 
+   Rule(468),
+   produced(v2,v1),
+   Iactedin(v2,v0).").
 in file  [0:0-0:0])_");
 rel_21_actedin_info_3->insert(RamDomain(3),RamDomain(0),RamDomain(1),RamDomain(7),RamDomain(8),RamDomain(9));
 }();
 /* END STRATUM 18 */
 /* BEGIN STRATUM 19 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.4(4,"v0,v1","Rule","produced,v0,v1","actedin(v0,v1) :- 
-   Rule(268),
-   produced(v0,v1).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.4(4,"v0,v1","Rule","directed,v2,v1","Iactedin,v2,v0","actedin(v0,v1) :- 
+   Rule(516),
+   directed(v2,v1),
+   Iactedin(v2,v0).").
 in file  [0:0-0:0])_");
-rel_22_actedin_info_4->insert(RamDomain(4),RamDomain(0),RamDomain(1),RamDomain(10),RamDomain(11));
+rel_22_actedin_info_4->insert(RamDomain(4),RamDomain(0),RamDomain(1),RamDomain(10),RamDomain(8),RamDomain(11));
 }();
 /* END STRATUM 19 */
 /* BEGIN STRATUM 20 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.5(5,"v0,v1","Rule","ismarriedto,v0,v2","actedin,v1,v2","actedin(v0,v1) :- 
-   Rule(358),
-   ismarriedto(v0,v2),
-   actedin(v1,v2).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.5(5,"v0,v1","Rule","Iactedin,v0,v2","Iactedin,v1,v2","actedin(v0,v1) :- 
+   Rule(550),
+   Iactedin(v0,v2),
+   Iactedin(v1,v2).").
 in file  [0:0-0:0])_");
-rel_23_actedin_info_5->insert(RamDomain(5),RamDomain(0),RamDomain(1),RamDomain(12),RamDomain(13),RamDomain(14));
+rel_23_actedin_info_5->insert(RamDomain(5),RamDomain(0),RamDomain(1),RamDomain(5),RamDomain(12),RamDomain(13));
 }();
 /* END STRATUM 20 */
 /* BEGIN STRATUM 21 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.6(6,"v0,v1","Rule","directed,v0,v2","actedin,v1,v2","actedin(v0,v1) :- 
-   Rule(538),
-   directed(v0,v2),
-   actedin(v1,v2).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.6(6,"v0,v1","Rule","ismarriedto,v1,v2","Iactedin,v2,v0","actedin(v0,v1) :- 
+   Rule(331),
+   ismarriedto(v1,v2),
+   Iactedin(v2,v0).").
 in file  [0:0-0:0])_");
-rel_24_actedin_info_6->insert(RamDomain(6),RamDomain(0),RamDomain(1),RamDomain(15),RamDomain(13),RamDomain(16));
+rel_24_actedin_info_6->insert(RamDomain(6),RamDomain(0),RamDomain(1),RamDomain(14),RamDomain(8),RamDomain(15));
 }();
 /* END STRATUM 21 */
 /* BEGIN STRATUM 22 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.7(7,"v0,v1","Rule","produced,v0,v2","actedin,v1,v2","actedin(v0,v1) :- 
-   Rule(490),
-   produced(v0,v2),
+SignalHandler::instance()->setMsg(R"_(actedin.@info.7(7,"v0,v1","Rule","ismarriedto,v2,v0","actedin,v1,v2","actedin(v0,v1) :- 
+   Rule(356),
+   ismarriedto(v2,v0),
    actedin(v1,v2).").
 in file  [0:0-0:0])_");
-rel_25_actedin_info_7->insert(RamDomain(7),RamDomain(0),RamDomain(1),RamDomain(17),RamDomain(13),RamDomain(18));
+rel_25_actedin_info_7->insert(RamDomain(7),RamDomain(0),RamDomain(1),RamDomain(16),RamDomain(17),RamDomain(18));
 }();
 /* END STRATUM 22 */
 /* BEGIN STRATUM 23 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.8(8,"v0,v1","Rule","ismarriedto,v2,v0","Iactedin,v2,v1","actedin(v0,v1) :- 
-   Rule(333),
-   ismarriedto(v2,v0),
-   Iactedin(v2,v1).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.8(8,"v0,v1","Rule","created,v2,v1","actedin,v0,v2","actedin(v0,v1) :- 
+   Rule(426),
+   created(v2,v1),
+   actedin(v0,v2).").
 in file  [0:0-0:0])_");
-rel_26_actedin_info_8->insert(RamDomain(8),RamDomain(0),RamDomain(1),RamDomain(19),RamDomain(7),RamDomain(20));
+rel_26_actedin_info_8->insert(RamDomain(8),RamDomain(0),RamDomain(1),RamDomain(19),RamDomain(20),RamDomain(21));
 }();
 /* END STRATUM 23 */
 /* BEGIN STRATUM 24 */
 [&]() {
-SignalHandler::instance()->setMsg(R"_(actedin.@info.9(9,"v0,v1","Rule","created,v0,v2","actedin,v1,v2","actedin(v0,v1) :- 
-   Rule(430),
-   created(v0,v2),
-   actedin(v1,v2).").
+SignalHandler::instance()->setMsg(R"_(actedin.@info.9(9,"v0,v1","Rule","ismarriedto,v2,v0","Iactedin,v2,v1","actedin(v0,v1) :- 
+   Rule(333),
+   ismarriedto(v2,v0),
+   Iactedin(v2,v1).").
 in file  [0:0-0:0])_");
-rel_27_actedin_info_9->insert(RamDomain(9),RamDomain(0),RamDomain(1),RamDomain(21),RamDomain(13),RamDomain(22));
+rel_27_actedin_info_9->insert(RamDomain(9),RamDomain(0),RamDomain(1),RamDomain(16),RamDomain(22),RamDomain(23));
 }();
 /* END STRATUM 24 */
 /* BEGIN STRATUM 25 */
@@ -2271,7 +2271,7 @@ void subproof_0(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret,
 std::mutex lock;
 [&](){
 CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(270),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(430),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
 std::lock_guard<std::mutex> guard(lock);
 ret.push_back(RamDomain(0));
 err.push_back(false);
@@ -2281,12 +2281,12 @@ err.push_back(false);
 std::lock_guard<std::mutex> guard(lock);
 ret.push_back(0);
 err.push_back(true);
-ret.push_back(RamDomain(270));
+ret.push_back(RamDomain(430));
 err.push_back(false);
 }
 ();[&](){
-CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
-if(!rel_4_directed->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[1],0,0}}),READ_OP_CONTEXT(rel_4_directed_op_ctxt)).empty()) {
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+if(!rel_3_created->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_3_created_op_ctxt)).empty()) {
 std::lock_guard<std::mutex> guard(lock);
 ret.push_back(RamDomain(1));
 err.push_back(false);
@@ -2298,31 +2298,53 @@ ret.push_back(0);
 err.push_back(true);
 ret.push_back((args)[0]);
 err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
 ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back((args)[2]);
 err.push_back(false);
 }
 ();return;
 }
 void subproof_1(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
 std::mutex lock;
-if(!(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
+if(!(rel_7_actedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
 [&](){
-const Tuple<RamDomain,3> key({{RamDomain(270),0,0}});
+const Tuple<RamDomain,3> key({{RamDomain(430),0,0}});
 auto range = rel_2_Rule->equalRange_1(key);
 auto part = range.partition();
 PARALLEL_START;
 CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
 pfor(auto it = part.begin(); it<part.end(); ++it) { 
 try{
 for(const auto& env0 : *it) {
 if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[0],(args)[1],0,0}});
-auto range = rel_4_directed->equalRange_3(key,READ_OP_CONTEXT(rel_4_directed_op_ctxt));
+const Tuple<RamDomain,4> key({{(args)[0],0,0,0}});
+auto range = rel_3_created->equalRange_1(key,READ_OP_CONTEXT(rel_3_created_op_ctxt));
 for(const auto& env1 : range) {
 if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[1],env1[1],0,0}});
+auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
 std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(270));
+ret.push_back(RamDomain(430));
 err.push_back(false);
 ret.push_back(env0[1]);
 err.push_back(false);
@@ -2336,11 +2358,19 @@ ret.push_back(env1[2]);
 err.push_back(false);
 ret.push_back(env1[3]);
 err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
 ret.push_back(env1[0]);
 err.push_back(false);
 ret.push_back((args)[0]);
 err.push_back(false);
-ret.push_back(env1[1]);
+ret.push_back(env2[0]);
 err.push_back(false);
 ret.push_back((args)[1]);
 err.push_back(false);
@@ -2352,6 +2382,12 @@ ret.push_back(env1[3]);
 err.push_back(false);
 ret.push_back((args)[2]);
 err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
 }
 }
 }
@@ -2364,1781 +2400,6 @@ PARALLEL_END;
 return;
 }
 void subproof_2(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(266),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(266));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-if(!rel_3_created->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[1],0,0}}),READ_OP_CONTEXT(rel_3_created_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_3(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(266),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[0],(args)[1],0,0}});
-auto range = rel_3_created->equalRange_3(key,READ_OP_CONTEXT(rel_3_created_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(266));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_4(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(331),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(331));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-if(!rel_5_ismarriedto->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_5(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(331),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[1],0,0,0}});
-auto range = rel_5_ismarriedto->equalRange_1(key,READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{env1[1],(args)[0],0,0}});
-auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(331));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env2[1]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env2[1]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_6(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(409),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(409));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-if(!rel_3_created->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_3_created_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_7(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_1_Iactedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(409),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[1],0,0,0}});
-auto range = rel_3_created->equalRange_1(key,READ_OP_CONTEXT(rel_3_created_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[0],env1[1],0,0}});
-auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(409));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_8(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(356),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(356));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-if(!rel_5_ismarriedto->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_9(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_7_actedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(356),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{0,(args)[0],0,0}});
-auto range = rel_5_ismarriedto->equalRange_2(key,READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[1],env1[0],0,0}});
-auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(356));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_10(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(550),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(550));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_11(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_1_Iactedin->empty()) && !(rel_1_Iactedin->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(550),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[0],0,0,0}});
-auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[1],env1[1],0,0}});
-auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(550));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_12(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(408),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(408));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-if(!rel_3_created->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_3_created_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_13(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_1_Iactedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(408),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
-auto range = rel_3_created->equalRange_2(key,READ_OP_CONTEXT(rel_3_created_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{env1[0],(args)[0],0,0}});
-auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(408));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env2[1]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env2[1]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_14(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(468),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(468));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_6_produced_op_ctxt,rel_6_produced->createContext());
-if(!rel_6_produced->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_6_produced_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_15(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_1_Iactedin->empty()) && !(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(468),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_6_produced_op_ctxt,rel_6_produced->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
-auto range = rel_6_produced->equalRange_2(key,READ_OP_CONTEXT(rel_6_produced_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{env1[0],(args)[0],0,0}});
-auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(468));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env2[1]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env2[1]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_16(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(426),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(426));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-if(!rel_3_created->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_3_created_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_17(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_7_actedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(426),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
-auto range = rel_3_created->equalRange_2(key,READ_OP_CONTEXT(rel_3_created_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[0],env1[0],0,0}});
-auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(426));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_18(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(336),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(336));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-if(!rel_5_ismarriedto->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_19(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(336),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
-auto range = rel_5_ismarriedto->equalRange_2(key,READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{env1[0],(args)[0],0,0}});
-auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(336));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env2[1]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env2[1]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_20(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(516),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(516));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
-if(!rel_4_directed->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_4_directed_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_21(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_1_Iactedin->empty()) && !(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(516),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
-auto range = rel_4_directed->equalRange_2(key,READ_OP_CONTEXT(rel_4_directed_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{env1[0],(args)[0],0,0}});
-auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(516));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env2[1]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env2[1]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_22(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(570),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(570));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_23(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_7_actedin->empty()) && !(rel_1_Iactedin->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(570),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
-auto range = rel_1_Iactedin->equalRange_2(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[0],env1[0],0,0}});
-auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(570));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_24(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(268),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(268));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_6_produced_op_ctxt,rel_6_produced->createContext());
-if(!rel_6_produced->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[1],0,0}}),READ_OP_CONTEXT(rel_6_produced_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_25(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(268),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_6_produced_op_ctxt,rel_6_produced->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[0],(args)[1],0,0}});
-auto range = rel_6_produced->equalRange_3(key,READ_OP_CONTEXT(rel_6_produced_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(268));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_26(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(358),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(358));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-if(!rel_5_ismarriedto->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_27(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_7_actedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(358),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[0],0,0,0}});
-auto range = rel_5_ismarriedto->equalRange_1(key,READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[1],env1[1],0,0}});
-auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(358));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_28(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(538),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(538));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
-if(!rel_4_directed->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_4_directed_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_29(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_7_actedin->empty()) && !(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(538),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[0],0,0,0}});
-auto range = rel_4_directed->equalRange_1(key,READ_OP_CONTEXT(rel_4_directed_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[1],env1[1],0,0}});
-auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(538));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_30(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
 std::mutex lock;
 [&](){
 CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
@@ -4191,7 +2452,7 @@ err.push_back(false);
 }
 ();return;
 }
-void subproof_31(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+void subproof_3(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
 std::mutex lock;
 if(!(rel_7_actedin->empty()) && !(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
 [&](){
@@ -4270,7 +2531,1878 @@ PARALLEL_END;
 ();}
 return;
 }
+void subproof_4(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(270),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(270));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
+if(!rel_4_directed->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[1],0,0}}),READ_OP_CONTEXT(rel_4_directed_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_5(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(270),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[0],(args)[1],0,0}});
+auto range = rel_4_directed->equalRange_3(key,READ_OP_CONTEXT(rel_4_directed_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(270));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_6(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(336),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(336));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+if(!rel_5_ismarriedto->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_7(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(336),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
+auto range = rel_5_ismarriedto->equalRange_2(key,READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{env1[0],(args)[0],0,0}});
+auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(336));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env2[1]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env2[1]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_8(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(570),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(570));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_9(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_7_actedin->empty()) && !(rel_1_Iactedin->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(570),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
+auto range = rel_1_Iactedin->equalRange_2(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[0],env1[0],0,0}});
+auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(570));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_10(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(358),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(358));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+if(!rel_5_ismarriedto->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_11(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_7_actedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(358),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[0],0,0,0}});
+auto range = rel_5_ismarriedto->equalRange_1(key,READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[1],env1[1],0,0}});
+auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(358));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_12(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(266),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(266));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+if(!rel_3_created->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[1],0,0}}),READ_OP_CONTEXT(rel_3_created_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_13(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(266),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[0],(args)[1],0,0}});
+auto range = rel_3_created->equalRange_3(key,READ_OP_CONTEXT(rel_3_created_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(266));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_14(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(408),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(408));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+if(!rel_3_created->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_3_created_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_15(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_1_Iactedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(408),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
+auto range = rel_3_created->equalRange_2(key,READ_OP_CONTEXT(rel_3_created_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{env1[0],(args)[0],0,0}});
+auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(408));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env2[1]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env2[1]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_16(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(538),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(538));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
+if(!rel_4_directed->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_4_directed_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_17(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_7_actedin->empty()) && !(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(538),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[0],0,0,0}});
+auto range = rel_4_directed->equalRange_1(key,READ_OP_CONTEXT(rel_4_directed_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[1],env1[1],0,0}});
+auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(538));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_18(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(268),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(268));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_6_produced_op_ctxt,rel_6_produced->createContext());
+if(!rel_6_produced->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[1],0,0}}),READ_OP_CONTEXT(rel_6_produced_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_19(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(268),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_6_produced_op_ctxt,rel_6_produced->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[0],(args)[1],0,0}});
+auto range = rel_6_produced->equalRange_3(key,READ_OP_CONTEXT(rel_6_produced_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(268));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_20(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(409),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(409));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+if(!rel_3_created->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_3_created_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_21(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_1_Iactedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(409),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[1],0,0,0}});
+auto range = rel_3_created->equalRange_1(key,READ_OP_CONTEXT(rel_3_created_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[0],env1[1],0,0}});
+auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(409));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_22(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(468),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(468));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_6_produced_op_ctxt,rel_6_produced->createContext());
+if(!rel_6_produced->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_6_produced_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_23(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_1_Iactedin->empty()) && !(rel_6_produced->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(468),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_6_produced_op_ctxt,rel_6_produced->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
+auto range = rel_6_produced->equalRange_2(key,READ_OP_CONTEXT(rel_6_produced_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{env1[0],(args)[0],0,0}});
+auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(468));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env2[1]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env2[1]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_24(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(516),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(516));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
+if(!rel_4_directed->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_4_directed_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_25(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_1_Iactedin->empty()) && !(rel_4_directed->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(516),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_4_directed_op_ctxt,rel_4_directed->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
+auto range = rel_4_directed->equalRange_2(key,READ_OP_CONTEXT(rel_4_directed_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{env1[0],(args)[0],0,0}});
+auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(516));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env2[1]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env2[1]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_26(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(550),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(550));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_27(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_1_Iactedin->empty()) && !(rel_1_Iactedin->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(550),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[0],0,0,0}});
+auto range = rel_1_Iactedin->equalRange_1(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[1],env1[1],0,0}});
+auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(550));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_28(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(331),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(331));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+if(!rel_5_ismarriedto->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+if(!rel_1_Iactedin->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_29(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(331),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_1_Iactedin_op_ctxt,rel_1_Iactedin->createContext());
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[1],0,0,0}});
+auto range = rel_5_ismarriedto->equalRange_1(key,READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{env1[1],(args)[0],0,0}});
+auto range = rel_1_Iactedin->equalRange_3(key,READ_OP_CONTEXT(rel_1_Iactedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(331));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env2[1]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env2[1]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_30(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(356),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(356));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+if(!rel_5_ismarriedto->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[0],0,0}}),READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_31(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_7_actedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(356),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_5_ismarriedto_op_ctxt,rel_5_ismarriedto->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{0,(args)[0],0,0}});
+auto range = rel_5_ismarriedto->equalRange_2(key,READ_OP_CONTEXT(rel_5_ismarriedto_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[1],env1[0],0,0}});
+auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(356));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
 void subproof_32(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+[&](){
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(426),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(0));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back(RamDomain(426));
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+if(!rel_3_created->equalRange_3(Tuple<RamDomain,4>({{(args)[2],(args)[1],0,0}}),READ_OP_CONTEXT(rel_3_created_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(1));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+}
+();[&](){
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(2));
+err.push_back(false);
+}
+}
+();[&](){
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(0);
+err.push_back(true);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+();return;
+}
+void subproof_33(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+std::mutex lock;
+if(!(rel_7_actedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
+[&](){
+const Tuple<RamDomain,3> key({{RamDomain(426),0,0}});
+auto range = rel_2_Rule->equalRange_1(key);
+auto part = range.partition();
+PARALLEL_START;
+CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
+CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
+CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
+pfor(auto it = part.begin(); it<part.end(); ++it) { 
+try{
+for(const auto& env0 : *it) {
+if( ((env0[2]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{0,(args)[1],0,0}});
+auto range = rel_3_created->equalRange_2(key,READ_OP_CONTEXT(rel_3_created_op_ctxt));
+for(const auto& env1 : range) {
+if( ((env1[3]) < ((args)[2]))) {
+const Tuple<RamDomain,4> key({{(args)[0],env1[0],0,0}});
+auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
+for(const auto& env2 : range) {
+if( ((env2[3]) < ((args)[2]))) {
+std::lock_guard<std::mutex> guard(lock);
+ret.push_back(RamDomain(426));
+err.push_back(false);
+ret.push_back(env0[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back(env1[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back(env1[0]);
+err.push_back(false);
+ret.push_back(env2[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back(env2[0]);
+err.push_back(false);
+ret.push_back((args)[0]);
+err.push_back(false);
+ret.push_back(env1[1]);
+err.push_back(false);
+ret.push_back((args)[1]);
+err.push_back(false);
+ret.push_back(env0[2]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env1[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+ret.push_back(env2[3]);
+err.push_back(false);
+ret.push_back((args)[2]);
+err.push_back(false);
+}
+}
+}
+}
+}
+}
+} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
+}
+PARALLEL_END;
+}
+();}
+return;
+}
+void subproof_34(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
 std::mutex lock;
 [&](){
 CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
@@ -4323,7 +4455,7 @@ err.push_back(false);
 }
 ();return;
 }
-void subproof_33(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
+void subproof_35(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
 std::mutex lock;
 if(!(rel_1_Iactedin->empty()) && !(rel_5_ismarriedto->empty()) && !(rel_2_Rule->empty())) {
 [&](){
@@ -4374,138 +4506,6 @@ err.push_back(false);
 ret.push_back((args)[0]);
 err.push_back(false);
 ret.push_back(env2[1]);
-err.push_back(false);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-}
-}
-}
-}
-}
-} catch(std::exception &e) { SignalHandler::instance()->error(e.what());}
-}
-PARALLEL_END;
-}
-();}
-return;
-}
-void subproof_34(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-[&](){
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-if(!rel_2_Rule->equalRange_1(Tuple<RamDomain,3>({{RamDomain(430),0,0}}),READ_OP_CONTEXT(rel_2_Rule_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(0));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back(RamDomain(430));
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-if(!rel_3_created->equalRange_3(Tuple<RamDomain,4>({{(args)[0],(args)[2],0,0}}),READ_OP_CONTEXT(rel_3_created_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(1));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();[&](){
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-if(!rel_7_actedin->equalRange_3(Tuple<RamDomain,4>({{(args)[1],(args)[2],0,0}}),READ_OP_CONTEXT(rel_7_actedin_op_ctxt)).empty()) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(2));
-err.push_back(false);
-}
-}
-();[&](){
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(0);
-err.push_back(true);
-ret.push_back((args)[1]);
-err.push_back(false);
-ret.push_back((args)[2]);
-err.push_back(false);
-}
-();return;
-}
-void subproof_35(const std::vector<RamDomain>& args, std::vector<RamDomain>& ret, std::vector<bool>& err) {
-std::mutex lock;
-if(!(rel_7_actedin->empty()) && !(rel_3_created->empty()) && !(rel_2_Rule->empty())) {
-[&](){
-const Tuple<RamDomain,3> key({{RamDomain(430),0,0}});
-auto range = rel_2_Rule->equalRange_1(key);
-auto part = range.partition();
-PARALLEL_START;
-CREATE_OP_CONTEXT(rel_2_Rule_op_ctxt,rel_2_Rule->createContext());
-CREATE_OP_CONTEXT(rel_3_created_op_ctxt,rel_3_created->createContext());
-CREATE_OP_CONTEXT(rel_7_actedin_op_ctxt,rel_7_actedin->createContext());
-pfor(auto it = part.begin(); it<part.end(); ++it) { 
-try{
-for(const auto& env0 : *it) {
-if( ((env0[2]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[0],0,0,0}});
-auto range = rel_3_created->equalRange_1(key,READ_OP_CONTEXT(rel_3_created_op_ctxt));
-for(const auto& env1 : range) {
-if( ((env1[3]) < ((args)[2]))) {
-const Tuple<RamDomain,4> key({{(args)[1],env1[1],0,0}});
-auto range = rel_7_actedin->equalRange_3(key,READ_OP_CONTEXT(rel_7_actedin_op_ctxt));
-for(const auto& env2 : range) {
-if( ((env2[3]) < ((args)[2]))) {
-std::lock_guard<std::mutex> guard(lock);
-ret.push_back(RamDomain(430));
-err.push_back(false);
-ret.push_back(env0[1]);
-err.push_back(false);
-ret.push_back(env0[2]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env1[2]);
-err.push_back(false);
-ret.push_back(env1[3]);
-err.push_back(false);
-ret.push_back(env2[0]);
-err.push_back(false);
-ret.push_back(env1[1]);
-err.push_back(false);
-ret.push_back(env2[2]);
-err.push_back(false);
-ret.push_back(env2[3]);
-err.push_back(false);
-ret.push_back(env1[0]);
-err.push_back(false);
-ret.push_back((args)[0]);
-err.push_back(false);
-ret.push_back(env2[0]);
 err.push_back(false);
 ret.push_back((args)[1]);
 err.push_back(false);
