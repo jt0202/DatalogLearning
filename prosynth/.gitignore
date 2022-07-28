@@ -1,0 +1,11 @@
+.DS_Store
+qd
+scratch
+__pycache__
+souffle/target
+souffle/build
+
+*.out
+*.facts
+*.expected
+*.notexpected

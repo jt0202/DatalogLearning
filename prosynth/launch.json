@@ -1,0 +1,10 @@
+{
+    "configurations": {
+        "type": "python",
+        "request": "launch",
+        "pythonPath": "usr/bin/python",
+        "args": [
+        "kg", "0", "1", "data.log"
+        ]
+    }
+}
