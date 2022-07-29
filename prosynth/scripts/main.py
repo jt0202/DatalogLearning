@@ -65,6 +65,8 @@ for rel in outputRelations:
     with open(problemDirName + "/" + outputRelation + ".facts", "r") as file:
         for line in file:
             pair = line.split("\t")
+            if len(pair) < 2:
+                continue
             subjects.append(pair[0])
             objects.append(pair[1])
         
@@ -391,4 +393,4 @@ for rel in outputRelations:
 
         evFile.write("Time spent (in min): " +str(endtime / 60))
         evFile.write("Time spent (in s): " +str(endtime ))
-
+    

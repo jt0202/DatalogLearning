@@ -1,0 +1,7 @@
+*ismarriedto(V,V)
+*created(V,V)
+*produced(V,V)
+*directed(V,V)
+*Iactedin(V,V)
+inv_0(V,V)
+actedin(V,V)

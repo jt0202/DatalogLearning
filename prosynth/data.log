@@ -100,3 +100,8 @@
 {name: 'countries', z3: 1, souffle: 1, runtime: 321.63280868530273, setting_delta: 1}
 {name: 'countries', z3: 1, souffle: 1, runtime: 346.18463110923767, setting_delta: 1}
 {name: 'countries', z3: 1, souffle: 1, runtime: 291.46506214141846, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 167.15755701065063, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 167.20463705062866, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 167.4056887626648, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 151.6308343410492, setting_delta: 1}
+{name: 'films', z3: 1, souffle: 1, runtime: 152.01549625396729, setting_delta: 1}
