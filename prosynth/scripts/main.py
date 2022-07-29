@@ -22,7 +22,7 @@ fileName = "kb.tsv"
 width = 2
 numberOfInventedPredicates = 1
 relevancethreshhold = 0.01
-negativeExampleAmount = 5
+negativeExampleAmount = 0
 train_test_split = 0.25
 multipleRelations = True
 
@@ -294,6 +294,12 @@ for rel in outputRelations:
     subprocess.run(["./scripts/prosynth", problemDirName, "0", "1", "data.log"], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 
     print("finished Mining")
+
+    if not os.path.exists(problemDirName + "/solution.dl"):
+        with open(problemDirName + "/evaluation_" + outputRelation + ".txt", "w") as evFile:
+            evFile.write("No rules found")
+            relations.remove("I" + outputRelation)
+            continue
 
     endtime = time.time() - starttime
 

@@ -1,0 +1,164 @@
+invent_error
+inv_0(v0, v1) :- Iismarriedto(v0, v1), Rule(8).
+input prevent
+inv_0(v0, v1) :- Iismarriedto(v1, v0), Rule(9).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), Rule(10).
+invent_error
+inv_0(v0, v1) :- created(v0, v1), Iismarriedto(v0, v1), Rule(60).
+input prevent
+inv_0(v0, v1) :- created(v0, v1), Iismarriedto(v1, v0), Rule(61).
+input prevent
+inv_0(v0, v1) :- created(v1, v0), Iismarriedto(v1, v0), Rule(62).
+invent_error
+inv_0(v0, v1) :- created(v1, v0), Iismarriedto(v0, v1), Rule(63).
+Head twice 
+inv_0(v0, v1) :- created(v0, v1), inv_0(v0, v1), Rule(72).
+Head twice 
+inv_0(v0, v1) :- created(v1, v0), inv_0(v0, v1), Rule(75).
+invent_error
+inv_0(v0, v1) :- produced(v0, v1), Iismarriedto(v0, v1), Rule(120).
+input prevent
+inv_0(v0, v1) :- produced(v0, v1), Iismarriedto(v1, v0), Rule(121).
+input prevent
+inv_0(v0, v1) :- produced(v1, v0), Iismarriedto(v1, v0), Rule(122).
+invent_error
+inv_0(v0, v1) :- produced(v1, v0), Iismarriedto(v0, v1), Rule(123).
+Head twice 
+inv_0(v0, v1) :- produced(v0, v1), inv_0(v0, v1), Rule(132).
+Head twice 
+inv_0(v0, v1) :- produced(v1, v0), inv_0(v0, v1), Rule(135).
+invent_error
+inv_0(v0, v1) :- directed(v0, v1), Iismarriedto(v0, v1), Rule(168).
+input prevent
+inv_0(v0, v1) :- directed(v0, v1), Iismarriedto(v1, v0), Rule(169).
+input prevent
+inv_0(v0, v1) :- directed(v1, v0), Iismarriedto(v1, v0), Rule(170).
+invent_error
+inv_0(v0, v1) :- directed(v1, v0), Iismarriedto(v0, v1), Rule(171).
+Head twice 
+inv_0(v0, v1) :- directed(v0, v1), inv_0(v0, v1), Rule(180).
+Head twice 
+inv_0(v0, v1) :- directed(v1, v0), inv_0(v0, v1), Rule(183).
+invent_error
+inv_0(v0, v1) :- actedin(v0, v1), Iismarriedto(v0, v1), Rule(204).
+input prevent
+inv_0(v0, v1) :- actedin(v0, v1), Iismarriedto(v1, v0), Rule(205).
+input prevent
+inv_0(v0, v1) :- actedin(v1, v0), Iismarriedto(v1, v0), Rule(206).
+invent_error
+inv_0(v0, v1) :- actedin(v1, v0), Iismarriedto(v0, v1), Rule(207).
+Head twice 
+inv_0(v0, v1) :- actedin(v0, v1), inv_0(v0, v1), Rule(216).
+Head twice 
+inv_0(v0, v1) :- actedin(v1, v0), inv_0(v0, v1), Rule(219).
+invent_error
+inv_0(v0, v1) :- Iismarriedto(v0, v1), Iismarriedto(v0, v1), Rule(228).
+input prevent
+inv_0(v0, v1) :- Iismarriedto(v0, v1), Iismarriedto(v1, v0), Rule(229).
+input prevent
+inv_0(v0, v1) :- Iismarriedto(v1, v0), Iismarriedto(v1, v0), Rule(230).
+input prevent
+inv_0(v0, v1) :- Iismarriedto(v1, v0), Iismarriedto(v0, v1), Rule(231).
+Head twice 
+inv_0(v0, v1) :- Iismarriedto(v0, v1), inv_0(v0, v1), Rule(240).
+invent_error
+inv_0(v0, v1) :- Iismarriedto(v0, v1), inv_0(v1, v0), Rule(241).
+input prevent
+inv_0(v0, v1) :- Iismarriedto(v1, v0), inv_0(v1, v0), Rule(242).
+Head twice 
+inv_0(v0, v1) :- Iismarriedto(v1, v0), inv_0(v0, v1), Rule(243).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v0, v1), Rule(252).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v1, v0), Rule(253).
+Head twice 
+inv_0(v0, v1) :- inv_0(v1, v0), inv_0(v0, v1), Rule(255).
+Head twice 
+ismarriedto(v0, v1) :- Iismarriedto(v0, v1), Rule(272).
+input prevent
+ismarriedto(v0, v1) :- Iismarriedto(v1, v0), Rule(273).
+Head twice 
+ismarriedto(v0, v1) :- ismarriedto(v0, v1), Rule(276).
+Head twice 
+ismarriedto(v0, v1) :- created(v0, v1), Iismarriedto(v0, v1), Rule(326).
+input prevent
+ismarriedto(v0, v1) :- created(v0, v1), Iismarriedto(v1, v0), Rule(327).
+input prevent
+ismarriedto(v0, v1) :- created(v1, v0), Iismarriedto(v1, v0), Rule(328).
+Head twice 
+ismarriedto(v0, v1) :- created(v1, v0), Iismarriedto(v0, v1), Rule(329).
+Head twice 
+ismarriedto(v0, v1) :- created(v0, v1), ismarriedto(v0, v1), Rule(350).
+Head twice 
+ismarriedto(v0, v1) :- created(v1, v0), ismarriedto(v0, v1), Rule(353).
+Head twice 
+ismarriedto(v0, v1) :- produced(v0, v1), Iismarriedto(v0, v1), Rule(398).
+input prevent
+ismarriedto(v0, v1) :- produced(v0, v1), Iismarriedto(v1, v0), Rule(399).
+input prevent
+ismarriedto(v0, v1) :- produced(v1, v0), Iismarriedto(v1, v0), Rule(400).
+Head twice 
+ismarriedto(v0, v1) :- produced(v1, v0), Iismarriedto(v0, v1), Rule(401).
+Head twice 
+ismarriedto(v0, v1) :- produced(v0, v1), ismarriedto(v0, v1), Rule(422).
+Head twice 
+ismarriedto(v0, v1) :- produced(v1, v0), ismarriedto(v0, v1), Rule(425).
+Head twice 
+ismarriedto(v0, v1) :- directed(v0, v1), Iismarriedto(v0, v1), Rule(458).
+input prevent
+ismarriedto(v0, v1) :- directed(v0, v1), Iismarriedto(v1, v0), Rule(459).
+input prevent
+ismarriedto(v0, v1) :- directed(v1, v0), Iismarriedto(v1, v0), Rule(460).
+Head twice 
+ismarriedto(v0, v1) :- directed(v1, v0), Iismarriedto(v0, v1), Rule(461).
+Head twice 
+ismarriedto(v0, v1) :- directed(v0, v1), ismarriedto(v0, v1), Rule(482).
+Head twice 
+ismarriedto(v0, v1) :- directed(v1, v0), ismarriedto(v0, v1), Rule(485).
+Head twice 
+ismarriedto(v0, v1) :- actedin(v0, v1), Iismarriedto(v0, v1), Rule(506).
+input prevent
+ismarriedto(v0, v1) :- actedin(v0, v1), Iismarriedto(v1, v0), Rule(507).
+input prevent
+ismarriedto(v0, v1) :- actedin(v1, v0), Iismarriedto(v1, v0), Rule(508).
+Head twice 
+ismarriedto(v0, v1) :- actedin(v1, v0), Iismarriedto(v0, v1), Rule(509).
+Head twice 
+ismarriedto(v0, v1) :- actedin(v0, v1), ismarriedto(v0, v1), Rule(530).
+Head twice 
+ismarriedto(v0, v1) :- actedin(v1, v0), ismarriedto(v0, v1), Rule(533).
+Head twice 
+ismarriedto(v0, v1) :- Iismarriedto(v0, v1), Iismarriedto(v0, v1), Rule(542).
+Head twice 
+ismarriedto(v0, v1) :- Iismarriedto(v0, v1), Iismarriedto(v1, v0), Rule(543).
+input prevent
+ismarriedto(v0, v1) :- Iismarriedto(v1, v0), Iismarriedto(v1, v0), Rule(544).
+Head twice 
+ismarriedto(v0, v1) :- Iismarriedto(v1, v0), Iismarriedto(v0, v1), Rule(545).
+Head twice 
+ismarriedto(v0, v1) :- Iismarriedto(v0, v1), inv_0(v0, v1), Rule(554).
+Head twice 
+ismarriedto(v0, v1) :- Iismarriedto(v0, v1), inv_0(v1, v0), Rule(555).
+input prevent
+ismarriedto(v0, v1) :- Iismarriedto(v1, v0), inv_0(v1, v0), Rule(556).
+input prevent
+ismarriedto(v0, v1) :- Iismarriedto(v1, v0), inv_0(v0, v1), Rule(557).
+Head twice 
+ismarriedto(v0, v1) :- Iismarriedto(v0, v1), ismarriedto(v0, v1), Rule(566).
+Head twice 
+ismarriedto(v0, v1) :- Iismarriedto(v0, v1), ismarriedto(v1, v0), Rule(567).
+input prevent
+ismarriedto(v0, v1) :- Iismarriedto(v1, v0), ismarriedto(v1, v0), Rule(568).
+Head twice 
+ismarriedto(v0, v1) :- Iismarriedto(v1, v0), ismarriedto(v0, v1), Rule(569).
+Head twice 
+ismarriedto(v0, v1) :- inv_0(v0, v1), ismarriedto(v0, v1), Rule(590).
+Head twice 
+ismarriedto(v0, v1) :- inv_0(v1, v0), ismarriedto(v0, v1), Rule(593).
+Head twice 
+ismarriedto(v0, v1) :- ismarriedto(v0, v1), ismarriedto(v0, v1), Rule(602).
+Head twice 
+ismarriedto(v0, v1) :- ismarriedto(v0, v1), ismarriedto(v1, v0), Rule(603).
+Head twice 
+ismarriedto(v0, v1) :- ismarriedto(v1, v0), ismarriedto(v0, v1), Rule(605).
