@@ -92,14 +92,10 @@ for rel in outputRelations:
     with open(problemDirName + "/" + outputRelation + ".facts", "r") as file:
         with open(problemDirName + "/" + outputRelation + ".expected", "w") as train_file:
             with open(problemDirName + "/I" + outputRelation + ".facts", "w") as inputFile:
-                with open(problemDirName + "/" + "test" + ".csv", "w") as test_file:
                     for line in file:
                         inputFile.write(line)
-                        if random.random() >= train_test_split:
-                            train_file.write(line)
-                        else:
-                            test_file.write(line)
-                            entities.add(line.split("\t")[0])
+                        train_file.write(line)
+                        
 
     max_size = 5
     current = 0
@@ -147,10 +143,7 @@ for rel in outputRelations:
             graph.add_edge(e[0], e[1])
 
         headmatch = re.search(match, head)
-        if nx.has_path(graph, headmatch.group(1), headmatch.group(2)) or nx.has_path(graph, headmatch.group(2), headmatch.group(1)):
-            return True
-        else:
-            return False
+        return nx.is_Connected(graph)
 
     relationtypes = {}
 
@@ -296,15 +289,19 @@ for rel in outputRelations:
     subprocess.run(["./scripts/prosynth", problemDirName, "0", "1", "data.log"], stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 
     print("finished Mining")
+    endtime = time.time() - starttime
 
     if not os.path.exists(problemDirName + "/solution.dl"):
         with open(problemDirName + "/evaluation_" + outputRelation + ".txt", "w") as evFile:
             evFile.write("No rules found")
+            evFile.write("Time spent (in min): " +str(endtime / 60))
+            evFile.write("Time spent (in s): " +str(endtime ))
             relations.remove("I" + outputRelation)
             continue
+    subprocess.run(["mv", problemDirName + "/solution.dl", problemDirName + "/sol_" + outputRelation + ".dl"])
+    relations.remove("I" + outputRelation)
 
-    endtime = time.time() - starttime
-
+    continue
     #evaluate
     with open(problemDirName + "/evaluation_" +  outputRelation + ".txt", "w") as evFile:
         #evaluate whole program
