@@ -1,0 +1,284 @@
+invent_error
+inv_0(v0, v1) :- IIproduced(v0, v1), Rule(18).
+input prevent
+inv_0(v0, v1) :- IIproduced(v1, v0), Rule(19).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), Rule(20).
+invent_error
+inv_0(v0, v1) :- Rule(v0, v1), IIproduced(v0, v1), Rule(130).
+input prevent
+inv_0(v0, v1) :- Rule(v0, v1), IIproduced(v1, v0), Rule(131).
+input prevent
+inv_0(v0, v1) :- Rule(v1, v0), IIproduced(v1, v0), Rule(132).
+invent_error
+inv_0(v0, v1) :- Rule(v1, v0), IIproduced(v0, v1), Rule(133).
+Head twice 
+inv_0(v0, v1) :- Rule(v0, v1), inv_0(v0, v1), Rule(142).
+Head twice 
+inv_0(v0, v1) :- Rule(v1, v0), inv_0(v0, v1), Rule(145).
+invent_error
+inv_0(v0, v1) :- ismarriedto(v0, v1), IIproduced(v0, v1), Rule(250).
+input prevent
+inv_0(v0, v1) :- ismarriedto(v0, v1), IIproduced(v1, v0), Rule(251).
+input prevent
+inv_0(v0, v1) :- ismarriedto(v1, v0), IIproduced(v1, v0), Rule(252).
+invent_error
+inv_0(v0, v1) :- ismarriedto(v1, v0), IIproduced(v0, v1), Rule(253).
+Head twice 
+inv_0(v0, v1) :- ismarriedto(v0, v1), inv_0(v0, v1), Rule(262).
+Head twice 
+inv_0(v0, v1) :- ismarriedto(v1, v0), inv_0(v0, v1), Rule(265).
+invent_error
+inv_0(v0, v1) :- created(v0, v1), IIproduced(v0, v1), Rule(358).
+input prevent
+inv_0(v0, v1) :- created(v0, v1), IIproduced(v1, v0), Rule(359).
+input prevent
+inv_0(v0, v1) :- created(v1, v0), IIproduced(v1, v0), Rule(360).
+invent_error
+inv_0(v0, v1) :- created(v1, v0), IIproduced(v0, v1), Rule(361).
+Head twice 
+inv_0(v0, v1) :- created(v0, v1), inv_0(v0, v1), Rule(370).
+Head twice 
+inv_0(v0, v1) :- created(v1, v0), inv_0(v0, v1), Rule(373).
+invent_error
+inv_0(v0, v1) :- Iismarriedto(v0, v1), IIproduced(v0, v1), Rule(454).
+input prevent
+inv_0(v0, v1) :- Iismarriedto(v0, v1), IIproduced(v1, v0), Rule(455).
+input prevent
+inv_0(v0, v1) :- Iismarriedto(v1, v0), IIproduced(v1, v0), Rule(456).
+invent_error
+inv_0(v0, v1) :- Iismarriedto(v1, v0), IIproduced(v0, v1), Rule(457).
+Head twice 
+inv_0(v0, v1) :- Iismarriedto(v0, v1), inv_0(v0, v1), Rule(466).
+Head twice 
+inv_0(v0, v1) :- Iismarriedto(v1, v0), inv_0(v0, v1), Rule(469).
+invent_error
+inv_0(v0, v1) :- Icreated(v0, v1), IIproduced(v0, v1), Rule(538).
+input prevent
+inv_0(v0, v1) :- Icreated(v0, v1), IIproduced(v1, v0), Rule(539).
+input prevent
+inv_0(v0, v1) :- Icreated(v1, v0), IIproduced(v1, v0), Rule(540).
+invent_error
+inv_0(v0, v1) :- Icreated(v1, v0), IIproduced(v0, v1), Rule(541).
+Head twice 
+inv_0(v0, v1) :- Icreated(v0, v1), inv_0(v0, v1), Rule(550).
+Head twice 
+inv_0(v0, v1) :- Icreated(v1, v0), inv_0(v0, v1), Rule(553).
+invent_error
+inv_0(v0, v1) :- produced(v0, v1), IIproduced(v0, v1), Rule(610).
+input prevent
+inv_0(v0, v1) :- produced(v0, v1), IIproduced(v1, v0), Rule(611).
+input prevent
+inv_0(v0, v1) :- produced(v1, v0), IIproduced(v1, v0), Rule(612).
+invent_error
+inv_0(v0, v1) :- produced(v1, v0), IIproduced(v0, v1), Rule(613).
+Head twice 
+inv_0(v0, v1) :- produced(v0, v1), inv_0(v0, v1), Rule(622).
+Head twice 
+inv_0(v0, v1) :- produced(v1, v0), inv_0(v0, v1), Rule(625).
+invent_error
+inv_0(v0, v1) :- directed(v0, v1), IIproduced(v0, v1), Rule(670).
+input prevent
+inv_0(v0, v1) :- directed(v0, v1), IIproduced(v1, v0), Rule(671).
+input prevent
+inv_0(v0, v1) :- directed(v1, v0), IIproduced(v1, v0), Rule(672).
+invent_error
+inv_0(v0, v1) :- directed(v1, v0), IIproduced(v0, v1), Rule(673).
+Head twice 
+inv_0(v0, v1) :- directed(v0, v1), inv_0(v0, v1), Rule(682).
+Head twice 
+inv_0(v0, v1) :- directed(v1, v0), inv_0(v0, v1), Rule(685).
+invent_error
+inv_0(v0, v1) :- Idirected(v0, v1), IIproduced(v0, v1), Rule(718).
+input prevent
+inv_0(v0, v1) :- Idirected(v0, v1), IIproduced(v1, v0), Rule(719).
+input prevent
+inv_0(v0, v1) :- Idirected(v1, v0), IIproduced(v1, v0), Rule(720).
+invent_error
+inv_0(v0, v1) :- Idirected(v1, v0), IIproduced(v0, v1), Rule(721).
+Head twice 
+inv_0(v0, v1) :- Idirected(v0, v1), inv_0(v0, v1), Rule(730).
+Head twice 
+inv_0(v0, v1) :- Idirected(v1, v0), inv_0(v0, v1), Rule(733).
+invent_error
+inv_0(v0, v1) :- actedin(v0, v1), IIproduced(v0, v1), Rule(754).
+input prevent
+inv_0(v0, v1) :- actedin(v0, v1), IIproduced(v1, v0), Rule(755).
+input prevent
+inv_0(v0, v1) :- actedin(v1, v0), IIproduced(v1, v0), Rule(756).
+invent_error
+inv_0(v0, v1) :- actedin(v1, v0), IIproduced(v0, v1), Rule(757).
+Head twice 
+inv_0(v0, v1) :- actedin(v0, v1), inv_0(v0, v1), Rule(766).
+Head twice 
+inv_0(v0, v1) :- actedin(v1, v0), inv_0(v0, v1), Rule(769).
+invent_error
+inv_0(v0, v1) :- IIproduced(v0, v1), IIproduced(v0, v1), Rule(778).
+input prevent
+inv_0(v0, v1) :- IIproduced(v0, v1), IIproduced(v1, v0), Rule(779).
+input prevent
+inv_0(v0, v1) :- IIproduced(v1, v0), IIproduced(v1, v0), Rule(780).
+input prevent
+inv_0(v0, v1) :- IIproduced(v1, v0), IIproduced(v0, v1), Rule(781).
+Head twice 
+inv_0(v0, v1) :- IIproduced(v0, v1), inv_0(v0, v1), Rule(790).
+invent_error
+inv_0(v0, v1) :- IIproduced(v0, v1), inv_0(v1, v0), Rule(791).
+input prevent
+inv_0(v0, v1) :- IIproduced(v1, v0), inv_0(v1, v0), Rule(792).
+Head twice 
+inv_0(v0, v1) :- IIproduced(v1, v0), inv_0(v0, v1), Rule(793).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v0, v1), Rule(802).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v1, v0), Rule(803).
+Head twice 
+inv_0(v0, v1) :- inv_0(v1, v0), inv_0(v0, v1), Rule(805).
+Head twice 
+Iproduced(v0, v1) :- IIproduced(v0, v1), Rule(832).
+input prevent
+Iproduced(v0, v1) :- IIproduced(v1, v0), Rule(833).
+Head twice 
+Iproduced(v0, v1) :- Iproduced(v0, v1), Rule(836).
+Head twice 
+Iproduced(v0, v1) :- Rule(v0, v1), IIproduced(v0, v1), Rule(946).
+input prevent
+Iproduced(v0, v1) :- Rule(v0, v1), IIproduced(v1, v0), Rule(947).
+input prevent
+Iproduced(v0, v1) :- Rule(v1, v0), IIproduced(v1, v0), Rule(948).
+Head twice 
+Iproduced(v0, v1) :- Rule(v1, v0), IIproduced(v0, v1), Rule(949).
+Head twice 
+Iproduced(v0, v1) :- Rule(v0, v1), Iproduced(v0, v1), Rule(970).
+Head twice 
+Iproduced(v0, v1) :- Rule(v1, v0), Iproduced(v0, v1), Rule(973).
+Head twice 
+Iproduced(v0, v1) :- ismarriedto(v0, v1), IIproduced(v0, v1), Rule(1078).
+input prevent
+Iproduced(v0, v1) :- ismarriedto(v0, v1), IIproduced(v1, v0), Rule(1079).
+input prevent
+Iproduced(v0, v1) :- ismarriedto(v1, v0), IIproduced(v1, v0), Rule(1080).
+Head twice 
+Iproduced(v0, v1) :- ismarriedto(v1, v0), IIproduced(v0, v1), Rule(1081).
+Head twice 
+Iproduced(v0, v1) :- ismarriedto(v0, v1), Iproduced(v0, v1), Rule(1102).
+Head twice 
+Iproduced(v0, v1) :- ismarriedto(v1, v0), Iproduced(v0, v1), Rule(1105).
+Head twice 
+Iproduced(v0, v1) :- created(v0, v1), IIproduced(v0, v1), Rule(1198).
+input prevent
+Iproduced(v0, v1) :- created(v0, v1), IIproduced(v1, v0), Rule(1199).
+input prevent
+Iproduced(v0, v1) :- created(v1, v0), IIproduced(v1, v0), Rule(1200).
+Head twice 
+Iproduced(v0, v1) :- created(v1, v0), IIproduced(v0, v1), Rule(1201).
+Head twice 
+Iproduced(v0, v1) :- created(v0, v1), Iproduced(v0, v1), Rule(1222).
+Head twice 
+Iproduced(v0, v1) :- created(v1, v0), Iproduced(v0, v1), Rule(1225).
+Head twice 
+Iproduced(v0, v1) :- Iismarriedto(v0, v1), IIproduced(v0, v1), Rule(1306).
+input prevent
+Iproduced(v0, v1) :- Iismarriedto(v0, v1), IIproduced(v1, v0), Rule(1307).
+input prevent
+Iproduced(v0, v1) :- Iismarriedto(v1, v0), IIproduced(v1, v0), Rule(1308).
+Head twice 
+Iproduced(v0, v1) :- Iismarriedto(v1, v0), IIproduced(v0, v1), Rule(1309).
+Head twice 
+Iproduced(v0, v1) :- Iismarriedto(v0, v1), Iproduced(v0, v1), Rule(1330).
+Head twice 
+Iproduced(v0, v1) :- Iismarriedto(v1, v0), Iproduced(v0, v1), Rule(1333).
+Head twice 
+Iproduced(v0, v1) :- Icreated(v0, v1), IIproduced(v0, v1), Rule(1402).
+input prevent
+Iproduced(v0, v1) :- Icreated(v0, v1), IIproduced(v1, v0), Rule(1403).
+input prevent
+Iproduced(v0, v1) :- Icreated(v1, v0), IIproduced(v1, v0), Rule(1404).
+Head twice 
+Iproduced(v0, v1) :- Icreated(v1, v0), IIproduced(v0, v1), Rule(1405).
+Head twice 
+Iproduced(v0, v1) :- Icreated(v0, v1), Iproduced(v0, v1), Rule(1426).
+Head twice 
+Iproduced(v0, v1) :- Icreated(v1, v0), Iproduced(v0, v1), Rule(1429).
+Head twice 
+Iproduced(v0, v1) :- produced(v0, v1), IIproduced(v0, v1), Rule(1486).
+input prevent
+Iproduced(v0, v1) :- produced(v0, v1), IIproduced(v1, v0), Rule(1487).
+input prevent
+Iproduced(v0, v1) :- produced(v1, v0), IIproduced(v1, v0), Rule(1488).
+Head twice 
+Iproduced(v0, v1) :- produced(v1, v0), IIproduced(v0, v1), Rule(1489).
+Head twice 
+Iproduced(v0, v1) :- produced(v0, v1), Iproduced(v0, v1), Rule(1510).
+Head twice 
+Iproduced(v0, v1) :- produced(v1, v0), Iproduced(v0, v1), Rule(1513).
+Head twice 
+Iproduced(v0, v1) :- directed(v0, v1), IIproduced(v0, v1), Rule(1558).
+input prevent
+Iproduced(v0, v1) :- directed(v0, v1), IIproduced(v1, v0), Rule(1559).
+input prevent
+Iproduced(v0, v1) :- directed(v1, v0), IIproduced(v1, v0), Rule(1560).
+Head twice 
+Iproduced(v0, v1) :- directed(v1, v0), IIproduced(v0, v1), Rule(1561).
+Head twice 
+Iproduced(v0, v1) :- directed(v0, v1), Iproduced(v0, v1), Rule(1582).
+Head twice 
+Iproduced(v0, v1) :- directed(v1, v0), Iproduced(v0, v1), Rule(1585).
+Head twice 
+Iproduced(v0, v1) :- Idirected(v0, v1), IIproduced(v0, v1), Rule(1618).
+input prevent
+Iproduced(v0, v1) :- Idirected(v0, v1), IIproduced(v1, v0), Rule(1619).
+input prevent
+Iproduced(v0, v1) :- Idirected(v1, v0), IIproduced(v1, v0), Rule(1620).
+Head twice 
+Iproduced(v0, v1) :- Idirected(v1, v0), IIproduced(v0, v1), Rule(1621).
+Head twice 
+Iproduced(v0, v1) :- Idirected(v0, v1), Iproduced(v0, v1), Rule(1642).
+Head twice 
+Iproduced(v0, v1) :- Idirected(v1, v0), Iproduced(v0, v1), Rule(1645).
+Head twice 
+Iproduced(v0, v1) :- actedin(v0, v1), IIproduced(v0, v1), Rule(1666).
+input prevent
+Iproduced(v0, v1) :- actedin(v0, v1), IIproduced(v1, v0), Rule(1667).
+input prevent
+Iproduced(v0, v1) :- actedin(v1, v0), IIproduced(v1, v0), Rule(1668).
+Head twice 
+Iproduced(v0, v1) :- actedin(v1, v0), IIproduced(v0, v1), Rule(1669).
+Head twice 
+Iproduced(v0, v1) :- actedin(v0, v1), Iproduced(v0, v1), Rule(1690).
+Head twice 
+Iproduced(v0, v1) :- actedin(v1, v0), Iproduced(v0, v1), Rule(1693).
+Head twice 
+Iproduced(v0, v1) :- IIproduced(v0, v1), IIproduced(v0, v1), Rule(1702).
+Head twice 
+Iproduced(v0, v1) :- IIproduced(v0, v1), IIproduced(v1, v0), Rule(1703).
+input prevent
+Iproduced(v0, v1) :- IIproduced(v1, v0), IIproduced(v1, v0), Rule(1704).
+Head twice 
+Iproduced(v0, v1) :- IIproduced(v1, v0), IIproduced(v0, v1), Rule(1705).
+Head twice 
+Iproduced(v0, v1) :- IIproduced(v0, v1), inv_0(v0, v1), Rule(1714).
+Head twice 
+Iproduced(v0, v1) :- IIproduced(v0, v1), inv_0(v1, v0), Rule(1715).
+input prevent
+Iproduced(v0, v1) :- IIproduced(v1, v0), inv_0(v1, v0), Rule(1716).
+input prevent
+Iproduced(v0, v1) :- IIproduced(v1, v0), inv_0(v0, v1), Rule(1717).
+Head twice 
+Iproduced(v0, v1) :- IIproduced(v0, v1), Iproduced(v0, v1), Rule(1726).
+Head twice 
+Iproduced(v0, v1) :- IIproduced(v0, v1), Iproduced(v1, v0), Rule(1727).
+input prevent
+Iproduced(v0, v1) :- IIproduced(v1, v0), Iproduced(v1, v0), Rule(1728).
+Head twice 
+Iproduced(v0, v1) :- IIproduced(v1, v0), Iproduced(v0, v1), Rule(1729).
+Head twice 
+Iproduced(v0, v1) :- inv_0(v0, v1), Iproduced(v0, v1), Rule(1750).
+Head twice 
+Iproduced(v0, v1) :- inv_0(v1, v0), Iproduced(v0, v1), Rule(1753).
+Head twice 
+Iproduced(v0, v1) :- Iproduced(v0, v1), Iproduced(v0, v1), Rule(1762).
+Head twice 
+Iproduced(v0, v1) :- Iproduced(v0, v1), Iproduced(v1, v0), Rule(1763).
+Head twice 
+Iproduced(v0, v1) :- Iproduced(v1, v0), Iproduced(v0, v1), Rule(1765).

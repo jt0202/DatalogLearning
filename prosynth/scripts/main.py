@@ -143,7 +143,7 @@ for rel in outputRelations:
             graph.add_edge(e[0], e[1])
 
         headmatch = re.search(match, head)
-        return nx.is_Connected(graph)
+        return nx.is_connected(graph)
 
     relationtypes = {}
 

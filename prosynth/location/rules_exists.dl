@@ -1,0 +1,837 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl wasbornin(v0: V, v1: V)
+.input wasbornin
+
+.decl Ilivesin(v0: V, v1: V)
+.input Ilivesin
+
+.decl inv_0(v0: V, v1: V)
+.decl livesin(v0: V, v1: V)
+.decl wasbornin_exists(v0: V, v1: V, r: number)
+.output wasbornin_exists
+
+.decl Ilivesin_exists(v0: V, v1: V, r: number)
+.output Ilivesin_exists
+
+.decl inv_0_exists(v0: V, v1: V, r: number)
+.output inv_0_exists
+
+.decl livesin_exists(v0: V, v1: V, r: number)
+.output livesin_exists
+
+
+
+inv_0(v0, v1) :- wasbornin(v0, v1), Rule(0).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), r = 0, Rule(0).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), Rule(r), Rule(0).
+inv_0(v0, v1) :- wasbornin(v1, v0), Rule(1).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), r = 1, Rule(1).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), Rule(r), Rule(1).
+inv_0(v0, v1) :- Ilivesin(v0, v1), Rule(2).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v1), r = 2, Rule(2).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), Rule(r), Rule(2).
+inv_0(v0, v1) :- Ilivesin(v1, v0), Rule(3).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v0), r = 3, Rule(3).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), Rule(r), Rule(3).
+inv_0(v0, v1) :- inv_0(v0, v1), Rule(4).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v1), r = 4, Rule(4).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), Rule(r), Rule(4).
+inv_0(v0, v1) :- inv_0(v1, v0), Rule(5).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v0), r = 5, Rule(5).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), Rule(r), Rule(5).
+inv_0(v0, v1) :- wasbornin(v0, v1), wasbornin(v0, v1), Rule(6).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), wasbornin(v0, v1), r = 6, Rule(6).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), wasbornin(v0, v1), Rule(r), Rule(6).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), wasbornin_exists(v0, v1, r), Rule(r), Rule(6).
+inv_0(v0, v1) :- wasbornin(v0, v1), wasbornin(v1, v0), Rule(7).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), wasbornin(v1, v0), r = 7, Rule(7).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), wasbornin(v1, v0), Rule(r), Rule(7).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), wasbornin_exists(v1, v0, r), Rule(r), Rule(7).
+inv_0(v0, v1) :- wasbornin(v1, v0), wasbornin(v1, v0), Rule(8).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), wasbornin(v1, v0), r = 8, Rule(8).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), wasbornin(v1, v0), Rule(r), Rule(8).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), wasbornin_exists(v1, v0, r), Rule(r), Rule(8).
+inv_0(v0, v1) :- wasbornin(v1, v0), wasbornin(v0, v1), Rule(9).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), wasbornin(v0, v1), r = 9, Rule(9).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), wasbornin(v0, v1), Rule(r), Rule(9).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), wasbornin_exists(v0, v1, r), Rule(r), Rule(9).
+inv_0(v0, v1) :- wasbornin(v2, v1), wasbornin(v0, v2), Rule(10).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), wasbornin(v0, v2), r = 10, Rule(10).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), wasbornin(v0, v2), Rule(r), Rule(10).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), wasbornin_exists(v0, v2, r), Rule(r), Rule(10).
+inv_0(v0, v1) :- wasbornin(v1, v2), wasbornin(v2, v0), Rule(11).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), wasbornin(v2, v0), r = 11, Rule(11).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), wasbornin(v2, v0), Rule(r), Rule(11).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), wasbornin_exists(v2, v0, r), Rule(r), Rule(11).
+inv_0(v0, v1) :- wasbornin(v2, v0), wasbornin(v1, v2), Rule(12).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), wasbornin(v1, v2), r = 12, Rule(12).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), wasbornin(v1, v2), Rule(r), Rule(12).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), wasbornin_exists(v1, v2, r), Rule(r), Rule(12).
+inv_0(v0, v1) :- wasbornin(v2, v0), wasbornin(v2, v1), Rule(13).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), wasbornin(v2, v1), r = 13, Rule(13).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), wasbornin(v2, v1), Rule(r), Rule(13).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), wasbornin_exists(v2, v1, r), Rule(r), Rule(13).
+inv_0(v0, v1) :- wasbornin(v0, v2), wasbornin(v1, v2), Rule(14).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), wasbornin(v1, v2), r = 14, Rule(14).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), wasbornin(v1, v2), Rule(r), Rule(14).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), wasbornin_exists(v1, v2, r), Rule(r), Rule(14).
+inv_0(v0, v1) :- wasbornin(v0, v2), wasbornin(v2, v1), Rule(15).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), wasbornin(v2, v1), r = 15, Rule(15).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), wasbornin(v2, v1), Rule(r), Rule(15).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), wasbornin_exists(v2, v1, r), Rule(r), Rule(15).
+inv_0(v0, v1) :- wasbornin(v2, v1), wasbornin(v2, v0), Rule(16).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), wasbornin(v2, v0), r = 16, Rule(16).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), wasbornin(v2, v0), Rule(r), Rule(16).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), wasbornin_exists(v2, v0, r), Rule(r), Rule(16).
+inv_0(v0, v1) :- wasbornin(v1, v2), wasbornin(v0, v2), Rule(17).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), wasbornin(v0, v2), r = 17, Rule(17).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), wasbornin(v0, v2), Rule(r), Rule(17).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), wasbornin_exists(v0, v2, r), Rule(r), Rule(17).
+inv_0(v0, v1) :- wasbornin(v0, v1), Ilivesin(v0, v1), Rule(18).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), Ilivesin(v0, v1), r = 18, Rule(18).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), Ilivesin(v0, v1), Rule(r), Rule(18).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), Ilivesin_exists(v0, v1, r), Rule(r), Rule(18).
+inv_0(v0, v1) :- wasbornin(v0, v1), Ilivesin(v1, v0), Rule(19).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), Ilivesin(v1, v0), r = 19, Rule(19).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), Ilivesin(v1, v0), Rule(r), Rule(19).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), Ilivesin_exists(v1, v0, r), Rule(r), Rule(19).
+inv_0(v0, v1) :- wasbornin(v1, v0), Ilivesin(v1, v0), Rule(20).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), Ilivesin(v1, v0), r = 20, Rule(20).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), Ilivesin(v1, v0), Rule(r), Rule(20).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), Ilivesin_exists(v1, v0, r), Rule(r), Rule(20).
+inv_0(v0, v1) :- wasbornin(v1, v0), Ilivesin(v0, v1), Rule(21).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), Ilivesin(v0, v1), r = 21, Rule(21).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), Ilivesin(v0, v1), Rule(r), Rule(21).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), Ilivesin_exists(v0, v1, r), Rule(r), Rule(21).
+inv_0(v0, v1) :- wasbornin(v2, v1), Ilivesin(v0, v2), Rule(22).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), Ilivesin(v0, v2), r = 22, Rule(22).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), Ilivesin(v0, v2), Rule(r), Rule(22).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), Ilivesin_exists(v0, v2, r), Rule(r), Rule(22).
+inv_0(v0, v1) :- wasbornin(v1, v2), Ilivesin(v2, v0), Rule(23).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), Ilivesin(v2, v0), r = 23, Rule(23).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), Ilivesin(v2, v0), Rule(r), Rule(23).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), Ilivesin_exists(v2, v0, r), Rule(r), Rule(23).
+inv_0(v0, v1) :- wasbornin(v2, v0), Ilivesin(v1, v2), Rule(24).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), Ilivesin(v1, v2), r = 24, Rule(24).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), Ilivesin(v1, v2), Rule(r), Rule(24).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), Ilivesin_exists(v1, v2, r), Rule(r), Rule(24).
+inv_0(v0, v1) :- wasbornin(v2, v0), Ilivesin(v2, v1), Rule(25).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), Ilivesin(v2, v1), r = 25, Rule(25).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), Ilivesin(v2, v1), Rule(r), Rule(25).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), Ilivesin_exists(v2, v1, r), Rule(r), Rule(25).
+inv_0(v0, v1) :- wasbornin(v0, v2), Ilivesin(v1, v2), Rule(26).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), Ilivesin(v1, v2), r = 26, Rule(26).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), Ilivesin(v1, v2), Rule(r), Rule(26).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), Ilivesin_exists(v1, v2, r), Rule(r), Rule(26).
+inv_0(v0, v1) :- wasbornin(v0, v2), Ilivesin(v2, v1), Rule(27).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), Ilivesin(v2, v1), r = 27, Rule(27).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), Ilivesin(v2, v1), Rule(r), Rule(27).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), Ilivesin_exists(v2, v1, r), Rule(r), Rule(27).
+inv_0(v0, v1) :- wasbornin(v2, v1), Ilivesin(v2, v0), Rule(28).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), Ilivesin(v2, v0), r = 28, Rule(28).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), Ilivesin(v2, v0), Rule(r), Rule(28).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), Ilivesin_exists(v2, v0, r), Rule(r), Rule(28).
+inv_0(v0, v1) :- wasbornin(v1, v2), Ilivesin(v0, v2), Rule(29).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), Ilivesin(v0, v2), r = 29, Rule(29).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), Ilivesin(v0, v2), Rule(r), Rule(29).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), Ilivesin_exists(v0, v2, r), Rule(r), Rule(29).
+inv_0(v0, v1) :- wasbornin(v0, v1), inv_0(v0, v1), Rule(30).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), inv_0(v0, v1), r = 30, Rule(30).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(30).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(30).
+inv_0(v0, v1) :- wasbornin(v0, v1), inv_0(v1, v0), Rule(31).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), inv_0(v1, v0), r = 31, Rule(31).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(31).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(31).
+inv_0(v0, v1) :- wasbornin(v1, v0), inv_0(v1, v0), Rule(32).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), inv_0(v1, v0), r = 32, Rule(32).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(32).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(32).
+inv_0(v0, v1) :- wasbornin(v1, v0), inv_0(v0, v1), Rule(33).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), inv_0(v0, v1), r = 33, Rule(33).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(33).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(33).
+inv_0(v0, v1) :- wasbornin(v2, v1), inv_0(v0, v2), Rule(34).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), inv_0(v0, v2), r = 34, Rule(34).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(34).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(34).
+inv_0(v0, v1) :- wasbornin(v1, v2), inv_0(v2, v0), Rule(35).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), inv_0(v2, v0), r = 35, Rule(35).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(35).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(35).
+inv_0(v0, v1) :- wasbornin(v2, v0), inv_0(v1, v2), Rule(36).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), inv_0(v1, v2), r = 36, Rule(36).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(36).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(36).
+inv_0(v0, v1) :- wasbornin(v2, v0), inv_0(v2, v1), Rule(37).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), inv_0(v2, v1), r = 37, Rule(37).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(37).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(37).
+inv_0(v0, v1) :- wasbornin(v0, v2), inv_0(v1, v2), Rule(38).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), inv_0(v1, v2), r = 38, Rule(38).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(38).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(38).
+inv_0(v0, v1) :- wasbornin(v0, v2), inv_0(v2, v1), Rule(39).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), inv_0(v2, v1), r = 39, Rule(39).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(39).
+inv_0_exists(v0, v1, r) :- wasbornin(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(39).
+inv_0(v0, v1) :- wasbornin(v2, v1), inv_0(v2, v0), Rule(40).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), inv_0(v2, v0), r = 40, Rule(40).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(40).
+inv_0_exists(v0, v1, r) :- wasbornin(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(40).
+inv_0(v0, v1) :- wasbornin(v1, v2), inv_0(v0, v2), Rule(41).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), inv_0(v0, v2), r = 41, Rule(41).
+inv_0_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(41).
+inv_0_exists(v0, v1, r) :- wasbornin(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(41).
+inv_0(v0, v1) :- Ilivesin(v0, v1), Ilivesin(v0, v1), Rule(42).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v1), Ilivesin(v0, v1), r = 42, Rule(42).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), Ilivesin(v0, v1), Rule(r), Rule(42).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v1), Ilivesin_exists(v0, v1, r), Rule(r), Rule(42).
+inv_0(v0, v1) :- Ilivesin(v0, v1), Ilivesin(v1, v0), Rule(43).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v1), Ilivesin(v1, v0), r = 43, Rule(43).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), Ilivesin(v1, v0), Rule(r), Rule(43).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v1), Ilivesin_exists(v1, v0, r), Rule(r), Rule(43).
+inv_0(v0, v1) :- Ilivesin(v1, v0), Ilivesin(v1, v0), Rule(44).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v0), Ilivesin(v1, v0), r = 44, Rule(44).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), Ilivesin(v1, v0), Rule(r), Rule(44).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v0), Ilivesin_exists(v1, v0, r), Rule(r), Rule(44).
+inv_0(v0, v1) :- Ilivesin(v1, v0), Ilivesin(v0, v1), Rule(45).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v0), Ilivesin(v0, v1), r = 45, Rule(45).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), Ilivesin(v0, v1), Rule(r), Rule(45).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v0), Ilivesin_exists(v0, v1, r), Rule(r), Rule(45).
+inv_0(v0, v1) :- Ilivesin(v2, v1), Ilivesin(v0, v2), Rule(46).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v1), Ilivesin(v0, v2), r = 46, Rule(46).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v2, v1, r), Ilivesin(v0, v2), Rule(r), Rule(46).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v1), Ilivesin_exists(v0, v2, r), Rule(r), Rule(46).
+inv_0(v0, v1) :- Ilivesin(v1, v2), Ilivesin(v2, v0), Rule(47).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v2), Ilivesin(v2, v0), r = 47, Rule(47).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v1, v2, r), Ilivesin(v2, v0), Rule(r), Rule(47).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v2), Ilivesin_exists(v2, v0, r), Rule(r), Rule(47).
+inv_0(v0, v1) :- Ilivesin(v2, v0), Ilivesin(v1, v2), Rule(48).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v0), Ilivesin(v1, v2), r = 48, Rule(48).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v2, v0, r), Ilivesin(v1, v2), Rule(r), Rule(48).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v0), Ilivesin_exists(v1, v2, r), Rule(r), Rule(48).
+inv_0(v0, v1) :- Ilivesin(v2, v0), Ilivesin(v2, v1), Rule(49).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v0), Ilivesin(v2, v1), r = 49, Rule(49).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v2, v0, r), Ilivesin(v2, v1), Rule(r), Rule(49).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v0), Ilivesin_exists(v2, v1, r), Rule(r), Rule(49).
+inv_0(v0, v1) :- Ilivesin(v0, v2), Ilivesin(v1, v2), Rule(50).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v2), Ilivesin(v1, v2), r = 50, Rule(50).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v0, v2, r), Ilivesin(v1, v2), Rule(r), Rule(50).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v2), Ilivesin_exists(v1, v2, r), Rule(r), Rule(50).
+inv_0(v0, v1) :- Ilivesin(v0, v2), Ilivesin(v2, v1), Rule(51).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v2), Ilivesin(v2, v1), r = 51, Rule(51).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v0, v2, r), Ilivesin(v2, v1), Rule(r), Rule(51).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v2), Ilivesin_exists(v2, v1, r), Rule(r), Rule(51).
+inv_0(v0, v1) :- Ilivesin(v2, v1), Ilivesin(v2, v0), Rule(52).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v1), Ilivesin(v2, v0), r = 52, Rule(52).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v2, v1, r), Ilivesin(v2, v0), Rule(r), Rule(52).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v1), Ilivesin_exists(v2, v0, r), Rule(r), Rule(52).
+inv_0(v0, v1) :- Ilivesin(v1, v2), Ilivesin(v0, v2), Rule(53).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v2), Ilivesin(v0, v2), r = 53, Rule(53).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v1, v2, r), Ilivesin(v0, v2), Rule(r), Rule(53).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v2), Ilivesin_exists(v0, v2, r), Rule(r), Rule(53).
+inv_0(v0, v1) :- Ilivesin(v0, v1), inv_0(v0, v1), Rule(54).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v1), inv_0(v0, v1), r = 54, Rule(54).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(54).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(54).
+inv_0(v0, v1) :- Ilivesin(v0, v1), inv_0(v1, v0), Rule(55).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v1), inv_0(v1, v0), r = 55, Rule(55).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(55).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(55).
+inv_0(v0, v1) :- Ilivesin(v1, v0), inv_0(v1, v0), Rule(56).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v0), inv_0(v1, v0), r = 56, Rule(56).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(56).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(56).
+inv_0(v0, v1) :- Ilivesin(v1, v0), inv_0(v0, v1), Rule(57).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v0), inv_0(v0, v1), r = 57, Rule(57).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(57).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(57).
+inv_0(v0, v1) :- Ilivesin(v2, v1), inv_0(v0, v2), Rule(58).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v1), inv_0(v0, v2), r = 58, Rule(58).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(58).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(58).
+inv_0(v0, v1) :- Ilivesin(v1, v2), inv_0(v2, v0), Rule(59).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v2), inv_0(v2, v0), r = 59, Rule(59).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(59).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(59).
+inv_0(v0, v1) :- Ilivesin(v2, v0), inv_0(v1, v2), Rule(60).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v0), inv_0(v1, v2), r = 60, Rule(60).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(60).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(60).
+inv_0(v0, v1) :- Ilivesin(v2, v0), inv_0(v2, v1), Rule(61).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v0), inv_0(v2, v1), r = 61, Rule(61).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(61).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(61).
+inv_0(v0, v1) :- Ilivesin(v0, v2), inv_0(v1, v2), Rule(62).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v2), inv_0(v1, v2), r = 62, Rule(62).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(62).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(62).
+inv_0(v0, v1) :- Ilivesin(v0, v2), inv_0(v2, v1), Rule(63).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v2), inv_0(v2, v1), r = 63, Rule(63).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(63).
+inv_0_exists(v0, v1, r) :- Ilivesin(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(63).
+inv_0(v0, v1) :- Ilivesin(v2, v1), inv_0(v2, v0), Rule(64).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v1), inv_0(v2, v0), r = 64, Rule(64).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(64).
+inv_0_exists(v0, v1, r) :- Ilivesin(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(64).
+inv_0(v0, v1) :- Ilivesin(v1, v2), inv_0(v0, v2), Rule(65).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v2), inv_0(v0, v2), r = 65, Rule(65).
+inv_0_exists(v0, v1, r) :- Ilivesin_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(65).
+inv_0_exists(v0, v1, r) :- Ilivesin(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(65).
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v0, v1), Rule(66).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v1), inv_0(v0, v1), r = 66, Rule(66).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(66).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(66).
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v1, v0), Rule(67).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v1), inv_0(v1, v0), r = 67, Rule(67).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(67).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(67).
+inv_0(v0, v1) :- inv_0(v1, v0), inv_0(v1, v0), Rule(68).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v0), inv_0(v1, v0), r = 68, Rule(68).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(68).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(68).
+inv_0(v0, v1) :- inv_0(v1, v0), inv_0(v0, v1), Rule(69).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v0), inv_0(v0, v1), r = 69, Rule(69).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(69).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(69).
+inv_0(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(70).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v1), inv_0(v0, v2), r = 70, Rule(70).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(70).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(70).
+inv_0(v0, v1) :- inv_0(v1, v2), inv_0(v2, v0), Rule(71).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v2), inv_0(v2, v0), r = 71, Rule(71).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(71).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(71).
+inv_0(v0, v1) :- inv_0(v2, v0), inv_0(v1, v2), Rule(72).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v0), inv_0(v1, v2), r = 72, Rule(72).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(72).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(72).
+inv_0(v0, v1) :- inv_0(v2, v0), inv_0(v2, v1), Rule(73).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v0), inv_0(v2, v1), r = 73, Rule(73).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(73).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(73).
+inv_0(v0, v1) :- inv_0(v0, v2), inv_0(v1, v2), Rule(74).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v2), inv_0(v1, v2), r = 74, Rule(74).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(74).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(74).
+inv_0(v0, v1) :- inv_0(v0, v2), inv_0(v2, v1), Rule(75).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v2), inv_0(v2, v1), r = 75, Rule(75).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(75).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(75).
+inv_0(v0, v1) :- inv_0(v2, v1), inv_0(v2, v0), Rule(76).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v1), inv_0(v2, v0), r = 76, Rule(76).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(76).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(76).
+inv_0(v0, v1) :- inv_0(v1, v2), inv_0(v0, v2), Rule(77).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v2), inv_0(v0, v2), r = 77, Rule(77).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(77).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(77).
+livesin(v0, v1) :- wasbornin(v0, v1), Rule(78).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), r = 78, Rule(78).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), Rule(r), Rule(78).
+livesin(v0, v1) :- wasbornin(v1, v0), Rule(79).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), r = 79, Rule(79).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), Rule(r), Rule(79).
+livesin(v0, v1) :- Ilivesin(v0, v1), Rule(80).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), r = 80, Rule(80).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), Rule(r), Rule(80).
+livesin(v0, v1) :- Ilivesin(v1, v0), Rule(81).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), r = 81, Rule(81).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), Rule(r), Rule(81).
+livesin(v0, v1) :- inv_0(v0, v1), Rule(82).
+livesin_exists(v0, v1, r) :- inv_0(v0, v1), r = 82, Rule(82).
+livesin_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), Rule(r), Rule(82).
+livesin(v0, v1) :- inv_0(v1, v0), Rule(83).
+livesin_exists(v0, v1, r) :- inv_0(v1, v0), r = 83, Rule(83).
+livesin_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), Rule(r), Rule(83).
+livesin(v0, v1) :- livesin(v0, v1), Rule(84).
+livesin_exists(v0, v1, r) :- livesin(v0, v1), r = 84, Rule(84).
+livesin_exists(v0, v1, r) :- livesin_exists(v0, v1, r), Rule(r), Rule(84).
+livesin(v0, v1) :- livesin(v1, v0), Rule(85).
+livesin_exists(v0, v1, r) :- livesin(v1, v0), r = 85, Rule(85).
+livesin_exists(v0, v1, r) :- livesin_exists(v1, v0, r), Rule(r), Rule(85).
+livesin(v0, v1) :- wasbornin(v0, v1), wasbornin(v0, v1), Rule(86).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), wasbornin(v0, v1), r = 86, Rule(86).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), wasbornin(v0, v1), Rule(r), Rule(86).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), wasbornin_exists(v0, v1, r), Rule(r), Rule(86).
+livesin(v0, v1) :- wasbornin(v0, v1), wasbornin(v1, v0), Rule(87).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), wasbornin(v1, v0), r = 87, Rule(87).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), wasbornin(v1, v0), Rule(r), Rule(87).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), wasbornin_exists(v1, v0, r), Rule(r), Rule(87).
+livesin(v0, v1) :- wasbornin(v1, v0), wasbornin(v1, v0), Rule(88).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), wasbornin(v1, v0), r = 88, Rule(88).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), wasbornin(v1, v0), Rule(r), Rule(88).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), wasbornin_exists(v1, v0, r), Rule(r), Rule(88).
+livesin(v0, v1) :- wasbornin(v1, v0), wasbornin(v0, v1), Rule(89).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), wasbornin(v0, v1), r = 89, Rule(89).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), wasbornin(v0, v1), Rule(r), Rule(89).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), wasbornin_exists(v0, v1, r), Rule(r), Rule(89).
+livesin(v0, v1) :- wasbornin(v2, v1), wasbornin(v0, v2), Rule(90).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), wasbornin(v0, v2), r = 90, Rule(90).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), wasbornin(v0, v2), Rule(r), Rule(90).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), wasbornin_exists(v0, v2, r), Rule(r), Rule(90).
+livesin(v0, v1) :- wasbornin(v1, v2), wasbornin(v2, v0), Rule(91).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), wasbornin(v2, v0), r = 91, Rule(91).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), wasbornin(v2, v0), Rule(r), Rule(91).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), wasbornin_exists(v2, v0, r), Rule(r), Rule(91).
+livesin(v0, v1) :- wasbornin(v2, v0), wasbornin(v1, v2), Rule(92).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), wasbornin(v1, v2), r = 92, Rule(92).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), wasbornin(v1, v2), Rule(r), Rule(92).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), wasbornin_exists(v1, v2, r), Rule(r), Rule(92).
+livesin(v0, v1) :- wasbornin(v2, v0), wasbornin(v2, v1), Rule(93).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), wasbornin(v2, v1), r = 93, Rule(93).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), wasbornin(v2, v1), Rule(r), Rule(93).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), wasbornin_exists(v2, v1, r), Rule(r), Rule(93).
+livesin(v0, v1) :- wasbornin(v0, v2), wasbornin(v1, v2), Rule(94).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), wasbornin(v1, v2), r = 94, Rule(94).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), wasbornin(v1, v2), Rule(r), Rule(94).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), wasbornin_exists(v1, v2, r), Rule(r), Rule(94).
+livesin(v0, v1) :- wasbornin(v0, v2), wasbornin(v2, v1), Rule(95).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), wasbornin(v2, v1), r = 95, Rule(95).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), wasbornin(v2, v1), Rule(r), Rule(95).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), wasbornin_exists(v2, v1, r), Rule(r), Rule(95).
+livesin(v0, v1) :- wasbornin(v2, v1), wasbornin(v2, v0), Rule(96).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), wasbornin(v2, v0), r = 96, Rule(96).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), wasbornin(v2, v0), Rule(r), Rule(96).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), wasbornin_exists(v2, v0, r), Rule(r), Rule(96).
+livesin(v0, v1) :- wasbornin(v1, v2), wasbornin(v0, v2), Rule(97).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), wasbornin(v0, v2), r = 97, Rule(97).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), wasbornin(v0, v2), Rule(r), Rule(97).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), wasbornin_exists(v0, v2, r), Rule(r), Rule(97).
+livesin(v0, v1) :- wasbornin(v0, v1), Ilivesin(v0, v1), Rule(98).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), Ilivesin(v0, v1), r = 98, Rule(98).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), Ilivesin(v0, v1), Rule(r), Rule(98).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), Ilivesin_exists(v0, v1, r), Rule(r), Rule(98).
+livesin(v0, v1) :- wasbornin(v0, v1), Ilivesin(v1, v0), Rule(99).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), Ilivesin(v1, v0), r = 99, Rule(99).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), Ilivesin(v1, v0), Rule(r), Rule(99).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), Ilivesin_exists(v1, v0, r), Rule(r), Rule(99).
+livesin(v0, v1) :- wasbornin(v1, v0), Ilivesin(v1, v0), Rule(100).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), Ilivesin(v1, v0), r = 100, Rule(100).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), Ilivesin(v1, v0), Rule(r), Rule(100).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), Ilivesin_exists(v1, v0, r), Rule(r), Rule(100).
+livesin(v0, v1) :- wasbornin(v1, v0), Ilivesin(v0, v1), Rule(101).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), Ilivesin(v0, v1), r = 101, Rule(101).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), Ilivesin(v0, v1), Rule(r), Rule(101).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), Ilivesin_exists(v0, v1, r), Rule(r), Rule(101).
+livesin(v0, v1) :- wasbornin(v2, v1), Ilivesin(v0, v2), Rule(102).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), Ilivesin(v0, v2), r = 102, Rule(102).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), Ilivesin(v0, v2), Rule(r), Rule(102).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), Ilivesin_exists(v0, v2, r), Rule(r), Rule(102).
+livesin(v0, v1) :- wasbornin(v1, v2), Ilivesin(v2, v0), Rule(103).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), Ilivesin(v2, v0), r = 103, Rule(103).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), Ilivesin(v2, v0), Rule(r), Rule(103).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), Ilivesin_exists(v2, v0, r), Rule(r), Rule(103).
+livesin(v0, v1) :- wasbornin(v2, v0), Ilivesin(v1, v2), Rule(104).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), Ilivesin(v1, v2), r = 104, Rule(104).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), Ilivesin(v1, v2), Rule(r), Rule(104).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), Ilivesin_exists(v1, v2, r), Rule(r), Rule(104).
+livesin(v0, v1) :- wasbornin(v2, v0), Ilivesin(v2, v1), Rule(105).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), Ilivesin(v2, v1), r = 105, Rule(105).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), Ilivesin(v2, v1), Rule(r), Rule(105).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), Ilivesin_exists(v2, v1, r), Rule(r), Rule(105).
+livesin(v0, v1) :- wasbornin(v0, v2), Ilivesin(v1, v2), Rule(106).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), Ilivesin(v1, v2), r = 106, Rule(106).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), Ilivesin(v1, v2), Rule(r), Rule(106).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), Ilivesin_exists(v1, v2, r), Rule(r), Rule(106).
+livesin(v0, v1) :- wasbornin(v0, v2), Ilivesin(v2, v1), Rule(107).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), Ilivesin(v2, v1), r = 107, Rule(107).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), Ilivesin(v2, v1), Rule(r), Rule(107).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), Ilivesin_exists(v2, v1, r), Rule(r), Rule(107).
+livesin(v0, v1) :- wasbornin(v2, v1), Ilivesin(v2, v0), Rule(108).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), Ilivesin(v2, v0), r = 108, Rule(108).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), Ilivesin(v2, v0), Rule(r), Rule(108).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), Ilivesin_exists(v2, v0, r), Rule(r), Rule(108).
+livesin(v0, v1) :- wasbornin(v1, v2), Ilivesin(v0, v2), Rule(109).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), Ilivesin(v0, v2), r = 109, Rule(109).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), Ilivesin(v0, v2), Rule(r), Rule(109).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), Ilivesin_exists(v0, v2, r), Rule(r), Rule(109).
+livesin(v0, v1) :- wasbornin(v0, v1), inv_0(v0, v1), Rule(110).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), inv_0(v0, v1), r = 110, Rule(110).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(110).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(110).
+livesin(v0, v1) :- wasbornin(v0, v1), inv_0(v1, v0), Rule(111).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), inv_0(v1, v0), r = 111, Rule(111).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(111).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(111).
+livesin(v0, v1) :- wasbornin(v1, v0), inv_0(v1, v0), Rule(112).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), inv_0(v1, v0), r = 112, Rule(112).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(112).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(112).
+livesin(v0, v1) :- wasbornin(v1, v0), inv_0(v0, v1), Rule(113).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), inv_0(v0, v1), r = 113, Rule(113).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(113).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(113).
+livesin(v0, v1) :- wasbornin(v2, v1), inv_0(v0, v2), Rule(114).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), inv_0(v0, v2), r = 114, Rule(114).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(114).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(114).
+livesin(v0, v1) :- wasbornin(v1, v2), inv_0(v2, v0), Rule(115).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), inv_0(v2, v0), r = 115, Rule(115).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(115).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(115).
+livesin(v0, v1) :- wasbornin(v2, v0), inv_0(v1, v2), Rule(116).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), inv_0(v1, v2), r = 116, Rule(116).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(116).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(116).
+livesin(v0, v1) :- wasbornin(v2, v0), inv_0(v2, v1), Rule(117).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), inv_0(v2, v1), r = 117, Rule(117).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(117).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(117).
+livesin(v0, v1) :- wasbornin(v0, v2), inv_0(v1, v2), Rule(118).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), inv_0(v1, v2), r = 118, Rule(118).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(118).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(118).
+livesin(v0, v1) :- wasbornin(v0, v2), inv_0(v2, v1), Rule(119).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), inv_0(v2, v1), r = 119, Rule(119).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(119).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(119).
+livesin(v0, v1) :- wasbornin(v2, v1), inv_0(v2, v0), Rule(120).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), inv_0(v2, v0), r = 120, Rule(120).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(120).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(120).
+livesin(v0, v1) :- wasbornin(v1, v2), inv_0(v0, v2), Rule(121).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), inv_0(v0, v2), r = 121, Rule(121).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(121).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(121).
+livesin(v0, v1) :- wasbornin(v0, v1), livesin(v0, v1), Rule(122).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), livesin(v0, v1), r = 122, Rule(122).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), livesin(v0, v1), Rule(r), Rule(122).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), livesin_exists(v0, v1, r), Rule(r), Rule(122).
+livesin(v0, v1) :- wasbornin(v0, v1), livesin(v1, v0), Rule(123).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), livesin(v1, v0), r = 123, Rule(123).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v1, r), livesin(v1, v0), Rule(r), Rule(123).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v1), livesin_exists(v1, v0, r), Rule(r), Rule(123).
+livesin(v0, v1) :- wasbornin(v1, v0), livesin(v1, v0), Rule(124).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), livesin(v1, v0), r = 124, Rule(124).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), livesin(v1, v0), Rule(r), Rule(124).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), livesin_exists(v1, v0, r), Rule(r), Rule(124).
+livesin(v0, v1) :- wasbornin(v1, v0), livesin(v0, v1), Rule(125).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), livesin(v0, v1), r = 125, Rule(125).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v0, r), livesin(v0, v1), Rule(r), Rule(125).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v0), livesin_exists(v0, v1, r), Rule(r), Rule(125).
+livesin(v0, v1) :- wasbornin(v2, v1), livesin(v0, v2), Rule(126).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), livesin(v0, v2), r = 126, Rule(126).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), livesin(v0, v2), Rule(r), Rule(126).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), livesin_exists(v0, v2, r), Rule(r), Rule(126).
+livesin(v0, v1) :- wasbornin(v1, v2), livesin(v2, v0), Rule(127).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), livesin(v2, v0), r = 127, Rule(127).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), livesin(v2, v0), Rule(r), Rule(127).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), livesin_exists(v2, v0, r), Rule(r), Rule(127).
+livesin(v0, v1) :- wasbornin(v2, v0), livesin(v1, v2), Rule(128).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), livesin(v1, v2), r = 128, Rule(128).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), livesin(v1, v2), Rule(r), Rule(128).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), livesin_exists(v1, v2, r), Rule(r), Rule(128).
+livesin(v0, v1) :- wasbornin(v2, v0), livesin(v2, v1), Rule(129).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), livesin(v2, v1), r = 129, Rule(129).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v0, r), livesin(v2, v1), Rule(r), Rule(129).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v0), livesin_exists(v2, v1, r), Rule(r), Rule(129).
+livesin(v0, v1) :- wasbornin(v0, v2), livesin(v1, v2), Rule(130).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), livesin(v1, v2), r = 130, Rule(130).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), livesin(v1, v2), Rule(r), Rule(130).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), livesin_exists(v1, v2, r), Rule(r), Rule(130).
+livesin(v0, v1) :- wasbornin(v0, v2), livesin(v2, v1), Rule(131).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), livesin(v2, v1), r = 131, Rule(131).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v0, v2, r), livesin(v2, v1), Rule(r), Rule(131).
+livesin_exists(v0, v1, r) :- wasbornin(v0, v2), livesin_exists(v2, v1, r), Rule(r), Rule(131).
+livesin(v0, v1) :- wasbornin(v2, v1), livesin(v2, v0), Rule(132).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), livesin(v2, v0), r = 132, Rule(132).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v2, v1, r), livesin(v2, v0), Rule(r), Rule(132).
+livesin_exists(v0, v1, r) :- wasbornin(v2, v1), livesin_exists(v2, v0, r), Rule(r), Rule(132).
+livesin(v0, v1) :- wasbornin(v1, v2), livesin(v0, v2), Rule(133).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), livesin(v0, v2), r = 133, Rule(133).
+livesin_exists(v0, v1, r) :- wasbornin_exists(v1, v2, r), livesin(v0, v2), Rule(r), Rule(133).
+livesin_exists(v0, v1, r) :- wasbornin(v1, v2), livesin_exists(v0, v2, r), Rule(r), Rule(133).
+livesin(v0, v1) :- Ilivesin(v0, v1), Ilivesin(v0, v1), Rule(134).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), Ilivesin(v0, v1), r = 134, Rule(134).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), Ilivesin(v0, v1), Rule(r), Rule(134).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), Ilivesin_exists(v0, v1, r), Rule(r), Rule(134).
+livesin(v0, v1) :- Ilivesin(v0, v1), Ilivesin(v1, v0), Rule(135).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), Ilivesin(v1, v0), r = 135, Rule(135).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), Ilivesin(v1, v0), Rule(r), Rule(135).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), Ilivesin_exists(v1, v0, r), Rule(r), Rule(135).
+livesin(v0, v1) :- Ilivesin(v1, v0), Ilivesin(v1, v0), Rule(136).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), Ilivesin(v1, v0), r = 136, Rule(136).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), Ilivesin(v1, v0), Rule(r), Rule(136).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), Ilivesin_exists(v1, v0, r), Rule(r), Rule(136).
+livesin(v0, v1) :- Ilivesin(v1, v0), Ilivesin(v0, v1), Rule(137).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), Ilivesin(v0, v1), r = 137, Rule(137).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), Ilivesin(v0, v1), Rule(r), Rule(137).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), Ilivesin_exists(v0, v1, r), Rule(r), Rule(137).
+livesin(v0, v1) :- Ilivesin(v2, v1), Ilivesin(v0, v2), Rule(138).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), Ilivesin(v0, v2), r = 138, Rule(138).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v1, r), Ilivesin(v0, v2), Rule(r), Rule(138).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), Ilivesin_exists(v0, v2, r), Rule(r), Rule(138).
+livesin(v0, v1) :- Ilivesin(v1, v2), Ilivesin(v2, v0), Rule(139).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), Ilivesin(v2, v0), r = 139, Rule(139).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v2, r), Ilivesin(v2, v0), Rule(r), Rule(139).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), Ilivesin_exists(v2, v0, r), Rule(r), Rule(139).
+livesin(v0, v1) :- Ilivesin(v2, v0), Ilivesin(v1, v2), Rule(140).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), Ilivesin(v1, v2), r = 140, Rule(140).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v0, r), Ilivesin(v1, v2), Rule(r), Rule(140).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), Ilivesin_exists(v1, v2, r), Rule(r), Rule(140).
+livesin(v0, v1) :- Ilivesin(v2, v0), Ilivesin(v2, v1), Rule(141).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), Ilivesin(v2, v1), r = 141, Rule(141).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v0, r), Ilivesin(v2, v1), Rule(r), Rule(141).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), Ilivesin_exists(v2, v1, r), Rule(r), Rule(141).
+livesin(v0, v1) :- Ilivesin(v0, v2), Ilivesin(v1, v2), Rule(142).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), Ilivesin(v1, v2), r = 142, Rule(142).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v2, r), Ilivesin(v1, v2), Rule(r), Rule(142).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), Ilivesin_exists(v1, v2, r), Rule(r), Rule(142).
+livesin(v0, v1) :- Ilivesin(v0, v2), Ilivesin(v2, v1), Rule(143).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), Ilivesin(v2, v1), r = 143, Rule(143).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v2, r), Ilivesin(v2, v1), Rule(r), Rule(143).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), Ilivesin_exists(v2, v1, r), Rule(r), Rule(143).
+livesin(v0, v1) :- Ilivesin(v2, v1), Ilivesin(v2, v0), Rule(144).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), Ilivesin(v2, v0), r = 144, Rule(144).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v1, r), Ilivesin(v2, v0), Rule(r), Rule(144).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), Ilivesin_exists(v2, v0, r), Rule(r), Rule(144).
+livesin(v0, v1) :- Ilivesin(v1, v2), Ilivesin(v0, v2), Rule(145).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), Ilivesin(v0, v2), r = 145, Rule(145).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v2, r), Ilivesin(v0, v2), Rule(r), Rule(145).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), Ilivesin_exists(v0, v2, r), Rule(r), Rule(145).
+livesin(v0, v1) :- Ilivesin(v0, v1), inv_0(v0, v1), Rule(146).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), inv_0(v0, v1), r = 146, Rule(146).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(146).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(146).
+livesin(v0, v1) :- Ilivesin(v0, v1), inv_0(v1, v0), Rule(147).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), inv_0(v1, v0), r = 147, Rule(147).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(147).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(147).
+livesin(v0, v1) :- Ilivesin(v1, v0), inv_0(v1, v0), Rule(148).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), inv_0(v1, v0), r = 148, Rule(148).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(148).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(148).
+livesin(v0, v1) :- Ilivesin(v1, v0), inv_0(v0, v1), Rule(149).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), inv_0(v0, v1), r = 149, Rule(149).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(149).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(149).
+livesin(v0, v1) :- Ilivesin(v2, v1), inv_0(v0, v2), Rule(150).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), inv_0(v0, v2), r = 150, Rule(150).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(150).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(150).
+livesin(v0, v1) :- Ilivesin(v1, v2), inv_0(v2, v0), Rule(151).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), inv_0(v2, v0), r = 151, Rule(151).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(151).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(151).
+livesin(v0, v1) :- Ilivesin(v2, v0), inv_0(v1, v2), Rule(152).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), inv_0(v1, v2), r = 152, Rule(152).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(152).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(152).
+livesin(v0, v1) :- Ilivesin(v2, v0), inv_0(v2, v1), Rule(153).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), inv_0(v2, v1), r = 153, Rule(153).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(153).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(153).
+livesin(v0, v1) :- Ilivesin(v0, v2), inv_0(v1, v2), Rule(154).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), inv_0(v1, v2), r = 154, Rule(154).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(154).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(154).
+livesin(v0, v1) :- Ilivesin(v0, v2), inv_0(v2, v1), Rule(155).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), inv_0(v2, v1), r = 155, Rule(155).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(155).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(155).
+livesin(v0, v1) :- Ilivesin(v2, v1), inv_0(v2, v0), Rule(156).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), inv_0(v2, v0), r = 156, Rule(156).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(156).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(156).
+livesin(v0, v1) :- Ilivesin(v1, v2), inv_0(v0, v2), Rule(157).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), inv_0(v0, v2), r = 157, Rule(157).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(157).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(157).
+livesin(v0, v1) :- Ilivesin(v0, v1), livesin(v0, v1), Rule(158).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), livesin(v0, v1), r = 158, Rule(158).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), livesin(v0, v1), Rule(r), Rule(158).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), livesin_exists(v0, v1, r), Rule(r), Rule(158).
+livesin(v0, v1) :- Ilivesin(v0, v1), livesin(v1, v0), Rule(159).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), livesin(v1, v0), r = 159, Rule(159).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v1, r), livesin(v1, v0), Rule(r), Rule(159).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v1), livesin_exists(v1, v0, r), Rule(r), Rule(159).
+livesin(v0, v1) :- Ilivesin(v1, v0), livesin(v1, v0), Rule(160).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), livesin(v1, v0), r = 160, Rule(160).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), livesin(v1, v0), Rule(r), Rule(160).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), livesin_exists(v1, v0, r), Rule(r), Rule(160).
+livesin(v0, v1) :- Ilivesin(v1, v0), livesin(v0, v1), Rule(161).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), livesin(v0, v1), r = 161, Rule(161).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v0, r), livesin(v0, v1), Rule(r), Rule(161).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v0), livesin_exists(v0, v1, r), Rule(r), Rule(161).
+livesin(v0, v1) :- Ilivesin(v2, v1), livesin(v0, v2), Rule(162).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), livesin(v0, v2), r = 162, Rule(162).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v1, r), livesin(v0, v2), Rule(r), Rule(162).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), livesin_exists(v0, v2, r), Rule(r), Rule(162).
+livesin(v0, v1) :- Ilivesin(v1, v2), livesin(v2, v0), Rule(163).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), livesin(v2, v0), r = 163, Rule(163).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v2, r), livesin(v2, v0), Rule(r), Rule(163).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), livesin_exists(v2, v0, r), Rule(r), Rule(163).
+livesin(v0, v1) :- Ilivesin(v2, v0), livesin(v1, v2), Rule(164).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), livesin(v1, v2), r = 164, Rule(164).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v0, r), livesin(v1, v2), Rule(r), Rule(164).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), livesin_exists(v1, v2, r), Rule(r), Rule(164).
+livesin(v0, v1) :- Ilivesin(v2, v0), livesin(v2, v1), Rule(165).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), livesin(v2, v1), r = 165, Rule(165).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v0, r), livesin(v2, v1), Rule(r), Rule(165).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v0), livesin_exists(v2, v1, r), Rule(r), Rule(165).
+livesin(v0, v1) :- Ilivesin(v0, v2), livesin(v1, v2), Rule(166).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), livesin(v1, v2), r = 166, Rule(166).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v2, r), livesin(v1, v2), Rule(r), Rule(166).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), livesin_exists(v1, v2, r), Rule(r), Rule(166).
+livesin(v0, v1) :- Ilivesin(v0, v2), livesin(v2, v1), Rule(167).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), livesin(v2, v1), r = 167, Rule(167).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v0, v2, r), livesin(v2, v1), Rule(r), Rule(167).
+livesin_exists(v0, v1, r) :- Ilivesin(v0, v2), livesin_exists(v2, v1, r), Rule(r), Rule(167).
+livesin(v0, v1) :- Ilivesin(v2, v1), livesin(v2, v0), Rule(168).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), livesin(v2, v0), r = 168, Rule(168).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v2, v1, r), livesin(v2, v0), Rule(r), Rule(168).
+livesin_exists(v0, v1, r) :- Ilivesin(v2, v1), livesin_exists(v2, v0, r), Rule(r), Rule(168).
+livesin(v0, v1) :- Ilivesin(v1, v2), livesin(v0, v2), Rule(169).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), livesin(v0, v2), r = 169, Rule(169).
+livesin_exists(v0, v1, r) :- Ilivesin_exists(v1, v2, r), livesin(v0, v2), Rule(r), Rule(169).
+livesin_exists(v0, v1, r) :- Ilivesin(v1, v2), livesin_exists(v0, v2, r), Rule(r), Rule(169).
+livesin(v0, v1) :- inv_0(v0, v1), inv_0(v0, v1), Rule(170).
+livesin_exists(v0, v1, r) :- inv_0(v0, v1), inv_0(v0, v1), r = 170, Rule(170).
+livesin_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(170).
+livesin_exists(v0, v1, r) :- inv_0(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(170).
+livesin(v0, v1) :- inv_0(v0, v1), inv_0(v1, v0), Rule(171).
+livesin_exists(v0, v1, r) :- inv_0(v0, v1), inv_0(v1, v0), r = 171, Rule(171).
+livesin_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(171).
+livesin_exists(v0, v1, r) :- inv_0(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(171).
+livesin(v0, v1) :- inv_0(v1, v0), inv_0(v1, v0), Rule(172).
+livesin_exists(v0, v1, r) :- inv_0(v1, v0), inv_0(v1, v0), r = 172, Rule(172).
+livesin_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(172).
+livesin_exists(v0, v1, r) :- inv_0(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(172).
+livesin(v0, v1) :- inv_0(v1, v0), inv_0(v0, v1), Rule(173).
+livesin_exists(v0, v1, r) :- inv_0(v1, v0), inv_0(v0, v1), r = 173, Rule(173).
+livesin_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(173).
+livesin_exists(v0, v1, r) :- inv_0(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(173).
+livesin(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(174).
+livesin_exists(v0, v1, r) :- inv_0(v2, v1), inv_0(v0, v2), r = 174, Rule(174).
+livesin_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(174).
+livesin_exists(v0, v1, r) :- inv_0(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(174).
+livesin(v0, v1) :- inv_0(v1, v2), inv_0(v2, v0), Rule(175).
+livesin_exists(v0, v1, r) :- inv_0(v1, v2), inv_0(v2, v0), r = 175, Rule(175).
+livesin_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(175).
+livesin_exists(v0, v1, r) :- inv_0(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(175).
+livesin(v0, v1) :- inv_0(v2, v0), inv_0(v1, v2), Rule(176).
+livesin_exists(v0, v1, r) :- inv_0(v2, v0), inv_0(v1, v2), r = 176, Rule(176).
+livesin_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(176).
+livesin_exists(v0, v1, r) :- inv_0(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(176).
+livesin(v0, v1) :- inv_0(v2, v0), inv_0(v2, v1), Rule(177).
+livesin_exists(v0, v1, r) :- inv_0(v2, v0), inv_0(v2, v1), r = 177, Rule(177).
+livesin_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(177).
+livesin_exists(v0, v1, r) :- inv_0(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(177).
+livesin(v0, v1) :- inv_0(v0, v2), inv_0(v1, v2), Rule(178).
+livesin_exists(v0, v1, r) :- inv_0(v0, v2), inv_0(v1, v2), r = 178, Rule(178).
+livesin_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(178).
+livesin_exists(v0, v1, r) :- inv_0(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(178).
+livesin(v0, v1) :- inv_0(v0, v2), inv_0(v2, v1), Rule(179).
+livesin_exists(v0, v1, r) :- inv_0(v0, v2), inv_0(v2, v1), r = 179, Rule(179).
+livesin_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(179).
+livesin_exists(v0, v1, r) :- inv_0(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(179).
+livesin(v0, v1) :- inv_0(v2, v1), inv_0(v2, v0), Rule(180).
+livesin_exists(v0, v1, r) :- inv_0(v2, v1), inv_0(v2, v0), r = 180, Rule(180).
+livesin_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(180).
+livesin_exists(v0, v1, r) :- inv_0(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(180).
+livesin(v0, v1) :- inv_0(v1, v2), inv_0(v0, v2), Rule(181).
+livesin_exists(v0, v1, r) :- inv_0(v1, v2), inv_0(v0, v2), r = 181, Rule(181).
+livesin_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(181).
+livesin_exists(v0, v1, r) :- inv_0(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(181).
+livesin(v0, v1) :- inv_0(v0, v1), livesin(v0, v1), Rule(182).
+livesin_exists(v0, v1, r) :- inv_0(v0, v1), livesin(v0, v1), r = 182, Rule(182).
+livesin_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), livesin(v0, v1), Rule(r), Rule(182).
+livesin_exists(v0, v1, r) :- inv_0(v0, v1), livesin_exists(v0, v1, r), Rule(r), Rule(182).
+livesin(v0, v1) :- inv_0(v0, v1), livesin(v1, v0), Rule(183).
+livesin_exists(v0, v1, r) :- inv_0(v0, v1), livesin(v1, v0), r = 183, Rule(183).
+livesin_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), livesin(v1, v0), Rule(r), Rule(183).
+livesin_exists(v0, v1, r) :- inv_0(v0, v1), livesin_exists(v1, v0, r), Rule(r), Rule(183).
+livesin(v0, v1) :- inv_0(v1, v0), livesin(v1, v0), Rule(184).
+livesin_exists(v0, v1, r) :- inv_0(v1, v0), livesin(v1, v0), r = 184, Rule(184).
+livesin_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), livesin(v1, v0), Rule(r), Rule(184).
+livesin_exists(v0, v1, r) :- inv_0(v1, v0), livesin_exists(v1, v0, r), Rule(r), Rule(184).
+livesin(v0, v1) :- inv_0(v1, v0), livesin(v0, v1), Rule(185).
+livesin_exists(v0, v1, r) :- inv_0(v1, v0), livesin(v0, v1), r = 185, Rule(185).
+livesin_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), livesin(v0, v1), Rule(r), Rule(185).
+livesin_exists(v0, v1, r) :- inv_0(v1, v0), livesin_exists(v0, v1, r), Rule(r), Rule(185).
+livesin(v0, v1) :- inv_0(v2, v1), livesin(v0, v2), Rule(186).
+livesin_exists(v0, v1, r) :- inv_0(v2, v1), livesin(v0, v2), r = 186, Rule(186).
+livesin_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), livesin(v0, v2), Rule(r), Rule(186).
+livesin_exists(v0, v1, r) :- inv_0(v2, v1), livesin_exists(v0, v2, r), Rule(r), Rule(186).
+livesin(v0, v1) :- inv_0(v1, v2), livesin(v2, v0), Rule(187).
+livesin_exists(v0, v1, r) :- inv_0(v1, v2), livesin(v2, v0), r = 187, Rule(187).
+livesin_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), livesin(v2, v0), Rule(r), Rule(187).
+livesin_exists(v0, v1, r) :- inv_0(v1, v2), livesin_exists(v2, v0, r), Rule(r), Rule(187).
+livesin(v0, v1) :- inv_0(v2, v0), livesin(v1, v2), Rule(188).
+livesin_exists(v0, v1, r) :- inv_0(v2, v0), livesin(v1, v2), r = 188, Rule(188).
+livesin_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), livesin(v1, v2), Rule(r), Rule(188).
+livesin_exists(v0, v1, r) :- inv_0(v2, v0), livesin_exists(v1, v2, r), Rule(r), Rule(188).
+livesin(v0, v1) :- inv_0(v2, v0), livesin(v2, v1), Rule(189).
+livesin_exists(v0, v1, r) :- inv_0(v2, v0), livesin(v2, v1), r = 189, Rule(189).
+livesin_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), livesin(v2, v1), Rule(r), Rule(189).
+livesin_exists(v0, v1, r) :- inv_0(v2, v0), livesin_exists(v2, v1, r), Rule(r), Rule(189).
+livesin(v0, v1) :- inv_0(v0, v2), livesin(v1, v2), Rule(190).
+livesin_exists(v0, v1, r) :- inv_0(v0, v2), livesin(v1, v2), r = 190, Rule(190).
+livesin_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), livesin(v1, v2), Rule(r), Rule(190).
+livesin_exists(v0, v1, r) :- inv_0(v0, v2), livesin_exists(v1, v2, r), Rule(r), Rule(190).
+livesin(v0, v1) :- inv_0(v0, v2), livesin(v2, v1), Rule(191).
+livesin_exists(v0, v1, r) :- inv_0(v0, v2), livesin(v2, v1), r = 191, Rule(191).
+livesin_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), livesin(v2, v1), Rule(r), Rule(191).
+livesin_exists(v0, v1, r) :- inv_0(v0, v2), livesin_exists(v2, v1, r), Rule(r), Rule(191).
+livesin(v0, v1) :- inv_0(v2, v1), livesin(v2, v0), Rule(192).
+livesin_exists(v0, v1, r) :- inv_0(v2, v1), livesin(v2, v0), r = 192, Rule(192).
+livesin_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), livesin(v2, v0), Rule(r), Rule(192).
+livesin_exists(v0, v1, r) :- inv_0(v2, v1), livesin_exists(v2, v0, r), Rule(r), Rule(192).
+livesin(v0, v1) :- inv_0(v1, v2), livesin(v0, v2), Rule(193).
+livesin_exists(v0, v1, r) :- inv_0(v1, v2), livesin(v0, v2), r = 193, Rule(193).
+livesin_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), livesin(v0, v2), Rule(r), Rule(193).
+livesin_exists(v0, v1, r) :- inv_0(v1, v2), livesin_exists(v0, v2, r), Rule(r), Rule(193).
+livesin(v0, v1) :- livesin(v0, v1), livesin(v0, v1), Rule(194).
+livesin_exists(v0, v1, r) :- livesin(v0, v1), livesin(v0, v1), r = 194, Rule(194).
+livesin_exists(v0, v1, r) :- livesin_exists(v0, v1, r), livesin(v0, v1), Rule(r), Rule(194).
+livesin_exists(v0, v1, r) :- livesin(v0, v1), livesin_exists(v0, v1, r), Rule(r), Rule(194).
+livesin(v0, v1) :- livesin(v0, v1), livesin(v1, v0), Rule(195).
+livesin_exists(v0, v1, r) :- livesin(v0, v1), livesin(v1, v0), r = 195, Rule(195).
+livesin_exists(v0, v1, r) :- livesin_exists(v0, v1, r), livesin(v1, v0), Rule(r), Rule(195).
+livesin_exists(v0, v1, r) :- livesin(v0, v1), livesin_exists(v1, v0, r), Rule(r), Rule(195).
+livesin(v0, v1) :- livesin(v1, v0), livesin(v1, v0), Rule(196).
+livesin_exists(v0, v1, r) :- livesin(v1, v0), livesin(v1, v0), r = 196, Rule(196).
+livesin_exists(v0, v1, r) :- livesin_exists(v1, v0, r), livesin(v1, v0), Rule(r), Rule(196).
+livesin_exists(v0, v1, r) :- livesin(v1, v0), livesin_exists(v1, v0, r), Rule(r), Rule(196).
+livesin(v0, v1) :- livesin(v1, v0), livesin(v0, v1), Rule(197).
+livesin_exists(v0, v1, r) :- livesin(v1, v0), livesin(v0, v1), r = 197, Rule(197).
+livesin_exists(v0, v1, r) :- livesin_exists(v1, v0, r), livesin(v0, v1), Rule(r), Rule(197).
+livesin_exists(v0, v1, r) :- livesin(v1, v0), livesin_exists(v0, v1, r), Rule(r), Rule(197).
+livesin(v0, v1) :- livesin(v2, v1), livesin(v0, v2), Rule(198).
+livesin_exists(v0, v1, r) :- livesin(v2, v1), livesin(v0, v2), r = 198, Rule(198).
+livesin_exists(v0, v1, r) :- livesin_exists(v2, v1, r), livesin(v0, v2), Rule(r), Rule(198).
+livesin_exists(v0, v1, r) :- livesin(v2, v1), livesin_exists(v0, v2, r), Rule(r), Rule(198).
+livesin(v0, v1) :- livesin(v1, v2), livesin(v2, v0), Rule(199).
+livesin_exists(v0, v1, r) :- livesin(v1, v2), livesin(v2, v0), r = 199, Rule(199).
+livesin_exists(v0, v1, r) :- livesin_exists(v1, v2, r), livesin(v2, v0), Rule(r), Rule(199).
+livesin_exists(v0, v1, r) :- livesin(v1, v2), livesin_exists(v2, v0, r), Rule(r), Rule(199).
+livesin(v0, v1) :- livesin(v2, v0), livesin(v1, v2), Rule(200).
+livesin_exists(v0, v1, r) :- livesin(v2, v0), livesin(v1, v2), r = 200, Rule(200).
+livesin_exists(v0, v1, r) :- livesin_exists(v2, v0, r), livesin(v1, v2), Rule(r), Rule(200).
+livesin_exists(v0, v1, r) :- livesin(v2, v0), livesin_exists(v1, v2, r), Rule(r), Rule(200).
+livesin(v0, v1) :- livesin(v2, v0), livesin(v2, v1), Rule(201).
+livesin_exists(v0, v1, r) :- livesin(v2, v0), livesin(v2, v1), r = 201, Rule(201).
+livesin_exists(v0, v1, r) :- livesin_exists(v2, v0, r), livesin(v2, v1), Rule(r), Rule(201).
+livesin_exists(v0, v1, r) :- livesin(v2, v0), livesin_exists(v2, v1, r), Rule(r), Rule(201).
+livesin(v0, v1) :- livesin(v0, v2), livesin(v1, v2), Rule(202).
+livesin_exists(v0, v1, r) :- livesin(v0, v2), livesin(v1, v2), r = 202, Rule(202).
+livesin_exists(v0, v1, r) :- livesin_exists(v0, v2, r), livesin(v1, v2), Rule(r), Rule(202).
+livesin_exists(v0, v1, r) :- livesin(v0, v2), livesin_exists(v1, v2, r), Rule(r), Rule(202).
+livesin(v0, v1) :- livesin(v0, v2), livesin(v2, v1), Rule(203).
+livesin_exists(v0, v1, r) :- livesin(v0, v2), livesin(v2, v1), r = 203, Rule(203).
+livesin_exists(v0, v1, r) :- livesin_exists(v0, v2, r), livesin(v2, v1), Rule(r), Rule(203).
+livesin_exists(v0, v1, r) :- livesin(v0, v2), livesin_exists(v2, v1, r), Rule(r), Rule(203).
+livesin(v0, v1) :- livesin(v2, v1), livesin(v2, v0), Rule(204).
+livesin_exists(v0, v1, r) :- livesin(v2, v1), livesin(v2, v0), r = 204, Rule(204).
+livesin_exists(v0, v1, r) :- livesin_exists(v2, v1, r), livesin(v2, v0), Rule(r), Rule(204).
+livesin_exists(v0, v1, r) :- livesin(v2, v1), livesin_exists(v2, v0, r), Rule(r), Rule(204).
+livesin(v0, v1) :- livesin(v1, v2), livesin(v0, v2), Rule(205).
+livesin_exists(v0, v1, r) :- livesin(v1, v2), livesin(v0, v2), r = 205, Rule(205).
+livesin_exists(v0, v1, r) :- livesin_exists(v1, v2, r), livesin(v0, v2), Rule(r), Rule(205).
+livesin_exists(v0, v1, r) :- livesin(v1, v2), livesin_exists(v0, v2, r), Rule(r), Rule(205).
