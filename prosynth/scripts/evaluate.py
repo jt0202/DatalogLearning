@@ -14,14 +14,14 @@ for file in os.listdir(problemDirName):
         with open(problemDirName + "/" + file, "w") as factfile:
             pass
 
-with open(problemDirName + "/Rule.fact") as numbers:
+with open(problemDirName + "/Rule.facts", "w") as numbers:
     i = 0
     while i < 64000:
         numbers.write(str(i) + "\n")
         i = i +1
 
 entities = set()
-kb = open(problemDirName + "/test.tsv", encoding = "utf-8")
+kb = open(problemDirName + "/kb.tsv", encoding = "utf-8")
 # File assumed to be in tsv format and not include any '/' sign 
 for line in kb:
     line = line.split('\t')
@@ -71,7 +71,8 @@ for file in os.listdir(problemDirName):
 
         rules = []
         prefix = []
-        prefixdef = True
+        prefixdef = True    
+        evFile.write("---------Start----------")
 
         with open(problemDirName + "/"+ file) as solFile:
             for line in solFile:

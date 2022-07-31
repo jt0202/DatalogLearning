@@ -167,3 +167,516 @@ exports(v0, v1) :- dealswith(v0, v2), exports(v1, v2), Rule(358).
 exports(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(311).
 
  Positive Examples: 0
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl dealswith(v0: V, v1: V)
+
+.input dealswith
+
+
+
+.decl hascurrency(v0: V, v1: V)
+
+.input hascurrency
+
+
+
+.decl imports(v0: V, v1: V)
+
+.input imports
+
+
+
+.decl hasofficiallanguage(v0: V, v1: V)
+
+.input hasofficiallanguage
+
+
+
+.decl Iexports(v0: V, v1: V)
+
+.input Iexports
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl exports(v0: V, v1: V)
+
+.output exports
+
+
+
+exports(v0, v1) :- dealswith(v0, v2), exports(v2, v1), Rule(359).
+
+exports(v0, v1) :- dealswith(v2, v0), Iexports(v2, v1), Rule(333).
+
+exports(v0, v1) :- hascurrency(v2, v1), Iexports(v2, v0), Rule(408).
+
+inv_0(v0, v1) :- imports(v2, v0), imports(v2, v1), Rule(151).
+
+exports(v0, v1) :- dealswith(v2, v1), Iexports(v2, v0), Rule(336).
+
+inv_0(v0, v1) :- dealswith(v2, v1), imports(v2, v0), Rule(46).
+
+inv_0(v0, v1) :- imports(v0, v2), imports(v1, v2), Rule(152).
+
+exports(v0, v1) :- dealswith(v2, v0), exports(v2, v1), Rule(357).
+
+inv_0(v0, v1) :- dealswith(v1, v2), imports(v2, v0), Rule(41).
+
+exports(v0, v1) :- hascurrency(v0, v2), exports(v1, v2), Rule(430).
+
+inv_0(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(43).
+
+inv_0(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(45).
+
+exports(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(309).
+
+inv_0(v0, v1) :- imports(v2, v1), hasofficiallanguage(v2, v0), Rule(166).
+
+exports(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(582).
+
+exports(v0, v1) :- imports(v0, v2), exports(v2, v1), Rule(491).
+
+exports(v0, v1) :- dealswith(v0, v2), inv_0(v1, v2), Rule(346).
+
+exports(v0, v1) :- imports(v2, v1), inv_0(v0, v2), Rule(474).
+
+exports(v0, v1) :- imports(v2, v1), Iexports(v2, v0), Rule(468).
+
+exports(v0, v1) :- dealswith(v2, v0), exports(v1, v2), Rule(356).
+
+exports(v0, v1) :- dealswith(v1, v2), Iexports(v2, v0), Rule(331).
+
+exports(v0, v1) :- dealswith(v0, v2), Iexports(v2, v1), Rule(335).
+
+exports(v0, v1) :- dealswith(v2, v0), inv_0(v1, v2), Rule(344).
+
+inv_0(v0, v1) :- hasofficiallanguage(v0, v2), hasofficiallanguage(v1, v2), Rule(200).
+
+inv_0(v0, v1) :- dealswith(v0, v2), dealswith(v1, v2), Rule(20).
+
+exports(v0, v1) :- imports(v2, v0), Iexports(v2, v1), Rule(465).
+
+exports(v0, v1) :- imports(v0, v2), exports(v1, v2), Rule(490).
+
+exports(v0, v1) :- imports(v0, v1), Rule(268).
+
+inv_0(v0, v1) :- dealswith(v0, v2), hasofficiallanguage(v2, v1), Rule(57).
+
+exports(v0, v1) :- dealswith(v0, v2), exports(v1, v2), Rule(358).
+
+exports(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(311).
+
+True predictions:	0
+False predictions:	0
+Unknown predictions:	0
+Retrieved:	0.0
+exports(v0, v1) :- dealswith(v0, v2), exports(v2, v1), Rule(359).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), Iexports(v2, v1), Rule(333).
+
+ Positive Examples: 0
+exports(v0, v1) :- hascurrency(v2, v1), Iexports(v2, v0), Rule(408).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v1), Iexports(v2, v0), Rule(336).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), exports(v2, v1), Rule(357).
+
+ Positive Examples: 0
+exports(v0, v1) :- hascurrency(v0, v2), exports(v1, v2), Rule(430).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(309).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v0, v2), exports(v2, v1), Rule(491).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v2, v1), Iexports(v2, v0), Rule(468).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), exports(v1, v2), Rule(356).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v1, v2), Iexports(v2, v0), Rule(331).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v0, v2), Iexports(v2, v1), Rule(335).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v2, v0), Iexports(v2, v1), Rule(465).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v0, v2), exports(v1, v2), Rule(490).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v0, v1), Rule(268).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v0, v2), exports(v1, v2), Rule(358).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(311).
+
+ Positive Examples: 0
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl dealswith(v0: V, v1: V)
+
+.input dealswith
+
+
+
+.decl hascurrency(v0: V, v1: V)
+
+.input hascurrency
+
+
+
+.decl imports(v0: V, v1: V)
+
+.input imports
+
+
+
+.decl hasofficiallanguage(v0: V, v1: V)
+
+.input hasofficiallanguage
+
+
+
+.decl Iexports(v0: V, v1: V)
+
+.input Iexports
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl exports(v0: V, v1: V)
+
+.output exports
+
+
+
+exports(v0, v1) :- dealswith(v0, v2), exports(v2, v1), Rule(359).
+
+exports(v0, v1) :- dealswith(v2, v0), Iexports(v2, v1), Rule(333).
+
+exports(v0, v1) :- hascurrency(v2, v1), Iexports(v2, v0), Rule(408).
+
+inv_0(v0, v1) :- imports(v2, v0), imports(v2, v1), Rule(151).
+
+exports(v0, v1) :- dealswith(v2, v1), Iexports(v2, v0), Rule(336).
+
+inv_0(v0, v1) :- dealswith(v2, v1), imports(v2, v0), Rule(46).
+
+inv_0(v0, v1) :- imports(v0, v2), imports(v1, v2), Rule(152).
+
+exports(v0, v1) :- dealswith(v2, v0), exports(v2, v1), Rule(357).
+
+inv_0(v0, v1) :- dealswith(v1, v2), imports(v2, v0), Rule(41).
+
+exports(v0, v1) :- hascurrency(v0, v2), exports(v1, v2), Rule(430).
+
+inv_0(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(43).
+
+inv_0(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(45).
+
+exports(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(309).
+
+inv_0(v0, v1) :- imports(v2, v1), hasofficiallanguage(v2, v0), Rule(166).
+
+exports(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(582).
+
+exports(v0, v1) :- imports(v0, v2), exports(v2, v1), Rule(491).
+
+exports(v0, v1) :- dealswith(v0, v2), inv_0(v1, v2), Rule(346).
+
+exports(v0, v1) :- imports(v2, v1), inv_0(v0, v2), Rule(474).
+
+exports(v0, v1) :- imports(v2, v1), Iexports(v2, v0), Rule(468).
+
+exports(v0, v1) :- dealswith(v2, v0), exports(v1, v2), Rule(356).
+
+exports(v0, v1) :- dealswith(v1, v2), Iexports(v2, v0), Rule(331).
+
+exports(v0, v1) :- dealswith(v0, v2), Iexports(v2, v1), Rule(335).
+
+exports(v0, v1) :- dealswith(v2, v0), inv_0(v1, v2), Rule(344).
+
+inv_0(v0, v1) :- hasofficiallanguage(v0, v2), hasofficiallanguage(v1, v2), Rule(200).
+
+inv_0(v0, v1) :- dealswith(v0, v2), dealswith(v1, v2), Rule(20).
+
+exports(v0, v1) :- imports(v2, v0), Iexports(v2, v1), Rule(465).
+
+exports(v0, v1) :- imports(v0, v2), exports(v1, v2), Rule(490).
+
+exports(v0, v1) :- imports(v0, v1), Rule(268).
+
+inv_0(v0, v1) :- dealswith(v0, v2), hasofficiallanguage(v2, v1), Rule(57).
+
+exports(v0, v1) :- dealswith(v0, v2), exports(v1, v2), Rule(358).
+
+exports(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(311).
+
+True predictions:	15
+False predictions:	24
+Unknown predictions:	6036
+Retrieved:	0.2112676056338028
+exports(v0, v1) :- dealswith(v0, v2), exports(v2, v1), Rule(359).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), Iexports(v2, v1), Rule(333).
+
+ Positive Examples: 0
+exports(v0, v1) :- hascurrency(v2, v1), Iexports(v2, v0), Rule(408).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v1), Iexports(v2, v0), Rule(336).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), exports(v2, v1), Rule(357).
+
+ Positive Examples: 0
+exports(v0, v1) :- hascurrency(v0, v2), exports(v1, v2), Rule(430).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(309).
+
+ Positive Examples: 116
+ Confidence: 1.0
+exports(v0, v1) :- imports(v0, v2), exports(v2, v1), Rule(491).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v2, v1), Iexports(v2, v0), Rule(468).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), exports(v1, v2), Rule(356).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v1, v2), Iexports(v2, v0), Rule(331).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v0, v2), Iexports(v2, v1), Rule(335).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v2, v0), Iexports(v2, v1), Rule(465).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v0, v2), exports(v1, v2), Rule(490).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v0, v1), Rule(268).
+
+ Positive Examples: 43
+ Confidence: 1.0
+exports(v0, v1) :- dealswith(v0, v2), exports(v1, v2), Rule(358).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(311).
+
+ Positive Examples: 32
+ Confidence: 1.0
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl dealswith(v0: V, v1: V)
+
+.input dealswith
+
+
+
+.decl hascurrency(v0: V, v1: V)
+
+.input hascurrency
+
+
+
+.decl imports(v0: V, v1: V)
+
+.input imports
+
+
+
+.decl hasofficiallanguage(v0: V, v1: V)
+
+.input hasofficiallanguage
+
+
+
+.decl Iexports(v0: V, v1: V)
+
+.input Iexports
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl exports(v0: V, v1: V)
+
+.output exports
+
+
+
+exports(v0, v1) :- dealswith(v0, v2), exports(v2, v1), Rule(359).
+
+exports(v0, v1) :- dealswith(v2, v0), Iexports(v2, v1), Rule(333).
+
+exports(v0, v1) :- hascurrency(v2, v1), Iexports(v2, v0), Rule(408).
+
+inv_0(v0, v1) :- imports(v2, v0), imports(v2, v1), Rule(151).
+
+exports(v0, v1) :- dealswith(v2, v1), Iexports(v2, v0), Rule(336).
+
+inv_0(v0, v1) :- dealswith(v2, v1), imports(v2, v0), Rule(46).
+
+inv_0(v0, v1) :- imports(v0, v2), imports(v1, v2), Rule(152).
+
+exports(v0, v1) :- dealswith(v2, v0), exports(v2, v1), Rule(357).
+
+inv_0(v0, v1) :- dealswith(v1, v2), imports(v2, v0), Rule(41).
+
+exports(v0, v1) :- hascurrency(v0, v2), exports(v1, v2), Rule(430).
+
+inv_0(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(43).
+
+inv_0(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(45).
+
+exports(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(309).
+
+inv_0(v0, v1) :- imports(v2, v1), hasofficiallanguage(v2, v0), Rule(166).
+
+exports(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(582).
+
+exports(v0, v1) :- imports(v0, v2), exports(v2, v1), Rule(491).
+
+exports(v0, v1) :- dealswith(v0, v2), inv_0(v1, v2), Rule(346).
+
+exports(v0, v1) :- imports(v2, v1), inv_0(v0, v2), Rule(474).
+
+exports(v0, v1) :- imports(v2, v1), Iexports(v2, v0), Rule(468).
+
+exports(v0, v1) :- dealswith(v2, v0), exports(v1, v2), Rule(356).
+
+exports(v0, v1) :- dealswith(v1, v2), Iexports(v2, v0), Rule(331).
+
+exports(v0, v1) :- dealswith(v0, v2), Iexports(v2, v1), Rule(335).
+
+exports(v0, v1) :- dealswith(v2, v0), inv_0(v1, v2), Rule(344).
+
+inv_0(v0, v1) :- hasofficiallanguage(v0, v2), hasofficiallanguage(v1, v2), Rule(200).
+
+inv_0(v0, v1) :- dealswith(v0, v2), dealswith(v1, v2), Rule(20).
+
+exports(v0, v1) :- imports(v2, v0), Iexports(v2, v1), Rule(465).
+
+exports(v0, v1) :- imports(v0, v2), exports(v1, v2), Rule(490).
+
+exports(v0, v1) :- imports(v0, v1), Rule(268).
+
+inv_0(v0, v1) :- dealswith(v0, v2), hasofficiallanguage(v2, v1), Rule(57).
+
+exports(v0, v1) :- dealswith(v0, v2), exports(v1, v2), Rule(358).
+
+exports(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(311).
+
+True predictions:	68
+False predictions:	25
+Unknown predictions:	25880
+Retrieved:	0.37158469945355194
+exports(v0, v1) :- dealswith(v0, v2), exports(v2, v1), Rule(359).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), Iexports(v2, v1), Rule(333).
+
+ Positive Examples: 0
+exports(v0, v1) :- hascurrency(v2, v1), Iexports(v2, v0), Rule(408).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v1), Iexports(v2, v0), Rule(336).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), exports(v2, v1), Rule(357).
+
+ Positive Examples: 0
+exports(v0, v1) :- hascurrency(v0, v2), exports(v1, v2), Rule(430).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(309).
+
+ Positive Examples: 334
+ Confidence: 1.0
+exports(v0, v1) :- imports(v0, v2), exports(v2, v1), Rule(491).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v2, v1), Iexports(v2, v0), Rule(468).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), exports(v1, v2), Rule(356).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v1, v2), Iexports(v2, v0), Rule(331).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v0, v2), Iexports(v2, v1), Rule(335).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v2, v0), Iexports(v2, v1), Rule(465).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v0, v2), exports(v1, v2), Rule(490).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v0, v1), Rule(268).
+
+ Positive Examples: 134
+ Confidence: 1.0
+exports(v0, v1) :- dealswith(v0, v2), exports(v1, v2), Rule(358).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(311).
+
+ Positive Examples: 211
+ Confidence: 1.0
