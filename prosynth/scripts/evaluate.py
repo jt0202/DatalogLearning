@@ -8,7 +8,13 @@ scriptPath = sys.argv[0]
 problemDirName = sys.argv[1]
 
 
-entities = []
+#delete all previous facts
+for file in os.listdir(problemDirName):
+    if file.endswith(".facts"):
+        with open(problemDirName + "/" + file, "w") as factfile:
+            pass
+
+entities = set()
 kb = open(problemDirName + "/test.tsv", encoding = "utf-8")
 # File assumed to be in tsv format and not include any '/' sign 
 for line in kb:
@@ -71,7 +77,7 @@ for file in os.listdir(problemDirName):
                 else:
                     rules.append(line + "\n")
         produced = set(open(problemDirName + "/" + outputRelation + ".csv"))
-        expected = set(open(problemDirName + "/test.csv"))
+        expected = set(open(problemDirName + "/" + outputRelation + ".facts"))
         
 
         if len(expected) == 0:

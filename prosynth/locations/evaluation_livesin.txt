@@ -1,0 +1,63 @@
+.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl wasbornin(v0: V, v1: V)
+
+.input wasbornin
+
+
+
+.decl Ilivesin(v0: V, v1: V)
+
+.input Ilivesin
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl livesin(v0: V, v1: V)
+
+.output livesin
+
+
+
+livesin(v0, v1) :- wasbornin(v1, v2), Ilivesin(v0, v2), Rule(109).
+
+livesin(v0, v1) :- wasbornin(v0, v1), Rule(78).
+
+livesin(v0, v1) :- wasbornin(v2, v1), livesin(v0, v2), Rule(126).
+
+livesin(v0, v1) :- wasbornin(v2, v1), Ilivesin(v2, v0), Rule(108).
+
+livesin(v0, v1) :- wasbornin(v0, v2), livesin(v1, v2), Rule(130).
+
+True predictions:	0
+False predictions:	0
+Unknown predictions:	0
+Retrieved:	0.0
+livesin(v0, v1) :- wasbornin(v1, v2), Ilivesin(v0, v2), Rule(109).
+
+ Positive Examples: 0
+livesin(v0, v1) :- wasbornin(v0, v1), Rule(78).
+
+ Positive Examples: 0
+livesin(v0, v1) :- wasbornin(v2, v1), livesin(v0, v2), Rule(126).
+
+ Positive Examples: 0
+livesin(v0, v1) :- wasbornin(v2, v1), Ilivesin(v2, v0), Rule(108).
+
+ Positive Examples: 0
+livesin(v0, v1) :- wasbornin(v0, v2), livesin(v1, v2), Rule(130).
+
+ Positive Examples: 0
