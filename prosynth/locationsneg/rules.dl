@@ -1,0 +1,361 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl Rule(v0: V, v1: V)
+.input Rule
+
+.decl livesin(v0: V, v1: V)
+.input livesin
+
+.decl wasbornin(v0: V, v1: V)
+.input wasbornin
+
+.decl IIlivesin(v0: V, v1: V)
+.input IIlivesin
+
+.decl inv_0(v0: V, v1: V)
+.output inv_0
+
+.decl Ilivesin(v0: V, v1: V)
+.output Ilivesin
+
+
+
+inv_0(v0, v1) :- Rule(v0, v1), Rule(0).
+inv_0(v0, v1) :- Rule(v1, v0), Rule(1).
+inv_0(v0, v1) :- livesin(v0, v1), Rule(2).
+inv_0(v0, v1) :- livesin(v1, v0), Rule(3).
+inv_0(v0, v1) :- wasbornin(v0, v1), Rule(4).
+inv_0(v0, v1) :- wasbornin(v1, v0), Rule(5).
+inv_0(v0, v1) :- inv_0(v1, v0), Rule(9).
+inv_0(v0, v1) :- Rule(v0, v1), Rule(v0, v1), Rule(10).
+inv_0(v0, v1) :- Rule(v0, v1), Rule(v1, v0), Rule(11).
+inv_0(v0, v1) :- Rule(v1, v0), Rule(v1, v0), Rule(12).
+inv_0(v0, v1) :- Rule(v1, v0), Rule(v0, v1), Rule(13).
+inv_0(v0, v1) :- Rule(v2, v1), Rule(v0, v2), Rule(14).
+inv_0(v0, v1) :- Rule(v1, v2), Rule(v2, v0), Rule(15).
+inv_0(v0, v1) :- Rule(v2, v0), Rule(v1, v2), Rule(16).
+inv_0(v0, v1) :- Rule(v2, v0), Rule(v2, v1), Rule(17).
+inv_0(v0, v1) :- Rule(v0, v2), Rule(v1, v2), Rule(18).
+inv_0(v0, v1) :- Rule(v0, v2), Rule(v2, v1), Rule(19).
+inv_0(v0, v1) :- Rule(v2, v1), Rule(v2, v0), Rule(20).
+inv_0(v0, v1) :- Rule(v1, v2), Rule(v0, v2), Rule(21).
+inv_0(v0, v1) :- Rule(v0, v1), livesin(v0, v1), Rule(22).
+inv_0(v0, v1) :- Rule(v0, v1), livesin(v1, v0), Rule(23).
+inv_0(v0, v1) :- Rule(v1, v0), livesin(v1, v0), Rule(24).
+inv_0(v0, v1) :- Rule(v1, v0), livesin(v0, v1), Rule(25).
+inv_0(v0, v1) :- Rule(v2, v1), livesin(v0, v2), Rule(26).
+inv_0(v0, v1) :- Rule(v1, v2), livesin(v2, v0), Rule(27).
+inv_0(v0, v1) :- Rule(v2, v0), livesin(v1, v2), Rule(28).
+inv_0(v0, v1) :- Rule(v2, v0), livesin(v2, v1), Rule(29).
+inv_0(v0, v1) :- Rule(v0, v2), livesin(v1, v2), Rule(30).
+inv_0(v0, v1) :- Rule(v0, v2), livesin(v2, v1), Rule(31).
+inv_0(v0, v1) :- Rule(v2, v1), livesin(v2, v0), Rule(32).
+inv_0(v0, v1) :- Rule(v1, v2), livesin(v0, v2), Rule(33).
+inv_0(v0, v1) :- Rule(v0, v1), wasbornin(v0, v1), Rule(34).
+inv_0(v0, v1) :- Rule(v0, v1), wasbornin(v1, v0), Rule(35).
+inv_0(v0, v1) :- Rule(v1, v0), wasbornin(v1, v0), Rule(36).
+inv_0(v0, v1) :- Rule(v1, v0), wasbornin(v0, v1), Rule(37).
+inv_0(v0, v1) :- Rule(v2, v1), wasbornin(v0, v2), Rule(38).
+inv_0(v0, v1) :- Rule(v1, v2), wasbornin(v2, v0), Rule(39).
+inv_0(v0, v1) :- Rule(v2, v0), wasbornin(v1, v2), Rule(40).
+inv_0(v0, v1) :- Rule(v2, v0), wasbornin(v2, v1), Rule(41).
+inv_0(v0, v1) :- Rule(v0, v2), wasbornin(v1, v2), Rule(42).
+inv_0(v0, v1) :- Rule(v0, v2), wasbornin(v2, v1), Rule(43).
+inv_0(v0, v1) :- Rule(v2, v1), wasbornin(v2, v0), Rule(44).
+inv_0(v0, v1) :- Rule(v1, v2), wasbornin(v0, v2), Rule(45).
+inv_0(v0, v1) :- Rule(v0, v1), inv_0(v1, v0), Rule(59).
+inv_0(v0, v1) :- Rule(v1, v0), inv_0(v1, v0), Rule(60).
+inv_0(v0, v1) :- Rule(v2, v1), inv_0(v0, v2), Rule(62).
+inv_0(v0, v1) :- Rule(v1, v2), inv_0(v2, v0), Rule(63).
+inv_0(v0, v1) :- Rule(v2, v0), inv_0(v1, v2), Rule(64).
+inv_0(v0, v1) :- Rule(v2, v0), inv_0(v2, v1), Rule(65).
+inv_0(v0, v1) :- Rule(v0, v2), inv_0(v1, v2), Rule(66).
+inv_0(v0, v1) :- Rule(v0, v2), inv_0(v2, v1), Rule(67).
+inv_0(v0, v1) :- Rule(v2, v1), inv_0(v2, v0), Rule(68).
+inv_0(v0, v1) :- Rule(v1, v2), inv_0(v0, v2), Rule(69).
+inv_0(v0, v1) :- livesin(v0, v1), livesin(v0, v1), Rule(70).
+inv_0(v0, v1) :- livesin(v0, v1), livesin(v1, v0), Rule(71).
+inv_0(v0, v1) :- livesin(v1, v0), livesin(v1, v0), Rule(72).
+inv_0(v0, v1) :- livesin(v1, v0), livesin(v0, v1), Rule(73).
+inv_0(v0, v1) :- livesin(v2, v1), livesin(v0, v2), Rule(74).
+inv_0(v0, v1) :- livesin(v1, v2), livesin(v2, v0), Rule(75).
+inv_0(v0, v1) :- livesin(v2, v0), livesin(v1, v2), Rule(76).
+inv_0(v0, v1) :- livesin(v2, v0), livesin(v2, v1), Rule(77).
+inv_0(v0, v1) :- livesin(v0, v2), livesin(v1, v2), Rule(78).
+inv_0(v0, v1) :- livesin(v0, v2), livesin(v2, v1), Rule(79).
+inv_0(v0, v1) :- livesin(v2, v1), livesin(v2, v0), Rule(80).
+inv_0(v0, v1) :- livesin(v1, v2), livesin(v0, v2), Rule(81).
+inv_0(v0, v1) :- livesin(v0, v1), wasbornin(v0, v1), Rule(82).
+inv_0(v0, v1) :- livesin(v0, v1), wasbornin(v1, v0), Rule(83).
+inv_0(v0, v1) :- livesin(v1, v0), wasbornin(v1, v0), Rule(84).
+inv_0(v0, v1) :- livesin(v1, v0), wasbornin(v0, v1), Rule(85).
+inv_0(v0, v1) :- livesin(v2, v1), wasbornin(v0, v2), Rule(86).
+inv_0(v0, v1) :- livesin(v1, v2), wasbornin(v2, v0), Rule(87).
+inv_0(v0, v1) :- livesin(v2, v0), wasbornin(v1, v2), Rule(88).
+inv_0(v0, v1) :- livesin(v2, v0), wasbornin(v2, v1), Rule(89).
+inv_0(v0, v1) :- livesin(v0, v2), wasbornin(v1, v2), Rule(90).
+inv_0(v0, v1) :- livesin(v0, v2), wasbornin(v2, v1), Rule(91).
+inv_0(v0, v1) :- livesin(v2, v1), wasbornin(v2, v0), Rule(92).
+inv_0(v0, v1) :- livesin(v1, v2), wasbornin(v0, v2), Rule(93).
+inv_0(v0, v1) :- livesin(v0, v1), inv_0(v1, v0), Rule(107).
+inv_0(v0, v1) :- livesin(v1, v0), inv_0(v1, v0), Rule(108).
+inv_0(v0, v1) :- livesin(v2, v1), inv_0(v0, v2), Rule(110).
+inv_0(v0, v1) :- livesin(v1, v2), inv_0(v2, v0), Rule(111).
+inv_0(v0, v1) :- livesin(v2, v0), inv_0(v1, v2), Rule(112).
+inv_0(v0, v1) :- livesin(v2, v0), inv_0(v2, v1), Rule(113).
+inv_0(v0, v1) :- livesin(v0, v2), inv_0(v1, v2), Rule(114).
+inv_0(v0, v1) :- livesin(v0, v2), inv_0(v2, v1), Rule(115).
+inv_0(v0, v1) :- livesin(v2, v1), inv_0(v2, v0), Rule(116).
+inv_0(v0, v1) :- livesin(v1, v2), inv_0(v0, v2), Rule(117).
+inv_0(v0, v1) :- wasbornin(v0, v1), wasbornin(v0, v1), Rule(118).
+inv_0(v0, v1) :- wasbornin(v0, v1), wasbornin(v1, v0), Rule(119).
+inv_0(v0, v1) :- wasbornin(v1, v0), wasbornin(v1, v0), Rule(120).
+inv_0(v0, v1) :- wasbornin(v1, v0), wasbornin(v0, v1), Rule(121).
+inv_0(v0, v1) :- wasbornin(v2, v1), wasbornin(v0, v2), Rule(122).
+inv_0(v0, v1) :- wasbornin(v1, v2), wasbornin(v2, v0), Rule(123).
+inv_0(v0, v1) :- wasbornin(v2, v0), wasbornin(v1, v2), Rule(124).
+inv_0(v0, v1) :- wasbornin(v2, v0), wasbornin(v2, v1), Rule(125).
+inv_0(v0, v1) :- wasbornin(v0, v2), wasbornin(v1, v2), Rule(126).
+inv_0(v0, v1) :- wasbornin(v0, v2), wasbornin(v2, v1), Rule(127).
+inv_0(v0, v1) :- wasbornin(v2, v1), wasbornin(v2, v0), Rule(128).
+inv_0(v0, v1) :- wasbornin(v1, v2), wasbornin(v0, v2), Rule(129).
+inv_0(v0, v1) :- wasbornin(v0, v1), inv_0(v1, v0), Rule(143).
+inv_0(v0, v1) :- wasbornin(v1, v0), inv_0(v1, v0), Rule(144).
+inv_0(v0, v1) :- wasbornin(v2, v1), inv_0(v0, v2), Rule(146).
+inv_0(v0, v1) :- wasbornin(v1, v2), inv_0(v2, v0), Rule(147).
+inv_0(v0, v1) :- wasbornin(v2, v0), inv_0(v1, v2), Rule(148).
+inv_0(v0, v1) :- wasbornin(v2, v0), inv_0(v2, v1), Rule(149).
+inv_0(v0, v1) :- wasbornin(v0, v2), inv_0(v1, v2), Rule(150).
+inv_0(v0, v1) :- wasbornin(v0, v2), inv_0(v2, v1), Rule(151).
+inv_0(v0, v1) :- wasbornin(v2, v1), inv_0(v2, v0), Rule(152).
+inv_0(v0, v1) :- wasbornin(v1, v2), inv_0(v0, v2), Rule(153).
+inv_0(v0, v1) :- inv_0(v1, v0), inv_0(v1, v0), Rule(180).
+inv_0(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(182).
+inv_0(v0, v1) :- inv_0(v1, v2), inv_0(v2, v0), Rule(183).
+inv_0(v0, v1) :- inv_0(v2, v0), inv_0(v1, v2), Rule(184).
+inv_0(v0, v1) :- inv_0(v2, v0), inv_0(v2, v1), Rule(185).
+inv_0(v0, v1) :- inv_0(v0, v2), inv_0(v1, v2), Rule(186).
+inv_0(v0, v1) :- inv_0(v0, v2), inv_0(v2, v1), Rule(187).
+inv_0(v0, v1) :- inv_0(v2, v1), inv_0(v2, v0), Rule(188).
+inv_0(v0, v1) :- inv_0(v1, v2), inv_0(v0, v2), Rule(189).
+Ilivesin(v0, v1) :- Rule(v0, v1), Rule(190).
+Ilivesin(v0, v1) :- Rule(v1, v0), Rule(191).
+Ilivesin(v0, v1) :- livesin(v0, v1), Rule(192).
+Ilivesin(v0, v1) :- livesin(v1, v0), Rule(193).
+Ilivesin(v0, v1) :- wasbornin(v0, v1), Rule(194).
+Ilivesin(v0, v1) :- wasbornin(v1, v0), Rule(195).
+Ilivesin(v0, v1) :- inv_0(v0, v1), Rule(198).
+Ilivesin(v0, v1) :- inv_0(v1, v0), Rule(199).
+Ilivesin(v0, v1) :- Ilivesin(v1, v0), Rule(201).
+Ilivesin(v0, v1) :- Rule(v0, v1), Rule(v0, v1), Rule(202).
+Ilivesin(v0, v1) :- Rule(v0, v1), Rule(v1, v0), Rule(203).
+Ilivesin(v0, v1) :- Rule(v1, v0), Rule(v1, v0), Rule(204).
+Ilivesin(v0, v1) :- Rule(v1, v0), Rule(v0, v1), Rule(205).
+Ilivesin(v0, v1) :- Rule(v2, v1), Rule(v0, v2), Rule(206).
+Ilivesin(v0, v1) :- Rule(v1, v2), Rule(v2, v0), Rule(207).
+Ilivesin(v0, v1) :- Rule(v2, v0), Rule(v1, v2), Rule(208).
+Ilivesin(v0, v1) :- Rule(v2, v0), Rule(v2, v1), Rule(209).
+Ilivesin(v0, v1) :- Rule(v0, v2), Rule(v1, v2), Rule(210).
+Ilivesin(v0, v1) :- Rule(v0, v2), Rule(v2, v1), Rule(211).
+Ilivesin(v0, v1) :- Rule(v2, v1), Rule(v2, v0), Rule(212).
+Ilivesin(v0, v1) :- Rule(v1, v2), Rule(v0, v2), Rule(213).
+Ilivesin(v0, v1) :- Rule(v0, v1), livesin(v0, v1), Rule(214).
+Ilivesin(v0, v1) :- Rule(v0, v1), livesin(v1, v0), Rule(215).
+Ilivesin(v0, v1) :- Rule(v1, v0), livesin(v1, v0), Rule(216).
+Ilivesin(v0, v1) :- Rule(v1, v0), livesin(v0, v1), Rule(217).
+Ilivesin(v0, v1) :- Rule(v2, v1), livesin(v0, v2), Rule(218).
+Ilivesin(v0, v1) :- Rule(v1, v2), livesin(v2, v0), Rule(219).
+Ilivesin(v0, v1) :- Rule(v2, v0), livesin(v1, v2), Rule(220).
+Ilivesin(v0, v1) :- Rule(v2, v0), livesin(v2, v1), Rule(221).
+Ilivesin(v0, v1) :- Rule(v0, v2), livesin(v1, v2), Rule(222).
+Ilivesin(v0, v1) :- Rule(v0, v2), livesin(v2, v1), Rule(223).
+Ilivesin(v0, v1) :- Rule(v2, v1), livesin(v2, v0), Rule(224).
+Ilivesin(v0, v1) :- Rule(v1, v2), livesin(v0, v2), Rule(225).
+Ilivesin(v0, v1) :- Rule(v0, v1), wasbornin(v0, v1), Rule(226).
+Ilivesin(v0, v1) :- Rule(v0, v1), wasbornin(v1, v0), Rule(227).
+Ilivesin(v0, v1) :- Rule(v1, v0), wasbornin(v1, v0), Rule(228).
+Ilivesin(v0, v1) :- Rule(v1, v0), wasbornin(v0, v1), Rule(229).
+Ilivesin(v0, v1) :- Rule(v2, v1), wasbornin(v0, v2), Rule(230).
+Ilivesin(v0, v1) :- Rule(v1, v2), wasbornin(v2, v0), Rule(231).
+Ilivesin(v0, v1) :- Rule(v2, v0), wasbornin(v1, v2), Rule(232).
+Ilivesin(v0, v1) :- Rule(v2, v0), wasbornin(v2, v1), Rule(233).
+Ilivesin(v0, v1) :- Rule(v0, v2), wasbornin(v1, v2), Rule(234).
+Ilivesin(v0, v1) :- Rule(v0, v2), wasbornin(v2, v1), Rule(235).
+Ilivesin(v0, v1) :- Rule(v2, v1), wasbornin(v2, v0), Rule(236).
+Ilivesin(v0, v1) :- Rule(v1, v2), wasbornin(v0, v2), Rule(237).
+Ilivesin(v0, v1) :- Rule(v2, v1), IIlivesin(v0, v2), Rule(242).
+Ilivesin(v0, v1) :- Rule(v1, v2), IIlivesin(v2, v0), Rule(243).
+Ilivesin(v0, v1) :- Rule(v2, v0), IIlivesin(v1, v2), Rule(244).
+Ilivesin(v0, v1) :- Rule(v2, v0), IIlivesin(v2, v1), Rule(245).
+Ilivesin(v0, v1) :- Rule(v0, v2), IIlivesin(v1, v2), Rule(246).
+Ilivesin(v0, v1) :- Rule(v0, v2), IIlivesin(v2, v1), Rule(247).
+Ilivesin(v0, v1) :- Rule(v2, v1), IIlivesin(v2, v0), Rule(248).
+Ilivesin(v0, v1) :- Rule(v1, v2), IIlivesin(v0, v2), Rule(249).
+Ilivesin(v0, v1) :- Rule(v0, v1), inv_0(v0, v1), Rule(250).
+Ilivesin(v0, v1) :- Rule(v0, v1), inv_0(v1, v0), Rule(251).
+Ilivesin(v0, v1) :- Rule(v1, v0), inv_0(v1, v0), Rule(252).
+Ilivesin(v0, v1) :- Rule(v1, v0), inv_0(v0, v1), Rule(253).
+Ilivesin(v0, v1) :- Rule(v2, v1), inv_0(v0, v2), Rule(254).
+Ilivesin(v0, v1) :- Rule(v1, v2), inv_0(v2, v0), Rule(255).
+Ilivesin(v0, v1) :- Rule(v2, v0), inv_0(v1, v2), Rule(256).
+Ilivesin(v0, v1) :- Rule(v2, v0), inv_0(v2, v1), Rule(257).
+Ilivesin(v0, v1) :- Rule(v0, v2), inv_0(v1, v2), Rule(258).
+Ilivesin(v0, v1) :- Rule(v0, v2), inv_0(v2, v1), Rule(259).
+Ilivesin(v0, v1) :- Rule(v2, v1), inv_0(v2, v0), Rule(260).
+Ilivesin(v0, v1) :- Rule(v1, v2), inv_0(v0, v2), Rule(261).
+Ilivesin(v0, v1) :- Rule(v0, v1), Ilivesin(v1, v0), Rule(263).
+Ilivesin(v0, v1) :- Rule(v1, v0), Ilivesin(v1, v0), Rule(264).
+Ilivesin(v0, v1) :- Rule(v2, v1), Ilivesin(v0, v2), Rule(266).
+Ilivesin(v0, v1) :- Rule(v1, v2), Ilivesin(v2, v0), Rule(267).
+Ilivesin(v0, v1) :- Rule(v2, v0), Ilivesin(v1, v2), Rule(268).
+Ilivesin(v0, v1) :- Rule(v2, v0), Ilivesin(v2, v1), Rule(269).
+Ilivesin(v0, v1) :- Rule(v0, v2), Ilivesin(v1, v2), Rule(270).
+Ilivesin(v0, v1) :- Rule(v0, v2), Ilivesin(v2, v1), Rule(271).
+Ilivesin(v0, v1) :- Rule(v2, v1), Ilivesin(v2, v0), Rule(272).
+Ilivesin(v0, v1) :- Rule(v1, v2), Ilivesin(v0, v2), Rule(273).
+Ilivesin(v0, v1) :- livesin(v0, v1), livesin(v0, v1), Rule(274).
+Ilivesin(v0, v1) :- livesin(v0, v1), livesin(v1, v0), Rule(275).
+Ilivesin(v0, v1) :- livesin(v1, v0), livesin(v1, v0), Rule(276).
+Ilivesin(v0, v1) :- livesin(v1, v0), livesin(v0, v1), Rule(277).
+Ilivesin(v0, v1) :- livesin(v2, v1), livesin(v0, v2), Rule(278).
+Ilivesin(v0, v1) :- livesin(v1, v2), livesin(v2, v0), Rule(279).
+Ilivesin(v0, v1) :- livesin(v2, v0), livesin(v1, v2), Rule(280).
+Ilivesin(v0, v1) :- livesin(v2, v0), livesin(v2, v1), Rule(281).
+Ilivesin(v0, v1) :- livesin(v0, v2), livesin(v1, v2), Rule(282).
+Ilivesin(v0, v1) :- livesin(v0, v2), livesin(v2, v1), Rule(283).
+Ilivesin(v0, v1) :- livesin(v2, v1), livesin(v2, v0), Rule(284).
+Ilivesin(v0, v1) :- livesin(v1, v2), livesin(v0, v2), Rule(285).
+Ilivesin(v0, v1) :- livesin(v0, v1), wasbornin(v0, v1), Rule(286).
+Ilivesin(v0, v1) :- livesin(v0, v1), wasbornin(v1, v0), Rule(287).
+Ilivesin(v0, v1) :- livesin(v1, v0), wasbornin(v1, v0), Rule(288).
+Ilivesin(v0, v1) :- livesin(v1, v0), wasbornin(v0, v1), Rule(289).
+Ilivesin(v0, v1) :- livesin(v2, v1), wasbornin(v0, v2), Rule(290).
+Ilivesin(v0, v1) :- livesin(v1, v2), wasbornin(v2, v0), Rule(291).
+Ilivesin(v0, v1) :- livesin(v2, v0), wasbornin(v1, v2), Rule(292).
+Ilivesin(v0, v1) :- livesin(v2, v0), wasbornin(v2, v1), Rule(293).
+Ilivesin(v0, v1) :- livesin(v0, v2), wasbornin(v1, v2), Rule(294).
+Ilivesin(v0, v1) :- livesin(v0, v2), wasbornin(v2, v1), Rule(295).
+Ilivesin(v0, v1) :- livesin(v2, v1), wasbornin(v2, v0), Rule(296).
+Ilivesin(v0, v1) :- livesin(v1, v2), wasbornin(v0, v2), Rule(297).
+Ilivesin(v0, v1) :- livesin(v2, v1), IIlivesin(v0, v2), Rule(302).
+Ilivesin(v0, v1) :- livesin(v1, v2), IIlivesin(v2, v0), Rule(303).
+Ilivesin(v0, v1) :- livesin(v2, v0), IIlivesin(v1, v2), Rule(304).
+Ilivesin(v0, v1) :- livesin(v2, v0), IIlivesin(v2, v1), Rule(305).
+Ilivesin(v0, v1) :- livesin(v0, v2), IIlivesin(v1, v2), Rule(306).
+Ilivesin(v0, v1) :- livesin(v0, v2), IIlivesin(v2, v1), Rule(307).
+Ilivesin(v0, v1) :- livesin(v2, v1), IIlivesin(v2, v0), Rule(308).
+Ilivesin(v0, v1) :- livesin(v1, v2), IIlivesin(v0, v2), Rule(309).
+Ilivesin(v0, v1) :- livesin(v0, v1), inv_0(v0, v1), Rule(310).
+Ilivesin(v0, v1) :- livesin(v0, v1), inv_0(v1, v0), Rule(311).
+Ilivesin(v0, v1) :- livesin(v1, v0), inv_0(v1, v0), Rule(312).
+Ilivesin(v0, v1) :- livesin(v1, v0), inv_0(v0, v1), Rule(313).
+Ilivesin(v0, v1) :- livesin(v2, v1), inv_0(v0, v2), Rule(314).
+Ilivesin(v0, v1) :- livesin(v1, v2), inv_0(v2, v0), Rule(315).
+Ilivesin(v0, v1) :- livesin(v2, v0), inv_0(v1, v2), Rule(316).
+Ilivesin(v0, v1) :- livesin(v2, v0), inv_0(v2, v1), Rule(317).
+Ilivesin(v0, v1) :- livesin(v0, v2), inv_0(v1, v2), Rule(318).
+Ilivesin(v0, v1) :- livesin(v0, v2), inv_0(v2, v1), Rule(319).
+Ilivesin(v0, v1) :- livesin(v2, v1), inv_0(v2, v0), Rule(320).
+Ilivesin(v0, v1) :- livesin(v1, v2), inv_0(v0, v2), Rule(321).
+Ilivesin(v0, v1) :- livesin(v0, v1), Ilivesin(v1, v0), Rule(323).
+Ilivesin(v0, v1) :- livesin(v1, v0), Ilivesin(v1, v0), Rule(324).
+Ilivesin(v0, v1) :- livesin(v2, v1), Ilivesin(v0, v2), Rule(326).
+Ilivesin(v0, v1) :- livesin(v1, v2), Ilivesin(v2, v0), Rule(327).
+Ilivesin(v0, v1) :- livesin(v2, v0), Ilivesin(v1, v2), Rule(328).
+Ilivesin(v0, v1) :- livesin(v2, v0), Ilivesin(v2, v1), Rule(329).
+Ilivesin(v0, v1) :- livesin(v0, v2), Ilivesin(v1, v2), Rule(330).
+Ilivesin(v0, v1) :- livesin(v0, v2), Ilivesin(v2, v1), Rule(331).
+Ilivesin(v0, v1) :- livesin(v2, v1), Ilivesin(v2, v0), Rule(332).
+Ilivesin(v0, v1) :- livesin(v1, v2), Ilivesin(v0, v2), Rule(333).
+Ilivesin(v0, v1) :- wasbornin(v0, v1), wasbornin(v0, v1), Rule(334).
+Ilivesin(v0, v1) :- wasbornin(v0, v1), wasbornin(v1, v0), Rule(335).
+Ilivesin(v0, v1) :- wasbornin(v1, v0), wasbornin(v1, v0), Rule(336).
+Ilivesin(v0, v1) :- wasbornin(v1, v0), wasbornin(v0, v1), Rule(337).
+Ilivesin(v0, v1) :- wasbornin(v2, v1), wasbornin(v0, v2), Rule(338).
+Ilivesin(v0, v1) :- wasbornin(v1, v2), wasbornin(v2, v0), Rule(339).
+Ilivesin(v0, v1) :- wasbornin(v2, v0), wasbornin(v1, v2), Rule(340).
+Ilivesin(v0, v1) :- wasbornin(v2, v0), wasbornin(v2, v1), Rule(341).
+Ilivesin(v0, v1) :- wasbornin(v0, v2), wasbornin(v1, v2), Rule(342).
+Ilivesin(v0, v1) :- wasbornin(v0, v2), wasbornin(v2, v1), Rule(343).
+Ilivesin(v0, v1) :- wasbornin(v2, v1), wasbornin(v2, v0), Rule(344).
+Ilivesin(v0, v1) :- wasbornin(v1, v2), wasbornin(v0, v2), Rule(345).
+Ilivesin(v0, v1) :- wasbornin(v2, v1), IIlivesin(v0, v2), Rule(350).
+Ilivesin(v0, v1) :- wasbornin(v1, v2), IIlivesin(v2, v0), Rule(351).
+Ilivesin(v0, v1) :- wasbornin(v2, v0), IIlivesin(v1, v2), Rule(352).
+Ilivesin(v0, v1) :- wasbornin(v2, v0), IIlivesin(v2, v1), Rule(353).
+Ilivesin(v0, v1) :- wasbornin(v0, v2), IIlivesin(v1, v2), Rule(354).
+Ilivesin(v0, v1) :- wasbornin(v0, v2), IIlivesin(v2, v1), Rule(355).
+Ilivesin(v0, v1) :- wasbornin(v2, v1), IIlivesin(v2, v0), Rule(356).
+Ilivesin(v0, v1) :- wasbornin(v1, v2), IIlivesin(v0, v2), Rule(357).
+Ilivesin(v0, v1) :- wasbornin(v0, v1), inv_0(v0, v1), Rule(358).
+Ilivesin(v0, v1) :- wasbornin(v0, v1), inv_0(v1, v0), Rule(359).
+Ilivesin(v0, v1) :- wasbornin(v1, v0), inv_0(v1, v0), Rule(360).
+Ilivesin(v0, v1) :- wasbornin(v1, v0), inv_0(v0, v1), Rule(361).
+Ilivesin(v0, v1) :- wasbornin(v2, v1), inv_0(v0, v2), Rule(362).
+Ilivesin(v0, v1) :- wasbornin(v1, v2), inv_0(v2, v0), Rule(363).
+Ilivesin(v0, v1) :- wasbornin(v2, v0), inv_0(v1, v2), Rule(364).
+Ilivesin(v0, v1) :- wasbornin(v2, v0), inv_0(v2, v1), Rule(365).
+Ilivesin(v0, v1) :- wasbornin(v0, v2), inv_0(v1, v2), Rule(366).
+Ilivesin(v0, v1) :- wasbornin(v0, v2), inv_0(v2, v1), Rule(367).
+Ilivesin(v0, v1) :- wasbornin(v2, v1), inv_0(v2, v0), Rule(368).
+Ilivesin(v0, v1) :- wasbornin(v1, v2), inv_0(v0, v2), Rule(369).
+Ilivesin(v0, v1) :- wasbornin(v0, v1), Ilivesin(v1, v0), Rule(371).
+Ilivesin(v0, v1) :- wasbornin(v1, v0), Ilivesin(v1, v0), Rule(372).
+Ilivesin(v0, v1) :- wasbornin(v2, v1), Ilivesin(v0, v2), Rule(374).
+Ilivesin(v0, v1) :- wasbornin(v1, v2), Ilivesin(v2, v0), Rule(375).
+Ilivesin(v0, v1) :- wasbornin(v2, v0), Ilivesin(v1, v2), Rule(376).
+Ilivesin(v0, v1) :- wasbornin(v2, v0), Ilivesin(v2, v1), Rule(377).
+Ilivesin(v0, v1) :- wasbornin(v0, v2), Ilivesin(v1, v2), Rule(378).
+Ilivesin(v0, v1) :- wasbornin(v0, v2), Ilivesin(v2, v1), Rule(379).
+Ilivesin(v0, v1) :- wasbornin(v2, v1), Ilivesin(v2, v0), Rule(380).
+Ilivesin(v0, v1) :- wasbornin(v1, v2), Ilivesin(v0, v2), Rule(381).
+Ilivesin(v0, v1) :- IIlivesin(v2, v1), IIlivesin(v0, v2), Rule(386).
+Ilivesin(v0, v1) :- IIlivesin(v1, v2), IIlivesin(v2, v0), Rule(387).
+Ilivesin(v0, v1) :- IIlivesin(v2, v0), IIlivesin(v1, v2), Rule(388).
+Ilivesin(v0, v1) :- IIlivesin(v2, v0), IIlivesin(v2, v1), Rule(389).
+Ilivesin(v0, v1) :- IIlivesin(v0, v2), IIlivesin(v1, v2), Rule(390).
+Ilivesin(v0, v1) :- IIlivesin(v0, v2), IIlivesin(v2, v1), Rule(391).
+Ilivesin(v0, v1) :- IIlivesin(v2, v1), IIlivesin(v2, v0), Rule(392).
+Ilivesin(v0, v1) :- IIlivesin(v1, v2), IIlivesin(v0, v2), Rule(393).
+Ilivesin(v0, v1) :- IIlivesin(v2, v1), Ilivesin(v0, v2), Rule(410).
+Ilivesin(v0, v1) :- IIlivesin(v1, v2), Ilivesin(v2, v0), Rule(411).
+Ilivesin(v0, v1) :- IIlivesin(v2, v0), Ilivesin(v1, v2), Rule(412).
+Ilivesin(v0, v1) :- IIlivesin(v2, v0), Ilivesin(v2, v1), Rule(413).
+Ilivesin(v0, v1) :- IIlivesin(v0, v2), Ilivesin(v1, v2), Rule(414).
+Ilivesin(v0, v1) :- IIlivesin(v0, v2), Ilivesin(v2, v1), Rule(415).
+Ilivesin(v0, v1) :- IIlivesin(v2, v1), Ilivesin(v2, v0), Rule(416).
+Ilivesin(v0, v1) :- IIlivesin(v1, v2), Ilivesin(v0, v2), Rule(417).
+Ilivesin(v0, v1) :- inv_0(v0, v1), inv_0(v0, v1), Rule(418).
+Ilivesin(v0, v1) :- inv_0(v0, v1), inv_0(v1, v0), Rule(419).
+Ilivesin(v0, v1) :- inv_0(v1, v0), inv_0(v1, v0), Rule(420).
+Ilivesin(v0, v1) :- inv_0(v1, v0), inv_0(v0, v1), Rule(421).
+Ilivesin(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(422).
+Ilivesin(v0, v1) :- inv_0(v1, v2), inv_0(v2, v0), Rule(423).
+Ilivesin(v0, v1) :- inv_0(v2, v0), inv_0(v1, v2), Rule(424).
+Ilivesin(v0, v1) :- inv_0(v2, v0), inv_0(v2, v1), Rule(425).
+Ilivesin(v0, v1) :- inv_0(v0, v2), inv_0(v1, v2), Rule(426).
+Ilivesin(v0, v1) :- inv_0(v0, v2), inv_0(v2, v1), Rule(427).
+Ilivesin(v0, v1) :- inv_0(v2, v1), inv_0(v2, v0), Rule(428).
+Ilivesin(v0, v1) :- inv_0(v1, v2), inv_0(v0, v2), Rule(429).
+Ilivesin(v0, v1) :- inv_0(v0, v1), Ilivesin(v1, v0), Rule(431).
+Ilivesin(v0, v1) :- inv_0(v1, v0), Ilivesin(v1, v0), Rule(432).
+Ilivesin(v0, v1) :- inv_0(v2, v1), Ilivesin(v0, v2), Rule(434).
+Ilivesin(v0, v1) :- inv_0(v1, v2), Ilivesin(v2, v0), Rule(435).
+Ilivesin(v0, v1) :- inv_0(v2, v0), Ilivesin(v1, v2), Rule(436).
+Ilivesin(v0, v1) :- inv_0(v2, v0), Ilivesin(v2, v1), Rule(437).
+Ilivesin(v0, v1) :- inv_0(v0, v2), Ilivesin(v1, v2), Rule(438).
+Ilivesin(v0, v1) :- inv_0(v0, v2), Ilivesin(v2, v1), Rule(439).
+Ilivesin(v0, v1) :- inv_0(v2, v1), Ilivesin(v2, v0), Rule(440).
+Ilivesin(v0, v1) :- inv_0(v1, v2), Ilivesin(v0, v2), Rule(441).
+Ilivesin(v0, v1) :- Ilivesin(v1, v0), Ilivesin(v1, v0), Rule(444).
+Ilivesin(v0, v1) :- Ilivesin(v2, v1), Ilivesin(v0, v2), Rule(446).
+Ilivesin(v0, v1) :- Ilivesin(v1, v2), Ilivesin(v2, v0), Rule(447).
+Ilivesin(v0, v1) :- Ilivesin(v2, v0), Ilivesin(v1, v2), Rule(448).
+Ilivesin(v0, v1) :- Ilivesin(v2, v0), Ilivesin(v2, v1), Rule(449).
+Ilivesin(v0, v1) :- Ilivesin(v0, v2), Ilivesin(v1, v2), Rule(450).
+Ilivesin(v0, v1) :- Ilivesin(v0, v2), Ilivesin(v2, v1), Rule(451).
+Ilivesin(v0, v1) :- Ilivesin(v2, v1), Ilivesin(v2, v0), Rule(452).
+Ilivesin(v0, v1) :- Ilivesin(v1, v2), Ilivesin(v0, v2), Rule(453).

@@ -189,21 +189,26 @@ while True:
         while souffleProc.stdout.readline().strip() != '###': pass
         while souffleProc.stdout.readline().strip() != '###': pass
         def execSouffleCmd(cmd):
-            #logging.info('prosynth to souffle: ' + cmd)
-            print(cmd, file=souffleProc.stdin)
-            souffleProc.stdin.flush()
+            try:
+                #logging.info('prosynth to souffle: ' + cmd)
+                print(cmd, file=souffleProc.stdin)
+                souffleProc.stdin.flush()
 
-            response = [ souffleProc.stdout.readline().strip() ]
-            if response[-1] == '':
-                logging.info('Error reading 1')
-                return "error reading" #doesn't deal with underlying problem, just passes error through and skips question
-                #return execSouffleCmd(cmd)
-            while response[-1] != '###': 
-                response.append(souffleProc.stdout.readline().strip())
-            response = response[:-1]
-            ans = '\n'.join(response)
-            #logging.info('souffle to prosynth: ' + ans)
-            return ans
+                response = [ souffleProc.stdout.readline().strip() ]
+                if response[-1] == '':
+                    logging.info('Error reading 1')
+                    return "error reading" #doesn't deal with underlying problem, just passes error through and skips question
+                    #return execSouffleCmd(cmd)
+                while response[-1] != '###': 
+                    response.append(souffleProc.stdout.readline().strip())
+                response = response[:-1]
+                ans = '\n'.join(response)
+                #logging.info('souffle to prosynth: ' + ans)
+                return ans
+            except BrokenPipiError:
+                devnull = os.open(os.devnull, os.O_WRONLY)
+                os.dup2(devnull, sys.stdout.fileno())
+                sys.exit(1)
         execSouffleCmd('format json')
         execSouffleCmd('setdepth 200000')
         #logging.info("running souffle took {} microseconds".format(1000000*(time.clock_gettime(0) - currTime)))

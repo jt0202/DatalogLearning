@@ -8,6 +8,7 @@ import random
 import networkx as nx
 import re
 import time
+from math import floor
 
 
 
@@ -62,6 +63,7 @@ for rel in outputRelations:
     objects = []
     negativeExamples = []
     output = set()
+    length = 0
     with open(problemDirName + "/" + outputRelation + ".facts", "r") as file:
         for line in file:
             pair = line.split("\t")
@@ -73,7 +75,12 @@ for rel in outputRelations:
         length = len(subjects) - 1
 
     i = 0
+    it = 0
+    negativeExampleAmount = floor(length * 0.01)
     while i < negativeExampleAmount:
+        if it > 5000:
+            break
+        it = it + 1
         negEx =subjects[random.randint(0, length)] + "\t" +  objects[random.randint(0, length)]
         with open(problemDirName + "/" + outputRelation + ".facts", "r") as file:
             if negEx in file.read():
@@ -298,6 +305,10 @@ for rel in outputRelations:
             evFile.write("Time spent (in s): " +str(endtime ))
             relations.remove("I" + outputRelation)
             continue
+    
+    with open(problemDirName + "/evaluation_" + outputRelation + ".txt", "w") as evFile:
+        evFile.write("Time spent (in min): " +str(endtime / 60))
+        evFile.write("Time spent (in s): " +str(endtime ))
     subprocess.run(["mv", problemDirName + "/solution.dl", problemDirName + "/sol_" + outputRelation + ".dl"])
     relations.remove("I" + outputRelation)
 

@@ -1,0 +1,6 @@
+*Rule(V,V)
+*livesin(V,V)
+*wasbornin(V,V)
+*IIlivesin(V,V)
+inv_0(V,V)
+Ilivesin(V,V)
