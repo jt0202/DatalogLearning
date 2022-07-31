@@ -1,0 +1,24 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl haschild(v0: V, v1: V)
+.input haschild
+
+.decl Iismarriedto(v0: V, v1: V)
+.input Iismarriedto
+
+.decl inv_0(v0: V, v1: V)
+.output inv_0
+
+.decl ismarriedto(v0: V, v1: V)
+.output ismarriedto
+
+ismarriedto(v0, v1) :- haschild(v2, v1), haschild(v0, v2), Rule(90).
+ismarriedto(v0, v1) :- haschild(v2, v0), ismarriedto(v1, v2), Rule(128).
+ismarriedto(v0, v1) :- haschild(v1, v2), Iismarriedto(v2, v0), Rule(103).
+ismarriedto(v0, v1) :- haschild(v0, v1), Rule(78).
+ismarriedto(v0, v1) :- haschild(v0, v2), haschild(v1, v2), Rule(94).
+ismarriedto(v0, v1) :- haschild(v0, v2), ismarriedto(v1, v2), Rule(130).
+ismarriedto(v0, v1) :- haschild(v2, v1), Iismarriedto(v2, v0), Rule(108).
