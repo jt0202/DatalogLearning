@@ -28,6 +28,9 @@ for line in kb:
     with open(problemDirName + "/" + line[1] + ".facts", "a+") as file:
         file.write(line[0] + "\t" + line[2])
         entities.add(line[0])
+    with open(problemDirName + "/I" + line[1] + ".facts", "a+") as file:
+        file.write(line[0] + "\t" + line[2])
+        entities.add(line[0])
 
 solutionPattern = re.compile('sol_\w+.dl')
 
@@ -121,28 +124,20 @@ for file in os.listdir(problemDirName):
 
             runSouffle("/rule.small.out")
 
+            produced = set()
             support = 0
             with open(problemDirName + "/" + outputRelation + ".csv", "r") as file:
                 for line in file:
                     support = support + 1
+                    produced.add(line)
             evFile.write(rule + " Positive Examples: " + str(support) + "\n")
             
             if support == 0:
                 continue
 
             #confidence
-            with open(problemDirName + "/rule.dl", "w") as ruleFile:
-                for line in prefix:
-                    ruleFile.write(line)
-                ruleFile.write(".decl out(v0: V, v1: V)\n" + ".output out\n\n")
-                ruleFile.write("out(v0, v1):" + rule.split(":")[1].split(".")[0] + ", " + outputRelation + "(v0, v1).\n")
-            subprocess.run(["./scripts/prepare", problemDirName, "rule.small.out", "rule.dl"],\
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE,  universal_newlines=True)
 
-            confidence = 0
-            with open(problemDirName + "/" + outputRelation + ".csv", "r") as file:
-                for line in file:
-                    confidence = confidence + 1
-            confidence = confidence / support
+            trueResults = produced.intersection(expected)
+            confidence = len(trueResults) / support
             evFile.write(" Confidence: " + str(confidence) + "\n")
 

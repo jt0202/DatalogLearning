@@ -24,7 +24,7 @@ width = 2
 numberOfInventedPredicates = 1
 relevancethreshhold = 0.01
 negativeExampleAmount = 0
-train_test_split = 0.25
+train_test_split = 0
 multipleRelations = True
 
 kb = open(problemDirName + "/" + fileName, encoding = "utf-8")
