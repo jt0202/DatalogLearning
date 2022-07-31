@@ -14,6 +14,12 @@ for file in os.listdir(problemDirName):
         with open(problemDirName + "/" + file, "w") as factfile:
             pass
 
+with open(problemDirName + "/Rule.fact") as numbers:
+    i = 0
+    while i < 64000:
+        numbers.write(str(i) + "\n")
+        i = i +1
+
 entities = set()
 kb = open(problemDirName + "/test.tsv", encoding = "utf-8")
 # File assumed to be in tsv format and not include any '/' sign 
@@ -85,10 +91,10 @@ for file in os.listdir(problemDirName):
 
         truePredictions = len(expected.intersection(produced))
 
-        expectedEntities = {element.split("\t")[0] for element in produced}
+        producedEntities = {element.split("\t")[0] for element in produced}
         trueEntities = {element.split("\t")[0] for element in  expected.intersection(produced)}
         
-        falsePredictions = len(entities.intersection(expectedEntities)) - len(trueEntities)
+        falsePredictions = len(entities.intersection(producedEntities)) - len(trueEntities)
 
         evFile.write("True predictions:\t" + str(truePredictions) + "\n")
         evFile.write("False predictions:\t" + str(falsePredictions) + "\n")
