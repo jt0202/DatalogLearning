@@ -8,33 +8,15 @@
 
 
 
-.decl hascurrency(v0: V, v1: V)
+.decl wasbornin(v0: V, v1: V)
 
-.input hascurrency
-
-
-
-.decl imports(v0: V, v1: V)
-
-.input imports
+.input wasbornin
 
 
 
-.decl hasofficiallanguage(v0: V, v1: V)
+.decl Ilivesin(v0: V, v1: V)
 
-.input hasofficiallanguage
-
-
-
-.decl exports(v0: V, v1: V)
-
-.input exports
-
-
-
-.decl Idealswith(v0: V, v1: V)
-
-.input Idealswith
+.input Ilivesin
 
 
 
@@ -44,12 +26,12 @@
 
 
 
-.decl dealswith(v0: V, v1: V)
+.decl livesin(v0: V, v1: V)
 
-.output dealswith
+.output livesin
 
 
 
-dealswith(v0, v1) :- exports(v0, v2), dealswith(v1, v2), Rule(538).
+livesin(v0, v1) :- wasbornin(v0, v2), livesin(v1, v2), Rule(130).
 
 
