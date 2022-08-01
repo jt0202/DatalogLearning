@@ -1,0 +1,107 @@
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl directed(v0: V, v1: V)
+
+.input directed
+
+
+
+.decl actedin(v0: V, v1: V)
+
+.input actedin
+
+
+
+.decl ismarriedto(v0: V, v1: V)
+
+.input ismarriedto
+
+
+
+.decl created(v0: V, v1: V)
+
+.input created
+
+
+
+.decl Iproduced(v0: V, v1: V)
+
+.input Iproduced
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl produced(v0: V, v1: V)
+
+.output produced
+
+
+
+produced(v0, v1) :- directed(v0, v2), produced(v1, v2), Rule(358).
+
+produced(v0, v1) :- created(v2, v1), Iproduced(v2, v0), Rule(516).
+
+produced(v0, v1) :- directed(v2, v1), Iproduced(v2, v0), Rule(336).
+
+produced(v0, v1) :- created(v0, v1), Rule(270).
+
+produced(v0, v1) :- directed(v0, v1), Rule(264).
+
+produced(v0, v1) :- ismarriedto(v0, v2), produced(v1, v2), Rule(490).
+
+produced(v0, v1) :- ismarriedto(v2, v1), Iproduced(v2, v0), Rule(468).
+
+produced(v0, v1) :- created(v0, v2), produced(v1, v2), Rule(538).
+
+produced(v0, v1) :- actedin(v0, v1), Rule(266).
+
+True predictions:	422
+False predictions:	2447
+Unknown predictions:	19918
+Retrieved:	0.685064935064935
+produced(v0, v1) :- directed(v0, v2), produced(v1, v2), Rule(358).
+
+ Positive Examples: 0
+produced(v0, v1) :- created(v2, v1), Iproduced(v2, v0), Rule(516).
+
+ Positive Examples: 2650
+ Confidence: 0.0
+produced(v0, v1) :- directed(v2, v1), Iproduced(v2, v0), Rule(336).
+
+ Positive Examples: 1263
+ Confidence: 0.0
+produced(v0, v1) :- created(v0, v1), Rule(270).
+
+ Positive Examples: 9682
+ Confidence: 0.008675893410452386
+produced(v0, v1) :- directed(v0, v1), Rule(264).
+
+ Positive Examples: 937
+ Confidence: 0.07043756670224119
+produced(v0, v1) :- ismarriedto(v0, v2), produced(v1, v2), Rule(490).
+
+ Positive Examples: 0
+produced(v0, v1) :- ismarriedto(v2, v1), Iproduced(v2, v0), Rule(468).
+
+ Positive Examples: 232
+ Confidence: 0.0
+produced(v0, v1) :- created(v0, v2), produced(v1, v2), Rule(538).
+
+ Positive Examples: 0
+produced(v0, v1) :- actedin(v0, v1), Rule(266).
+
+ Positive Examples: 4919
+ Confidence: 0.012197601138442773

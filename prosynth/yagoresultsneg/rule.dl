@@ -1,0 +1,55 @@
+.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl ismarriedto(v0: V, v1: V)
+
+.input ismarriedto
+
+
+
+.decl created(v0: V, v1: V)
+
+.input created
+
+
+
+.decl produced(v0: V, v1: V)
+
+.input produced
+
+
+
+.decl directed(v0: V, v1: V)
+
+.input directed
+
+
+
+.decl Iactedin(v0: V, v1: V)
+
+.input Iactedin
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl actedin(v0: V, v1: V)
+
+.output actedin
+
+
+
+actedin(v0, v1) :- produced(v0, v1), Rule(268).
+
+
