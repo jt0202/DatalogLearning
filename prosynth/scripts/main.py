@@ -32,6 +32,11 @@ kbSize = Path(problemDirName + "/" + fileName).stat().st_size
 
 relations = []
 
+#delete all previous facts
+for file in os.listdir(problemDirName):
+    if file.endswith(".facts"):
+        with open(problemDirName + "/" + file, "w") as factfile:
+            pass
 
 # File assumed to be in tsv format and not include any '/' sign 
 for line in kb:

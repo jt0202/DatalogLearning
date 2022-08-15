@@ -1,5 +1,5 @@
----------Start----------.type V
-
+---------Start----------
+.type V
 
 
 .decl Rule(n: number)
