@@ -15,12 +15,12 @@
 .decl haschild(v0: V, v1: V)
 .output haschild
 
-haschild(v0, v1) :- ismarriedto(v0, v1), Rule(78).
-haschild(v0, v1) :- ismarriedto(v2, v0), haschild(v1, v2), Rule(128).
-haschild(v0, v1) :- ismarriedto(v1, v2), haschild(v2, v0), Rule(127).
 haschild(v0, v1) :- ismarriedto(v0, v2), ismarriedto(v1, v2), Rule(94).
-haschild(v0, v1) :- ismarriedto(v1, v2), Ihaschild(v2, v0), Rule(103).
-haschild(v0, v1) :- ismarriedto(v0, v2), haschild(v1, v2), Rule(130).
+haschild(v0, v1) :- ismarriedto(v2, v0), haschild(v1, v2), Rule(128).
 haschild(v0, v1) :- ismarriedto(v2, v1), Ihaschild(v2, v0), Rule(108).
+haschild(v0, v1) :- ismarriedto(v1, v2), haschild(v2, v0), Rule(127).
+haschild(v0, v1) :- ismarriedto(v1, v2), Ihaschild(v2, v0), Rule(103).
 haschild(v0, v1) :- ismarriedto(v2, v0), Ihaschild(v2, v1), Rule(105).
+haschild(v0, v1) :- ismarriedto(v0, v1), Rule(78).
 haschild(v0, v1) :- ismarriedto(v2, v0), Ihaschild(v1, v2), Rule(104).
+haschild(v0, v1) :- ismarriedto(v0, v2), haschild(v1, v2), Rule(130).
