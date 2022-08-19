@@ -81,7 +81,7 @@ for rel in outputRelations:
 
     i = 0
     it = 0
-    negativeExampleAmount = floor(length * 0.01)
+    #negativeExampleAmount = floor(length * 0.01)
     while i < negativeExampleAmount:
         if it > 5000:
             break

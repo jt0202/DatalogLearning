@@ -138,3 +138,17 @@
 {name: 'countries', z3: 13, souffle: 13, runtime: 3881.3630237579346, setting_delta: 1}
 {name: 'family', z3: 1, souffle: 1, runtime: 79.00320839881897, setting_delta: 1}
 {name: 'family', z3: 1, souffle: 1, runtime: 71.80452871322632, setting_delta: 1}
+{name: 'filmo', z3: 1, souffle: 1, runtime: 167.6352937221527, setting_delta: 1}
+{name: 'filmo', z3: 1, souffle: 1, runtime: 168.50620436668396, setting_delta: 1}
+{name: 'filmo', z3: 1, souffle: 1, runtime: 167.50426983833313, setting_delta: 1}
+{name: 'filmo', z3: 1, souffle: 1, runtime: 151.81276321411133, setting_delta: 1}
+{name: 'filmo', z3: 1, souffle: 1, runtime: 152.19488096237183, setting_delta: 1}
+{name: 'locationo', z3: 1, souffle: 1, runtime: 63.851080656051636, setting_delta: 1}
+{name: 'locationo', z3: 1, souffle: 1, runtime: 71.53737592697144, setting_delta: 1}
+{name: 'familyo', z3: 1, souffle: 1, runtime: 78.13660502433777, setting_delta: 1}
+{name: 'familyo', z3: 1, souffle: 1, runtime: 71.08332467079163, setting_delta: 1}
+{name: 'countrieso', z3: 1, souffle: 1, runtime: 311.0860641002655, setting_delta: 1}
+{name: 'countrieso', z3: 1, souffle: 1, runtime: 325.30656027793884, setting_delta: 1}
+{name: 'countrieso', z3: 1, souffle: 1, runtime: 333.0223343372345, setting_delta: 1}
+{name: 'countrieso', z3: 1, souffle: 1, runtime: 369.0388081073761, setting_delta: 1}
+{name: 'countrieso', z3: 1, souffle: 1, runtime: 298.3576855659485, setting_delta: 1}

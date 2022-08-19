@@ -1,0 +1,50 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl hasofficiallanguage(v0: V, v1: V)
+.input hasofficiallanguage
+
+.decl exports(v0: V, v1: V)
+.input exports
+
+.decl dealswith(v0: V, v1: V)
+.input dealswith
+
+.decl hascurrency(v0: V, v1: V)
+.input hascurrency
+
+.decl Iimports(v0: V, v1: V)
+.input Iimports
+
+.decl inv_0(v0: V, v1: V)
+.output inv_0
+
+.decl imports(v0: V, v1: V)
+.output imports
+
+imports(v0, v1) :- exports(v0, v2), imports(v1, v2), Rule(430).
+imports(v0, v1) :- exports(v2, v1), dealswith(v2, v0), Rule(384).
+imports(v0, v1) :- hasofficiallanguage(v0, v2), imports(v2, v1), Rule(359).
+inv_0(v0, v1) :- dealswith(v1, v2), dealswith(v2, v0), Rule(149).
+imports(v0, v1) :- dealswith(v0, v2), Iimports(v2, v1), Rule(467).
+imports(v0, v1) :- dealswith(v2, v0), Iimports(v2, v1), Rule(465).
+imports(v0, v1) :- hasofficiallanguage(v0, v2), imports(v1, v2), Rule(358).
+inv_0(v0, v1) :- hasofficiallanguage(v2, v1), exports(v2, v0), Rule(34).
+inv_0(v0, v1) :- exports(v0, v2), exports(v1, v2), Rule(92).
+inv_0(v0, v1) :- dealswith(v2, v1), dealswith(v0, v2), Rule(148).
+imports(v0, v1) :- exports(v0, v1), Rule(266).
+imports(v0, v1) :- exports(v2, v0), Iimports(v2, v1), Rule(405).
+imports(v0, v1) :- exports(v2, v1), Iimports(v2, v0), Rule(408).
+inv_0(v0, v1) :- exports(v2, v1), dealswith(v2, v0), Rule(106).
+inv_0(v0, v1) :- dealswith(v0, v2), dealswith(v1, v2), Rule(152).
+inv_0(v0, v1) :- exports(v2, v0), exports(v2, v1), Rule(91).
+imports(v0, v1) :- hasofficiallanguage(v2, v1), Iimports(v2, v0), Rule(336).
+imports(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(582).
+inv_0(v0, v1) :- exports(v2, v1), dealswith(v0, v2), Rule(100).
+imports(v0, v1) :- hasofficiallanguage(v2, v0), Iimports(v2, v1), Rule(333).
+imports(v0, v1) :- hasofficiallanguage(v0, v2), inv_0(v1, v2), Rule(346).
+imports(v0, v1) :- exports(v2, v1), inv_0(v0, v2), Rule(414).
+imports(v0, v1) :- exports(v2, v1), dealswith(v0, v2), Rule(378).
+imports(v0, v1) :- exports(v0, v2), imports(v2, v1), Rule(431).

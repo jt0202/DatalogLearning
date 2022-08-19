@@ -1,0 +1,35 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl produced(v0: V, v1: V)
+.input produced
+
+.decl directed(v0: V, v1: V)
+.input directed
+
+.decl actedin(v0: V, v1: V)
+.input actedin
+
+.decl ismarriedto(v0: V, v1: V)
+.input ismarriedto
+
+.decl Icreated(v0: V, v1: V)
+.input Icreated
+
+.decl inv_0(v0: V, v1: V)
+.output inv_0
+
+.decl created(v0: V, v1: V)
+.output created
+
+created(v0, v1) :- directed(v2, v1), Icreated(v2, v0), Rule(408).
+created(v0, v1) :- produced(v0, v1), Rule(264).
+created(v0, v1) :- actedin(v2, v1), Icreated(v2, v0), Rule(468).
+created(v0, v1) :- directed(v0, v2), created(v1, v2), Rule(430).
+created(v0, v1) :- produced(v0, v2), created(v1, v2), Rule(358).
+created(v0, v1) :- actedin(v0, v1), Rule(268).
+created(v0, v1) :- produced(v2, v1), Icreated(v2, v0), Rule(336).
+created(v0, v1) :- actedin(v0, v2), created(v1, v2), Rule(490).
+created(v0, v1) :- directed(v0, v1), Rule(266).

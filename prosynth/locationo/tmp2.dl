@@ -1,0 +1,92 @@
+invent_error
+inv_0(v0, v1) :- Iwasbornin(v0, v1), Rule(2).
+input prevent
+inv_0(v0, v1) :- Iwasbornin(v1, v0), Rule(3).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), Rule(4).
+invent_error
+inv_0(v0, v1) :- livesin(v0, v1), Iwasbornin(v0, v1), Rule(18).
+input prevent
+inv_0(v0, v1) :- livesin(v0, v1), Iwasbornin(v1, v0), Rule(19).
+input prevent
+inv_0(v0, v1) :- livesin(v1, v0), Iwasbornin(v1, v0), Rule(20).
+invent_error
+inv_0(v0, v1) :- livesin(v1, v0), Iwasbornin(v0, v1), Rule(21).
+Head twice 
+inv_0(v0, v1) :- livesin(v0, v1), inv_0(v0, v1), Rule(30).
+Head twice 
+inv_0(v0, v1) :- livesin(v1, v0), inv_0(v0, v1), Rule(33).
+invent_error
+inv_0(v0, v1) :- Iwasbornin(v0, v1), Iwasbornin(v0, v1), Rule(42).
+input prevent
+inv_0(v0, v1) :- Iwasbornin(v0, v1), Iwasbornin(v1, v0), Rule(43).
+input prevent
+inv_0(v0, v1) :- Iwasbornin(v1, v0), Iwasbornin(v1, v0), Rule(44).
+input prevent
+inv_0(v0, v1) :- Iwasbornin(v1, v0), Iwasbornin(v0, v1), Rule(45).
+Head twice 
+inv_0(v0, v1) :- Iwasbornin(v0, v1), inv_0(v0, v1), Rule(54).
+invent_error
+inv_0(v0, v1) :- Iwasbornin(v0, v1), inv_0(v1, v0), Rule(55).
+input prevent
+inv_0(v0, v1) :- Iwasbornin(v1, v0), inv_0(v1, v0), Rule(56).
+Head twice 
+inv_0(v0, v1) :- Iwasbornin(v1, v0), inv_0(v0, v1), Rule(57).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v0, v1), Rule(66).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v1, v0), Rule(67).
+Head twice 
+inv_0(v0, v1) :- inv_0(v1, v0), inv_0(v0, v1), Rule(69).
+Head twice 
+wasbornin(v0, v1) :- Iwasbornin(v0, v1), Rule(80).
+input prevent
+wasbornin(v0, v1) :- Iwasbornin(v1, v0), Rule(81).
+Head twice 
+wasbornin(v0, v1) :- wasbornin(v0, v1), Rule(84).
+Head twice 
+wasbornin(v0, v1) :- livesin(v0, v1), Iwasbornin(v0, v1), Rule(98).
+input prevent
+wasbornin(v0, v1) :- livesin(v0, v1), Iwasbornin(v1, v0), Rule(99).
+input prevent
+wasbornin(v0, v1) :- livesin(v1, v0), Iwasbornin(v1, v0), Rule(100).
+Head twice 
+wasbornin(v0, v1) :- livesin(v1, v0), Iwasbornin(v0, v1), Rule(101).
+Head twice 
+wasbornin(v0, v1) :- livesin(v0, v1), wasbornin(v0, v1), Rule(122).
+Head twice 
+wasbornin(v0, v1) :- livesin(v1, v0), wasbornin(v0, v1), Rule(125).
+Head twice 
+wasbornin(v0, v1) :- Iwasbornin(v0, v1), Iwasbornin(v0, v1), Rule(134).
+Head twice 
+wasbornin(v0, v1) :- Iwasbornin(v0, v1), Iwasbornin(v1, v0), Rule(135).
+input prevent
+wasbornin(v0, v1) :- Iwasbornin(v1, v0), Iwasbornin(v1, v0), Rule(136).
+Head twice 
+wasbornin(v0, v1) :- Iwasbornin(v1, v0), Iwasbornin(v0, v1), Rule(137).
+Head twice 
+wasbornin(v0, v1) :- Iwasbornin(v0, v1), inv_0(v0, v1), Rule(146).
+Head twice 
+wasbornin(v0, v1) :- Iwasbornin(v0, v1), inv_0(v1, v0), Rule(147).
+input prevent
+wasbornin(v0, v1) :- Iwasbornin(v1, v0), inv_0(v1, v0), Rule(148).
+input prevent
+wasbornin(v0, v1) :- Iwasbornin(v1, v0), inv_0(v0, v1), Rule(149).
+Head twice 
+wasbornin(v0, v1) :- Iwasbornin(v0, v1), wasbornin(v0, v1), Rule(158).
+Head twice 
+wasbornin(v0, v1) :- Iwasbornin(v0, v1), wasbornin(v1, v0), Rule(159).
+input prevent
+wasbornin(v0, v1) :- Iwasbornin(v1, v0), wasbornin(v1, v0), Rule(160).
+Head twice 
+wasbornin(v0, v1) :- Iwasbornin(v1, v0), wasbornin(v0, v1), Rule(161).
+Head twice 
+wasbornin(v0, v1) :- inv_0(v0, v1), wasbornin(v0, v1), Rule(182).
+Head twice 
+wasbornin(v0, v1) :- inv_0(v1, v0), wasbornin(v0, v1), Rule(185).
+Head twice 
+wasbornin(v0, v1) :- wasbornin(v0, v1), wasbornin(v0, v1), Rule(194).
+Head twice 
+wasbornin(v0, v1) :- wasbornin(v0, v1), wasbornin(v1, v0), Rule(195).
+Head twice 
+wasbornin(v0, v1) :- wasbornin(v1, v0), wasbornin(v0, v1), Rule(197).
