@@ -1,0 +1,25 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl genre(v0: V, v1: V)
+.input genre
+
+.decl author(v0: V, v1: V)
+.input author
+
+.decl IprecededBy(v0: V, v1: V)
+.input IprecededBy
+
+.decl inv_0(v0: V, v1: V)
+.output inv_0
+
+.decl precededBy(v0: V, v1: V)
+.output precededBy
+
+precededBy(v0, v1) :- IprecededBy(v2, v1), IprecededBy(v0, v2), Rule(250).
+precededBy(v0, v1) :- genre(v0, v2), genre(v1, v2), Rule(146).
+precededBy(v0, v1) :- IprecededBy(v2, v0), IprecededBy(v2, v1), Rule(253).
+precededBy(v0, v1) :- genre(v0, v2), precededBy(v1, v2), Rule(194).
+precededBy(v0, v1) :- genre(v2, v1), IprecededBy(v2, v0), Rule(172).

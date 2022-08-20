@@ -1,0 +1,1287 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl precededBy(v0: V, v1: V)
+.input precededBy
+
+.decl genre(v0: V, v1: V)
+.input genre
+
+.decl Iauthor(v0: V, v1: V)
+.input Iauthor
+
+.decl inv_0(v0: V, v1: V)
+.decl author(v0: V, v1: V)
+.decl precededBy_exists(v0: V, v1: V, r: number)
+.output precededBy_exists
+
+.decl genre_exists(v0: V, v1: V, r: number)
+.output genre_exists
+
+.decl Iauthor_exists(v0: V, v1: V, r: number)
+.output Iauthor_exists
+
+.decl inv_0_exists(v0: V, v1: V, r: number)
+.output inv_0_exists
+
+.decl author_exists(v0: V, v1: V, r: number)
+.output author_exists
+
+
+
+inv_0(v0, v1) :- precededBy(v0, v1), Rule(0).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), r = 0, Rule(0).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), Rule(r), Rule(0).
+inv_0(v0, v1) :- precededBy(v1, v0), Rule(1).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), r = 1, Rule(1).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), Rule(r), Rule(1).
+inv_0(v0, v1) :- genre(v0, v1), Rule(2).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), r = 2, Rule(2).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v1, r), Rule(r), Rule(2).
+inv_0(v0, v1) :- genre(v1, v0), Rule(3).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), r = 3, Rule(3).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v0, r), Rule(r), Rule(3).
+inv_0(v0, v1) :- Iauthor(v0, v1), Rule(4).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v1), r = 4, Rule(4).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), Rule(r), Rule(4).
+inv_0(v0, v1) :- Iauthor(v1, v0), Rule(5).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v0), r = 5, Rule(5).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), Rule(r), Rule(5).
+inv_0(v0, v1) :- inv_0(v0, v1), Rule(6).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v1), r = 6, Rule(6).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), Rule(r), Rule(6).
+inv_0(v0, v1) :- inv_0(v1, v0), Rule(7).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v0), r = 7, Rule(7).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), Rule(r), Rule(7).
+inv_0(v0, v1) :- precededBy(v0, v1), precededBy(v0, v1), Rule(8).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), precededBy(v0, v1), r = 8, Rule(8).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), precededBy(v0, v1), Rule(r), Rule(8).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), precededBy_exists(v0, v1, r), Rule(r), Rule(8).
+inv_0(v0, v1) :- precededBy(v0, v1), precededBy(v1, v0), Rule(9).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), precededBy(v1, v0), r = 9, Rule(9).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), precededBy(v1, v0), Rule(r), Rule(9).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), precededBy_exists(v1, v0, r), Rule(r), Rule(9).
+inv_0(v0, v1) :- precededBy(v1, v0), precededBy(v1, v0), Rule(10).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), precededBy(v1, v0), r = 10, Rule(10).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), precededBy(v1, v0), Rule(r), Rule(10).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), precededBy_exists(v1, v0, r), Rule(r), Rule(10).
+inv_0(v0, v1) :- precededBy(v1, v0), precededBy(v0, v1), Rule(11).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), precededBy(v0, v1), r = 11, Rule(11).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), precededBy(v0, v1), Rule(r), Rule(11).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), precededBy_exists(v0, v1, r), Rule(r), Rule(11).
+inv_0(v0, v1) :- precededBy(v2, v1), precededBy(v0, v2), Rule(12).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), precededBy(v0, v2), r = 12, Rule(12).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), precededBy(v0, v2), Rule(r), Rule(12).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), precededBy_exists(v0, v2, r), Rule(r), Rule(12).
+inv_0(v0, v1) :- precededBy(v1, v2), precededBy(v2, v0), Rule(13).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), precededBy(v2, v0), r = 13, Rule(13).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), precededBy(v2, v0), Rule(r), Rule(13).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), precededBy_exists(v2, v0, r), Rule(r), Rule(13).
+inv_0(v0, v1) :- precededBy(v2, v0), precededBy(v1, v2), Rule(14).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), precededBy(v1, v2), r = 14, Rule(14).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), precededBy(v1, v2), Rule(r), Rule(14).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), precededBy_exists(v1, v2, r), Rule(r), Rule(14).
+inv_0(v0, v1) :- precededBy(v2, v0), precededBy(v2, v1), Rule(15).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), precededBy(v2, v1), r = 15, Rule(15).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), precededBy(v2, v1), Rule(r), Rule(15).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), precededBy_exists(v2, v1, r), Rule(r), Rule(15).
+inv_0(v0, v1) :- precededBy(v0, v2), precededBy(v1, v2), Rule(16).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), precededBy(v1, v2), r = 16, Rule(16).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), precededBy(v1, v2), Rule(r), Rule(16).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), precededBy_exists(v1, v2, r), Rule(r), Rule(16).
+inv_0(v0, v1) :- precededBy(v0, v2), precededBy(v2, v1), Rule(17).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), precededBy(v2, v1), r = 17, Rule(17).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), precededBy(v2, v1), Rule(r), Rule(17).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), precededBy_exists(v2, v1, r), Rule(r), Rule(17).
+inv_0(v0, v1) :- precededBy(v2, v1), precededBy(v2, v0), Rule(18).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), precededBy(v2, v0), r = 18, Rule(18).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), precededBy(v2, v0), Rule(r), Rule(18).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), precededBy_exists(v2, v0, r), Rule(r), Rule(18).
+inv_0(v0, v1) :- precededBy(v1, v2), precededBy(v0, v2), Rule(19).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), precededBy(v0, v2), r = 19, Rule(19).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), precededBy(v0, v2), Rule(r), Rule(19).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), precededBy_exists(v0, v2, r), Rule(r), Rule(19).
+inv_0(v0, v1) :- precededBy(v0, v1), genre(v0, v1), Rule(20).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), genre(v0, v1), r = 20, Rule(20).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), genre(v0, v1), Rule(r), Rule(20).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), genre_exists(v0, v1, r), Rule(r), Rule(20).
+inv_0(v0, v1) :- precededBy(v0, v1), genre(v1, v0), Rule(21).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), genre(v1, v0), r = 21, Rule(21).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), genre(v1, v0), Rule(r), Rule(21).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), genre_exists(v1, v0, r), Rule(r), Rule(21).
+inv_0(v0, v1) :- precededBy(v1, v0), genre(v1, v0), Rule(22).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), genre(v1, v0), r = 22, Rule(22).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), genre(v1, v0), Rule(r), Rule(22).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), genre_exists(v1, v0, r), Rule(r), Rule(22).
+inv_0(v0, v1) :- precededBy(v1, v0), genre(v0, v1), Rule(23).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), genre(v0, v1), r = 23, Rule(23).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), genre(v0, v1), Rule(r), Rule(23).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), genre_exists(v0, v1, r), Rule(r), Rule(23).
+inv_0(v0, v1) :- precededBy(v2, v1), genre(v0, v2), Rule(24).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), genre(v0, v2), r = 24, Rule(24).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), genre(v0, v2), Rule(r), Rule(24).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), genre_exists(v0, v2, r), Rule(r), Rule(24).
+inv_0(v0, v1) :- precededBy(v1, v2), genre(v2, v0), Rule(25).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), genre(v2, v0), r = 25, Rule(25).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), genre(v2, v0), Rule(r), Rule(25).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), genre_exists(v2, v0, r), Rule(r), Rule(25).
+inv_0(v0, v1) :- precededBy(v2, v0), genre(v1, v2), Rule(26).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), genre(v1, v2), r = 26, Rule(26).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), genre(v1, v2), Rule(r), Rule(26).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), genre_exists(v1, v2, r), Rule(r), Rule(26).
+inv_0(v0, v1) :- precededBy(v2, v0), genre(v2, v1), Rule(27).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), genre(v2, v1), r = 27, Rule(27).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), genre(v2, v1), Rule(r), Rule(27).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), genre_exists(v2, v1, r), Rule(r), Rule(27).
+inv_0(v0, v1) :- precededBy(v0, v2), genre(v1, v2), Rule(28).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), genre(v1, v2), r = 28, Rule(28).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), genre(v1, v2), Rule(r), Rule(28).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), genre_exists(v1, v2, r), Rule(r), Rule(28).
+inv_0(v0, v1) :- precededBy(v0, v2), genre(v2, v1), Rule(29).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), genre(v2, v1), r = 29, Rule(29).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), genre(v2, v1), Rule(r), Rule(29).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), genre_exists(v2, v1, r), Rule(r), Rule(29).
+inv_0(v0, v1) :- precededBy(v2, v1), genre(v2, v0), Rule(30).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), genre(v2, v0), r = 30, Rule(30).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), genre(v2, v0), Rule(r), Rule(30).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), genre_exists(v2, v0, r), Rule(r), Rule(30).
+inv_0(v0, v1) :- precededBy(v1, v2), genre(v0, v2), Rule(31).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), genre(v0, v2), r = 31, Rule(31).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), genre(v0, v2), Rule(r), Rule(31).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), genre_exists(v0, v2, r), Rule(r), Rule(31).
+inv_0(v0, v1) :- precededBy(v0, v1), Iauthor(v0, v1), Rule(32).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), Iauthor(v0, v1), r = 32, Rule(32).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), Iauthor(v0, v1), Rule(r), Rule(32).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), Iauthor_exists(v0, v1, r), Rule(r), Rule(32).
+inv_0(v0, v1) :- precededBy(v0, v1), Iauthor(v1, v0), Rule(33).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), Iauthor(v1, v0), r = 33, Rule(33).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), Iauthor(v1, v0), Rule(r), Rule(33).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), Iauthor_exists(v1, v0, r), Rule(r), Rule(33).
+inv_0(v0, v1) :- precededBy(v1, v0), Iauthor(v1, v0), Rule(34).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), Iauthor(v1, v0), r = 34, Rule(34).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), Iauthor(v1, v0), Rule(r), Rule(34).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), Iauthor_exists(v1, v0, r), Rule(r), Rule(34).
+inv_0(v0, v1) :- precededBy(v1, v0), Iauthor(v0, v1), Rule(35).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), Iauthor(v0, v1), r = 35, Rule(35).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), Iauthor(v0, v1), Rule(r), Rule(35).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), Iauthor_exists(v0, v1, r), Rule(r), Rule(35).
+inv_0(v0, v1) :- precededBy(v2, v1), Iauthor(v0, v2), Rule(36).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), Iauthor(v0, v2), r = 36, Rule(36).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), Iauthor(v0, v2), Rule(r), Rule(36).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), Iauthor_exists(v0, v2, r), Rule(r), Rule(36).
+inv_0(v0, v1) :- precededBy(v1, v2), Iauthor(v2, v0), Rule(37).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), Iauthor(v2, v0), r = 37, Rule(37).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), Iauthor(v2, v0), Rule(r), Rule(37).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), Iauthor_exists(v2, v0, r), Rule(r), Rule(37).
+inv_0(v0, v1) :- precededBy(v2, v0), Iauthor(v1, v2), Rule(38).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), Iauthor(v1, v2), r = 38, Rule(38).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), Iauthor(v1, v2), Rule(r), Rule(38).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), Iauthor_exists(v1, v2, r), Rule(r), Rule(38).
+inv_0(v0, v1) :- precededBy(v2, v0), Iauthor(v2, v1), Rule(39).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), Iauthor(v2, v1), r = 39, Rule(39).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), Iauthor(v2, v1), Rule(r), Rule(39).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), Iauthor_exists(v2, v1, r), Rule(r), Rule(39).
+inv_0(v0, v1) :- precededBy(v0, v2), Iauthor(v1, v2), Rule(40).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), Iauthor(v1, v2), r = 40, Rule(40).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), Iauthor(v1, v2), Rule(r), Rule(40).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), Iauthor_exists(v1, v2, r), Rule(r), Rule(40).
+inv_0(v0, v1) :- precededBy(v0, v2), Iauthor(v2, v1), Rule(41).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), Iauthor(v2, v1), r = 41, Rule(41).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), Iauthor(v2, v1), Rule(r), Rule(41).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), Iauthor_exists(v2, v1, r), Rule(r), Rule(41).
+inv_0(v0, v1) :- precededBy(v2, v1), Iauthor(v2, v0), Rule(42).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), Iauthor(v2, v0), r = 42, Rule(42).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), Iauthor(v2, v0), Rule(r), Rule(42).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), Iauthor_exists(v2, v0, r), Rule(r), Rule(42).
+inv_0(v0, v1) :- precededBy(v1, v2), Iauthor(v0, v2), Rule(43).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), Iauthor(v0, v2), r = 43, Rule(43).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), Iauthor(v0, v2), Rule(r), Rule(43).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), Iauthor_exists(v0, v2, r), Rule(r), Rule(43).
+inv_0(v0, v1) :- precededBy(v0, v1), inv_0(v0, v1), Rule(44).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), inv_0(v0, v1), r = 44, Rule(44).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(44).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(44).
+inv_0(v0, v1) :- precededBy(v0, v1), inv_0(v1, v0), Rule(45).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), inv_0(v1, v0), r = 45, Rule(45).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(45).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(45).
+inv_0(v0, v1) :- precededBy(v1, v0), inv_0(v1, v0), Rule(46).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), inv_0(v1, v0), r = 46, Rule(46).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(46).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(46).
+inv_0(v0, v1) :- precededBy(v1, v0), inv_0(v0, v1), Rule(47).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), inv_0(v0, v1), r = 47, Rule(47).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(47).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(47).
+inv_0(v0, v1) :- precededBy(v2, v1), inv_0(v0, v2), Rule(48).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), inv_0(v0, v2), r = 48, Rule(48).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(48).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(48).
+inv_0(v0, v1) :- precededBy(v1, v2), inv_0(v2, v0), Rule(49).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), inv_0(v2, v0), r = 49, Rule(49).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(49).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(49).
+inv_0(v0, v1) :- precededBy(v2, v0), inv_0(v1, v2), Rule(50).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), inv_0(v1, v2), r = 50, Rule(50).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(50).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(50).
+inv_0(v0, v1) :- precededBy(v2, v0), inv_0(v2, v1), Rule(51).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), inv_0(v2, v1), r = 51, Rule(51).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(51).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(51).
+inv_0(v0, v1) :- precededBy(v0, v2), inv_0(v1, v2), Rule(52).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), inv_0(v1, v2), r = 52, Rule(52).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(52).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(52).
+inv_0(v0, v1) :- precededBy(v0, v2), inv_0(v2, v1), Rule(53).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), inv_0(v2, v1), r = 53, Rule(53).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(53).
+inv_0_exists(v0, v1, r) :- precededBy(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(53).
+inv_0(v0, v1) :- precededBy(v2, v1), inv_0(v2, v0), Rule(54).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), inv_0(v2, v0), r = 54, Rule(54).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(54).
+inv_0_exists(v0, v1, r) :- precededBy(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(54).
+inv_0(v0, v1) :- precededBy(v1, v2), inv_0(v0, v2), Rule(55).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), inv_0(v0, v2), r = 55, Rule(55).
+inv_0_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(55).
+inv_0_exists(v0, v1, r) :- precededBy(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(55).
+inv_0(v0, v1) :- genre(v0, v1), genre(v0, v1), Rule(56).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), genre(v0, v1), r = 56, Rule(56).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v1, r), genre(v0, v1), Rule(r), Rule(56).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), genre_exists(v0, v1, r), Rule(r), Rule(56).
+inv_0(v0, v1) :- genre(v0, v1), genre(v1, v0), Rule(57).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), genre(v1, v0), r = 57, Rule(57).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v1, r), genre(v1, v0), Rule(r), Rule(57).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), genre_exists(v1, v0, r), Rule(r), Rule(57).
+inv_0(v0, v1) :- genre(v1, v0), genre(v1, v0), Rule(58).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), genre(v1, v0), r = 58, Rule(58).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v0, r), genre(v1, v0), Rule(r), Rule(58).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), genre_exists(v1, v0, r), Rule(r), Rule(58).
+inv_0(v0, v1) :- genre(v1, v0), genre(v0, v1), Rule(59).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), genre(v0, v1), r = 59, Rule(59).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v0, r), genre(v0, v1), Rule(r), Rule(59).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), genre_exists(v0, v1, r), Rule(r), Rule(59).
+inv_0(v0, v1) :- genre(v2, v1), genre(v0, v2), Rule(60).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), genre(v0, v2), r = 60, Rule(60).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v1, r), genre(v0, v2), Rule(r), Rule(60).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), genre_exists(v0, v2, r), Rule(r), Rule(60).
+inv_0(v0, v1) :- genre(v1, v2), genre(v2, v0), Rule(61).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), genre(v2, v0), r = 61, Rule(61).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v2, r), genre(v2, v0), Rule(r), Rule(61).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), genre_exists(v2, v0, r), Rule(r), Rule(61).
+inv_0(v0, v1) :- genre(v2, v0), genre(v1, v2), Rule(62).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), genre(v1, v2), r = 62, Rule(62).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v0, r), genre(v1, v2), Rule(r), Rule(62).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), genre_exists(v1, v2, r), Rule(r), Rule(62).
+inv_0(v0, v1) :- genre(v2, v0), genre(v2, v1), Rule(63).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), genre(v2, v1), r = 63, Rule(63).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v0, r), genre(v2, v1), Rule(r), Rule(63).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), genre_exists(v2, v1, r), Rule(r), Rule(63).
+inv_0(v0, v1) :- genre(v0, v2), genre(v1, v2), Rule(64).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), genre(v1, v2), r = 64, Rule(64).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v2, r), genre(v1, v2), Rule(r), Rule(64).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), genre_exists(v1, v2, r), Rule(r), Rule(64).
+inv_0(v0, v1) :- genre(v0, v2), genre(v2, v1), Rule(65).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), genre(v2, v1), r = 65, Rule(65).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v2, r), genre(v2, v1), Rule(r), Rule(65).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), genre_exists(v2, v1, r), Rule(r), Rule(65).
+inv_0(v0, v1) :- genre(v2, v1), genre(v2, v0), Rule(66).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), genre(v2, v0), r = 66, Rule(66).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v1, r), genre(v2, v0), Rule(r), Rule(66).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), genre_exists(v2, v0, r), Rule(r), Rule(66).
+inv_0(v0, v1) :- genre(v1, v2), genre(v0, v2), Rule(67).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), genre(v0, v2), r = 67, Rule(67).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v2, r), genre(v0, v2), Rule(r), Rule(67).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), genre_exists(v0, v2, r), Rule(r), Rule(67).
+inv_0(v0, v1) :- genre(v0, v1), Iauthor(v0, v1), Rule(68).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), Iauthor(v0, v1), r = 68, Rule(68).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v1, r), Iauthor(v0, v1), Rule(r), Rule(68).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), Iauthor_exists(v0, v1, r), Rule(r), Rule(68).
+inv_0(v0, v1) :- genre(v0, v1), Iauthor(v1, v0), Rule(69).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), Iauthor(v1, v0), r = 69, Rule(69).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v1, r), Iauthor(v1, v0), Rule(r), Rule(69).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), Iauthor_exists(v1, v0, r), Rule(r), Rule(69).
+inv_0(v0, v1) :- genre(v1, v0), Iauthor(v1, v0), Rule(70).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), Iauthor(v1, v0), r = 70, Rule(70).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v0, r), Iauthor(v1, v0), Rule(r), Rule(70).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), Iauthor_exists(v1, v0, r), Rule(r), Rule(70).
+inv_0(v0, v1) :- genre(v1, v0), Iauthor(v0, v1), Rule(71).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), Iauthor(v0, v1), r = 71, Rule(71).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v0, r), Iauthor(v0, v1), Rule(r), Rule(71).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), Iauthor_exists(v0, v1, r), Rule(r), Rule(71).
+inv_0(v0, v1) :- genre(v2, v1), Iauthor(v0, v2), Rule(72).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), Iauthor(v0, v2), r = 72, Rule(72).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v1, r), Iauthor(v0, v2), Rule(r), Rule(72).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), Iauthor_exists(v0, v2, r), Rule(r), Rule(72).
+inv_0(v0, v1) :- genre(v1, v2), Iauthor(v2, v0), Rule(73).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), Iauthor(v2, v0), r = 73, Rule(73).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v2, r), Iauthor(v2, v0), Rule(r), Rule(73).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), Iauthor_exists(v2, v0, r), Rule(r), Rule(73).
+inv_0(v0, v1) :- genre(v2, v0), Iauthor(v1, v2), Rule(74).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), Iauthor(v1, v2), r = 74, Rule(74).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v0, r), Iauthor(v1, v2), Rule(r), Rule(74).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), Iauthor_exists(v1, v2, r), Rule(r), Rule(74).
+inv_0(v0, v1) :- genre(v2, v0), Iauthor(v2, v1), Rule(75).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), Iauthor(v2, v1), r = 75, Rule(75).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v0, r), Iauthor(v2, v1), Rule(r), Rule(75).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), Iauthor_exists(v2, v1, r), Rule(r), Rule(75).
+inv_0(v0, v1) :- genre(v0, v2), Iauthor(v1, v2), Rule(76).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), Iauthor(v1, v2), r = 76, Rule(76).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v2, r), Iauthor(v1, v2), Rule(r), Rule(76).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), Iauthor_exists(v1, v2, r), Rule(r), Rule(76).
+inv_0(v0, v1) :- genre(v0, v2), Iauthor(v2, v1), Rule(77).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), Iauthor(v2, v1), r = 77, Rule(77).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v2, r), Iauthor(v2, v1), Rule(r), Rule(77).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), Iauthor_exists(v2, v1, r), Rule(r), Rule(77).
+inv_0(v0, v1) :- genre(v2, v1), Iauthor(v2, v0), Rule(78).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), Iauthor(v2, v0), r = 78, Rule(78).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v1, r), Iauthor(v2, v0), Rule(r), Rule(78).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), Iauthor_exists(v2, v0, r), Rule(r), Rule(78).
+inv_0(v0, v1) :- genre(v1, v2), Iauthor(v0, v2), Rule(79).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), Iauthor(v0, v2), r = 79, Rule(79).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v2, r), Iauthor(v0, v2), Rule(r), Rule(79).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), Iauthor_exists(v0, v2, r), Rule(r), Rule(79).
+inv_0(v0, v1) :- genre(v0, v1), inv_0(v0, v1), Rule(80).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), inv_0(v0, v1), r = 80, Rule(80).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(80).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(80).
+inv_0(v0, v1) :- genre(v0, v1), inv_0(v1, v0), Rule(81).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), inv_0(v1, v0), r = 81, Rule(81).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(81).
+inv_0_exists(v0, v1, r) :- genre(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(81).
+inv_0(v0, v1) :- genre(v1, v0), inv_0(v1, v0), Rule(82).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), inv_0(v1, v0), r = 82, Rule(82).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(82).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(82).
+inv_0(v0, v1) :- genre(v1, v0), inv_0(v0, v1), Rule(83).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), inv_0(v0, v1), r = 83, Rule(83).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(83).
+inv_0_exists(v0, v1, r) :- genre(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(83).
+inv_0(v0, v1) :- genre(v2, v1), inv_0(v0, v2), Rule(84).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), inv_0(v0, v2), r = 84, Rule(84).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(84).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(84).
+inv_0(v0, v1) :- genre(v1, v2), inv_0(v2, v0), Rule(85).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), inv_0(v2, v0), r = 85, Rule(85).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(85).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(85).
+inv_0(v0, v1) :- genre(v2, v0), inv_0(v1, v2), Rule(86).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), inv_0(v1, v2), r = 86, Rule(86).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(86).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(86).
+inv_0(v0, v1) :- genre(v2, v0), inv_0(v2, v1), Rule(87).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), inv_0(v2, v1), r = 87, Rule(87).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(87).
+inv_0_exists(v0, v1, r) :- genre(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(87).
+inv_0(v0, v1) :- genre(v0, v2), inv_0(v1, v2), Rule(88).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), inv_0(v1, v2), r = 88, Rule(88).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(88).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(88).
+inv_0(v0, v1) :- genre(v0, v2), inv_0(v2, v1), Rule(89).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), inv_0(v2, v1), r = 89, Rule(89).
+inv_0_exists(v0, v1, r) :- genre_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(89).
+inv_0_exists(v0, v1, r) :- genre(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(89).
+inv_0(v0, v1) :- genre(v2, v1), inv_0(v2, v0), Rule(90).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), inv_0(v2, v0), r = 90, Rule(90).
+inv_0_exists(v0, v1, r) :- genre_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(90).
+inv_0_exists(v0, v1, r) :- genre(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(90).
+inv_0(v0, v1) :- genre(v1, v2), inv_0(v0, v2), Rule(91).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), inv_0(v0, v2), r = 91, Rule(91).
+inv_0_exists(v0, v1, r) :- genre_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(91).
+inv_0_exists(v0, v1, r) :- genre(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(91).
+inv_0(v0, v1) :- Iauthor(v0, v1), Iauthor(v0, v1), Rule(92).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v1), Iauthor(v0, v1), r = 92, Rule(92).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), Iauthor(v0, v1), Rule(r), Rule(92).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v1), Iauthor_exists(v0, v1, r), Rule(r), Rule(92).
+inv_0(v0, v1) :- Iauthor(v0, v1), Iauthor(v1, v0), Rule(93).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v1), Iauthor(v1, v0), r = 93, Rule(93).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), Iauthor(v1, v0), Rule(r), Rule(93).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v1), Iauthor_exists(v1, v0, r), Rule(r), Rule(93).
+inv_0(v0, v1) :- Iauthor(v1, v0), Iauthor(v1, v0), Rule(94).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v0), Iauthor(v1, v0), r = 94, Rule(94).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), Iauthor(v1, v0), Rule(r), Rule(94).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v0), Iauthor_exists(v1, v0, r), Rule(r), Rule(94).
+inv_0(v0, v1) :- Iauthor(v1, v0), Iauthor(v0, v1), Rule(95).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v0), Iauthor(v0, v1), r = 95, Rule(95).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), Iauthor(v0, v1), Rule(r), Rule(95).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v0), Iauthor_exists(v0, v1, r), Rule(r), Rule(95).
+inv_0(v0, v1) :- Iauthor(v2, v1), Iauthor(v0, v2), Rule(96).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v1), Iauthor(v0, v2), r = 96, Rule(96).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v2, v1, r), Iauthor(v0, v2), Rule(r), Rule(96).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v1), Iauthor_exists(v0, v2, r), Rule(r), Rule(96).
+inv_0(v0, v1) :- Iauthor(v1, v2), Iauthor(v2, v0), Rule(97).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v2), Iauthor(v2, v0), r = 97, Rule(97).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v1, v2, r), Iauthor(v2, v0), Rule(r), Rule(97).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v2), Iauthor_exists(v2, v0, r), Rule(r), Rule(97).
+inv_0(v0, v1) :- Iauthor(v2, v0), Iauthor(v1, v2), Rule(98).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v0), Iauthor(v1, v2), r = 98, Rule(98).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v2, v0, r), Iauthor(v1, v2), Rule(r), Rule(98).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v0), Iauthor_exists(v1, v2, r), Rule(r), Rule(98).
+inv_0(v0, v1) :- Iauthor(v2, v0), Iauthor(v2, v1), Rule(99).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v0), Iauthor(v2, v1), r = 99, Rule(99).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v2, v0, r), Iauthor(v2, v1), Rule(r), Rule(99).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v0), Iauthor_exists(v2, v1, r), Rule(r), Rule(99).
+inv_0(v0, v1) :- Iauthor(v0, v2), Iauthor(v1, v2), Rule(100).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v2), Iauthor(v1, v2), r = 100, Rule(100).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v0, v2, r), Iauthor(v1, v2), Rule(r), Rule(100).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v2), Iauthor_exists(v1, v2, r), Rule(r), Rule(100).
+inv_0(v0, v1) :- Iauthor(v0, v2), Iauthor(v2, v1), Rule(101).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v2), Iauthor(v2, v1), r = 101, Rule(101).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v0, v2, r), Iauthor(v2, v1), Rule(r), Rule(101).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v2), Iauthor_exists(v2, v1, r), Rule(r), Rule(101).
+inv_0(v0, v1) :- Iauthor(v2, v1), Iauthor(v2, v0), Rule(102).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v1), Iauthor(v2, v0), r = 102, Rule(102).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v2, v1, r), Iauthor(v2, v0), Rule(r), Rule(102).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v1), Iauthor_exists(v2, v0, r), Rule(r), Rule(102).
+inv_0(v0, v1) :- Iauthor(v1, v2), Iauthor(v0, v2), Rule(103).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v2), Iauthor(v0, v2), r = 103, Rule(103).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v1, v2, r), Iauthor(v0, v2), Rule(r), Rule(103).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v2), Iauthor_exists(v0, v2, r), Rule(r), Rule(103).
+inv_0(v0, v1) :- Iauthor(v0, v1), inv_0(v0, v1), Rule(104).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v1), inv_0(v0, v1), r = 104, Rule(104).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(104).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(104).
+inv_0(v0, v1) :- Iauthor(v0, v1), inv_0(v1, v0), Rule(105).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v1), inv_0(v1, v0), r = 105, Rule(105).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(105).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(105).
+inv_0(v0, v1) :- Iauthor(v1, v0), inv_0(v1, v0), Rule(106).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v0), inv_0(v1, v0), r = 106, Rule(106).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(106).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(106).
+inv_0(v0, v1) :- Iauthor(v1, v0), inv_0(v0, v1), Rule(107).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v0), inv_0(v0, v1), r = 107, Rule(107).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(107).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(107).
+inv_0(v0, v1) :- Iauthor(v2, v1), inv_0(v0, v2), Rule(108).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v1), inv_0(v0, v2), r = 108, Rule(108).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(108).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(108).
+inv_0(v0, v1) :- Iauthor(v1, v2), inv_0(v2, v0), Rule(109).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v2), inv_0(v2, v0), r = 109, Rule(109).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(109).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(109).
+inv_0(v0, v1) :- Iauthor(v2, v0), inv_0(v1, v2), Rule(110).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v0), inv_0(v1, v2), r = 110, Rule(110).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(110).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(110).
+inv_0(v0, v1) :- Iauthor(v2, v0), inv_0(v2, v1), Rule(111).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v0), inv_0(v2, v1), r = 111, Rule(111).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(111).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(111).
+inv_0(v0, v1) :- Iauthor(v0, v2), inv_0(v1, v2), Rule(112).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v2), inv_0(v1, v2), r = 112, Rule(112).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(112).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(112).
+inv_0(v0, v1) :- Iauthor(v0, v2), inv_0(v2, v1), Rule(113).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v2), inv_0(v2, v1), r = 113, Rule(113).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(113).
+inv_0_exists(v0, v1, r) :- Iauthor(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(113).
+inv_0(v0, v1) :- Iauthor(v2, v1), inv_0(v2, v0), Rule(114).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v1), inv_0(v2, v0), r = 114, Rule(114).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(114).
+inv_0_exists(v0, v1, r) :- Iauthor(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(114).
+inv_0(v0, v1) :- Iauthor(v1, v2), inv_0(v0, v2), Rule(115).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v2), inv_0(v0, v2), r = 115, Rule(115).
+inv_0_exists(v0, v1, r) :- Iauthor_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(115).
+inv_0_exists(v0, v1, r) :- Iauthor(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(115).
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v0, v1), Rule(116).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v1), inv_0(v0, v1), r = 116, Rule(116).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(116).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(116).
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v1, v0), Rule(117).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v1), inv_0(v1, v0), r = 117, Rule(117).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(117).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(117).
+inv_0(v0, v1) :- inv_0(v1, v0), inv_0(v1, v0), Rule(118).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v0), inv_0(v1, v0), r = 118, Rule(118).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(118).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(118).
+inv_0(v0, v1) :- inv_0(v1, v0), inv_0(v0, v1), Rule(119).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v0), inv_0(v0, v1), r = 119, Rule(119).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(119).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(119).
+inv_0(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(120).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v1), inv_0(v0, v2), r = 120, Rule(120).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(120).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(120).
+inv_0(v0, v1) :- inv_0(v1, v2), inv_0(v2, v0), Rule(121).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v2), inv_0(v2, v0), r = 121, Rule(121).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(121).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(121).
+inv_0(v0, v1) :- inv_0(v2, v0), inv_0(v1, v2), Rule(122).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v0), inv_0(v1, v2), r = 122, Rule(122).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(122).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(122).
+inv_0(v0, v1) :- inv_0(v2, v0), inv_0(v2, v1), Rule(123).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v0), inv_0(v2, v1), r = 123, Rule(123).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(123).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(123).
+inv_0(v0, v1) :- inv_0(v0, v2), inv_0(v1, v2), Rule(124).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v2), inv_0(v1, v2), r = 124, Rule(124).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(124).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(124).
+inv_0(v0, v1) :- inv_0(v0, v2), inv_0(v2, v1), Rule(125).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v2), inv_0(v2, v1), r = 125, Rule(125).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(125).
+inv_0_exists(v0, v1, r) :- inv_0(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(125).
+inv_0(v0, v1) :- inv_0(v2, v1), inv_0(v2, v0), Rule(126).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v1), inv_0(v2, v0), r = 126, Rule(126).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(126).
+inv_0_exists(v0, v1, r) :- inv_0(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(126).
+inv_0(v0, v1) :- inv_0(v1, v2), inv_0(v0, v2), Rule(127).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v2), inv_0(v0, v2), r = 127, Rule(127).
+inv_0_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(127).
+inv_0_exists(v0, v1, r) :- inv_0(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(127).
+author(v0, v1) :- precededBy(v0, v1), Rule(128).
+author_exists(v0, v1, r) :- precededBy(v0, v1), r = 128, Rule(128).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), Rule(r), Rule(128).
+author(v0, v1) :- precededBy(v1, v0), Rule(129).
+author_exists(v0, v1, r) :- precededBy(v1, v0), r = 129, Rule(129).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), Rule(r), Rule(129).
+author(v0, v1) :- genre(v0, v1), Rule(130).
+author_exists(v0, v1, r) :- genre(v0, v1), r = 130, Rule(130).
+author_exists(v0, v1, r) :- genre_exists(v0, v1, r), Rule(r), Rule(130).
+author(v0, v1) :- genre(v1, v0), Rule(131).
+author_exists(v0, v1, r) :- genre(v1, v0), r = 131, Rule(131).
+author_exists(v0, v1, r) :- genre_exists(v1, v0, r), Rule(r), Rule(131).
+author(v0, v1) :- Iauthor(v0, v1), Rule(132).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), r = 132, Rule(132).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), Rule(r), Rule(132).
+author(v0, v1) :- Iauthor(v1, v0), Rule(133).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), r = 133, Rule(133).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), Rule(r), Rule(133).
+author(v0, v1) :- inv_0(v0, v1), Rule(134).
+author_exists(v0, v1, r) :- inv_0(v0, v1), r = 134, Rule(134).
+author_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), Rule(r), Rule(134).
+author(v0, v1) :- inv_0(v1, v0), Rule(135).
+author_exists(v0, v1, r) :- inv_0(v1, v0), r = 135, Rule(135).
+author_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), Rule(r), Rule(135).
+author(v0, v1) :- author(v0, v1), Rule(136).
+author_exists(v0, v1, r) :- author(v0, v1), r = 136, Rule(136).
+author_exists(v0, v1, r) :- author_exists(v0, v1, r), Rule(r), Rule(136).
+author(v0, v1) :- author(v1, v0), Rule(137).
+author_exists(v0, v1, r) :- author(v1, v0), r = 137, Rule(137).
+author_exists(v0, v1, r) :- author_exists(v1, v0, r), Rule(r), Rule(137).
+author(v0, v1) :- precededBy(v0, v1), precededBy(v0, v1), Rule(138).
+author_exists(v0, v1, r) :- precededBy(v0, v1), precededBy(v0, v1), r = 138, Rule(138).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), precededBy(v0, v1), Rule(r), Rule(138).
+author_exists(v0, v1, r) :- precededBy(v0, v1), precededBy_exists(v0, v1, r), Rule(r), Rule(138).
+author(v0, v1) :- precededBy(v0, v1), precededBy(v1, v0), Rule(139).
+author_exists(v0, v1, r) :- precededBy(v0, v1), precededBy(v1, v0), r = 139, Rule(139).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), precededBy(v1, v0), Rule(r), Rule(139).
+author_exists(v0, v1, r) :- precededBy(v0, v1), precededBy_exists(v1, v0, r), Rule(r), Rule(139).
+author(v0, v1) :- precededBy(v1, v0), precededBy(v1, v0), Rule(140).
+author_exists(v0, v1, r) :- precededBy(v1, v0), precededBy(v1, v0), r = 140, Rule(140).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), precededBy(v1, v0), Rule(r), Rule(140).
+author_exists(v0, v1, r) :- precededBy(v1, v0), precededBy_exists(v1, v0, r), Rule(r), Rule(140).
+author(v0, v1) :- precededBy(v1, v0), precededBy(v0, v1), Rule(141).
+author_exists(v0, v1, r) :- precededBy(v1, v0), precededBy(v0, v1), r = 141, Rule(141).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), precededBy(v0, v1), Rule(r), Rule(141).
+author_exists(v0, v1, r) :- precededBy(v1, v0), precededBy_exists(v0, v1, r), Rule(r), Rule(141).
+author(v0, v1) :- precededBy(v2, v1), precededBy(v0, v2), Rule(142).
+author_exists(v0, v1, r) :- precededBy(v2, v1), precededBy(v0, v2), r = 142, Rule(142).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), precededBy(v0, v2), Rule(r), Rule(142).
+author_exists(v0, v1, r) :- precededBy(v2, v1), precededBy_exists(v0, v2, r), Rule(r), Rule(142).
+author(v0, v1) :- precededBy(v1, v2), precededBy(v2, v0), Rule(143).
+author_exists(v0, v1, r) :- precededBy(v1, v2), precededBy(v2, v0), r = 143, Rule(143).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), precededBy(v2, v0), Rule(r), Rule(143).
+author_exists(v0, v1, r) :- precededBy(v1, v2), precededBy_exists(v2, v0, r), Rule(r), Rule(143).
+author(v0, v1) :- precededBy(v2, v0), precededBy(v1, v2), Rule(144).
+author_exists(v0, v1, r) :- precededBy(v2, v0), precededBy(v1, v2), r = 144, Rule(144).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), precededBy(v1, v2), Rule(r), Rule(144).
+author_exists(v0, v1, r) :- precededBy(v2, v0), precededBy_exists(v1, v2, r), Rule(r), Rule(144).
+author(v0, v1) :- precededBy(v2, v0), precededBy(v2, v1), Rule(145).
+author_exists(v0, v1, r) :- precededBy(v2, v0), precededBy(v2, v1), r = 145, Rule(145).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), precededBy(v2, v1), Rule(r), Rule(145).
+author_exists(v0, v1, r) :- precededBy(v2, v0), precededBy_exists(v2, v1, r), Rule(r), Rule(145).
+author(v0, v1) :- precededBy(v0, v2), precededBy(v1, v2), Rule(146).
+author_exists(v0, v1, r) :- precededBy(v0, v2), precededBy(v1, v2), r = 146, Rule(146).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), precededBy(v1, v2), Rule(r), Rule(146).
+author_exists(v0, v1, r) :- precededBy(v0, v2), precededBy_exists(v1, v2, r), Rule(r), Rule(146).
+author(v0, v1) :- precededBy(v0, v2), precededBy(v2, v1), Rule(147).
+author_exists(v0, v1, r) :- precededBy(v0, v2), precededBy(v2, v1), r = 147, Rule(147).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), precededBy(v2, v1), Rule(r), Rule(147).
+author_exists(v0, v1, r) :- precededBy(v0, v2), precededBy_exists(v2, v1, r), Rule(r), Rule(147).
+author(v0, v1) :- precededBy(v2, v1), precededBy(v2, v0), Rule(148).
+author_exists(v0, v1, r) :- precededBy(v2, v1), precededBy(v2, v0), r = 148, Rule(148).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), precededBy(v2, v0), Rule(r), Rule(148).
+author_exists(v0, v1, r) :- precededBy(v2, v1), precededBy_exists(v2, v0, r), Rule(r), Rule(148).
+author(v0, v1) :- precededBy(v1, v2), precededBy(v0, v2), Rule(149).
+author_exists(v0, v1, r) :- precededBy(v1, v2), precededBy(v0, v2), r = 149, Rule(149).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), precededBy(v0, v2), Rule(r), Rule(149).
+author_exists(v0, v1, r) :- precededBy(v1, v2), precededBy_exists(v0, v2, r), Rule(r), Rule(149).
+author(v0, v1) :- precededBy(v0, v1), genre(v0, v1), Rule(150).
+author_exists(v0, v1, r) :- precededBy(v0, v1), genre(v0, v1), r = 150, Rule(150).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), genre(v0, v1), Rule(r), Rule(150).
+author_exists(v0, v1, r) :- precededBy(v0, v1), genre_exists(v0, v1, r), Rule(r), Rule(150).
+author(v0, v1) :- precededBy(v0, v1), genre(v1, v0), Rule(151).
+author_exists(v0, v1, r) :- precededBy(v0, v1), genre(v1, v0), r = 151, Rule(151).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), genre(v1, v0), Rule(r), Rule(151).
+author_exists(v0, v1, r) :- precededBy(v0, v1), genre_exists(v1, v0, r), Rule(r), Rule(151).
+author(v0, v1) :- precededBy(v1, v0), genre(v1, v0), Rule(152).
+author_exists(v0, v1, r) :- precededBy(v1, v0), genre(v1, v0), r = 152, Rule(152).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), genre(v1, v0), Rule(r), Rule(152).
+author_exists(v0, v1, r) :- precededBy(v1, v0), genre_exists(v1, v0, r), Rule(r), Rule(152).
+author(v0, v1) :- precededBy(v1, v0), genre(v0, v1), Rule(153).
+author_exists(v0, v1, r) :- precededBy(v1, v0), genre(v0, v1), r = 153, Rule(153).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), genre(v0, v1), Rule(r), Rule(153).
+author_exists(v0, v1, r) :- precededBy(v1, v0), genre_exists(v0, v1, r), Rule(r), Rule(153).
+author(v0, v1) :- precededBy(v2, v1), genre(v0, v2), Rule(154).
+author_exists(v0, v1, r) :- precededBy(v2, v1), genre(v0, v2), r = 154, Rule(154).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), genre(v0, v2), Rule(r), Rule(154).
+author_exists(v0, v1, r) :- precededBy(v2, v1), genre_exists(v0, v2, r), Rule(r), Rule(154).
+author(v0, v1) :- precededBy(v1, v2), genre(v2, v0), Rule(155).
+author_exists(v0, v1, r) :- precededBy(v1, v2), genre(v2, v0), r = 155, Rule(155).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), genre(v2, v0), Rule(r), Rule(155).
+author_exists(v0, v1, r) :- precededBy(v1, v2), genre_exists(v2, v0, r), Rule(r), Rule(155).
+author(v0, v1) :- precededBy(v2, v0), genre(v1, v2), Rule(156).
+author_exists(v0, v1, r) :- precededBy(v2, v0), genre(v1, v2), r = 156, Rule(156).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), genre(v1, v2), Rule(r), Rule(156).
+author_exists(v0, v1, r) :- precededBy(v2, v0), genre_exists(v1, v2, r), Rule(r), Rule(156).
+author(v0, v1) :- precededBy(v2, v0), genre(v2, v1), Rule(157).
+author_exists(v0, v1, r) :- precededBy(v2, v0), genre(v2, v1), r = 157, Rule(157).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), genre(v2, v1), Rule(r), Rule(157).
+author_exists(v0, v1, r) :- precededBy(v2, v0), genre_exists(v2, v1, r), Rule(r), Rule(157).
+author(v0, v1) :- precededBy(v0, v2), genre(v1, v2), Rule(158).
+author_exists(v0, v1, r) :- precededBy(v0, v2), genre(v1, v2), r = 158, Rule(158).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), genre(v1, v2), Rule(r), Rule(158).
+author_exists(v0, v1, r) :- precededBy(v0, v2), genre_exists(v1, v2, r), Rule(r), Rule(158).
+author(v0, v1) :- precededBy(v0, v2), genre(v2, v1), Rule(159).
+author_exists(v0, v1, r) :- precededBy(v0, v2), genre(v2, v1), r = 159, Rule(159).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), genre(v2, v1), Rule(r), Rule(159).
+author_exists(v0, v1, r) :- precededBy(v0, v2), genre_exists(v2, v1, r), Rule(r), Rule(159).
+author(v0, v1) :- precededBy(v2, v1), genre(v2, v0), Rule(160).
+author_exists(v0, v1, r) :- precededBy(v2, v1), genre(v2, v0), r = 160, Rule(160).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), genre(v2, v0), Rule(r), Rule(160).
+author_exists(v0, v1, r) :- precededBy(v2, v1), genre_exists(v2, v0, r), Rule(r), Rule(160).
+author(v0, v1) :- precededBy(v1, v2), genre(v0, v2), Rule(161).
+author_exists(v0, v1, r) :- precededBy(v1, v2), genre(v0, v2), r = 161, Rule(161).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), genre(v0, v2), Rule(r), Rule(161).
+author_exists(v0, v1, r) :- precededBy(v1, v2), genre_exists(v0, v2, r), Rule(r), Rule(161).
+author(v0, v1) :- precededBy(v0, v1), Iauthor(v0, v1), Rule(162).
+author_exists(v0, v1, r) :- precededBy(v0, v1), Iauthor(v0, v1), r = 162, Rule(162).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), Iauthor(v0, v1), Rule(r), Rule(162).
+author_exists(v0, v1, r) :- precededBy(v0, v1), Iauthor_exists(v0, v1, r), Rule(r), Rule(162).
+author(v0, v1) :- precededBy(v0, v1), Iauthor(v1, v0), Rule(163).
+author_exists(v0, v1, r) :- precededBy(v0, v1), Iauthor(v1, v0), r = 163, Rule(163).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), Iauthor(v1, v0), Rule(r), Rule(163).
+author_exists(v0, v1, r) :- precededBy(v0, v1), Iauthor_exists(v1, v0, r), Rule(r), Rule(163).
+author(v0, v1) :- precededBy(v1, v0), Iauthor(v1, v0), Rule(164).
+author_exists(v0, v1, r) :- precededBy(v1, v0), Iauthor(v1, v0), r = 164, Rule(164).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), Iauthor(v1, v0), Rule(r), Rule(164).
+author_exists(v0, v1, r) :- precededBy(v1, v0), Iauthor_exists(v1, v0, r), Rule(r), Rule(164).
+author(v0, v1) :- precededBy(v1, v0), Iauthor(v0, v1), Rule(165).
+author_exists(v0, v1, r) :- precededBy(v1, v0), Iauthor(v0, v1), r = 165, Rule(165).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), Iauthor(v0, v1), Rule(r), Rule(165).
+author_exists(v0, v1, r) :- precededBy(v1, v0), Iauthor_exists(v0, v1, r), Rule(r), Rule(165).
+author(v0, v1) :- precededBy(v2, v1), Iauthor(v0, v2), Rule(166).
+author_exists(v0, v1, r) :- precededBy(v2, v1), Iauthor(v0, v2), r = 166, Rule(166).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), Iauthor(v0, v2), Rule(r), Rule(166).
+author_exists(v0, v1, r) :- precededBy(v2, v1), Iauthor_exists(v0, v2, r), Rule(r), Rule(166).
+author(v0, v1) :- precededBy(v1, v2), Iauthor(v2, v0), Rule(167).
+author_exists(v0, v1, r) :- precededBy(v1, v2), Iauthor(v2, v0), r = 167, Rule(167).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), Iauthor(v2, v0), Rule(r), Rule(167).
+author_exists(v0, v1, r) :- precededBy(v1, v2), Iauthor_exists(v2, v0, r), Rule(r), Rule(167).
+author(v0, v1) :- precededBy(v2, v0), Iauthor(v1, v2), Rule(168).
+author_exists(v0, v1, r) :- precededBy(v2, v0), Iauthor(v1, v2), r = 168, Rule(168).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), Iauthor(v1, v2), Rule(r), Rule(168).
+author_exists(v0, v1, r) :- precededBy(v2, v0), Iauthor_exists(v1, v2, r), Rule(r), Rule(168).
+author(v0, v1) :- precededBy(v2, v0), Iauthor(v2, v1), Rule(169).
+author_exists(v0, v1, r) :- precededBy(v2, v0), Iauthor(v2, v1), r = 169, Rule(169).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), Iauthor(v2, v1), Rule(r), Rule(169).
+author_exists(v0, v1, r) :- precededBy(v2, v0), Iauthor_exists(v2, v1, r), Rule(r), Rule(169).
+author(v0, v1) :- precededBy(v0, v2), Iauthor(v1, v2), Rule(170).
+author_exists(v0, v1, r) :- precededBy(v0, v2), Iauthor(v1, v2), r = 170, Rule(170).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), Iauthor(v1, v2), Rule(r), Rule(170).
+author_exists(v0, v1, r) :- precededBy(v0, v2), Iauthor_exists(v1, v2, r), Rule(r), Rule(170).
+author(v0, v1) :- precededBy(v0, v2), Iauthor(v2, v1), Rule(171).
+author_exists(v0, v1, r) :- precededBy(v0, v2), Iauthor(v2, v1), r = 171, Rule(171).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), Iauthor(v2, v1), Rule(r), Rule(171).
+author_exists(v0, v1, r) :- precededBy(v0, v2), Iauthor_exists(v2, v1, r), Rule(r), Rule(171).
+author(v0, v1) :- precededBy(v2, v1), Iauthor(v2, v0), Rule(172).
+author_exists(v0, v1, r) :- precededBy(v2, v1), Iauthor(v2, v0), r = 172, Rule(172).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), Iauthor(v2, v0), Rule(r), Rule(172).
+author_exists(v0, v1, r) :- precededBy(v2, v1), Iauthor_exists(v2, v0, r), Rule(r), Rule(172).
+author(v0, v1) :- precededBy(v1, v2), Iauthor(v0, v2), Rule(173).
+author_exists(v0, v1, r) :- precededBy(v1, v2), Iauthor(v0, v2), r = 173, Rule(173).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), Iauthor(v0, v2), Rule(r), Rule(173).
+author_exists(v0, v1, r) :- precededBy(v1, v2), Iauthor_exists(v0, v2, r), Rule(r), Rule(173).
+author(v0, v1) :- precededBy(v0, v1), inv_0(v0, v1), Rule(174).
+author_exists(v0, v1, r) :- precededBy(v0, v1), inv_0(v0, v1), r = 174, Rule(174).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(174).
+author_exists(v0, v1, r) :- precededBy(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(174).
+author(v0, v1) :- precededBy(v0, v1), inv_0(v1, v0), Rule(175).
+author_exists(v0, v1, r) :- precededBy(v0, v1), inv_0(v1, v0), r = 175, Rule(175).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(175).
+author_exists(v0, v1, r) :- precededBy(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(175).
+author(v0, v1) :- precededBy(v1, v0), inv_0(v1, v0), Rule(176).
+author_exists(v0, v1, r) :- precededBy(v1, v0), inv_0(v1, v0), r = 176, Rule(176).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(176).
+author_exists(v0, v1, r) :- precededBy(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(176).
+author(v0, v1) :- precededBy(v1, v0), inv_0(v0, v1), Rule(177).
+author_exists(v0, v1, r) :- precededBy(v1, v0), inv_0(v0, v1), r = 177, Rule(177).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(177).
+author_exists(v0, v1, r) :- precededBy(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(177).
+author(v0, v1) :- precededBy(v2, v1), inv_0(v0, v2), Rule(178).
+author_exists(v0, v1, r) :- precededBy(v2, v1), inv_0(v0, v2), r = 178, Rule(178).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(178).
+author_exists(v0, v1, r) :- precededBy(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(178).
+author(v0, v1) :- precededBy(v1, v2), inv_0(v2, v0), Rule(179).
+author_exists(v0, v1, r) :- precededBy(v1, v2), inv_0(v2, v0), r = 179, Rule(179).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(179).
+author_exists(v0, v1, r) :- precededBy(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(179).
+author(v0, v1) :- precededBy(v2, v0), inv_0(v1, v2), Rule(180).
+author_exists(v0, v1, r) :- precededBy(v2, v0), inv_0(v1, v2), r = 180, Rule(180).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(180).
+author_exists(v0, v1, r) :- precededBy(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(180).
+author(v0, v1) :- precededBy(v2, v0), inv_0(v2, v1), Rule(181).
+author_exists(v0, v1, r) :- precededBy(v2, v0), inv_0(v2, v1), r = 181, Rule(181).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(181).
+author_exists(v0, v1, r) :- precededBy(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(181).
+author(v0, v1) :- precededBy(v0, v2), inv_0(v1, v2), Rule(182).
+author_exists(v0, v1, r) :- precededBy(v0, v2), inv_0(v1, v2), r = 182, Rule(182).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(182).
+author_exists(v0, v1, r) :- precededBy(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(182).
+author(v0, v1) :- precededBy(v0, v2), inv_0(v2, v1), Rule(183).
+author_exists(v0, v1, r) :- precededBy(v0, v2), inv_0(v2, v1), r = 183, Rule(183).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(183).
+author_exists(v0, v1, r) :- precededBy(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(183).
+author(v0, v1) :- precededBy(v2, v1), inv_0(v2, v0), Rule(184).
+author_exists(v0, v1, r) :- precededBy(v2, v1), inv_0(v2, v0), r = 184, Rule(184).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(184).
+author_exists(v0, v1, r) :- precededBy(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(184).
+author(v0, v1) :- precededBy(v1, v2), inv_0(v0, v2), Rule(185).
+author_exists(v0, v1, r) :- precededBy(v1, v2), inv_0(v0, v2), r = 185, Rule(185).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(185).
+author_exists(v0, v1, r) :- precededBy(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(185).
+author(v0, v1) :- precededBy(v0, v1), author(v0, v1), Rule(186).
+author_exists(v0, v1, r) :- precededBy(v0, v1), author(v0, v1), r = 186, Rule(186).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), author(v0, v1), Rule(r), Rule(186).
+author_exists(v0, v1, r) :- precededBy(v0, v1), author_exists(v0, v1, r), Rule(r), Rule(186).
+author(v0, v1) :- precededBy(v0, v1), author(v1, v0), Rule(187).
+author_exists(v0, v1, r) :- precededBy(v0, v1), author(v1, v0), r = 187, Rule(187).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v1, r), author(v1, v0), Rule(r), Rule(187).
+author_exists(v0, v1, r) :- precededBy(v0, v1), author_exists(v1, v0, r), Rule(r), Rule(187).
+author(v0, v1) :- precededBy(v1, v0), author(v1, v0), Rule(188).
+author_exists(v0, v1, r) :- precededBy(v1, v0), author(v1, v0), r = 188, Rule(188).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), author(v1, v0), Rule(r), Rule(188).
+author_exists(v0, v1, r) :- precededBy(v1, v0), author_exists(v1, v0, r), Rule(r), Rule(188).
+author(v0, v1) :- precededBy(v1, v0), author(v0, v1), Rule(189).
+author_exists(v0, v1, r) :- precededBy(v1, v0), author(v0, v1), r = 189, Rule(189).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v0, r), author(v0, v1), Rule(r), Rule(189).
+author_exists(v0, v1, r) :- precededBy(v1, v0), author_exists(v0, v1, r), Rule(r), Rule(189).
+author(v0, v1) :- precededBy(v2, v1), author(v0, v2), Rule(190).
+author_exists(v0, v1, r) :- precededBy(v2, v1), author(v0, v2), r = 190, Rule(190).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), author(v0, v2), Rule(r), Rule(190).
+author_exists(v0, v1, r) :- precededBy(v2, v1), author_exists(v0, v2, r), Rule(r), Rule(190).
+author(v0, v1) :- precededBy(v1, v2), author(v2, v0), Rule(191).
+author_exists(v0, v1, r) :- precededBy(v1, v2), author(v2, v0), r = 191, Rule(191).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), author(v2, v0), Rule(r), Rule(191).
+author_exists(v0, v1, r) :- precededBy(v1, v2), author_exists(v2, v0, r), Rule(r), Rule(191).
+author(v0, v1) :- precededBy(v2, v0), author(v1, v2), Rule(192).
+author_exists(v0, v1, r) :- precededBy(v2, v0), author(v1, v2), r = 192, Rule(192).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), author(v1, v2), Rule(r), Rule(192).
+author_exists(v0, v1, r) :- precededBy(v2, v0), author_exists(v1, v2, r), Rule(r), Rule(192).
+author(v0, v1) :- precededBy(v2, v0), author(v2, v1), Rule(193).
+author_exists(v0, v1, r) :- precededBy(v2, v0), author(v2, v1), r = 193, Rule(193).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v0, r), author(v2, v1), Rule(r), Rule(193).
+author_exists(v0, v1, r) :- precededBy(v2, v0), author_exists(v2, v1, r), Rule(r), Rule(193).
+author(v0, v1) :- precededBy(v0, v2), author(v1, v2), Rule(194).
+author_exists(v0, v1, r) :- precededBy(v0, v2), author(v1, v2), r = 194, Rule(194).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), author(v1, v2), Rule(r), Rule(194).
+author_exists(v0, v1, r) :- precededBy(v0, v2), author_exists(v1, v2, r), Rule(r), Rule(194).
+author(v0, v1) :- precededBy(v0, v2), author(v2, v1), Rule(195).
+author_exists(v0, v1, r) :- precededBy(v0, v2), author(v2, v1), r = 195, Rule(195).
+author_exists(v0, v1, r) :- precededBy_exists(v0, v2, r), author(v2, v1), Rule(r), Rule(195).
+author_exists(v0, v1, r) :- precededBy(v0, v2), author_exists(v2, v1, r), Rule(r), Rule(195).
+author(v0, v1) :- precededBy(v2, v1), author(v2, v0), Rule(196).
+author_exists(v0, v1, r) :- precededBy(v2, v1), author(v2, v0), r = 196, Rule(196).
+author_exists(v0, v1, r) :- precededBy_exists(v2, v1, r), author(v2, v0), Rule(r), Rule(196).
+author_exists(v0, v1, r) :- precededBy(v2, v1), author_exists(v2, v0, r), Rule(r), Rule(196).
+author(v0, v1) :- precededBy(v1, v2), author(v0, v2), Rule(197).
+author_exists(v0, v1, r) :- precededBy(v1, v2), author(v0, v2), r = 197, Rule(197).
+author_exists(v0, v1, r) :- precededBy_exists(v1, v2, r), author(v0, v2), Rule(r), Rule(197).
+author_exists(v0, v1, r) :- precededBy(v1, v2), author_exists(v0, v2, r), Rule(r), Rule(197).
+author(v0, v1) :- genre(v0, v1), genre(v0, v1), Rule(198).
+author_exists(v0, v1, r) :- genre(v0, v1), genre(v0, v1), r = 198, Rule(198).
+author_exists(v0, v1, r) :- genre_exists(v0, v1, r), genre(v0, v1), Rule(r), Rule(198).
+author_exists(v0, v1, r) :- genre(v0, v1), genre_exists(v0, v1, r), Rule(r), Rule(198).
+author(v0, v1) :- genre(v0, v1), genre(v1, v0), Rule(199).
+author_exists(v0, v1, r) :- genre(v0, v1), genre(v1, v0), r = 199, Rule(199).
+author_exists(v0, v1, r) :- genre_exists(v0, v1, r), genre(v1, v0), Rule(r), Rule(199).
+author_exists(v0, v1, r) :- genre(v0, v1), genre_exists(v1, v0, r), Rule(r), Rule(199).
+author(v0, v1) :- genre(v1, v0), genre(v1, v0), Rule(200).
+author_exists(v0, v1, r) :- genre(v1, v0), genre(v1, v0), r = 200, Rule(200).
+author_exists(v0, v1, r) :- genre_exists(v1, v0, r), genre(v1, v0), Rule(r), Rule(200).
+author_exists(v0, v1, r) :- genre(v1, v0), genre_exists(v1, v0, r), Rule(r), Rule(200).
+author(v0, v1) :- genre(v1, v0), genre(v0, v1), Rule(201).
+author_exists(v0, v1, r) :- genre(v1, v0), genre(v0, v1), r = 201, Rule(201).
+author_exists(v0, v1, r) :- genre_exists(v1, v0, r), genre(v0, v1), Rule(r), Rule(201).
+author_exists(v0, v1, r) :- genre(v1, v0), genre_exists(v0, v1, r), Rule(r), Rule(201).
+author(v0, v1) :- genre(v2, v1), genre(v0, v2), Rule(202).
+author_exists(v0, v1, r) :- genre(v2, v1), genre(v0, v2), r = 202, Rule(202).
+author_exists(v0, v1, r) :- genre_exists(v2, v1, r), genre(v0, v2), Rule(r), Rule(202).
+author_exists(v0, v1, r) :- genre(v2, v1), genre_exists(v0, v2, r), Rule(r), Rule(202).
+author(v0, v1) :- genre(v1, v2), genre(v2, v0), Rule(203).
+author_exists(v0, v1, r) :- genre(v1, v2), genre(v2, v0), r = 203, Rule(203).
+author_exists(v0, v1, r) :- genre_exists(v1, v2, r), genre(v2, v0), Rule(r), Rule(203).
+author_exists(v0, v1, r) :- genre(v1, v2), genre_exists(v2, v0, r), Rule(r), Rule(203).
+author(v0, v1) :- genre(v2, v0), genre(v1, v2), Rule(204).
+author_exists(v0, v1, r) :- genre(v2, v0), genre(v1, v2), r = 204, Rule(204).
+author_exists(v0, v1, r) :- genre_exists(v2, v0, r), genre(v1, v2), Rule(r), Rule(204).
+author_exists(v0, v1, r) :- genre(v2, v0), genre_exists(v1, v2, r), Rule(r), Rule(204).
+author(v0, v1) :- genre(v2, v0), genre(v2, v1), Rule(205).
+author_exists(v0, v1, r) :- genre(v2, v0), genre(v2, v1), r = 205, Rule(205).
+author_exists(v0, v1, r) :- genre_exists(v2, v0, r), genre(v2, v1), Rule(r), Rule(205).
+author_exists(v0, v1, r) :- genre(v2, v0), genre_exists(v2, v1, r), Rule(r), Rule(205).
+author(v0, v1) :- genre(v0, v2), genre(v1, v2), Rule(206).
+author_exists(v0, v1, r) :- genre(v0, v2), genre(v1, v2), r = 206, Rule(206).
+author_exists(v0, v1, r) :- genre_exists(v0, v2, r), genre(v1, v2), Rule(r), Rule(206).
+author_exists(v0, v1, r) :- genre(v0, v2), genre_exists(v1, v2, r), Rule(r), Rule(206).
+author(v0, v1) :- genre(v0, v2), genre(v2, v1), Rule(207).
+author_exists(v0, v1, r) :- genre(v0, v2), genre(v2, v1), r = 207, Rule(207).
+author_exists(v0, v1, r) :- genre_exists(v0, v2, r), genre(v2, v1), Rule(r), Rule(207).
+author_exists(v0, v1, r) :- genre(v0, v2), genre_exists(v2, v1, r), Rule(r), Rule(207).
+author(v0, v1) :- genre(v2, v1), genre(v2, v0), Rule(208).
+author_exists(v0, v1, r) :- genre(v2, v1), genre(v2, v0), r = 208, Rule(208).
+author_exists(v0, v1, r) :- genre_exists(v2, v1, r), genre(v2, v0), Rule(r), Rule(208).
+author_exists(v0, v1, r) :- genre(v2, v1), genre_exists(v2, v0, r), Rule(r), Rule(208).
+author(v0, v1) :- genre(v1, v2), genre(v0, v2), Rule(209).
+author_exists(v0, v1, r) :- genre(v1, v2), genre(v0, v2), r = 209, Rule(209).
+author_exists(v0, v1, r) :- genre_exists(v1, v2, r), genre(v0, v2), Rule(r), Rule(209).
+author_exists(v0, v1, r) :- genre(v1, v2), genre_exists(v0, v2, r), Rule(r), Rule(209).
+author(v0, v1) :- genre(v0, v1), Iauthor(v0, v1), Rule(210).
+author_exists(v0, v1, r) :- genre(v0, v1), Iauthor(v0, v1), r = 210, Rule(210).
+author_exists(v0, v1, r) :- genre_exists(v0, v1, r), Iauthor(v0, v1), Rule(r), Rule(210).
+author_exists(v0, v1, r) :- genre(v0, v1), Iauthor_exists(v0, v1, r), Rule(r), Rule(210).
+author(v0, v1) :- genre(v0, v1), Iauthor(v1, v0), Rule(211).
+author_exists(v0, v1, r) :- genre(v0, v1), Iauthor(v1, v0), r = 211, Rule(211).
+author_exists(v0, v1, r) :- genre_exists(v0, v1, r), Iauthor(v1, v0), Rule(r), Rule(211).
+author_exists(v0, v1, r) :- genre(v0, v1), Iauthor_exists(v1, v0, r), Rule(r), Rule(211).
+author(v0, v1) :- genre(v1, v0), Iauthor(v1, v0), Rule(212).
+author_exists(v0, v1, r) :- genre(v1, v0), Iauthor(v1, v0), r = 212, Rule(212).
+author_exists(v0, v1, r) :- genre_exists(v1, v0, r), Iauthor(v1, v0), Rule(r), Rule(212).
+author_exists(v0, v1, r) :- genre(v1, v0), Iauthor_exists(v1, v0, r), Rule(r), Rule(212).
+author(v0, v1) :- genre(v1, v0), Iauthor(v0, v1), Rule(213).
+author_exists(v0, v1, r) :- genre(v1, v0), Iauthor(v0, v1), r = 213, Rule(213).
+author_exists(v0, v1, r) :- genre_exists(v1, v0, r), Iauthor(v0, v1), Rule(r), Rule(213).
+author_exists(v0, v1, r) :- genre(v1, v0), Iauthor_exists(v0, v1, r), Rule(r), Rule(213).
+author(v0, v1) :- genre(v2, v1), Iauthor(v0, v2), Rule(214).
+author_exists(v0, v1, r) :- genre(v2, v1), Iauthor(v0, v2), r = 214, Rule(214).
+author_exists(v0, v1, r) :- genre_exists(v2, v1, r), Iauthor(v0, v2), Rule(r), Rule(214).
+author_exists(v0, v1, r) :- genre(v2, v1), Iauthor_exists(v0, v2, r), Rule(r), Rule(214).
+author(v0, v1) :- genre(v1, v2), Iauthor(v2, v0), Rule(215).
+author_exists(v0, v1, r) :- genre(v1, v2), Iauthor(v2, v0), r = 215, Rule(215).
+author_exists(v0, v1, r) :- genre_exists(v1, v2, r), Iauthor(v2, v0), Rule(r), Rule(215).
+author_exists(v0, v1, r) :- genre(v1, v2), Iauthor_exists(v2, v0, r), Rule(r), Rule(215).
+author(v0, v1) :- genre(v2, v0), Iauthor(v1, v2), Rule(216).
+author_exists(v0, v1, r) :- genre(v2, v0), Iauthor(v1, v2), r = 216, Rule(216).
+author_exists(v0, v1, r) :- genre_exists(v2, v0, r), Iauthor(v1, v2), Rule(r), Rule(216).
+author_exists(v0, v1, r) :- genre(v2, v0), Iauthor_exists(v1, v2, r), Rule(r), Rule(216).
+author(v0, v1) :- genre(v2, v0), Iauthor(v2, v1), Rule(217).
+author_exists(v0, v1, r) :- genre(v2, v0), Iauthor(v2, v1), r = 217, Rule(217).
+author_exists(v0, v1, r) :- genre_exists(v2, v0, r), Iauthor(v2, v1), Rule(r), Rule(217).
+author_exists(v0, v1, r) :- genre(v2, v0), Iauthor_exists(v2, v1, r), Rule(r), Rule(217).
+author(v0, v1) :- genre(v0, v2), Iauthor(v1, v2), Rule(218).
+author_exists(v0, v1, r) :- genre(v0, v2), Iauthor(v1, v2), r = 218, Rule(218).
+author_exists(v0, v1, r) :- genre_exists(v0, v2, r), Iauthor(v1, v2), Rule(r), Rule(218).
+author_exists(v0, v1, r) :- genre(v0, v2), Iauthor_exists(v1, v2, r), Rule(r), Rule(218).
+author(v0, v1) :- genre(v0, v2), Iauthor(v2, v1), Rule(219).
+author_exists(v0, v1, r) :- genre(v0, v2), Iauthor(v2, v1), r = 219, Rule(219).
+author_exists(v0, v1, r) :- genre_exists(v0, v2, r), Iauthor(v2, v1), Rule(r), Rule(219).
+author_exists(v0, v1, r) :- genre(v0, v2), Iauthor_exists(v2, v1, r), Rule(r), Rule(219).
+author(v0, v1) :- genre(v2, v1), Iauthor(v2, v0), Rule(220).
+author_exists(v0, v1, r) :- genre(v2, v1), Iauthor(v2, v0), r = 220, Rule(220).
+author_exists(v0, v1, r) :- genre_exists(v2, v1, r), Iauthor(v2, v0), Rule(r), Rule(220).
+author_exists(v0, v1, r) :- genre(v2, v1), Iauthor_exists(v2, v0, r), Rule(r), Rule(220).
+author(v0, v1) :- genre(v1, v2), Iauthor(v0, v2), Rule(221).
+author_exists(v0, v1, r) :- genre(v1, v2), Iauthor(v0, v2), r = 221, Rule(221).
+author_exists(v0, v1, r) :- genre_exists(v1, v2, r), Iauthor(v0, v2), Rule(r), Rule(221).
+author_exists(v0, v1, r) :- genre(v1, v2), Iauthor_exists(v0, v2, r), Rule(r), Rule(221).
+author(v0, v1) :- genre(v0, v1), inv_0(v0, v1), Rule(222).
+author_exists(v0, v1, r) :- genre(v0, v1), inv_0(v0, v1), r = 222, Rule(222).
+author_exists(v0, v1, r) :- genre_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(222).
+author_exists(v0, v1, r) :- genre(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(222).
+author(v0, v1) :- genre(v0, v1), inv_0(v1, v0), Rule(223).
+author_exists(v0, v1, r) :- genre(v0, v1), inv_0(v1, v0), r = 223, Rule(223).
+author_exists(v0, v1, r) :- genre_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(223).
+author_exists(v0, v1, r) :- genre(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(223).
+author(v0, v1) :- genre(v1, v0), inv_0(v1, v0), Rule(224).
+author_exists(v0, v1, r) :- genre(v1, v0), inv_0(v1, v0), r = 224, Rule(224).
+author_exists(v0, v1, r) :- genre_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(224).
+author_exists(v0, v1, r) :- genre(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(224).
+author(v0, v1) :- genre(v1, v0), inv_0(v0, v1), Rule(225).
+author_exists(v0, v1, r) :- genre(v1, v0), inv_0(v0, v1), r = 225, Rule(225).
+author_exists(v0, v1, r) :- genre_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(225).
+author_exists(v0, v1, r) :- genre(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(225).
+author(v0, v1) :- genre(v2, v1), inv_0(v0, v2), Rule(226).
+author_exists(v0, v1, r) :- genre(v2, v1), inv_0(v0, v2), r = 226, Rule(226).
+author_exists(v0, v1, r) :- genre_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(226).
+author_exists(v0, v1, r) :- genre(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(226).
+author(v0, v1) :- genre(v1, v2), inv_0(v2, v0), Rule(227).
+author_exists(v0, v1, r) :- genre(v1, v2), inv_0(v2, v0), r = 227, Rule(227).
+author_exists(v0, v1, r) :- genre_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(227).
+author_exists(v0, v1, r) :- genre(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(227).
+author(v0, v1) :- genre(v2, v0), inv_0(v1, v2), Rule(228).
+author_exists(v0, v1, r) :- genre(v2, v0), inv_0(v1, v2), r = 228, Rule(228).
+author_exists(v0, v1, r) :- genre_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(228).
+author_exists(v0, v1, r) :- genre(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(228).
+author(v0, v1) :- genre(v2, v0), inv_0(v2, v1), Rule(229).
+author_exists(v0, v1, r) :- genre(v2, v0), inv_0(v2, v1), r = 229, Rule(229).
+author_exists(v0, v1, r) :- genre_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(229).
+author_exists(v0, v1, r) :- genre(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(229).
+author(v0, v1) :- genre(v0, v2), inv_0(v1, v2), Rule(230).
+author_exists(v0, v1, r) :- genre(v0, v2), inv_0(v1, v2), r = 230, Rule(230).
+author_exists(v0, v1, r) :- genre_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(230).
+author_exists(v0, v1, r) :- genre(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(230).
+author(v0, v1) :- genre(v0, v2), inv_0(v2, v1), Rule(231).
+author_exists(v0, v1, r) :- genre(v0, v2), inv_0(v2, v1), r = 231, Rule(231).
+author_exists(v0, v1, r) :- genre_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(231).
+author_exists(v0, v1, r) :- genre(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(231).
+author(v0, v1) :- genre(v2, v1), inv_0(v2, v0), Rule(232).
+author_exists(v0, v1, r) :- genre(v2, v1), inv_0(v2, v0), r = 232, Rule(232).
+author_exists(v0, v1, r) :- genre_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(232).
+author_exists(v0, v1, r) :- genre(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(232).
+author(v0, v1) :- genre(v1, v2), inv_0(v0, v2), Rule(233).
+author_exists(v0, v1, r) :- genre(v1, v2), inv_0(v0, v2), r = 233, Rule(233).
+author_exists(v0, v1, r) :- genre_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(233).
+author_exists(v0, v1, r) :- genre(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(233).
+author(v0, v1) :- genre(v0, v1), author(v0, v1), Rule(234).
+author_exists(v0, v1, r) :- genre(v0, v1), author(v0, v1), r = 234, Rule(234).
+author_exists(v0, v1, r) :- genre_exists(v0, v1, r), author(v0, v1), Rule(r), Rule(234).
+author_exists(v0, v1, r) :- genre(v0, v1), author_exists(v0, v1, r), Rule(r), Rule(234).
+author(v0, v1) :- genre(v0, v1), author(v1, v0), Rule(235).
+author_exists(v0, v1, r) :- genre(v0, v1), author(v1, v0), r = 235, Rule(235).
+author_exists(v0, v1, r) :- genre_exists(v0, v1, r), author(v1, v0), Rule(r), Rule(235).
+author_exists(v0, v1, r) :- genre(v0, v1), author_exists(v1, v0, r), Rule(r), Rule(235).
+author(v0, v1) :- genre(v1, v0), author(v1, v0), Rule(236).
+author_exists(v0, v1, r) :- genre(v1, v0), author(v1, v0), r = 236, Rule(236).
+author_exists(v0, v1, r) :- genre_exists(v1, v0, r), author(v1, v0), Rule(r), Rule(236).
+author_exists(v0, v1, r) :- genre(v1, v0), author_exists(v1, v0, r), Rule(r), Rule(236).
+author(v0, v1) :- genre(v1, v0), author(v0, v1), Rule(237).
+author_exists(v0, v1, r) :- genre(v1, v0), author(v0, v1), r = 237, Rule(237).
+author_exists(v0, v1, r) :- genre_exists(v1, v0, r), author(v0, v1), Rule(r), Rule(237).
+author_exists(v0, v1, r) :- genre(v1, v0), author_exists(v0, v1, r), Rule(r), Rule(237).
+author(v0, v1) :- genre(v2, v1), author(v0, v2), Rule(238).
+author_exists(v0, v1, r) :- genre(v2, v1), author(v0, v2), r = 238, Rule(238).
+author_exists(v0, v1, r) :- genre_exists(v2, v1, r), author(v0, v2), Rule(r), Rule(238).
+author_exists(v0, v1, r) :- genre(v2, v1), author_exists(v0, v2, r), Rule(r), Rule(238).
+author(v0, v1) :- genre(v1, v2), author(v2, v0), Rule(239).
+author_exists(v0, v1, r) :- genre(v1, v2), author(v2, v0), r = 239, Rule(239).
+author_exists(v0, v1, r) :- genre_exists(v1, v2, r), author(v2, v0), Rule(r), Rule(239).
+author_exists(v0, v1, r) :- genre(v1, v2), author_exists(v2, v0, r), Rule(r), Rule(239).
+author(v0, v1) :- genre(v2, v0), author(v1, v2), Rule(240).
+author_exists(v0, v1, r) :- genre(v2, v0), author(v1, v2), r = 240, Rule(240).
+author_exists(v0, v1, r) :- genre_exists(v2, v0, r), author(v1, v2), Rule(r), Rule(240).
+author_exists(v0, v1, r) :- genre(v2, v0), author_exists(v1, v2, r), Rule(r), Rule(240).
+author(v0, v1) :- genre(v2, v0), author(v2, v1), Rule(241).
+author_exists(v0, v1, r) :- genre(v2, v0), author(v2, v1), r = 241, Rule(241).
+author_exists(v0, v1, r) :- genre_exists(v2, v0, r), author(v2, v1), Rule(r), Rule(241).
+author_exists(v0, v1, r) :- genre(v2, v0), author_exists(v2, v1, r), Rule(r), Rule(241).
+author(v0, v1) :- genre(v0, v2), author(v1, v2), Rule(242).
+author_exists(v0, v1, r) :- genre(v0, v2), author(v1, v2), r = 242, Rule(242).
+author_exists(v0, v1, r) :- genre_exists(v0, v2, r), author(v1, v2), Rule(r), Rule(242).
+author_exists(v0, v1, r) :- genre(v0, v2), author_exists(v1, v2, r), Rule(r), Rule(242).
+author(v0, v1) :- genre(v0, v2), author(v2, v1), Rule(243).
+author_exists(v0, v1, r) :- genre(v0, v2), author(v2, v1), r = 243, Rule(243).
+author_exists(v0, v1, r) :- genre_exists(v0, v2, r), author(v2, v1), Rule(r), Rule(243).
+author_exists(v0, v1, r) :- genre(v0, v2), author_exists(v2, v1, r), Rule(r), Rule(243).
+author(v0, v1) :- genre(v2, v1), author(v2, v0), Rule(244).
+author_exists(v0, v1, r) :- genre(v2, v1), author(v2, v0), r = 244, Rule(244).
+author_exists(v0, v1, r) :- genre_exists(v2, v1, r), author(v2, v0), Rule(r), Rule(244).
+author_exists(v0, v1, r) :- genre(v2, v1), author_exists(v2, v0, r), Rule(r), Rule(244).
+author(v0, v1) :- genre(v1, v2), author(v0, v2), Rule(245).
+author_exists(v0, v1, r) :- genre(v1, v2), author(v0, v2), r = 245, Rule(245).
+author_exists(v0, v1, r) :- genre_exists(v1, v2, r), author(v0, v2), Rule(r), Rule(245).
+author_exists(v0, v1, r) :- genre(v1, v2), author_exists(v0, v2, r), Rule(r), Rule(245).
+author(v0, v1) :- Iauthor(v0, v1), Iauthor(v0, v1), Rule(246).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), Iauthor(v0, v1), r = 246, Rule(246).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), Iauthor(v0, v1), Rule(r), Rule(246).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), Iauthor_exists(v0, v1, r), Rule(r), Rule(246).
+author(v0, v1) :- Iauthor(v0, v1), Iauthor(v1, v0), Rule(247).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), Iauthor(v1, v0), r = 247, Rule(247).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), Iauthor(v1, v0), Rule(r), Rule(247).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), Iauthor_exists(v1, v0, r), Rule(r), Rule(247).
+author(v0, v1) :- Iauthor(v1, v0), Iauthor(v1, v0), Rule(248).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), Iauthor(v1, v0), r = 248, Rule(248).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), Iauthor(v1, v0), Rule(r), Rule(248).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), Iauthor_exists(v1, v0, r), Rule(r), Rule(248).
+author(v0, v1) :- Iauthor(v1, v0), Iauthor(v0, v1), Rule(249).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), Iauthor(v0, v1), r = 249, Rule(249).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), Iauthor(v0, v1), Rule(r), Rule(249).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), Iauthor_exists(v0, v1, r), Rule(r), Rule(249).
+author(v0, v1) :- Iauthor(v2, v1), Iauthor(v0, v2), Rule(250).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), Iauthor(v0, v2), r = 250, Rule(250).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v1, r), Iauthor(v0, v2), Rule(r), Rule(250).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), Iauthor_exists(v0, v2, r), Rule(r), Rule(250).
+author(v0, v1) :- Iauthor(v1, v2), Iauthor(v2, v0), Rule(251).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), Iauthor(v2, v0), r = 251, Rule(251).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v2, r), Iauthor(v2, v0), Rule(r), Rule(251).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), Iauthor_exists(v2, v0, r), Rule(r), Rule(251).
+author(v0, v1) :- Iauthor(v2, v0), Iauthor(v1, v2), Rule(252).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), Iauthor(v1, v2), r = 252, Rule(252).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v0, r), Iauthor(v1, v2), Rule(r), Rule(252).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), Iauthor_exists(v1, v2, r), Rule(r), Rule(252).
+author(v0, v1) :- Iauthor(v2, v0), Iauthor(v2, v1), Rule(253).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), Iauthor(v2, v1), r = 253, Rule(253).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v0, r), Iauthor(v2, v1), Rule(r), Rule(253).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), Iauthor_exists(v2, v1, r), Rule(r), Rule(253).
+author(v0, v1) :- Iauthor(v0, v2), Iauthor(v1, v2), Rule(254).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), Iauthor(v1, v2), r = 254, Rule(254).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v2, r), Iauthor(v1, v2), Rule(r), Rule(254).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), Iauthor_exists(v1, v2, r), Rule(r), Rule(254).
+author(v0, v1) :- Iauthor(v0, v2), Iauthor(v2, v1), Rule(255).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), Iauthor(v2, v1), r = 255, Rule(255).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v2, r), Iauthor(v2, v1), Rule(r), Rule(255).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), Iauthor_exists(v2, v1, r), Rule(r), Rule(255).
+author(v0, v1) :- Iauthor(v2, v1), Iauthor(v2, v0), Rule(256).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), Iauthor(v2, v0), r = 256, Rule(256).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v1, r), Iauthor(v2, v0), Rule(r), Rule(256).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), Iauthor_exists(v2, v0, r), Rule(r), Rule(256).
+author(v0, v1) :- Iauthor(v1, v2), Iauthor(v0, v2), Rule(257).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), Iauthor(v0, v2), r = 257, Rule(257).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v2, r), Iauthor(v0, v2), Rule(r), Rule(257).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), Iauthor_exists(v0, v2, r), Rule(r), Rule(257).
+author(v0, v1) :- Iauthor(v0, v1), inv_0(v0, v1), Rule(258).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), inv_0(v0, v1), r = 258, Rule(258).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(258).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(258).
+author(v0, v1) :- Iauthor(v0, v1), inv_0(v1, v0), Rule(259).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), inv_0(v1, v0), r = 259, Rule(259).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(259).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(259).
+author(v0, v1) :- Iauthor(v1, v0), inv_0(v1, v0), Rule(260).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), inv_0(v1, v0), r = 260, Rule(260).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(260).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(260).
+author(v0, v1) :- Iauthor(v1, v0), inv_0(v0, v1), Rule(261).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), inv_0(v0, v1), r = 261, Rule(261).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(261).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(261).
+author(v0, v1) :- Iauthor(v2, v1), inv_0(v0, v2), Rule(262).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), inv_0(v0, v2), r = 262, Rule(262).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(262).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(262).
+author(v0, v1) :- Iauthor(v1, v2), inv_0(v2, v0), Rule(263).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), inv_0(v2, v0), r = 263, Rule(263).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(263).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(263).
+author(v0, v1) :- Iauthor(v2, v0), inv_0(v1, v2), Rule(264).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), inv_0(v1, v2), r = 264, Rule(264).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(264).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(264).
+author(v0, v1) :- Iauthor(v2, v0), inv_0(v2, v1), Rule(265).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), inv_0(v2, v1), r = 265, Rule(265).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(265).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(265).
+author(v0, v1) :- Iauthor(v0, v2), inv_0(v1, v2), Rule(266).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), inv_0(v1, v2), r = 266, Rule(266).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(266).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(266).
+author(v0, v1) :- Iauthor(v0, v2), inv_0(v2, v1), Rule(267).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), inv_0(v2, v1), r = 267, Rule(267).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(267).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(267).
+author(v0, v1) :- Iauthor(v2, v1), inv_0(v2, v0), Rule(268).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), inv_0(v2, v0), r = 268, Rule(268).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(268).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(268).
+author(v0, v1) :- Iauthor(v1, v2), inv_0(v0, v2), Rule(269).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), inv_0(v0, v2), r = 269, Rule(269).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(269).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(269).
+author(v0, v1) :- Iauthor(v0, v1), author(v0, v1), Rule(270).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), author(v0, v1), r = 270, Rule(270).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), author(v0, v1), Rule(r), Rule(270).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), author_exists(v0, v1, r), Rule(r), Rule(270).
+author(v0, v1) :- Iauthor(v0, v1), author(v1, v0), Rule(271).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), author(v1, v0), r = 271, Rule(271).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v1, r), author(v1, v0), Rule(r), Rule(271).
+author_exists(v0, v1, r) :- Iauthor(v0, v1), author_exists(v1, v0, r), Rule(r), Rule(271).
+author(v0, v1) :- Iauthor(v1, v0), author(v1, v0), Rule(272).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), author(v1, v0), r = 272, Rule(272).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), author(v1, v0), Rule(r), Rule(272).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), author_exists(v1, v0, r), Rule(r), Rule(272).
+author(v0, v1) :- Iauthor(v1, v0), author(v0, v1), Rule(273).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), author(v0, v1), r = 273, Rule(273).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v0, r), author(v0, v1), Rule(r), Rule(273).
+author_exists(v0, v1, r) :- Iauthor(v1, v0), author_exists(v0, v1, r), Rule(r), Rule(273).
+author(v0, v1) :- Iauthor(v2, v1), author(v0, v2), Rule(274).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), author(v0, v2), r = 274, Rule(274).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v1, r), author(v0, v2), Rule(r), Rule(274).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), author_exists(v0, v2, r), Rule(r), Rule(274).
+author(v0, v1) :- Iauthor(v1, v2), author(v2, v0), Rule(275).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), author(v2, v0), r = 275, Rule(275).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v2, r), author(v2, v0), Rule(r), Rule(275).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), author_exists(v2, v0, r), Rule(r), Rule(275).
+author(v0, v1) :- Iauthor(v2, v0), author(v1, v2), Rule(276).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), author(v1, v2), r = 276, Rule(276).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v0, r), author(v1, v2), Rule(r), Rule(276).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), author_exists(v1, v2, r), Rule(r), Rule(276).
+author(v0, v1) :- Iauthor(v2, v0), author(v2, v1), Rule(277).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), author(v2, v1), r = 277, Rule(277).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v0, r), author(v2, v1), Rule(r), Rule(277).
+author_exists(v0, v1, r) :- Iauthor(v2, v0), author_exists(v2, v1, r), Rule(r), Rule(277).
+author(v0, v1) :- Iauthor(v0, v2), author(v1, v2), Rule(278).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), author(v1, v2), r = 278, Rule(278).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v2, r), author(v1, v2), Rule(r), Rule(278).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), author_exists(v1, v2, r), Rule(r), Rule(278).
+author(v0, v1) :- Iauthor(v0, v2), author(v2, v1), Rule(279).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), author(v2, v1), r = 279, Rule(279).
+author_exists(v0, v1, r) :- Iauthor_exists(v0, v2, r), author(v2, v1), Rule(r), Rule(279).
+author_exists(v0, v1, r) :- Iauthor(v0, v2), author_exists(v2, v1, r), Rule(r), Rule(279).
+author(v0, v1) :- Iauthor(v2, v1), author(v2, v0), Rule(280).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), author(v2, v0), r = 280, Rule(280).
+author_exists(v0, v1, r) :- Iauthor_exists(v2, v1, r), author(v2, v0), Rule(r), Rule(280).
+author_exists(v0, v1, r) :- Iauthor(v2, v1), author_exists(v2, v0, r), Rule(r), Rule(280).
+author(v0, v1) :- Iauthor(v1, v2), author(v0, v2), Rule(281).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), author(v0, v2), r = 281, Rule(281).
+author_exists(v0, v1, r) :- Iauthor_exists(v1, v2, r), author(v0, v2), Rule(r), Rule(281).
+author_exists(v0, v1, r) :- Iauthor(v1, v2), author_exists(v0, v2, r), Rule(r), Rule(281).
+author(v0, v1) :- inv_0(v0, v1), inv_0(v0, v1), Rule(282).
+author_exists(v0, v1, r) :- inv_0(v0, v1), inv_0(v0, v1), r = 282, Rule(282).
+author_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), inv_0(v0, v1), Rule(r), Rule(282).
+author_exists(v0, v1, r) :- inv_0(v0, v1), inv_0_exists(v0, v1, r), Rule(r), Rule(282).
+author(v0, v1) :- inv_0(v0, v1), inv_0(v1, v0), Rule(283).
+author_exists(v0, v1, r) :- inv_0(v0, v1), inv_0(v1, v0), r = 283, Rule(283).
+author_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), inv_0(v1, v0), Rule(r), Rule(283).
+author_exists(v0, v1, r) :- inv_0(v0, v1), inv_0_exists(v1, v0, r), Rule(r), Rule(283).
+author(v0, v1) :- inv_0(v1, v0), inv_0(v1, v0), Rule(284).
+author_exists(v0, v1, r) :- inv_0(v1, v0), inv_0(v1, v0), r = 284, Rule(284).
+author_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), inv_0(v1, v0), Rule(r), Rule(284).
+author_exists(v0, v1, r) :- inv_0(v1, v0), inv_0_exists(v1, v0, r), Rule(r), Rule(284).
+author(v0, v1) :- inv_0(v1, v0), inv_0(v0, v1), Rule(285).
+author_exists(v0, v1, r) :- inv_0(v1, v0), inv_0(v0, v1), r = 285, Rule(285).
+author_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), inv_0(v0, v1), Rule(r), Rule(285).
+author_exists(v0, v1, r) :- inv_0(v1, v0), inv_0_exists(v0, v1, r), Rule(r), Rule(285).
+author(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(286).
+author_exists(v0, v1, r) :- inv_0(v2, v1), inv_0(v0, v2), r = 286, Rule(286).
+author_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), inv_0(v0, v2), Rule(r), Rule(286).
+author_exists(v0, v1, r) :- inv_0(v2, v1), inv_0_exists(v0, v2, r), Rule(r), Rule(286).
+author(v0, v1) :- inv_0(v1, v2), inv_0(v2, v0), Rule(287).
+author_exists(v0, v1, r) :- inv_0(v1, v2), inv_0(v2, v0), r = 287, Rule(287).
+author_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), inv_0(v2, v0), Rule(r), Rule(287).
+author_exists(v0, v1, r) :- inv_0(v1, v2), inv_0_exists(v2, v0, r), Rule(r), Rule(287).
+author(v0, v1) :- inv_0(v2, v0), inv_0(v1, v2), Rule(288).
+author_exists(v0, v1, r) :- inv_0(v2, v0), inv_0(v1, v2), r = 288, Rule(288).
+author_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), inv_0(v1, v2), Rule(r), Rule(288).
+author_exists(v0, v1, r) :- inv_0(v2, v0), inv_0_exists(v1, v2, r), Rule(r), Rule(288).
+author(v0, v1) :- inv_0(v2, v0), inv_0(v2, v1), Rule(289).
+author_exists(v0, v1, r) :- inv_0(v2, v0), inv_0(v2, v1), r = 289, Rule(289).
+author_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), inv_0(v2, v1), Rule(r), Rule(289).
+author_exists(v0, v1, r) :- inv_0(v2, v0), inv_0_exists(v2, v1, r), Rule(r), Rule(289).
+author(v0, v1) :- inv_0(v0, v2), inv_0(v1, v2), Rule(290).
+author_exists(v0, v1, r) :- inv_0(v0, v2), inv_0(v1, v2), r = 290, Rule(290).
+author_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), inv_0(v1, v2), Rule(r), Rule(290).
+author_exists(v0, v1, r) :- inv_0(v0, v2), inv_0_exists(v1, v2, r), Rule(r), Rule(290).
+author(v0, v1) :- inv_0(v0, v2), inv_0(v2, v1), Rule(291).
+author_exists(v0, v1, r) :- inv_0(v0, v2), inv_0(v2, v1), r = 291, Rule(291).
+author_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), inv_0(v2, v1), Rule(r), Rule(291).
+author_exists(v0, v1, r) :- inv_0(v0, v2), inv_0_exists(v2, v1, r), Rule(r), Rule(291).
+author(v0, v1) :- inv_0(v2, v1), inv_0(v2, v0), Rule(292).
+author_exists(v0, v1, r) :- inv_0(v2, v1), inv_0(v2, v0), r = 292, Rule(292).
+author_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), inv_0(v2, v0), Rule(r), Rule(292).
+author_exists(v0, v1, r) :- inv_0(v2, v1), inv_0_exists(v2, v0, r), Rule(r), Rule(292).
+author(v0, v1) :- inv_0(v1, v2), inv_0(v0, v2), Rule(293).
+author_exists(v0, v1, r) :- inv_0(v1, v2), inv_0(v0, v2), r = 293, Rule(293).
+author_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), inv_0(v0, v2), Rule(r), Rule(293).
+author_exists(v0, v1, r) :- inv_0(v1, v2), inv_0_exists(v0, v2, r), Rule(r), Rule(293).
+author(v0, v1) :- inv_0(v0, v1), author(v0, v1), Rule(294).
+author_exists(v0, v1, r) :- inv_0(v0, v1), author(v0, v1), r = 294, Rule(294).
+author_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), author(v0, v1), Rule(r), Rule(294).
+author_exists(v0, v1, r) :- inv_0(v0, v1), author_exists(v0, v1, r), Rule(r), Rule(294).
+author(v0, v1) :- inv_0(v0, v1), author(v1, v0), Rule(295).
+author_exists(v0, v1, r) :- inv_0(v0, v1), author(v1, v0), r = 295, Rule(295).
+author_exists(v0, v1, r) :- inv_0_exists(v0, v1, r), author(v1, v0), Rule(r), Rule(295).
+author_exists(v0, v1, r) :- inv_0(v0, v1), author_exists(v1, v0, r), Rule(r), Rule(295).
+author(v0, v1) :- inv_0(v1, v0), author(v1, v0), Rule(296).
+author_exists(v0, v1, r) :- inv_0(v1, v0), author(v1, v0), r = 296, Rule(296).
+author_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), author(v1, v0), Rule(r), Rule(296).
+author_exists(v0, v1, r) :- inv_0(v1, v0), author_exists(v1, v0, r), Rule(r), Rule(296).
+author(v0, v1) :- inv_0(v1, v0), author(v0, v1), Rule(297).
+author_exists(v0, v1, r) :- inv_0(v1, v0), author(v0, v1), r = 297, Rule(297).
+author_exists(v0, v1, r) :- inv_0_exists(v1, v0, r), author(v0, v1), Rule(r), Rule(297).
+author_exists(v0, v1, r) :- inv_0(v1, v0), author_exists(v0, v1, r), Rule(r), Rule(297).
+author(v0, v1) :- inv_0(v2, v1), author(v0, v2), Rule(298).
+author_exists(v0, v1, r) :- inv_0(v2, v1), author(v0, v2), r = 298, Rule(298).
+author_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), author(v0, v2), Rule(r), Rule(298).
+author_exists(v0, v1, r) :- inv_0(v2, v1), author_exists(v0, v2, r), Rule(r), Rule(298).
+author(v0, v1) :- inv_0(v1, v2), author(v2, v0), Rule(299).
+author_exists(v0, v1, r) :- inv_0(v1, v2), author(v2, v0), r = 299, Rule(299).
+author_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), author(v2, v0), Rule(r), Rule(299).
+author_exists(v0, v1, r) :- inv_0(v1, v2), author_exists(v2, v0, r), Rule(r), Rule(299).
+author(v0, v1) :- inv_0(v2, v0), author(v1, v2), Rule(300).
+author_exists(v0, v1, r) :- inv_0(v2, v0), author(v1, v2), r = 300, Rule(300).
+author_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), author(v1, v2), Rule(r), Rule(300).
+author_exists(v0, v1, r) :- inv_0(v2, v0), author_exists(v1, v2, r), Rule(r), Rule(300).
+author(v0, v1) :- inv_0(v2, v0), author(v2, v1), Rule(301).
+author_exists(v0, v1, r) :- inv_0(v2, v0), author(v2, v1), r = 301, Rule(301).
+author_exists(v0, v1, r) :- inv_0_exists(v2, v0, r), author(v2, v1), Rule(r), Rule(301).
+author_exists(v0, v1, r) :- inv_0(v2, v0), author_exists(v2, v1, r), Rule(r), Rule(301).
+author(v0, v1) :- inv_0(v0, v2), author(v1, v2), Rule(302).
+author_exists(v0, v1, r) :- inv_0(v0, v2), author(v1, v2), r = 302, Rule(302).
+author_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), author(v1, v2), Rule(r), Rule(302).
+author_exists(v0, v1, r) :- inv_0(v0, v2), author_exists(v1, v2, r), Rule(r), Rule(302).
+author(v0, v1) :- inv_0(v0, v2), author(v2, v1), Rule(303).
+author_exists(v0, v1, r) :- inv_0(v0, v2), author(v2, v1), r = 303, Rule(303).
+author_exists(v0, v1, r) :- inv_0_exists(v0, v2, r), author(v2, v1), Rule(r), Rule(303).
+author_exists(v0, v1, r) :- inv_0(v0, v2), author_exists(v2, v1, r), Rule(r), Rule(303).
+author(v0, v1) :- inv_0(v2, v1), author(v2, v0), Rule(304).
+author_exists(v0, v1, r) :- inv_0(v2, v1), author(v2, v0), r = 304, Rule(304).
+author_exists(v0, v1, r) :- inv_0_exists(v2, v1, r), author(v2, v0), Rule(r), Rule(304).
+author_exists(v0, v1, r) :- inv_0(v2, v1), author_exists(v2, v0, r), Rule(r), Rule(304).
+author(v0, v1) :- inv_0(v1, v2), author(v0, v2), Rule(305).
+author_exists(v0, v1, r) :- inv_0(v1, v2), author(v0, v2), r = 305, Rule(305).
+author_exists(v0, v1, r) :- inv_0_exists(v1, v2, r), author(v0, v2), Rule(r), Rule(305).
+author_exists(v0, v1, r) :- inv_0(v1, v2), author_exists(v0, v2, r), Rule(r), Rule(305).
+author(v0, v1) :- author(v0, v1), author(v0, v1), Rule(306).
+author_exists(v0, v1, r) :- author(v0, v1), author(v0, v1), r = 306, Rule(306).
+author_exists(v0, v1, r) :- author_exists(v0, v1, r), author(v0, v1), Rule(r), Rule(306).
+author_exists(v0, v1, r) :- author(v0, v1), author_exists(v0, v1, r), Rule(r), Rule(306).
+author(v0, v1) :- author(v0, v1), author(v1, v0), Rule(307).
+author_exists(v0, v1, r) :- author(v0, v1), author(v1, v0), r = 307, Rule(307).
+author_exists(v0, v1, r) :- author_exists(v0, v1, r), author(v1, v0), Rule(r), Rule(307).
+author_exists(v0, v1, r) :- author(v0, v1), author_exists(v1, v0, r), Rule(r), Rule(307).
+author(v0, v1) :- author(v1, v0), author(v1, v0), Rule(308).
+author_exists(v0, v1, r) :- author(v1, v0), author(v1, v0), r = 308, Rule(308).
+author_exists(v0, v1, r) :- author_exists(v1, v0, r), author(v1, v0), Rule(r), Rule(308).
+author_exists(v0, v1, r) :- author(v1, v0), author_exists(v1, v0, r), Rule(r), Rule(308).
+author(v0, v1) :- author(v1, v0), author(v0, v1), Rule(309).
+author_exists(v0, v1, r) :- author(v1, v0), author(v0, v1), r = 309, Rule(309).
+author_exists(v0, v1, r) :- author_exists(v1, v0, r), author(v0, v1), Rule(r), Rule(309).
+author_exists(v0, v1, r) :- author(v1, v0), author_exists(v0, v1, r), Rule(r), Rule(309).
+author(v0, v1) :- author(v2, v1), author(v0, v2), Rule(310).
+author_exists(v0, v1, r) :- author(v2, v1), author(v0, v2), r = 310, Rule(310).
+author_exists(v0, v1, r) :- author_exists(v2, v1, r), author(v0, v2), Rule(r), Rule(310).
+author_exists(v0, v1, r) :- author(v2, v1), author_exists(v0, v2, r), Rule(r), Rule(310).
+author(v0, v1) :- author(v1, v2), author(v2, v0), Rule(311).
+author_exists(v0, v1, r) :- author(v1, v2), author(v2, v0), r = 311, Rule(311).
+author_exists(v0, v1, r) :- author_exists(v1, v2, r), author(v2, v0), Rule(r), Rule(311).
+author_exists(v0, v1, r) :- author(v1, v2), author_exists(v2, v0, r), Rule(r), Rule(311).
+author(v0, v1) :- author(v2, v0), author(v1, v2), Rule(312).
+author_exists(v0, v1, r) :- author(v2, v0), author(v1, v2), r = 312, Rule(312).
+author_exists(v0, v1, r) :- author_exists(v2, v0, r), author(v1, v2), Rule(r), Rule(312).
+author_exists(v0, v1, r) :- author(v2, v0), author_exists(v1, v2, r), Rule(r), Rule(312).
+author(v0, v1) :- author(v2, v0), author(v2, v1), Rule(313).
+author_exists(v0, v1, r) :- author(v2, v0), author(v2, v1), r = 313, Rule(313).
+author_exists(v0, v1, r) :- author_exists(v2, v0, r), author(v2, v1), Rule(r), Rule(313).
+author_exists(v0, v1, r) :- author(v2, v0), author_exists(v2, v1, r), Rule(r), Rule(313).
+author(v0, v1) :- author(v0, v2), author(v1, v2), Rule(314).
+author_exists(v0, v1, r) :- author(v0, v2), author(v1, v2), r = 314, Rule(314).
+author_exists(v0, v1, r) :- author_exists(v0, v2, r), author(v1, v2), Rule(r), Rule(314).
+author_exists(v0, v1, r) :- author(v0, v2), author_exists(v1, v2, r), Rule(r), Rule(314).
+author(v0, v1) :- author(v0, v2), author(v2, v1), Rule(315).
+author_exists(v0, v1, r) :- author(v0, v2), author(v2, v1), r = 315, Rule(315).
+author_exists(v0, v1, r) :- author_exists(v0, v2, r), author(v2, v1), Rule(r), Rule(315).
+author_exists(v0, v1, r) :- author(v0, v2), author_exists(v2, v1, r), Rule(r), Rule(315).
+author(v0, v1) :- author(v2, v1), author(v2, v0), Rule(316).
+author_exists(v0, v1, r) :- author(v2, v1), author(v2, v0), r = 316, Rule(316).
+author_exists(v0, v1, r) :- author_exists(v2, v1, r), author(v2, v0), Rule(r), Rule(316).
+author_exists(v0, v1, r) :- author(v2, v1), author_exists(v2, v0, r), Rule(r), Rule(316).
+author(v0, v1) :- author(v1, v2), author(v0, v2), Rule(317).
+author_exists(v0, v1, r) :- author(v1, v2), author(v0, v2), r = 317, Rule(317).
+author_exists(v0, v1, r) :- author_exists(v1, v2, r), author(v0, v2), Rule(r), Rule(317).
+author_exists(v0, v1, r) :- author(v1, v2), author_exists(v0, v2, r), Rule(r), Rule(317).

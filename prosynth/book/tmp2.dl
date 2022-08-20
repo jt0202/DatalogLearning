@@ -1,0 +1,116 @@
+invent_error
+inv_0(v0, v1) :- Iauthor(v0, v1), Rule(4).
+input prevent
+inv_0(v0, v1) :- Iauthor(v1, v0), Rule(5).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), Rule(6).
+invent_error
+inv_0(v0, v1) :- precededBy(v0, v1), Iauthor(v0, v1), Rule(32).
+input prevent
+inv_0(v0, v1) :- precededBy(v0, v1), Iauthor(v1, v0), Rule(33).
+input prevent
+inv_0(v0, v1) :- precededBy(v1, v0), Iauthor(v1, v0), Rule(34).
+invent_error
+inv_0(v0, v1) :- precededBy(v1, v0), Iauthor(v0, v1), Rule(35).
+Head twice 
+inv_0(v0, v1) :- precededBy(v0, v1), inv_0(v0, v1), Rule(44).
+Head twice 
+inv_0(v0, v1) :- precededBy(v1, v0), inv_0(v0, v1), Rule(47).
+invent_error
+inv_0(v0, v1) :- genre(v0, v1), Iauthor(v0, v1), Rule(68).
+input prevent
+inv_0(v0, v1) :- genre(v0, v1), Iauthor(v1, v0), Rule(69).
+input prevent
+inv_0(v0, v1) :- genre(v1, v0), Iauthor(v1, v0), Rule(70).
+invent_error
+inv_0(v0, v1) :- genre(v1, v0), Iauthor(v0, v1), Rule(71).
+Head twice 
+inv_0(v0, v1) :- genre(v0, v1), inv_0(v0, v1), Rule(80).
+Head twice 
+inv_0(v0, v1) :- genre(v1, v0), inv_0(v0, v1), Rule(83).
+invent_error
+inv_0(v0, v1) :- Iauthor(v0, v1), Iauthor(v0, v1), Rule(92).
+input prevent
+inv_0(v0, v1) :- Iauthor(v0, v1), Iauthor(v1, v0), Rule(93).
+input prevent
+inv_0(v0, v1) :- Iauthor(v1, v0), Iauthor(v1, v0), Rule(94).
+input prevent
+inv_0(v0, v1) :- Iauthor(v1, v0), Iauthor(v0, v1), Rule(95).
+Head twice 
+inv_0(v0, v1) :- Iauthor(v0, v1), inv_0(v0, v1), Rule(104).
+invent_error
+inv_0(v0, v1) :- Iauthor(v0, v1), inv_0(v1, v0), Rule(105).
+input prevent
+inv_0(v0, v1) :- Iauthor(v1, v0), inv_0(v1, v0), Rule(106).
+Head twice 
+inv_0(v0, v1) :- Iauthor(v1, v0), inv_0(v0, v1), Rule(107).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v0, v1), Rule(116).
+Head twice 
+inv_0(v0, v1) :- inv_0(v0, v1), inv_0(v1, v0), Rule(117).
+Head twice 
+inv_0(v0, v1) :- inv_0(v1, v0), inv_0(v0, v1), Rule(119).
+Head twice 
+author(v0, v1) :- Iauthor(v0, v1), Rule(132).
+input prevent
+author(v0, v1) :- Iauthor(v1, v0), Rule(133).
+Head twice 
+author(v0, v1) :- author(v0, v1), Rule(136).
+Head twice 
+author(v0, v1) :- precededBy(v0, v1), Iauthor(v0, v1), Rule(162).
+input prevent
+author(v0, v1) :- precededBy(v0, v1), Iauthor(v1, v0), Rule(163).
+input prevent
+author(v0, v1) :- precededBy(v1, v0), Iauthor(v1, v0), Rule(164).
+Head twice 
+author(v0, v1) :- precededBy(v1, v0), Iauthor(v0, v1), Rule(165).
+Head twice 
+author(v0, v1) :- precededBy(v0, v1), author(v0, v1), Rule(186).
+Head twice 
+author(v0, v1) :- precededBy(v1, v0), author(v0, v1), Rule(189).
+Head twice 
+author(v0, v1) :- genre(v0, v1), Iauthor(v0, v1), Rule(210).
+input prevent
+author(v0, v1) :- genre(v0, v1), Iauthor(v1, v0), Rule(211).
+input prevent
+author(v0, v1) :- genre(v1, v0), Iauthor(v1, v0), Rule(212).
+Head twice 
+author(v0, v1) :- genre(v1, v0), Iauthor(v0, v1), Rule(213).
+Head twice 
+author(v0, v1) :- genre(v0, v1), author(v0, v1), Rule(234).
+Head twice 
+author(v0, v1) :- genre(v1, v0), author(v0, v1), Rule(237).
+Head twice 
+author(v0, v1) :- Iauthor(v0, v1), Iauthor(v0, v1), Rule(246).
+Head twice 
+author(v0, v1) :- Iauthor(v0, v1), Iauthor(v1, v0), Rule(247).
+input prevent
+author(v0, v1) :- Iauthor(v1, v0), Iauthor(v1, v0), Rule(248).
+Head twice 
+author(v0, v1) :- Iauthor(v1, v0), Iauthor(v0, v1), Rule(249).
+Head twice 
+author(v0, v1) :- Iauthor(v0, v1), inv_0(v0, v1), Rule(258).
+Head twice 
+author(v0, v1) :- Iauthor(v0, v1), inv_0(v1, v0), Rule(259).
+input prevent
+author(v0, v1) :- Iauthor(v1, v0), inv_0(v1, v0), Rule(260).
+input prevent
+author(v0, v1) :- Iauthor(v1, v0), inv_0(v0, v1), Rule(261).
+Head twice 
+author(v0, v1) :- Iauthor(v0, v1), author(v0, v1), Rule(270).
+Head twice 
+author(v0, v1) :- Iauthor(v0, v1), author(v1, v0), Rule(271).
+input prevent
+author(v0, v1) :- Iauthor(v1, v0), author(v1, v0), Rule(272).
+Head twice 
+author(v0, v1) :- Iauthor(v1, v0), author(v0, v1), Rule(273).
+Head twice 
+author(v0, v1) :- inv_0(v0, v1), author(v0, v1), Rule(294).
+Head twice 
+author(v0, v1) :- inv_0(v1, v0), author(v0, v1), Rule(297).
+Head twice 
+author(v0, v1) :- author(v0, v1), author(v0, v1), Rule(306).
+Head twice 
+author(v0, v1) :- author(v0, v1), author(v1, v0), Rule(307).
+Head twice 
+author(v0, v1) :- author(v1, v0), author(v0, v1), Rule(309).

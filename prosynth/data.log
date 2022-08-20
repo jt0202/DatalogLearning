@@ -152,3 +152,6 @@
 {name: 'countrieso', z3: 1, souffle: 1, runtime: 333.0223343372345, setting_delta: 1}
 {name: 'countrieso', z3: 1, souffle: 1, runtime: 369.0388081073761, setting_delta: 1}
 {name: 'countrieso', z3: 1, souffle: 1, runtime: 298.3576855659485, setting_delta: 1}
+{name: 'book', z3: 1, souffle: 1, runtime: 1143.5108416080475, setting_delta: 1}
+{name: 'book', z3: 1, souffle: 1, runtime: 754.7970294952393, setting_delta: 1}
+{name: 'book', z3: 1, souffle: 1, runtime: 1783.0947811603546, setting_delta: 1}

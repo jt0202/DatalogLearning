@@ -1,0 +1,352 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl precededBy(v0: V, v1: V)
+.input precededBy
+
+.decl genre(v0: V, v1: V)
+.input genre
+
+.decl Iauthor(v0: V, v1: V)
+.input Iauthor
+
+.decl precededBy_notexists(v0: V, v1: V, r: number)
+.output precededBy_notexists
+
+.decl genre_notexists(v0: V, v1: V, r: number)
+.output genre_notexists
+
+.decl Iauthor_notexists(v0: V, v1: V, r: number)
+.output Iauthor_notexists
+
+.decl inv_0_notexists(v0: V, v1: V, r: number)
+.output inv_0_notexists
+
+.decl author_notexists(v0: V, v1: V, r: number)
+.output author_notexists
+
+
+
+precededBy_notexists(v0, v1, r) :- precededBy(v0, v1), Rule(r).
+genre_notexists(v0, v1, r) :- genre(v0, v1), Rule(r).
+Iauthor_notexists(v0, v1, r) :- Iauthor(v0, v1), Rule(r).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), Rule(r), r != 0, Rule(0).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), Rule(r), r != 1, Rule(1).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), Rule(r), r != 2, Rule(2).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), Rule(r), r != 3, Rule(3).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), Rule(r), r != 4, Rule(4).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), Rule(r), r != 5, Rule(5).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v0, v1, r), Rule(r), r != 6, Rule(6).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v1, v0, r), Rule(r), r != 7, Rule(7).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), precededBy_notexists(v0, v1, r), Rule(r), r != 8, Rule(8).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), precededBy_notexists(v1, v0, r), Rule(r), r != 9, Rule(9).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), precededBy_notexists(v1, v0, r), Rule(r), r != 10, Rule(10).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), precededBy_notexists(v0, v1, r), Rule(r), r != 11, Rule(11).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), precededBy_notexists(v0, v2, r), Rule(r), r != 12, Rule(12).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), precededBy_notexists(v2, v0, r), Rule(r), r != 13, Rule(13).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), precededBy_notexists(v1, v2, r), Rule(r), r != 14, Rule(14).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), precededBy_notexists(v2, v1, r), Rule(r), r != 15, Rule(15).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), precededBy_notexists(v1, v2, r), Rule(r), r != 16, Rule(16).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), precededBy_notexists(v2, v1, r), Rule(r), r != 17, Rule(17).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), precededBy_notexists(v2, v0, r), Rule(r), r != 18, Rule(18).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), precededBy_notexists(v0, v2, r), Rule(r), r != 19, Rule(19).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), genre_notexists(v0, v1, r), Rule(r), r != 20, Rule(20).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), genre_notexists(v1, v0, r), Rule(r), r != 21, Rule(21).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), genre_notexists(v1, v0, r), Rule(r), r != 22, Rule(22).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), genre_notexists(v0, v1, r), Rule(r), r != 23, Rule(23).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), genre_notexists(v0, v2, r), Rule(r), r != 24, Rule(24).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), genre_notexists(v2, v0, r), Rule(r), r != 25, Rule(25).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), genre_notexists(v1, v2, r), Rule(r), r != 26, Rule(26).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), genre_notexists(v2, v1, r), Rule(r), r != 27, Rule(27).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), genre_notexists(v1, v2, r), Rule(r), r != 28, Rule(28).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), genre_notexists(v2, v1, r), Rule(r), r != 29, Rule(29).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), genre_notexists(v2, v0, r), Rule(r), r != 30, Rule(30).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), genre_notexists(v0, v2, r), Rule(r), r != 31, Rule(31).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 32, Rule(32).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 33, Rule(33).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 34, Rule(34).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 35, Rule(35).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 36, Rule(36).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 37, Rule(37).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 38, Rule(38).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 39, Rule(39).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 40, Rule(40).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 41, Rule(41).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 42, Rule(42).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 43, Rule(43).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), inv_0_notexists(v0, v1, r), Rule(r), r != 44, Rule(44).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), inv_0_notexists(v1, v0, r), Rule(r), r != 45, Rule(45).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), inv_0_notexists(v1, v0, r), Rule(r), r != 46, Rule(46).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), inv_0_notexists(v0, v1, r), Rule(r), r != 47, Rule(47).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), inv_0_notexists(v0, v2, r), Rule(r), r != 48, Rule(48).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), inv_0_notexists(v2, v0, r), Rule(r), r != 49, Rule(49).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), inv_0_notexists(v1, v2, r), Rule(r), r != 50, Rule(50).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), inv_0_notexists(v2, v1, r), Rule(r), r != 51, Rule(51).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), inv_0_notexists(v1, v2, r), Rule(r), r != 52, Rule(52).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), inv_0_notexists(v2, v1, r), Rule(r), r != 53, Rule(53).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), inv_0_notexists(v2, v0, r), Rule(r), r != 54, Rule(54).
+inv_0_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), inv_0_notexists(v0, v2, r), Rule(r), r != 55, Rule(55).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), genre_notexists(v0, v1, r), Rule(r), r != 56, Rule(56).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), genre_notexists(v1, v0, r), Rule(r), r != 57, Rule(57).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), genre_notexists(v1, v0, r), Rule(r), r != 58, Rule(58).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), genre_notexists(v0, v1, r), Rule(r), r != 59, Rule(59).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), genre_notexists(v0, v2, r), Rule(r), r != 60, Rule(60).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), genre_notexists(v2, v0, r), Rule(r), r != 61, Rule(61).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), genre_notexists(v1, v2, r), Rule(r), r != 62, Rule(62).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), genre_notexists(v2, v1, r), Rule(r), r != 63, Rule(63).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), genre_notexists(v1, v2, r), Rule(r), r != 64, Rule(64).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), genre_notexists(v2, v1, r), Rule(r), r != 65, Rule(65).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), genre_notexists(v2, v0, r), Rule(r), r != 66, Rule(66).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), genre_notexists(v0, v2, r), Rule(r), r != 67, Rule(67).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 68, Rule(68).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 69, Rule(69).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 70, Rule(70).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 71, Rule(71).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 72, Rule(72).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 73, Rule(73).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 74, Rule(74).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 75, Rule(75).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 76, Rule(76).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 77, Rule(77).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 78, Rule(78).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 79, Rule(79).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), inv_0_notexists(v0, v1, r), Rule(r), r != 80, Rule(80).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), inv_0_notexists(v1, v0, r), Rule(r), r != 81, Rule(81).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), inv_0_notexists(v1, v0, r), Rule(r), r != 82, Rule(82).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), inv_0_notexists(v0, v1, r), Rule(r), r != 83, Rule(83).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), inv_0_notexists(v0, v2, r), Rule(r), r != 84, Rule(84).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), inv_0_notexists(v2, v0, r), Rule(r), r != 85, Rule(85).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), inv_0_notexists(v1, v2, r), Rule(r), r != 86, Rule(86).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), inv_0_notexists(v2, v1, r), Rule(r), r != 87, Rule(87).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), inv_0_notexists(v1, v2, r), Rule(r), r != 88, Rule(88).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), inv_0_notexists(v2, v1, r), Rule(r), r != 89, Rule(89).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), inv_0_notexists(v2, v0, r), Rule(r), r != 90, Rule(90).
+inv_0_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), inv_0_notexists(v0, v2, r), Rule(r), r != 91, Rule(91).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 92, Rule(92).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 93, Rule(93).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 94, Rule(94).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 95, Rule(95).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v2, v1, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 96, Rule(96).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v1, v2, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 97, Rule(97).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v2, v0, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 98, Rule(98).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v2, v0, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 99, Rule(99).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v0, v2, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 100, Rule(100).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v0, v2, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 101, Rule(101).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v2, v1, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 102, Rule(102).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v1, v2, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 103, Rule(103).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), inv_0_notexists(v0, v1, r), Rule(r), r != 104, Rule(104).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), inv_0_notexists(v1, v0, r), Rule(r), r != 105, Rule(105).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), inv_0_notexists(v1, v0, r), Rule(r), r != 106, Rule(106).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), inv_0_notexists(v0, v1, r), Rule(r), r != 107, Rule(107).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v2, v1, r), inv_0_notexists(v0, v2, r), Rule(r), r != 108, Rule(108).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v1, v2, r), inv_0_notexists(v2, v0, r), Rule(r), r != 109, Rule(109).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v2, v0, r), inv_0_notexists(v1, v2, r), Rule(r), r != 110, Rule(110).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v2, v0, r), inv_0_notexists(v2, v1, r), Rule(r), r != 111, Rule(111).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v0, v2, r), inv_0_notexists(v1, v2, r), Rule(r), r != 112, Rule(112).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v0, v2, r), inv_0_notexists(v2, v1, r), Rule(r), r != 113, Rule(113).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v2, v1, r), inv_0_notexists(v2, v0, r), Rule(r), r != 114, Rule(114).
+inv_0_notexists(v0, v1, r) :- Iauthor_notexists(v1, v2, r), inv_0_notexists(v0, v2, r), Rule(r), r != 115, Rule(115).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v0, v1, r), inv_0_notexists(v0, v1, r), Rule(r), r != 116, Rule(116).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v0, v1, r), inv_0_notexists(v1, v0, r), Rule(r), r != 117, Rule(117).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v1, v0, r), inv_0_notexists(v1, v0, r), Rule(r), r != 118, Rule(118).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v1, v0, r), inv_0_notexists(v0, v1, r), Rule(r), r != 119, Rule(119).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v2, v1, r), inv_0_notexists(v0, v2, r), Rule(r), r != 120, Rule(120).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v1, v2, r), inv_0_notexists(v2, v0, r), Rule(r), r != 121, Rule(121).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v2, v0, r), inv_0_notexists(v1, v2, r), Rule(r), r != 122, Rule(122).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v2, v0, r), inv_0_notexists(v2, v1, r), Rule(r), r != 123, Rule(123).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v0, v2, r), inv_0_notexists(v1, v2, r), Rule(r), r != 124, Rule(124).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v0, v2, r), inv_0_notexists(v2, v1, r), Rule(r), r != 125, Rule(125).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v2, v1, r), inv_0_notexists(v2, v0, r), Rule(r), r != 126, Rule(126).
+inv_0_notexists(v0, v1, r) :- inv_0_notexists(v1, v2, r), inv_0_notexists(v0, v2, r), Rule(r), r != 127, Rule(127).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), Rule(r), r != 128, Rule(128).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), Rule(r), r != 129, Rule(129).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), Rule(r), r != 130, Rule(130).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), Rule(r), r != 131, Rule(131).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), Rule(r), r != 132, Rule(132).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), Rule(r), r != 133, Rule(133).
+author_notexists(v0, v1, r) :- inv_0_notexists(v0, v1, r), Rule(r), r != 134, Rule(134).
+author_notexists(v0, v1, r) :- inv_0_notexists(v1, v0, r), Rule(r), r != 135, Rule(135).
+author_notexists(v0, v1, r) :- author_notexists(v0, v1, r), Rule(r), r != 136, Rule(136).
+author_notexists(v0, v1, r) :- author_notexists(v1, v0, r), Rule(r), r != 137, Rule(137).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), precededBy_notexists(v0, v1, r), Rule(r), r != 138, Rule(138).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), precededBy_notexists(v1, v0, r), Rule(r), r != 139, Rule(139).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), precededBy_notexists(v1, v0, r), Rule(r), r != 140, Rule(140).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), precededBy_notexists(v0, v1, r), Rule(r), r != 141, Rule(141).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), precededBy_notexists(v0, v2, r), Rule(r), r != 142, Rule(142).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), precededBy_notexists(v2, v0, r), Rule(r), r != 143, Rule(143).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), precededBy_notexists(v1, v2, r), Rule(r), r != 144, Rule(144).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), precededBy_notexists(v2, v1, r), Rule(r), r != 145, Rule(145).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), precededBy_notexists(v1, v2, r), Rule(r), r != 146, Rule(146).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), precededBy_notexists(v2, v1, r), Rule(r), r != 147, Rule(147).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), precededBy_notexists(v2, v0, r), Rule(r), r != 148, Rule(148).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), precededBy_notexists(v0, v2, r), Rule(r), r != 149, Rule(149).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), genre_notexists(v0, v1, r), Rule(r), r != 150, Rule(150).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), genre_notexists(v1, v0, r), Rule(r), r != 151, Rule(151).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), genre_notexists(v1, v0, r), Rule(r), r != 152, Rule(152).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), genre_notexists(v0, v1, r), Rule(r), r != 153, Rule(153).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), genre_notexists(v0, v2, r), Rule(r), r != 154, Rule(154).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), genre_notexists(v2, v0, r), Rule(r), r != 155, Rule(155).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), genre_notexists(v1, v2, r), Rule(r), r != 156, Rule(156).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), genre_notexists(v2, v1, r), Rule(r), r != 157, Rule(157).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), genre_notexists(v1, v2, r), Rule(r), r != 158, Rule(158).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), genre_notexists(v2, v1, r), Rule(r), r != 159, Rule(159).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), genre_notexists(v2, v0, r), Rule(r), r != 160, Rule(160).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), genre_notexists(v0, v2, r), Rule(r), r != 161, Rule(161).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 162, Rule(162).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 163, Rule(163).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 164, Rule(164).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 165, Rule(165).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 166, Rule(166).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 167, Rule(167).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 168, Rule(168).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 169, Rule(169).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 170, Rule(170).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 171, Rule(171).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 172, Rule(172).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 173, Rule(173).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), inv_0_notexists(v0, v1, r), Rule(r), r != 174, Rule(174).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), inv_0_notexists(v1, v0, r), Rule(r), r != 175, Rule(175).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), inv_0_notexists(v1, v0, r), Rule(r), r != 176, Rule(176).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), inv_0_notexists(v0, v1, r), Rule(r), r != 177, Rule(177).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), inv_0_notexists(v0, v2, r), Rule(r), r != 178, Rule(178).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), inv_0_notexists(v2, v0, r), Rule(r), r != 179, Rule(179).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), inv_0_notexists(v1, v2, r), Rule(r), r != 180, Rule(180).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), inv_0_notexists(v2, v1, r), Rule(r), r != 181, Rule(181).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), inv_0_notexists(v1, v2, r), Rule(r), r != 182, Rule(182).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), inv_0_notexists(v2, v1, r), Rule(r), r != 183, Rule(183).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), inv_0_notexists(v2, v0, r), Rule(r), r != 184, Rule(184).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), inv_0_notexists(v0, v2, r), Rule(r), r != 185, Rule(185).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), author_notexists(v0, v1, r), Rule(r), r != 186, Rule(186).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v1, r), author_notexists(v1, v0, r), Rule(r), r != 187, Rule(187).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), author_notexists(v1, v0, r), Rule(r), r != 188, Rule(188).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v0, r), author_notexists(v0, v1, r), Rule(r), r != 189, Rule(189).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), author_notexists(v0, v2, r), Rule(r), r != 190, Rule(190).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), author_notexists(v2, v0, r), Rule(r), r != 191, Rule(191).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), author_notexists(v1, v2, r), Rule(r), r != 192, Rule(192).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v0, r), author_notexists(v2, v1, r), Rule(r), r != 193, Rule(193).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), author_notexists(v1, v2, r), Rule(r), r != 194, Rule(194).
+author_notexists(v0, v1, r) :- precededBy_notexists(v0, v2, r), author_notexists(v2, v1, r), Rule(r), r != 195, Rule(195).
+author_notexists(v0, v1, r) :- precededBy_notexists(v2, v1, r), author_notexists(v2, v0, r), Rule(r), r != 196, Rule(196).
+author_notexists(v0, v1, r) :- precededBy_notexists(v1, v2, r), author_notexists(v0, v2, r), Rule(r), r != 197, Rule(197).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), genre_notexists(v0, v1, r), Rule(r), r != 198, Rule(198).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), genre_notexists(v1, v0, r), Rule(r), r != 199, Rule(199).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), genre_notexists(v1, v0, r), Rule(r), r != 200, Rule(200).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), genre_notexists(v0, v1, r), Rule(r), r != 201, Rule(201).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), genre_notexists(v0, v2, r), Rule(r), r != 202, Rule(202).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), genre_notexists(v2, v0, r), Rule(r), r != 203, Rule(203).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), genre_notexists(v1, v2, r), Rule(r), r != 204, Rule(204).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), genre_notexists(v2, v1, r), Rule(r), r != 205, Rule(205).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), genre_notexists(v1, v2, r), Rule(r), r != 206, Rule(206).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), genre_notexists(v2, v1, r), Rule(r), r != 207, Rule(207).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), genre_notexists(v2, v0, r), Rule(r), r != 208, Rule(208).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), genre_notexists(v0, v2, r), Rule(r), r != 209, Rule(209).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 210, Rule(210).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 211, Rule(211).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 212, Rule(212).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 213, Rule(213).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 214, Rule(214).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 215, Rule(215).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 216, Rule(216).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 217, Rule(217).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 218, Rule(218).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 219, Rule(219).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 220, Rule(220).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 221, Rule(221).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), inv_0_notexists(v0, v1, r), Rule(r), r != 222, Rule(222).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), inv_0_notexists(v1, v0, r), Rule(r), r != 223, Rule(223).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), inv_0_notexists(v1, v0, r), Rule(r), r != 224, Rule(224).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), inv_0_notexists(v0, v1, r), Rule(r), r != 225, Rule(225).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), inv_0_notexists(v0, v2, r), Rule(r), r != 226, Rule(226).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), inv_0_notexists(v2, v0, r), Rule(r), r != 227, Rule(227).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), inv_0_notexists(v1, v2, r), Rule(r), r != 228, Rule(228).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), inv_0_notexists(v2, v1, r), Rule(r), r != 229, Rule(229).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), inv_0_notexists(v1, v2, r), Rule(r), r != 230, Rule(230).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), inv_0_notexists(v2, v1, r), Rule(r), r != 231, Rule(231).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), inv_0_notexists(v2, v0, r), Rule(r), r != 232, Rule(232).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), inv_0_notexists(v0, v2, r), Rule(r), r != 233, Rule(233).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), author_notexists(v0, v1, r), Rule(r), r != 234, Rule(234).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v1, r), author_notexists(v1, v0, r), Rule(r), r != 235, Rule(235).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), author_notexists(v1, v0, r), Rule(r), r != 236, Rule(236).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v0, r), author_notexists(v0, v1, r), Rule(r), r != 237, Rule(237).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), author_notexists(v0, v2, r), Rule(r), r != 238, Rule(238).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), author_notexists(v2, v0, r), Rule(r), r != 239, Rule(239).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), author_notexists(v1, v2, r), Rule(r), r != 240, Rule(240).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v0, r), author_notexists(v2, v1, r), Rule(r), r != 241, Rule(241).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), author_notexists(v1, v2, r), Rule(r), r != 242, Rule(242).
+author_notexists(v0, v1, r) :- genre_notexists(v0, v2, r), author_notexists(v2, v1, r), Rule(r), r != 243, Rule(243).
+author_notexists(v0, v1, r) :- genre_notexists(v2, v1, r), author_notexists(v2, v0, r), Rule(r), r != 244, Rule(244).
+author_notexists(v0, v1, r) :- genre_notexists(v1, v2, r), author_notexists(v0, v2, r), Rule(r), r != 245, Rule(245).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 246, Rule(246).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 247, Rule(247).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), Iauthor_notexists(v1, v0, r), Rule(r), r != 248, Rule(248).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), Iauthor_notexists(v0, v1, r), Rule(r), r != 249, Rule(249).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v1, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 250, Rule(250).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v2, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 251, Rule(251).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v0, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 252, Rule(252).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v0, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 253, Rule(253).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v2, r), Iauthor_notexists(v1, v2, r), Rule(r), r != 254, Rule(254).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v2, r), Iauthor_notexists(v2, v1, r), Rule(r), r != 255, Rule(255).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v1, r), Iauthor_notexists(v2, v0, r), Rule(r), r != 256, Rule(256).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v2, r), Iauthor_notexists(v0, v2, r), Rule(r), r != 257, Rule(257).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), inv_0_notexists(v0, v1, r), Rule(r), r != 258, Rule(258).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), inv_0_notexists(v1, v0, r), Rule(r), r != 259, Rule(259).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), inv_0_notexists(v1, v0, r), Rule(r), r != 260, Rule(260).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), inv_0_notexists(v0, v1, r), Rule(r), r != 261, Rule(261).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v1, r), inv_0_notexists(v0, v2, r), Rule(r), r != 262, Rule(262).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v2, r), inv_0_notexists(v2, v0, r), Rule(r), r != 263, Rule(263).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v0, r), inv_0_notexists(v1, v2, r), Rule(r), r != 264, Rule(264).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v0, r), inv_0_notexists(v2, v1, r), Rule(r), r != 265, Rule(265).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v2, r), inv_0_notexists(v1, v2, r), Rule(r), r != 266, Rule(266).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v2, r), inv_0_notexists(v2, v1, r), Rule(r), r != 267, Rule(267).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v1, r), inv_0_notexists(v2, v0, r), Rule(r), r != 268, Rule(268).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v2, r), inv_0_notexists(v0, v2, r), Rule(r), r != 269, Rule(269).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), author_notexists(v0, v1, r), Rule(r), r != 270, Rule(270).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v1, r), author_notexists(v1, v0, r), Rule(r), r != 271, Rule(271).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), author_notexists(v1, v0, r), Rule(r), r != 272, Rule(272).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v0, r), author_notexists(v0, v1, r), Rule(r), r != 273, Rule(273).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v1, r), author_notexists(v0, v2, r), Rule(r), r != 274, Rule(274).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v2, r), author_notexists(v2, v0, r), Rule(r), r != 275, Rule(275).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v0, r), author_notexists(v1, v2, r), Rule(r), r != 276, Rule(276).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v0, r), author_notexists(v2, v1, r), Rule(r), r != 277, Rule(277).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v2, r), author_notexists(v1, v2, r), Rule(r), r != 278, Rule(278).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v0, v2, r), author_notexists(v2, v1, r), Rule(r), r != 279, Rule(279).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v2, v1, r), author_notexists(v2, v0, r), Rule(r), r != 280, Rule(280).
+author_notexists(v0, v1, r) :- Iauthor_notexists(v1, v2, r), author_notexists(v0, v2, r), Rule(r), r != 281, Rule(281).
+author_notexists(v0, v1, r) :- inv_0_notexists(v0, v1, r), inv_0_notexists(v0, v1, r), Rule(r), r != 282, Rule(282).
+author_notexists(v0, v1, r) :- inv_0_notexists(v0, v1, r), inv_0_notexists(v1, v0, r), Rule(r), r != 283, Rule(283).
+author_notexists(v0, v1, r) :- inv_0_notexists(v1, v0, r), inv_0_notexists(v1, v0, r), Rule(r), r != 284, Rule(284).
+author_notexists(v0, v1, r) :- inv_0_notexists(v1, v0, r), inv_0_notexists(v0, v1, r), Rule(r), r != 285, Rule(285).
+author_notexists(v0, v1, r) :- inv_0_notexists(v2, v1, r), inv_0_notexists(v0, v2, r), Rule(r), r != 286, Rule(286).
+author_notexists(v0, v1, r) :- inv_0_notexists(v1, v2, r), inv_0_notexists(v2, v0, r), Rule(r), r != 287, Rule(287).
+author_notexists(v0, v1, r) :- inv_0_notexists(v2, v0, r), inv_0_notexists(v1, v2, r), Rule(r), r != 288, Rule(288).
+author_notexists(v0, v1, r) :- inv_0_notexists(v2, v0, r), inv_0_notexists(v2, v1, r), Rule(r), r != 289, Rule(289).
+author_notexists(v0, v1, r) :- inv_0_notexists(v0, v2, r), inv_0_notexists(v1, v2, r), Rule(r), r != 290, Rule(290).
+author_notexists(v0, v1, r) :- inv_0_notexists(v0, v2, r), inv_0_notexists(v2, v1, r), Rule(r), r != 291, Rule(291).
+author_notexists(v0, v1, r) :- inv_0_notexists(v2, v1, r), inv_0_notexists(v2, v0, r), Rule(r), r != 292, Rule(292).
+author_notexists(v0, v1, r) :- inv_0_notexists(v1, v2, r), inv_0_notexists(v0, v2, r), Rule(r), r != 293, Rule(293).
+author_notexists(v0, v1, r) :- inv_0_notexists(v0, v1, r), author_notexists(v0, v1, r), Rule(r), r != 294, Rule(294).
+author_notexists(v0, v1, r) :- inv_0_notexists(v0, v1, r), author_notexists(v1, v0, r), Rule(r), r != 295, Rule(295).
+author_notexists(v0, v1, r) :- inv_0_notexists(v1, v0, r), author_notexists(v1, v0, r), Rule(r), r != 296, Rule(296).
+author_notexists(v0, v1, r) :- inv_0_notexists(v1, v0, r), author_notexists(v0, v1, r), Rule(r), r != 297, Rule(297).
+author_notexists(v0, v1, r) :- inv_0_notexists(v2, v1, r), author_notexists(v0, v2, r), Rule(r), r != 298, Rule(298).
+author_notexists(v0, v1, r) :- inv_0_notexists(v1, v2, r), author_notexists(v2, v0, r), Rule(r), r != 299, Rule(299).
+author_notexists(v0, v1, r) :- inv_0_notexists(v2, v0, r), author_notexists(v1, v2, r), Rule(r), r != 300, Rule(300).
+author_notexists(v0, v1, r) :- inv_0_notexists(v2, v0, r), author_notexists(v2, v1, r), Rule(r), r != 301, Rule(301).
+author_notexists(v0, v1, r) :- inv_0_notexists(v0, v2, r), author_notexists(v1, v2, r), Rule(r), r != 302, Rule(302).
+author_notexists(v0, v1, r) :- inv_0_notexists(v0, v2, r), author_notexists(v2, v1, r), Rule(r), r != 303, Rule(303).
+author_notexists(v0, v1, r) :- inv_0_notexists(v2, v1, r), author_notexists(v2, v0, r), Rule(r), r != 304, Rule(304).
+author_notexists(v0, v1, r) :- inv_0_notexists(v1, v2, r), author_notexists(v0, v2, r), Rule(r), r != 305, Rule(305).
+author_notexists(v0, v1, r) :- author_notexists(v0, v1, r), author_notexists(v0, v1, r), Rule(r), r != 306, Rule(306).
+author_notexists(v0, v1, r) :- author_notexists(v0, v1, r), author_notexists(v1, v0, r), Rule(r), r != 307, Rule(307).
+author_notexists(v0, v1, r) :- author_notexists(v1, v0, r), author_notexists(v1, v0, r), Rule(r), r != 308, Rule(308).
+author_notexists(v0, v1, r) :- author_notexists(v1, v0, r), author_notexists(v0, v1, r), Rule(r), r != 309, Rule(309).
+author_notexists(v0, v1, r) :- author_notexists(v2, v1, r), author_notexists(v0, v2, r), Rule(r), r != 310, Rule(310).
+author_notexists(v0, v1, r) :- author_notexists(v1, v2, r), author_notexists(v2, v0, r), Rule(r), r != 311, Rule(311).
+author_notexists(v0, v1, r) :- author_notexists(v2, v0, r), author_notexists(v1, v2, r), Rule(r), r != 312, Rule(312).
+author_notexists(v0, v1, r) :- author_notexists(v2, v0, r), author_notexists(v2, v1, r), Rule(r), r != 313, Rule(313).
+author_notexists(v0, v1, r) :- author_notexists(v0, v2, r), author_notexists(v1, v2, r), Rule(r), r != 314, Rule(314).
+author_notexists(v0, v1, r) :- author_notexists(v0, v2, r), author_notexists(v2, v1, r), Rule(r), r != 315, Rule(315).
+author_notexists(v0, v1, r) :- author_notexists(v2, v1, r), author_notexists(v2, v0, r), Rule(r), r != 316, Rule(316).
+author_notexists(v0, v1, r) :- author_notexists(v1, v2, r), author_notexists(v0, v2, r), Rule(r), r != 317, Rule(317).
