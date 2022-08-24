@@ -155,3 +155,15 @@
 {name: 'book', z3: 1, souffle: 1, runtime: 1143.5108416080475, setting_delta: 1}
 {name: 'book', z3: 1, souffle: 1, runtime: 754.7970294952393, setting_delta: 1}
 {name: 'book', z3: 1, souffle: 1, runtime: 1783.0947811603546, setting_delta: 1}
+{name: 'countriesneg5', z3: 1, souffle: 1, runtime: 308.18276953697205, setting_delta: 1}
+{name: 'countriesneg5', z3: 1, souffle: 1, runtime: 321.6707320213318, setting_delta: 1}
+{name: 'countriesneg5', z3: 1, souffle: 1, runtime: 329.5501503944397, setting_delta: 1}
+{name: 'countriesneg5', z3: 1, souffle: 1, runtime: 365.8121380805969, setting_delta: 1}
+{name: 'countriesneg5', z3: 1, souffle: 1, runtime: 296.0517728328705, setting_delta: 1}
+{name: 'filmsneg5', z3: 1, souffle: 1, runtime: 167.92545080184937, setting_delta: 1}
+{name: 'filmsneg5', z3: 1, souffle: 1, runtime: 167.9646828174591, setting_delta: 1}
+{name: 'filmsneg5', z3: 1, souffle: 1, runtime: 168.2012403011322, setting_delta: 1}
+{name: 'filmsneg5', z3: 1, souffle: 1, runtime: 153.1770453453064, setting_delta: 1}
+{name: 'filmsneg5', z3: 1, souffle: 1, runtime: 153.11820554733276, setting_delta: 1}
+{name: 'familyneg5', z3: 1, souffle: 1, runtime: 78.89535737037659, setting_delta: 1}
+{name: 'familyneg5', z3: 1, souffle: 1, runtime: 71.27576684951782, setting_delta: 1}
