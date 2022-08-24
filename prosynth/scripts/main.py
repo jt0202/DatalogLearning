@@ -14,7 +14,7 @@ from math import floor
 
 scriptPath = sys.argv[0]
 problemDirName = sys.argv[1]
-outputRelation = sys.argv[2]
+outputRelation = "livesIn"
 if len(sys.argv) > 3:
     types = sys.argv[3]
 else:
@@ -23,7 +23,7 @@ fileName = "kb.tsv"
 width = 2
 numberOfInventedPredicates = 1
 relevancethreshhold = 0.01
-negativeExampleAmount = 0
+negativeExampleAmount = 0.05
 train_test_split = 0
 multipleRelations = True
 
@@ -31,6 +31,7 @@ kb = open(problemDirName + "/" + fileName, encoding = "utf-8")
 kbSize = Path(problemDirName + "/" + fileName).stat().st_size
 
 relations = []
+entities = []
 
 #delete all previous facts
 for file in os.listdir(problemDirName):
@@ -43,6 +44,8 @@ for line in kb:
     line = line.split('\t')
     with open(problemDirName + "/" + line[1] + ".facts", "a+") as file:
         file.write(line[0] + "\t" + line[2]) 
+        entities.append(line[0])
+        entities.append(line[2])
 
 #determine relevant relations
 pairs = []
@@ -86,7 +89,7 @@ for rel in outputRelations:
         if it > 5000:
             break
         it = it + 1
-        negEx =subjects[random.randint(0, length)] + "\t" +  objects[random.randint(0, length)]
+        negEx =subjects[random.randint(0, length)] + "\t" +  entities[random.randint(0, len(entities))]
         with open(problemDirName + "/" + outputRelation + ".facts", "r") as file:
             if negEx in file.read():
                 pass
