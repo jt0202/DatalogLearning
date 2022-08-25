@@ -1,0 +1,242 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl precededBy(v0: V, v1: V)
+.input precededBy
+
+.decl genre(v0: V, v1: V)
+.input genre
+
+.decl Iauthor(v0: V, v1: V)
+.input Iauthor
+
+.decl inv_0(v0: V, v1: V)
+.output inv_0
+
+.decl author(v0: V, v1: V)
+.output author
+
+
+
+inv_0(v0, v1) :- precededBy(v0, v1), Rule(0).
+inv_0(v0, v1) :- precededBy(v1, v0), Rule(1).
+inv_0(v0, v1) :- genre(v0, v1), Rule(2).
+inv_0(v0, v1) :- genre(v1, v0), Rule(3).
+inv_0(v0, v1) :- inv_0(v1, v0), Rule(7).
+inv_0(v0, v1) :- precededBy(v0, v1), precededBy(v0, v1), Rule(8).
+inv_0(v0, v1) :- precededBy(v0, v1), precededBy(v1, v0), Rule(9).
+inv_0(v0, v1) :- precededBy(v1, v0), precededBy(v1, v0), Rule(10).
+inv_0(v0, v1) :- precededBy(v1, v0), precededBy(v0, v1), Rule(11).
+inv_0(v0, v1) :- precededBy(v2, v1), precededBy(v0, v2), Rule(12).
+inv_0(v0, v1) :- precededBy(v1, v2), precededBy(v2, v0), Rule(13).
+inv_0(v0, v1) :- precededBy(v2, v0), precededBy(v1, v2), Rule(14).
+inv_0(v0, v1) :- precededBy(v2, v0), precededBy(v2, v1), Rule(15).
+inv_0(v0, v1) :- precededBy(v0, v2), precededBy(v1, v2), Rule(16).
+inv_0(v0, v1) :- precededBy(v0, v2), precededBy(v2, v1), Rule(17).
+inv_0(v0, v1) :- precededBy(v2, v1), precededBy(v2, v0), Rule(18).
+inv_0(v0, v1) :- precededBy(v1, v2), precededBy(v0, v2), Rule(19).
+inv_0(v0, v1) :- precededBy(v0, v1), genre(v0, v1), Rule(20).
+inv_0(v0, v1) :- precededBy(v0, v1), genre(v1, v0), Rule(21).
+inv_0(v0, v1) :- precededBy(v1, v0), genre(v1, v0), Rule(22).
+inv_0(v0, v1) :- precededBy(v1, v0), genre(v0, v1), Rule(23).
+inv_0(v0, v1) :- precededBy(v2, v1), genre(v0, v2), Rule(24).
+inv_0(v0, v1) :- precededBy(v1, v2), genre(v2, v0), Rule(25).
+inv_0(v0, v1) :- precededBy(v2, v0), genre(v1, v2), Rule(26).
+inv_0(v0, v1) :- precededBy(v2, v0), genre(v2, v1), Rule(27).
+inv_0(v0, v1) :- precededBy(v0, v2), genre(v1, v2), Rule(28).
+inv_0(v0, v1) :- precededBy(v0, v2), genre(v2, v1), Rule(29).
+inv_0(v0, v1) :- precededBy(v2, v1), genre(v2, v0), Rule(30).
+inv_0(v0, v1) :- precededBy(v1, v2), genre(v0, v2), Rule(31).
+inv_0(v0, v1) :- precededBy(v0, v1), inv_0(v1, v0), Rule(45).
+inv_0(v0, v1) :- precededBy(v1, v0), inv_0(v1, v0), Rule(46).
+inv_0(v0, v1) :- precededBy(v2, v1), inv_0(v0, v2), Rule(48).
+inv_0(v0, v1) :- precededBy(v1, v2), inv_0(v2, v0), Rule(49).
+inv_0(v0, v1) :- precededBy(v2, v0), inv_0(v1, v2), Rule(50).
+inv_0(v0, v1) :- precededBy(v2, v0), inv_0(v2, v1), Rule(51).
+inv_0(v0, v1) :- precededBy(v0, v2), inv_0(v1, v2), Rule(52).
+inv_0(v0, v1) :- precededBy(v0, v2), inv_0(v2, v1), Rule(53).
+inv_0(v0, v1) :- precededBy(v2, v1), inv_0(v2, v0), Rule(54).
+inv_0(v0, v1) :- precededBy(v1, v2), inv_0(v0, v2), Rule(55).
+inv_0(v0, v1) :- genre(v0, v1), genre(v0, v1), Rule(56).
+inv_0(v0, v1) :- genre(v0, v1), genre(v1, v0), Rule(57).
+inv_0(v0, v1) :- genre(v1, v0), genre(v1, v0), Rule(58).
+inv_0(v0, v1) :- genre(v1, v0), genre(v0, v1), Rule(59).
+inv_0(v0, v1) :- genre(v2, v1), genre(v0, v2), Rule(60).
+inv_0(v0, v1) :- genre(v1, v2), genre(v2, v0), Rule(61).
+inv_0(v0, v1) :- genre(v2, v0), genre(v1, v2), Rule(62).
+inv_0(v0, v1) :- genre(v2, v0), genre(v2, v1), Rule(63).
+inv_0(v0, v1) :- genre(v0, v2), genre(v1, v2), Rule(64).
+inv_0(v0, v1) :- genre(v0, v2), genre(v2, v1), Rule(65).
+inv_0(v0, v1) :- genre(v2, v1), genre(v2, v0), Rule(66).
+inv_0(v0, v1) :- genre(v1, v2), genre(v0, v2), Rule(67).
+inv_0(v0, v1) :- genre(v0, v1), inv_0(v1, v0), Rule(81).
+inv_0(v0, v1) :- genre(v1, v0), inv_0(v1, v0), Rule(82).
+inv_0(v0, v1) :- genre(v2, v1), inv_0(v0, v2), Rule(84).
+inv_0(v0, v1) :- genre(v1, v2), inv_0(v2, v0), Rule(85).
+inv_0(v0, v1) :- genre(v2, v0), inv_0(v1, v2), Rule(86).
+inv_0(v0, v1) :- genre(v2, v0), inv_0(v2, v1), Rule(87).
+inv_0(v0, v1) :- genre(v0, v2), inv_0(v1, v2), Rule(88).
+inv_0(v0, v1) :- genre(v0, v2), inv_0(v2, v1), Rule(89).
+inv_0(v0, v1) :- genre(v2, v1), inv_0(v2, v0), Rule(90).
+inv_0(v0, v1) :- genre(v1, v2), inv_0(v0, v2), Rule(91).
+inv_0(v0, v1) :- inv_0(v1, v0), inv_0(v1, v0), Rule(118).
+inv_0(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(120).
+inv_0(v0, v1) :- inv_0(v1, v2), inv_0(v2, v0), Rule(121).
+inv_0(v0, v1) :- inv_0(v2, v0), inv_0(v1, v2), Rule(122).
+inv_0(v0, v1) :- inv_0(v2, v0), inv_0(v2, v1), Rule(123).
+inv_0(v0, v1) :- inv_0(v0, v2), inv_0(v1, v2), Rule(124).
+inv_0(v0, v1) :- inv_0(v0, v2), inv_0(v2, v1), Rule(125).
+inv_0(v0, v1) :- inv_0(v2, v1), inv_0(v2, v0), Rule(126).
+inv_0(v0, v1) :- inv_0(v1, v2), inv_0(v0, v2), Rule(127).
+author(v0, v1) :- precededBy(v0, v1), Rule(128).
+author(v0, v1) :- precededBy(v1, v0), Rule(129).
+author(v0, v1) :- genre(v0, v1), Rule(130).
+author(v0, v1) :- genre(v1, v0), Rule(131).
+author(v0, v1) :- inv_0(v0, v1), Rule(134).
+author(v0, v1) :- inv_0(v1, v0), Rule(135).
+author(v0, v1) :- author(v1, v0), Rule(137).
+author(v0, v1) :- precededBy(v0, v1), precededBy(v0, v1), Rule(138).
+author(v0, v1) :- precededBy(v0, v1), precededBy(v1, v0), Rule(139).
+author(v0, v1) :- precededBy(v1, v0), precededBy(v1, v0), Rule(140).
+author(v0, v1) :- precededBy(v1, v0), precededBy(v0, v1), Rule(141).
+author(v0, v1) :- precededBy(v2, v1), precededBy(v0, v2), Rule(142).
+author(v0, v1) :- precededBy(v1, v2), precededBy(v2, v0), Rule(143).
+author(v0, v1) :- precededBy(v2, v0), precededBy(v1, v2), Rule(144).
+author(v0, v1) :- precededBy(v2, v0), precededBy(v2, v1), Rule(145).
+author(v0, v1) :- precededBy(v0, v2), precededBy(v1, v2), Rule(146).
+author(v0, v1) :- precededBy(v0, v2), precededBy(v2, v1), Rule(147).
+author(v0, v1) :- precededBy(v2, v1), precededBy(v2, v0), Rule(148).
+author(v0, v1) :- precededBy(v1, v2), precededBy(v0, v2), Rule(149).
+author(v0, v1) :- precededBy(v0, v1), genre(v0, v1), Rule(150).
+author(v0, v1) :- precededBy(v0, v1), genre(v1, v0), Rule(151).
+author(v0, v1) :- precededBy(v1, v0), genre(v1, v0), Rule(152).
+author(v0, v1) :- precededBy(v1, v0), genre(v0, v1), Rule(153).
+author(v0, v1) :- precededBy(v2, v1), genre(v0, v2), Rule(154).
+author(v0, v1) :- precededBy(v1, v2), genre(v2, v0), Rule(155).
+author(v0, v1) :- precededBy(v2, v0), genre(v1, v2), Rule(156).
+author(v0, v1) :- precededBy(v2, v0), genre(v2, v1), Rule(157).
+author(v0, v1) :- precededBy(v0, v2), genre(v1, v2), Rule(158).
+author(v0, v1) :- precededBy(v0, v2), genre(v2, v1), Rule(159).
+author(v0, v1) :- precededBy(v2, v1), genre(v2, v0), Rule(160).
+author(v0, v1) :- precededBy(v1, v2), genre(v0, v2), Rule(161).
+author(v0, v1) :- precededBy(v2, v1), Iauthor(v0, v2), Rule(166).
+author(v0, v1) :- precededBy(v1, v2), Iauthor(v2, v0), Rule(167).
+author(v0, v1) :- precededBy(v2, v0), Iauthor(v1, v2), Rule(168).
+author(v0, v1) :- precededBy(v2, v0), Iauthor(v2, v1), Rule(169).
+author(v0, v1) :- precededBy(v0, v2), Iauthor(v1, v2), Rule(170).
+author(v0, v1) :- precededBy(v0, v2), Iauthor(v2, v1), Rule(171).
+author(v0, v1) :- precededBy(v2, v1), Iauthor(v2, v0), Rule(172).
+author(v0, v1) :- precededBy(v1, v2), Iauthor(v0, v2), Rule(173).
+author(v0, v1) :- precededBy(v0, v1), inv_0(v0, v1), Rule(174).
+author(v0, v1) :- precededBy(v0, v1), inv_0(v1, v0), Rule(175).
+author(v0, v1) :- precededBy(v1, v0), inv_0(v1, v0), Rule(176).
+author(v0, v1) :- precededBy(v1, v0), inv_0(v0, v1), Rule(177).
+author(v0, v1) :- precededBy(v2, v1), inv_0(v0, v2), Rule(178).
+author(v0, v1) :- precededBy(v1, v2), inv_0(v2, v0), Rule(179).
+author(v0, v1) :- precededBy(v2, v0), inv_0(v1, v2), Rule(180).
+author(v0, v1) :- precededBy(v2, v0), inv_0(v2, v1), Rule(181).
+author(v0, v1) :- precededBy(v0, v2), inv_0(v1, v2), Rule(182).
+author(v0, v1) :- precededBy(v0, v2), inv_0(v2, v1), Rule(183).
+author(v0, v1) :- precededBy(v2, v1), inv_0(v2, v0), Rule(184).
+author(v0, v1) :- precededBy(v1, v2), inv_0(v0, v2), Rule(185).
+author(v0, v1) :- precededBy(v0, v1), author(v1, v0), Rule(187).
+author(v0, v1) :- precededBy(v1, v0), author(v1, v0), Rule(188).
+author(v0, v1) :- precededBy(v2, v1), author(v0, v2), Rule(190).
+author(v0, v1) :- precededBy(v1, v2), author(v2, v0), Rule(191).
+author(v0, v1) :- precededBy(v2, v0), author(v1, v2), Rule(192).
+author(v0, v1) :- precededBy(v2, v0), author(v2, v1), Rule(193).
+author(v0, v1) :- precededBy(v0, v2), author(v1, v2), Rule(194).
+author(v0, v1) :- precededBy(v0, v2), author(v2, v1), Rule(195).
+author(v0, v1) :- precededBy(v2, v1), author(v2, v0), Rule(196).
+author(v0, v1) :- precededBy(v1, v2), author(v0, v2), Rule(197).
+author(v0, v1) :- genre(v0, v1), genre(v0, v1), Rule(198).
+author(v0, v1) :- genre(v0, v1), genre(v1, v0), Rule(199).
+author(v0, v1) :- genre(v1, v0), genre(v1, v0), Rule(200).
+author(v0, v1) :- genre(v1, v0), genre(v0, v1), Rule(201).
+author(v0, v1) :- genre(v2, v1), genre(v0, v2), Rule(202).
+author(v0, v1) :- genre(v1, v2), genre(v2, v0), Rule(203).
+author(v0, v1) :- genre(v2, v0), genre(v1, v2), Rule(204).
+author(v0, v1) :- genre(v2, v0), genre(v2, v1), Rule(205).
+author(v0, v1) :- genre(v0, v2), genre(v1, v2), Rule(206).
+author(v0, v1) :- genre(v0, v2), genre(v2, v1), Rule(207).
+author(v0, v1) :- genre(v2, v1), genre(v2, v0), Rule(208).
+author(v0, v1) :- genre(v1, v2), genre(v0, v2), Rule(209).
+author(v0, v1) :- genre(v2, v1), Iauthor(v0, v2), Rule(214).
+author(v0, v1) :- genre(v1, v2), Iauthor(v2, v0), Rule(215).
+author(v0, v1) :- genre(v2, v0), Iauthor(v1, v2), Rule(216).
+author(v0, v1) :- genre(v2, v0), Iauthor(v2, v1), Rule(217).
+author(v0, v1) :- genre(v0, v2), Iauthor(v1, v2), Rule(218).
+author(v0, v1) :- genre(v0, v2), Iauthor(v2, v1), Rule(219).
+author(v0, v1) :- genre(v2, v1), Iauthor(v2, v0), Rule(220).
+author(v0, v1) :- genre(v1, v2), Iauthor(v0, v2), Rule(221).
+author(v0, v1) :- genre(v0, v1), inv_0(v0, v1), Rule(222).
+author(v0, v1) :- genre(v0, v1), inv_0(v1, v0), Rule(223).
+author(v0, v1) :- genre(v1, v0), inv_0(v1, v0), Rule(224).
+author(v0, v1) :- genre(v1, v0), inv_0(v0, v1), Rule(225).
+author(v0, v1) :- genre(v2, v1), inv_0(v0, v2), Rule(226).
+author(v0, v1) :- genre(v1, v2), inv_0(v2, v0), Rule(227).
+author(v0, v1) :- genre(v2, v0), inv_0(v1, v2), Rule(228).
+author(v0, v1) :- genre(v2, v0), inv_0(v2, v1), Rule(229).
+author(v0, v1) :- genre(v0, v2), inv_0(v1, v2), Rule(230).
+author(v0, v1) :- genre(v0, v2), inv_0(v2, v1), Rule(231).
+author(v0, v1) :- genre(v2, v1), inv_0(v2, v0), Rule(232).
+author(v0, v1) :- genre(v1, v2), inv_0(v0, v2), Rule(233).
+author(v0, v1) :- genre(v0, v1), author(v1, v0), Rule(235).
+author(v0, v1) :- genre(v1, v0), author(v1, v0), Rule(236).
+author(v0, v1) :- genre(v2, v1), author(v0, v2), Rule(238).
+author(v0, v1) :- genre(v1, v2), author(v2, v0), Rule(239).
+author(v0, v1) :- genre(v2, v0), author(v1, v2), Rule(240).
+author(v0, v1) :- genre(v2, v0), author(v2, v1), Rule(241).
+author(v0, v1) :- genre(v0, v2), author(v1, v2), Rule(242).
+author(v0, v1) :- genre(v0, v2), author(v2, v1), Rule(243).
+author(v0, v1) :- genre(v2, v1), author(v2, v0), Rule(244).
+author(v0, v1) :- genre(v1, v2), author(v0, v2), Rule(245).
+author(v0, v1) :- Iauthor(v2, v1), Iauthor(v0, v2), Rule(250).
+author(v0, v1) :- Iauthor(v1, v2), Iauthor(v2, v0), Rule(251).
+author(v0, v1) :- Iauthor(v2, v0), Iauthor(v1, v2), Rule(252).
+author(v0, v1) :- Iauthor(v2, v0), Iauthor(v2, v1), Rule(253).
+author(v0, v1) :- Iauthor(v0, v2), Iauthor(v1, v2), Rule(254).
+author(v0, v1) :- Iauthor(v0, v2), Iauthor(v2, v1), Rule(255).
+author(v0, v1) :- Iauthor(v2, v1), Iauthor(v2, v0), Rule(256).
+author(v0, v1) :- Iauthor(v1, v2), Iauthor(v0, v2), Rule(257).
+author(v0, v1) :- Iauthor(v2, v1), author(v0, v2), Rule(274).
+author(v0, v1) :- Iauthor(v1, v2), author(v2, v0), Rule(275).
+author(v0, v1) :- Iauthor(v2, v0), author(v1, v2), Rule(276).
+author(v0, v1) :- Iauthor(v2, v0), author(v2, v1), Rule(277).
+author(v0, v1) :- Iauthor(v0, v2), author(v1, v2), Rule(278).
+author(v0, v1) :- Iauthor(v0, v2), author(v2, v1), Rule(279).
+author(v0, v1) :- Iauthor(v2, v1), author(v2, v0), Rule(280).
+author(v0, v1) :- Iauthor(v1, v2), author(v0, v2), Rule(281).
+author(v0, v1) :- inv_0(v0, v1), inv_0(v0, v1), Rule(282).
+author(v0, v1) :- inv_0(v0, v1), inv_0(v1, v0), Rule(283).
+author(v0, v1) :- inv_0(v1, v0), inv_0(v1, v0), Rule(284).
+author(v0, v1) :- inv_0(v1, v0), inv_0(v0, v1), Rule(285).
+author(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(286).
+author(v0, v1) :- inv_0(v1, v2), inv_0(v2, v0), Rule(287).
+author(v0, v1) :- inv_0(v2, v0), inv_0(v1, v2), Rule(288).
+author(v0, v1) :- inv_0(v2, v0), inv_0(v2, v1), Rule(289).
+author(v0, v1) :- inv_0(v0, v2), inv_0(v1, v2), Rule(290).
+author(v0, v1) :- inv_0(v0, v2), inv_0(v2, v1), Rule(291).
+author(v0, v1) :- inv_0(v2, v1), inv_0(v2, v0), Rule(292).
+author(v0, v1) :- inv_0(v1, v2), inv_0(v0, v2), Rule(293).
+author(v0, v1) :- inv_0(v0, v1), author(v1, v0), Rule(295).
+author(v0, v1) :- inv_0(v1, v0), author(v1, v0), Rule(296).
+author(v0, v1) :- inv_0(v2, v1), author(v0, v2), Rule(298).
+author(v0, v1) :- inv_0(v1, v2), author(v2, v0), Rule(299).
+author(v0, v1) :- inv_0(v2, v0), author(v1, v2), Rule(300).
+author(v0, v1) :- inv_0(v2, v0), author(v2, v1), Rule(301).
+author(v0, v1) :- inv_0(v0, v2), author(v1, v2), Rule(302).
+author(v0, v1) :- inv_0(v0, v2), author(v2, v1), Rule(303).
+author(v0, v1) :- inv_0(v2, v1), author(v2, v0), Rule(304).
+author(v0, v1) :- inv_0(v1, v2), author(v0, v2), Rule(305).
+author(v0, v1) :- author(v1, v0), author(v1, v0), Rule(308).
+author(v0, v1) :- author(v2, v1), author(v0, v2), Rule(310).
+author(v0, v1) :- author(v1, v2), author(v2, v0), Rule(311).
+author(v0, v1) :- author(v2, v0), author(v1, v2), Rule(312).
+author(v0, v1) :- author(v2, v0), author(v2, v1), Rule(313).
+author(v0, v1) :- author(v0, v2), author(v1, v2), Rule(314).
+author(v0, v1) :- author(v0, v2), author(v2, v1), Rule(315).
+author(v0, v1) :- author(v2, v1), author(v2, v0), Rule(316).
+author(v0, v1) :- author(v1, v2), author(v0, v2), Rule(317).

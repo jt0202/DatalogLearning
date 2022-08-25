@@ -103,7 +103,6 @@ for rel in outputRelations:
         for line in negativeExamples:
             file.write(line)
     #split
-    entities = set()
     with open(problemDirName + "/" + outputRelation + ".facts", "r") as file:
         with open(problemDirName + "/" + outputRelation + ".expected", "w") as train_file:
             with open(problemDirName + "/I" + outputRelation + ".facts", "w") as inputFile:

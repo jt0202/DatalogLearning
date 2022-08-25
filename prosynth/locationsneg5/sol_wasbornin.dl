@@ -1,0 +1,24 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl livesin(v0: V, v1: V)
+.input livesin
+
+.decl Iwasbornin(v0: V, v1: V)
+.input Iwasbornin
+
+.decl inv_0(v0: V, v1: V)
+.output inv_0
+
+.decl wasbornin(v0: V, v1: V)
+.output wasbornin
+
+wasbornin(v0, v1) :- livesin(v0, v2), wasbornin(v1, v2), Rule(130).
+wasbornin(v0, v1) :- livesin(v2, v1), inv_0(v0, v2), Rule(114).
+wasbornin(v0, v1) :- livesin(v2, v1), wasbornin(v0, v2), Rule(126).
+inv_0(v0, v1) :- livesin(v0, v2), livesin(v1, v2), Rule(14).
+wasbornin(v0, v1) :- livesin(v0, v1), Rule(78).
+wasbornin(v0, v1) :- livesin(v1, v2), Iwasbornin(v0, v2), Rule(109).
+wasbornin(v0, v1) :- livesin(v2, v1), Iwasbornin(v2, v0), Rule(108).
