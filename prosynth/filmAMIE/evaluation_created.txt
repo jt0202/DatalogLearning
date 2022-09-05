@@ -1,0 +1,63 @@
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl produced(v0: V, v1: V)
+
+.input produced
+
+
+
+.decl directed(v0: V, v1: V)
+
+.input directed
+
+
+
+.decl actedin(v0: V, v1: V)
+
+.input actedin
+
+
+
+.decl ismarriedto(v0: V, v1: V)
+
+.input ismarriedto
+
+
+
+.decl Icreated(v0: V, v1: V)
+
+.input Icreated
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl created(v0: V, v1: V)
+
+.output created
+
+
+
+created(v0, v1) :- directed(v0, v1), Rule(266).
+
+True predictions:	222
+False predictions:	150
+Unknown predictions:	565
+Retrieved:	0.022929146870481306
+created(v0, v1) :- directed(v0, v1), Rule(266).
+
+ Positive Examples: 937
+Confidence: 0.23692636072572038
+Head coverage: 0.022929146870481306

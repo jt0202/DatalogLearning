@@ -1,0 +1,55 @@
+.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl dealswith(v0: V, v1: V)
+
+.input dealswith
+
+
+
+.decl hascurrency(v0: V, v1: V)
+
+.input hascurrency
+
+
+
+.decl imports(v0: V, v1: V)
+
+.input imports
+
+
+
+.decl hasofficiallanguage(v0: V, v1: V)
+
+.input hasofficiallanguage
+
+
+
+.decl Iexports(v0: V, v1: V)
+
+.input Iexports
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl exports(v0: V, v1: V)
+
+.output exports
+
+
+
+exports(v0, v1) :- dealswith(v0, v2), Iexports(v2, v1).
+
+

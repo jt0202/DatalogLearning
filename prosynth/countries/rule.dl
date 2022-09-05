@@ -50,7 +50,6 @@
 
 
 
-.decl out(v0: V, v1: V)
-.output out
+exports(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(311).
 
-out(v0, v1):- dealswith(v0, v2), imports(v2, v1), Rule(311), exports(v0, v1).
+

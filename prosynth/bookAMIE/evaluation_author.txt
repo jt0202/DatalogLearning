@@ -1,0 +1,41 @@
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl precededBy(v0: V, v1: V)
+
+.input precededBy
+
+
+
+.decl genre(v0: V, v1: V)
+
+.input genre
+
+
+
+.decl Iauthor(v0: V, v1: V)
+
+.input Iauthor
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl author(v0: V, v1: V)
+
+.output author
+True predictions:	0
+False predictions:	0
+Unknown predictions:	0
+Retrieved:	0.0

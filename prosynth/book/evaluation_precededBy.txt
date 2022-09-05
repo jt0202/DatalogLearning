@@ -1,1 +1,154 @@
-Time spent (in min): 22.97578971385956Time spent (in s): 1378.5473828315735
+Time spent (in min): 22.97578971385956Time spent (in s): 1378.5473828315735---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl genre(v0: V, v1: V)
+
+.input genre
+
+
+
+.decl author(v0: V, v1: V)
+
+.input author
+
+
+
+.decl IprecededBy(v0: V, v1: V)
+
+.input IprecededBy
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl precededBy(v0: V, v1: V)
+
+.output precededBy
+
+
+
+precededBy(v0, v1) :- IprecededBy(v2, v1), IprecededBy(v0, v2), Rule(250).
+
+precededBy(v0, v1) :- genre(v0, v2), genre(v1, v2), Rule(146).
+
+precededBy(v0, v1) :- IprecededBy(v2, v0), IprecededBy(v2, v1), Rule(253).
+
+precededBy(v0, v1) :- genre(v0, v2), precededBy(v1, v2), Rule(194).
+
+precededBy(v0, v1) :- genre(v2, v1), IprecededBy(v2, v0), Rule(172).
+
+True predictions:	3687
+False predictions:	6093
+Unknown predictions:	6738069
+Retrieved:	0.9497681607418856
+precededBy(v0, v1) :- IprecededBy(v2, v1), IprecededBy(v0, v2), Rule(250).
+
+ Positive Examples: 1897
+Confidence: 0.011597258829731154
+Head coverage: 0.005667181865018032
+precededBy(v0, v1) :- genre(v0, v2), genre(v1, v2), Rule(146).
+
+ Positive Examples: 5626985
+Confidence: 0.00032130883590412984
+Head coverage: 0.4657393096342092
+precededBy(v0, v1) :- IprecededBy(v2, v0), IprecededBy(v2, v1), Rule(253).
+
+ Positive Examples: 6995
+Confidence: 0.0031451036454610438
+Head coverage: 0.005667181865018032
+precededBy(v0, v1) :- genre(v0, v2), precededBy(v1, v2), Rule(194).
+
+ Positive Examples: 0
+precededBy(v0, v1) :- genre(v2, v1), IprecededBy(v2, v0), Rule(172).
+
+ Positive Examples: 4989
+Confidence: 0.0
+Head coverage: 0.0
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl genre(v0: V, v1: V)
+
+.input genre
+
+
+
+.decl author(v0: V, v1: V)
+
+.input author
+
+
+
+.decl IprecededBy(v0: V, v1: V)
+
+.input IprecededBy
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl precededBy(v0: V, v1: V)
+
+.output precededBy
+
+
+
+precededBy(v0, v1) :- IprecededBy(v2, v1), IprecededBy(v0, v2), Rule(250).
+
+precededBy(v0, v1) :- genre(v0, v2), genre(v1, v2), Rule(146).
+
+precededBy(v0, v1) :- IprecededBy(v2, v0), IprecededBy(v2, v1), Rule(253).
+
+precededBy(v0, v1) :- genre(v0, v2), precededBy(v1, v2), Rule(194).
+
+precededBy(v0, v1) :- genre(v2, v1), IprecededBy(v2, v0), Rule(172).
+
+True predictions:	3687
+False predictions:	6093
+Unknown predictions:	6738069
+Retrieved:	0.9497681607418856
+precededBy(v0, v1) :- IprecededBy(v2, v1), IprecededBy(v0, v2), Rule(250).
+
+ Positive Examples: 1897
+Confidence: 0.011597258829731154
+Head coverage: 0.005667181865018032
+precededBy(v0, v1) :- genre(v0, v2), genre(v1, v2), Rule(146).
+
+ Positive Examples: 5626985
+Confidence: 0.00032130883590412984
+Head coverage: 0.4657393096342092
+precededBy(v0, v1) :- IprecededBy(v2, v0), IprecededBy(v2, v1), Rule(253).
+
+ Positive Examples: 6995
+Confidence: 0.0031451036454610438
+Head coverage: 0.005667181865018032
+precededBy(v0, v1) :- genre(v0, v2), precededBy(v1, v2), Rule(194).
+
+ Positive Examples: 0
+precededBy(v0, v1) :- genre(v2, v1), IprecededBy(v2, v0), Rule(172).
+
+ Positive Examples: 4989
+Confidence: 0.0
+Head coverage: 0.0

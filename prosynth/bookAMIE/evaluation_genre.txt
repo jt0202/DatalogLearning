@@ -1,0 +1,63 @@
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl author(v0: V, v1: V)
+
+.input author
+
+
+
+.decl precededBy(v0: V, v1: V)
+
+.input precededBy
+
+
+
+.decl Igenre(v0: V, v1: V)
+
+.input Igenre
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl genre(v0: V, v1: V)
+
+.output genre
+
+
+
+genre(v0, v1) :- precededBy(v0, v2), Igenre(v2, v1), Rule(219).
+
+genre(v0, v1) :- precededBy(v2, v0), Igenre(v2, v1), Rule(217).
+
+
+
+True predictions:	3485
+False predictions:	635
+Unknown predictions:	2624
+Retrieved:	0.27148087559398615
+genre(v0, v1) :- precededBy(v0, v2), Igenre(v2, v1), Rule(219).
+
+ Positive Examples: 3214
+Confidence: 0.7454884878655881
+Head coverage: 0.18664797070966738
+genre(v0, v1) :- precededBy(v2, v0), Igenre(v2, v1), Rule(217).
+
+ Positive Examples: 4989
+Confidence: 0.47845259571056326
+Head coverage: 0.18594687232219365
+
+
+ Positive Examples: 0

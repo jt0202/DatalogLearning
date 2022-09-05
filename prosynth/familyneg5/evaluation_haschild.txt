@@ -1,1 +1,95 @@
-Time spent (in min): 3.693501802285512Time spent (in s): 221.61010813713074
+Time spent (in min): 3.693501802285512Time spent (in s): 221.61010813713074---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl ismarriedto(v0: V, v1: V)
+
+.input ismarriedto
+
+
+
+.decl Ihaschild(v0: V, v1: V)
+
+.input Ihaschild
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl haschild(v0: V, v1: V)
+
+.output haschild
+
+
+
+haschild(v0, v1) :- ismarriedto(v1, v2), haschild(v2, v0), Rule(127).
+
+haschild(v0, v1) :- ismarriedto(v0, v2), ismarriedto(v1, v2), Rule(94).
+
+haschild(v0, v1) :- ismarriedto(v0, v2), haschild(v1, v2), Rule(130).
+
+haschild(v0, v1) :- ismarriedto(v2, v1), Ihaschild(v2, v0), Rule(108).
+
+haschild(v0, v1) :- ismarriedto(v2, v0), haschild(v1, v2), Rule(128).
+
+haschild(v0, v1) :- ismarriedto(v1, v2), Ihaschild(v2, v0), Rule(103).
+
+haschild(v0, v1) :- ismarriedto(v0, v1), Rule(78).
+
+haschild(v0, v1) :- ismarriedto(v2, v0), Ihaschild(v1, v2), Rule(104).
+
+haschild(v0, v1) :- ismarriedto(v2, v0), Ihaschild(v2, v1), Rule(105).
+
+True predictions:	2054
+False predictions:	1034
+Unknown predictions:	14436
+Retrieved:	0.7507309941520468
+haschild(v0, v1) :- ismarriedto(v1, v2), haschild(v2, v0), Rule(127).
+
+ Positive Examples: 0
+haschild(v0, v1) :- ismarriedto(v0, v2), ismarriedto(v1, v2), Rule(94).
+
+ Positive Examples: 1972
+Confidence: 0.002535496957403651
+Head coverage: 0.001827485380116959
+haschild(v0, v1) :- ismarriedto(v0, v2), haschild(v1, v2), Rule(130).
+
+ Positive Examples: 0
+haschild(v0, v1) :- ismarriedto(v2, v1), Ihaschild(v2, v0), Rule(108).
+
+ Positive Examples: 2123
+Confidence: 0.0004710315591144607
+Head coverage: 0.0003654970760233918
+haschild(v0, v1) :- ismarriedto(v2, v0), haschild(v1, v2), Rule(128).
+
+ Positive Examples: 0
+haschild(v0, v1) :- ismarriedto(v1, v2), Ihaschild(v2, v0), Rule(103).
+
+ Positive Examples: 1720
+Confidence: 0.0
+Head coverage: 0.0
+haschild(v0, v1) :- ismarriedto(v0, v1), Rule(78).
+
+ Positive Examples: 1667
+Confidence: 0.017996400719856028
+Head coverage: 0.010964912280701754
+haschild(v0, v1) :- ismarriedto(v2, v0), Ihaschild(v1, v2), Rule(104).
+
+ Positive Examples: 836
+Confidence: 0.0
+Head coverage: 0.0
+haschild(v0, v1) :- ismarriedto(v2, v0), Ihaschild(v2, v1), Rule(105).
+
+ Positive Examples: 2123
+Confidence: 0.31700423928403204
+Head coverage: 0.2459795321637427

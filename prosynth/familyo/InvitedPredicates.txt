@@ -1,0 +1,4 @@
+.decl inv_0(v0: V, v1: V)
+.output inv_0
+.decl inv_0(v0: V, v1: V)
+.output inv_0

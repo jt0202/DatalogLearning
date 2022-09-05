@@ -1,0 +1,37 @@
+.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl ismarriedto(v0: V, v1: V)
+
+.input ismarriedto
+
+
+
+.decl Ihaschild(v0: V, v1: V)
+
+.input Ihaschild
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl haschild(v0: V, v1: V)
+
+.output haschild
+
+
+
+haschild(v0 , v1) :- Ihaschild(v2 , v1), ismarriedto(v0 ,v2).
+
+

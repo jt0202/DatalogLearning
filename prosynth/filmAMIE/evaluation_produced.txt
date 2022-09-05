@@ -1,0 +1,103 @@
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl directed(v0: V, v1: V)
+
+.input directed
+
+
+
+.decl actedin(v0: V, v1: V)
+
+.input actedin
+
+
+
+.decl ismarriedto(v0: V, v1: V)
+
+.input ismarriedto
+
+
+
+.decl created(v0: V, v1: V)
+
+.input created
+
+
+
+.decl Iproduced(v0: V, v1: V)
+
+.input Iproduced
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl produced(v0: V, v1: V)
+
+.output produced
+
+
+
+produced(v0, v1) :- actedin(v0, v1), Rule(266).
+
+produced(v0, v1) :- directed(v0, v1), Rule(266).
+
+produced(v0, v1) :- created(v0, v1), Rule(266).
+
+produced(v0, v1) :- created(v0, v1), directed(v0, v1).
+
+produced(v0, v1) :- ismarriedto(v0, v2), actedin(v2, v1).
+
+produced(v0, v1) :- created(v0, v1), actedin(v0, v1).
+
+produced(v0, v1) :- actedin(v0, v1), directed(v0, v1).
+True predictions:	154
+False predictions:	2449
+Unknown predictions:	15171
+Retrieved:	0.25
+produced(v0, v1) :- actedin(v0, v1), Rule(266).
+
+ Positive Examples: 4919
+Confidence: 0.012197601138442773
+Head coverage: 0.09740259740259741
+produced(v0, v1) :- directed(v0, v1), Rule(266).
+
+ Positive Examples: 937
+Confidence: 0.07043756670224119
+Head coverage: 0.10714285714285714
+produced(v0, v1) :- created(v0, v1), Rule(266).
+
+ Positive Examples: 9682
+Confidence: 0.008675893410452386
+Head coverage: 0.13636363636363635
+produced(v0, v1) :- created(v0, v1), directed(v0, v1).
+
+ Positive Examples: 222
+Confidence: 0.16666666666666666
+Head coverage: 0.060064935064935064
+produced(v0, v1) :- ismarriedto(v0, v2), actedin(v2, v1).
+
+ Positive Examples: 2656
+Confidence: 0.004894578313253012
+Head coverage: 0.021103896103896104
+produced(v0, v1) :- created(v0, v1), actedin(v0, v1).
+
+ Positive Examples: 72
+Confidence: 0.2777777777777778
+Head coverage: 0.032467532467532464
+produced(v0, v1) :- actedin(v0, v1), directed(v0, v1).
+ Positive Examples: 60
+Confidence: 0.2
+Head coverage: 0.01948051948051948

@@ -21,7 +21,7 @@ with open(problemDirName + "/Rule.facts", "w") as numbers:
         i = i +1
 
 entities = set()
-kb = open(problemDirName + "/kb.tsv", encoding = "utf-8")
+kb = open("dbpb.tsv")
 # File assumed to be in tsv format and not include any '/' sign 
 for line in kb:
     line = line.split('\t')
@@ -113,6 +113,8 @@ for file in os.listdir(problemDirName):
         for rule in rules:
             if "inv" in rule:
                 continue
+            if rule == "":
+                continue
 
             #support
             with open(problemDirName + "/rule.dl", "w") as ruleFile:
@@ -139,5 +141,9 @@ for file in os.listdir(problemDirName):
 
             trueResults = produced.intersection(expected)
             confidence = len(trueResults) / support
-            evFile.write(" Confidence: " + str(confidence) + "\n")
+
+            #headcoverage
+            evFile.write("Confidence: " + str(confidence) + "\n")
+            headcov = len(expected.intersection(produced))/(len(expected))
+            evFile.write("Head coverage: " + str(headcov) + "\n")
 

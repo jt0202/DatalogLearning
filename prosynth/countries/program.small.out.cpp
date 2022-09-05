@@ -1474,7 +1474,7 @@ SignalHandler::instance()->setMsg(R"_(inv_0(v0,v1,1,(max(max(@level_num_0,@level
    Rule(151,_,@level_num_0),
    imports(v2,v0,_,@level_num_1),
    imports(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [30:1-30:62])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [30:1-30:62])_");
 if(!(rel_5_imports->empty()) && !(rel_5_imports->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(151),0,0}});
@@ -1505,7 +1505,7 @@ SignalHandler::instance()->setMsg(R"_(inv_0(v0,v1,2,(max(max(@level_num_0,@level
    Rule(46,_,@level_num_0),
    dealswith(v2,v1,_,@level_num_1),
    imports(v2,v0,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [32:1-32:63])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [32:1-32:63])_");
 if(!(rel_5_imports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(46),0,0}});
@@ -1537,7 +1537,7 @@ SignalHandler::instance()->setMsg(R"_(inv_0(v0,v1,3,(max(max(@level_num_0,@level
    Rule(152,_,@level_num_0),
    imports(v0,v2,_,@level_num_1),
    imports(v1,v2,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [33:1-33:62])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [33:1-33:62])_");
 if(!(rel_5_imports->empty()) && !(rel_5_imports->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(152),0,0}});
@@ -1568,7 +1568,7 @@ SignalHandler::instance()->setMsg(R"_(inv_0(v0,v1,4,(max(max(@level_num_0,@level
    Rule(41,_,@level_num_0),
    dealswith(v1,v2,_,@level_num_1),
    imports(v2,v0,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [35:1-35:63])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [35:1-35:63])_");
 if(!(rel_5_imports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(41),0,0}});
@@ -1600,7 +1600,7 @@ SignalHandler::instance()->setMsg(R"_(inv_0(v0,v1,5,(max(max(@level_num_0,@level
    Rule(43,_,@level_num_0),
    dealswith(v2,v0,_,@level_num_1),
    imports(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [37:1-37:63])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [37:1-37:63])_");
 if(!(rel_5_imports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(43),0,0}});
@@ -1632,7 +1632,7 @@ SignalHandler::instance()->setMsg(R"_(inv_0(v0,v1,6,(max(max(@level_num_0,@level
    Rule(45,_,@level_num_0),
    dealswith(v0,v2,_,@level_num_1),
    imports(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [38:1-38:63])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [38:1-38:63])_");
 if(!(rel_5_imports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(45),0,0}});
@@ -1664,7 +1664,7 @@ SignalHandler::instance()->setMsg(R"_(inv_0(v0,v1,7,(max(max(@level_num_0,@level
    Rule(166,_,@level_num_0),
    imports(v2,v1,_,@level_num_1),
    hasofficiallanguage(v2,v0,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [40:1-40:74])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [40:1-40:74])_");
 if(!(rel_6_hasofficiallanguage->empty()) && !(rel_5_imports->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(166),0,0}});
@@ -1696,7 +1696,7 @@ SignalHandler::instance()->setMsg(R"_(inv_0(v0,v1,8,(max(max(@level_num_0,@level
    Rule(200,_,@level_num_0),
    hasofficiallanguage(v0,v2,_,@level_num_1),
    hasofficiallanguage(v1,v2,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [50:1-50:86])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [50:1-50:86])_");
 if(!(rel_6_hasofficiallanguage->empty()) && !(rel_6_hasofficiallanguage->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(200),0,0}});
@@ -1727,7 +1727,7 @@ SignalHandler::instance()->setMsg(R"_(inv_0(v0,v1,9,(max(max(@level_num_0,@level
    Rule(20,_,@level_num_0),
    dealswith(v0,v2,_,@level_num_1),
    dealswith(v1,v2,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [51:1-51:65])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [51:1-51:65])_");
 if(!(rel_3_dealswith->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(20),0,0}});
@@ -1758,7 +1758,7 @@ SignalHandler::instance()->setMsg(R"_(inv_0(v0,v1,10,(max(max(@level_num_0,@leve
    Rule(57,_,@level_num_0),
    dealswith(v0,v2,_,@level_num_1),
    hasofficiallanguage(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [55:1-55:75])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [55:1-55:75])_");
 if(!(rel_6_hasofficiallanguage->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(57),0,0}});
@@ -1801,7 +1801,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,2,(max(max(@level_num_0,@lev
    Rule(333,_,@level_num_0),
    dealswith(v2,v0,_,@level_num_1),
    Iexports(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [28:1-28:67])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [28:1-28:67])_");
 if(!(rel_1_Iexports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(333),0,0}});
@@ -1833,7 +1833,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,3,(max(max(@level_num_0,@lev
    Rule(408,_,@level_num_0),
    hascurrency(v2,v1,_,@level_num_1),
    Iexports(v2,v0,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [29:1-29:69])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [29:1-29:69])_");
 if(!(rel_1_Iexports->empty()) && !(rel_4_hascurrency->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(408),0,0}});
@@ -1865,7 +1865,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,4,(max(max(@level_num_0,@lev
    Rule(336,_,@level_num_0),
    dealswith(v2,v1,_,@level_num_1),
    Iexports(v2,v0,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [31:1-31:67])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [31:1-31:67])_");
 if(!(rel_1_Iexports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(336),0,0}});
@@ -1897,7 +1897,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,7,(max(max(@level_num_0,@lev
    Rule(309,_,@level_num_0),
    dealswith(v2,v0,_,@level_num_1),
    imports(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [39:1-39:66])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [39:1-39:66])_");
 if(!(rel_5_imports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(309),0,0}});
@@ -1929,7 +1929,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,8,(max(max(@level_num_0,@lev
    Rule(582,_,@level_num_0),
    inv_0(v2,v1,_,@level_num_1),
    inv_0(v0,v2,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [41:1-41:60])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [41:1-41:60])_");
 if(!(rel_7_inv_0->empty()) && !(rel_7_inv_0->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(582),0,0}});
@@ -1960,7 +1960,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,10,(max(max(@level_num_0,@le
    Rule(346,_,@level_num_0),
    dealswith(v0,v2,_,@level_num_1),
    inv_0(v1,v2,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [43:1-43:64])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [43:1-43:64])_");
 if(!(rel_7_inv_0->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(346),0,0}});
@@ -1992,7 +1992,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,11,(max(max(@level_num_0,@le
    Rule(474,_,@level_num_0),
    imports(v2,v1,_,@level_num_1),
    inv_0(v0,v2,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [44:1-44:62])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [44:1-44:62])_");
 if(!(rel_7_inv_0->empty()) && !(rel_5_imports->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(474),0,0}});
@@ -2024,7 +2024,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,12,(max(max(@level_num_0,@le
    Rule(468,_,@level_num_0),
    imports(v2,v1,_,@level_num_1),
    Iexports(v2,v0,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [45:1-45:65])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [45:1-45:65])_");
 if(!(rel_1_Iexports->empty()) && !(rel_5_imports->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(468),0,0}});
@@ -2056,7 +2056,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,14,(max(max(@level_num_0,@le
    Rule(331,_,@level_num_0),
    dealswith(v1,v2,_,@level_num_1),
    Iexports(v2,v0,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [47:1-47:67])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [47:1-47:67])_");
 if(!(rel_1_Iexports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(331),0,0}});
@@ -2088,7 +2088,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,15,(max(max(@level_num_0,@le
    Rule(335,_,@level_num_0),
    dealswith(v0,v2,_,@level_num_1),
    Iexports(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [48:1-48:67])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [48:1-48:67])_");
 if(!(rel_1_Iexports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(335),0,0}});
@@ -2120,7 +2120,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,16,(max(max(@level_num_0,@le
    Rule(344,_,@level_num_0),
    dealswith(v2,v0,_,@level_num_1),
    inv_0(v1,v2,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [49:1-49:64])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [49:1-49:64])_");
 if(!(rel_7_inv_0->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(344),0,0}});
@@ -2152,7 +2152,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,17,(max(max(@level_num_0,@le
    Rule(465,_,@level_num_0),
    imports(v2,v0,_,@level_num_1),
    Iexports(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [52:1-52:65])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [52:1-52:65])_");
 if(!(rel_1_Iexports->empty()) && !(rel_5_imports->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(465),0,0}});
@@ -2183,7 +2183,7 @@ PARALLEL_END;
 SignalHandler::instance()->setMsg(R"_(exports(v0,v1,19,(max(@level_num_0,@level_num_1)+1)) :- 
    Rule(268,_,@level_num_0),
    imports(v0,v1,_,@level_num_1).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [54:1-54:47])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [54:1-54:47])_");
 if(!(rel_5_imports->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(268),0,0}});
@@ -2210,7 +2210,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,21,(max(max(@level_num_0,@le
    Rule(311,_,@level_num_0),
    dealswith(v0,v2,_,@level_num_1),
    imports(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [57:1-57:66])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [57:1-57:66])_");
 if(!(rel_5_imports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(311),0,0}});
@@ -2245,7 +2245,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,1,(max(max(@level_num_0,@lev
    Rule(359,_,@level_num_0),
    dealswith(v0,v2,_,@level_num_1),
    exports(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [27:1-27:66])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [27:1-27:66])_");
 if(!(rel_9_delta_exports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(359),0,0}});
@@ -2283,7 +2283,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,5,(max(max(@level_num_0,@lev
    Rule(357,_,@level_num_0),
    dealswith(v2,v0,_,@level_num_1),
    exports(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [34:1-34:66])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [34:1-34:66])_");
 if(!(rel_9_delta_exports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(357),0,0}});
@@ -2321,7 +2321,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,6,(max(max(@level_num_0,@lev
    Rule(430,_,@level_num_0),
    hascurrency(v0,v2,_,@level_num_1),
    exports(v1,v2,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [36:1-36:68])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [36:1-36:68])_");
 if(!(rel_9_delta_exports->empty()) && !(rel_4_hascurrency->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(430),0,0}});
@@ -2359,7 +2359,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,9,(max(max(@level_num_0,@lev
    Rule(491,_,@level_num_0),
    imports(v0,v2,_,@level_num_1),
    exports(v2,v1,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [42:1-42:64])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [42:1-42:64])_");
 if(!(rel_9_delta_exports->empty()) && !(rel_5_imports->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(491),0,0}});
@@ -2397,7 +2397,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,13,(max(max(@level_num_0,@le
    Rule(356,_,@level_num_0),
    dealswith(v2,v0,_,@level_num_1),
    exports(v1,v2,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [46:1-46:66])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [46:1-46:66])_");
 if(!(rel_9_delta_exports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(356),0,0}});
@@ -2435,7 +2435,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,18,(max(max(@level_num_0,@le
    Rule(490,_,@level_num_0),
    imports(v0,v2,_,@level_num_1),
    exports(v1,v2,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [53:1-53:64])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [53:1-53:64])_");
 if(!(rel_9_delta_exports->empty()) && !(rel_5_imports->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(490),0,0}});
@@ -2473,7 +2473,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,20,(max(max(@level_num_0,@le
    Rule(358,_,@level_num_0),
    dealswith(v0,v2,_,@level_num_1),
    exports(v1,v2,_,@level_num_2).
-in file /home/johannes_tantow/DatalogLearning/prosynth/countries/sol_exports.dl [56:1-56:66])_");
+in file /home/johannes/DatalogLearning/prosynth/countries/sol_exports.dl [56:1-56:66])_");
 if(!(rel_9_delta_exports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(358),0,0}});

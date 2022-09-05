@@ -1,1 +1,189 @@
-No rules foundTime spent (in min): 7.695876701672872Time spent (in s): 461.7526021003723
+No rules foundTime spent (in min): 7.695876701672872Time spent (in s): 461.7526021003723---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl dealswith(v0: V, v1: V)
+
+.input dealswith
+
+
+
+.decl hascurrency(v0: V, v1: V)
+
+.input hascurrency
+
+
+
+.decl imports(v0: V, v1: V)
+
+.input imports
+
+
+
+.decl hasofficiallanguage(v0: V, v1: V)
+
+.input hasofficiallanguage
+
+
+
+.decl Iexports(v0: V, v1: V)
+
+.input Iexports
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl exports(v0: V, v1: V)
+
+.output exports
+
+
+
+exports(v0, v1) :- dealswith(v0, v2), exports(v2, v1), Rule(359).
+
+exports(v0, v1) :- dealswith(v2, v0), Iexports(v2, v1), Rule(333).
+
+exports(v0, v1) :- hascurrency(v2, v1), Iexports(v2, v0), Rule(408).
+
+inv_0(v0, v1) :- imports(v2, v0), imports(v2, v1), Rule(151).
+
+exports(v0, v1) :- dealswith(v2, v1), Iexports(v2, v0), Rule(336).
+
+inv_0(v0, v1) :- dealswith(v2, v1), imports(v2, v0), Rule(46).
+
+inv_0(v0, v1) :- imports(v0, v2), imports(v1, v2), Rule(152).
+
+exports(v0, v1) :- dealswith(v2, v0), exports(v2, v1), Rule(357).
+
+inv_0(v0, v1) :- dealswith(v1, v2), imports(v2, v0), Rule(41).
+
+exports(v0, v1) :- hascurrency(v0, v2), exports(v1, v2), Rule(430).
+
+inv_0(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(43).
+
+inv_0(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(45).
+
+exports(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(309).
+
+inv_0(v0, v1) :- imports(v2, v1), hasofficiallanguage(v2, v0), Rule(166).
+
+exports(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(582).
+
+exports(v0, v1) :- imports(v0, v2), exports(v2, v1), Rule(491).
+
+exports(v0, v1) :- dealswith(v0, v2), inv_0(v1, v2), Rule(346).
+
+exports(v0, v1) :- imports(v2, v1), inv_0(v0, v2), Rule(474).
+
+exports(v0, v1) :- imports(v2, v1), Iexports(v2, v0), Rule(468).
+
+exports(v0, v1) :- dealswith(v2, v0), exports(v1, v2), Rule(356).
+
+exports(v0, v1) :- dealswith(v1, v2), Iexports(v2, v0), Rule(331).
+
+exports(v0, v1) :- dealswith(v0, v2), Iexports(v2, v1), Rule(335).
+
+exports(v0, v1) :- dealswith(v2, v0), inv_0(v1, v2), Rule(344).
+
+inv_0(v0, v1) :- hasofficiallanguage(v0, v2), hasofficiallanguage(v1, v2), Rule(200).
+
+inv_0(v0, v1) :- dealswith(v0, v2), dealswith(v1, v2), Rule(20).
+
+exports(v0, v1) :- imports(v2, v0), Iexports(v2, v1), Rule(465).
+
+exports(v0, v1) :- imports(v0, v2), exports(v1, v2), Rule(490).
+
+exports(v0, v1) :- imports(v0, v1), Rule(268).
+
+inv_0(v0, v1) :- dealswith(v0, v2), hasofficiallanguage(v2, v1), Rule(57).
+
+exports(v0, v1) :- dealswith(v0, v2), exports(v1, v2), Rule(358).
+
+exports(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(311).
+
+True predictions:	371
+False predictions:	176
+Unknown predictions:	104119
+Retrieved:	1.0
+exports(v0, v1) :- dealswith(v0, v2), exports(v2, v1), Rule(359).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), Iexports(v2, v1), Rule(333).
+
+ Positive Examples: 1088
+Confidence: 0.050551470588235295
+Head coverage: 0.14824797843665768
+exports(v0, v1) :- hascurrency(v2, v1), Iexports(v2, v0), Rule(408).
+
+ Positive Examples: 183
+Confidence: 0.0
+Head coverage: 0.0
+exports(v0, v1) :- dealswith(v2, v1), Iexports(v2, v0), Rule(336).
+
+ Positive Examples: 1088
+Confidence: 0.0
+Head coverage: 0.0
+exports(v0, v1) :- dealswith(v2, v0), exports(v2, v1), Rule(357).
+
+ Positive Examples: 0
+exports(v0, v1) :- hascurrency(v0, v2), exports(v1, v2), Rule(430).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v2, v0), imports(v2, v1), Rule(309).
+
+ Positive Examples: 580
+Confidence: 0.0603448275862069
+Head coverage: 0.09433962264150944
+exports(v0, v1) :- imports(v0, v2), exports(v2, v1), Rule(491).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v2, v1), Iexports(v2, v0), Rule(468).
+
+ Positive Examples: 675
+Confidence: 0.0
+Head coverage: 0.0
+exports(v0, v1) :- dealswith(v2, v0), exports(v1, v2), Rule(356).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v1, v2), Iexports(v2, v0), Rule(331).
+
+ Positive Examples: 792
+Confidence: 0.0
+Head coverage: 0.0
+exports(v0, v1) :- dealswith(v0, v2), Iexports(v2, v1), Rule(335).
+
+ Positive Examples: 792
+Confidence: 0.07828282828282829
+Head coverage: 0.16711590296495957
+exports(v0, v1) :- imports(v2, v0), Iexports(v2, v1), Rule(465).
+
+ Positive Examples: 675
+Confidence: 0.0
+Head coverage: 0.0
+exports(v0, v1) :- imports(v0, v2), exports(v1, v2), Rule(490).
+
+ Positive Examples: 0
+exports(v0, v1) :- imports(v0, v1), Rule(268).
+
+ Positive Examples: 237
+Confidence: 0.16033755274261605
+Head coverage: 0.10242587601078167
+exports(v0, v1) :- dealswith(v0, v2), exports(v1, v2), Rule(358).
+
+ Positive Examples: 0
+exports(v0, v1) :- dealswith(v0, v2), imports(v2, v1), Rule(311).
+
+ Positive Examples: 789
+Confidence: 0.053231939163498096
+Head coverage: 0.11320754716981132

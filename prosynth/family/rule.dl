@@ -32,6 +32,6 @@
 
 
 
-haschild(v0, v1) :- ismarriedto(v2, v0), Ihaschild(v1, v2), Rule(104).
+haschild(v0, v1) :- ismarriedto(v0, v2), haschild(v1, v2), Rule(130).
 
 

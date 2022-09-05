@@ -1,0 +1,32 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl hascurrency(v0: V, v1: V)
+.input hascurrency
+
+.decl imports(v0: V, v1: V)
+.input imports
+
+.decl hasofficiallanguage(v0: V, v1: V)
+.input hasofficiallanguage
+
+.decl exports(v0: V, v1: V)
+.input exports
+
+.decl Idealswith(v0: V, v1: V)
+.input Idealswith
+
+.decl inv_0(v0: V, v1: V)
+.output inv_0
+
+.decl dealswith(v0: V, v1: V)
+.output dealswith
+
+dealswith(v0, v1) :- imports(v0, v2), exports(v1 , v2).
+dealswith(v0, v1) :- exports(v0, v2), exports(v1 , v2).
+dealswith(v0, v1) :- hasofficiallanguage(v0, v2), hasofficiallanguage(v1 , v2).
+dealswith(v0, v1) :- Idealswith(v0, v2), Idealswith(v2 , v1).
+dealswith(v0, v1) :- Idealswith(v0, v2), Idealswith(v1 , v2).
+dealswith(v0, v1) :- Idealswith(v2, v0), Idealswith(v2 , v1).

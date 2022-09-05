@@ -1,1 +1,222 @@
-No rules foundTime spent (in min): 2.135661844412486Time spent (in s): 128.13971066474915
+No rules foundTime spent (in min): 2.135661844412486Time spent (in s): 128.13971066474915---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl haschild(v0: V, v1: V)
+
+.input haschild
+
+
+
+.decl Iismarriedto(v0: V, v1: V)
+
+.input Iismarriedto
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl ismarriedto(v0: V, v1: V)
+
+.output ismarriedto
+
+
+
+ismarriedto(v0, v1) :- haschild(v2, v1), haschild(v0, v2), Rule(90).
+
+ismarriedto(v0, v1) :- haschild(v2, v0), ismarriedto(v1, v2), Rule(128).
+
+ismarriedto(v0, v1) :- haschild(v1, v2), Iismarriedto(v2, v0), Rule(103).
+
+ismarriedto(v0, v1) :- haschild(v0, v1), Rule(78).
+
+ismarriedto(v0, v1) :- haschild(v0, v2), haschild(v1, v2), Rule(94).
+
+ismarriedto(v0, v1) :- haschild(v0, v2), ismarriedto(v1, v2), Rule(130).
+
+ismarriedto(v0, v1) :- haschild(v2, v1), Iismarriedto(v2, v0), Rule(108).
+
+True predictions:	901
+False predictions:	938
+Unknown predictions:	304905
+Retrieved:	0.5404919016196761
+ismarriedto(v0, v1) :- haschild(v2, v1), haschild(v0, v2), Rule(90).
+
+ Positive Examples: 1840
+Confidence: 0.0005434782608695652
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl haschild(v0: V, v1: V)
+
+.input haschild
+
+
+
+.decl Iismarriedto(v0: V, v1: V)
+
+.input Iismarriedto
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl ismarriedto(v0: V, v1: V)
+
+.output ismarriedto
+
+
+
+ismarriedto(v0, v1) :- haschild(v2, v1), haschild(v0, v2), Rule(90).
+
+ismarriedto(v0, v1) :- haschild(v2, v0), ismarriedto(v1, v2), Rule(128).
+
+ismarriedto(v0, v1) :- haschild(v1, v2), Iismarriedto(v2, v0), Rule(103).
+
+ismarriedto(v0, v1) :- haschild(v0, v1), Rule(78).
+
+ismarriedto(v0, v1) :- haschild(v0, v2), haschild(v1, v2), Rule(94).
+
+ismarriedto(v0, v1) :- haschild(v0, v2), ismarriedto(v1, v2), Rule(130).
+
+ismarriedto(v0, v1) :- haschild(v2, v1), Iismarriedto(v2, v0), Rule(108).
+
+True predictions:	901
+False predictions:	938
+Unknown predictions:	304905
+Retrieved:	0.5404919016196761
+ismarriedto(v0, v1) :- haschild(v2, v1), haschild(v0, v2), Rule(90).
+
+ Positive Examples: 1840
+Confidence: 0.0005434782608695652
+Head coverage: 1.0
+ismarriedto(v0, v1) :- haschild(v2, v0), ismarriedto(v1, v2), Rule(128).
+
+ Positive Examples: 0
+ismarriedto(v0, v1) :- haschild(v1, v2), Iismarriedto(v2, v0), Rule(103).
+
+ Positive Examples: 836
+Confidence: 0.0023923444976076554
+Head coverage: 1.0
+ismarriedto(v0, v1) :- haschild(v0, v1), Rule(78).
+
+ Positive Examples: 2736
+Confidence: 0.010964912280701754
+Head coverage: 1.0
+ismarriedto(v0, v1) :- haschild(v0, v2), haschild(v1, v2), Rule(94).
+
+ Positive Examples: 1994
+Confidence: 0.1469408224674022
+Head coverage: 1.0
+ismarriedto(v0, v1) :- haschild(v0, v2), ismarriedto(v1, v2), Rule(130).
+
+ Positive Examples: 0
+ismarriedto(v0, v1) :- haschild(v2, v1), Iismarriedto(v2, v0), Rule(108).
+
+ Positive Examples: 2123
+Confidence: 0.0009420631182289214
+Head coverage: 1.0
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl haschild(v0: V, v1: V)
+
+.input haschild
+
+
+
+.decl Iismarriedto(v0: V, v1: V)
+
+.input Iismarriedto
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl ismarriedto(v0: V, v1: V)
+
+.output ismarriedto
+
+
+
+ismarriedto(v0, v1) :- haschild(v2, v1), haschild(v0, v2), Rule(90).
+
+ismarriedto(v0, v1) :- haschild(v2, v0), ismarriedto(v1, v2), Rule(128).
+
+ismarriedto(v0, v1) :- haschild(v1, v2), Iismarriedto(v2, v0), Rule(103).
+
+ismarriedto(v0, v1) :- haschild(v0, v1), Rule(78).
+
+ismarriedto(v0, v1) :- haschild(v0, v2), haschild(v1, v2), Rule(94).
+
+ismarriedto(v0, v1) :- haschild(v0, v2), ismarriedto(v1, v2), Rule(130).
+
+ismarriedto(v0, v1) :- haschild(v2, v1), Iismarriedto(v2, v0), Rule(108).
+
+True predictions:	901
+False predictions:	938
+Unknown predictions:	304905
+Retrieved:	0.5404919016196761
+ismarriedto(v0, v1) :- haschild(v2, v1), haschild(v0, v2), Rule(90).
+
+ Positive Examples: 1840
+Confidence: 0.0005434782608695652
+Head coverage: 0.0005998800239952009
+ismarriedto(v0, v1) :- haschild(v2, v0), ismarriedto(v1, v2), Rule(128).
+
+ Positive Examples: 0
+ismarriedto(v0, v1) :- haschild(v1, v2), Iismarriedto(v2, v0), Rule(103).
+
+ Positive Examples: 836
+Confidence: 0.0023923444976076554
+Head coverage: 0.0011997600479904018
+ismarriedto(v0, v1) :- haschild(v0, v1), Rule(78).
+
+ Positive Examples: 2736
+Confidence: 0.010964912280701754
+Head coverage: 0.017996400719856028
+ismarriedto(v0, v1) :- haschild(v0, v2), haschild(v1, v2), Rule(94).
+
+ Positive Examples: 1994
+Confidence: 0.1469408224674022
+Head coverage: 0.1757648470305939
+ismarriedto(v0, v1) :- haschild(v0, v2), ismarriedto(v1, v2), Rule(130).
+
+ Positive Examples: 0
+ismarriedto(v0, v1) :- haschild(v2, v1), Iismarriedto(v2, v0), Rule(108).
+
+ Positive Examples: 2123
+Confidence: 0.0009420631182289214
+Head coverage: 0.0011997600479904018

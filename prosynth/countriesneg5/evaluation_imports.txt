@@ -1,1 +1,161 @@
-No rules foundTime spent (in min): 63.94318784475327Time spent (in s): 3836.591270685196
+No rules foundTime spent (in min): 63.94318784475327Time spent (in s): 3836.591270685196---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl hasofficiallanguage(v0: V, v1: V)
+
+.input hasofficiallanguage
+
+
+
+.decl exports(v0: V, v1: V)
+
+.input exports
+
+
+
+.decl dealswith(v0: V, v1: V)
+
+.input dealswith
+
+
+
+.decl hascurrency(v0: V, v1: V)
+
+.input hascurrency
+
+
+
+.decl Iimports(v0: V, v1: V)
+
+.input Iimports
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl imports(v0: V, v1: V)
+
+.output imports
+
+
+
+imports(v0, v1) :- dealswith(v0, v2), Iimports(v2, v1), Rule(467).
+
+inv_0(v0, v1) :- exports(v2, v0), exports(v2, v1), Rule(91).
+
+imports(v0, v1) :- exports(v2, v1), dealswith(v2, v0), Rule(384).
+
+imports(v0, v1) :- inv_0(v2, v1), inv_0(v0, v2), Rule(582).
+
+imports(v0, v1) :- exports(v0, v2), imports(v1, v2), Rule(430).
+
+imports(v0, v1) :- exports(v0, v2), imports(v2, v1), Rule(431).
+
+inv_0(v0, v1) :- hasofficiallanguage(v2, v1), exports(v2, v0), Rule(34).
+
+inv_0(v0, v1) :- dealswith(v0, v2), dealswith(v1, v2), Rule(152).
+
+imports(v0, v1) :- hasofficiallanguage(v0, v2), inv_0(v1, v2), Rule(346).
+
+imports(v0, v1) :- exports(v2, v1), dealswith(v0, v2), Rule(378).
+
+inv_0(v0, v1) :- exports(v2, v1), dealswith(v0, v2), Rule(100).
+
+inv_0(v0, v1) :- exports(v0, v2), exports(v1, v2), Rule(92).
+
+imports(v0, v1) :- hasofficiallanguage(v2, v0), Iimports(v2, v1), Rule(333).
+
+imports(v0, v1) :- exports(v2, v1), inv_0(v0, v2), Rule(414).
+
+inv_0(v0, v1) :- dealswith(v1, v2), dealswith(v2, v0), Rule(149).
+
+imports(v0, v1) :- hasofficiallanguage(v0, v2), imports(v2, v1), Rule(359).
+
+imports(v0, v1) :- hasofficiallanguage(v2, v1), Iimports(v2, v0), Rule(336).
+
+imports(v0, v1) :- hasofficiallanguage(v0, v2), imports(v1, v2), Rule(358).
+
+imports(v0, v1) :- exports(v0, v1), Rule(266).
+
+imports(v0, v1) :- dealswith(v2, v0), Iimports(v2, v1), Rule(465).
+
+inv_0(v0, v1) :- dealswith(v2, v1), dealswith(v0, v2), Rule(148).
+
+inv_0(v0, v1) :- exports(v2, v1), dealswith(v2, v0), Rule(106).
+
+imports(v0, v1) :- exports(v2, v0), Iimports(v2, v1), Rule(405).
+
+imports(v0, v1) :- exports(v2, v1), Iimports(v2, v0), Rule(408).
+
+True predictions:	237
+False predictions:	158
+Unknown predictions:	79513
+Retrieved:	1.0
+imports(v0, v1) :- dealswith(v0, v2), Iimports(v2, v1), Rule(467).
+
+ Positive Examples: 789
+Confidence: 0.09505703422053231
+Head coverage: 0.31645569620253167
+imports(v0, v1) :- exports(v2, v1), dealswith(v2, v0), Rule(384).
+
+ Positive Examples: 1088
+Confidence: 0.03216911764705882
+Head coverage: 0.14767932489451477
+imports(v0, v1) :- exports(v0, v2), imports(v1, v2), Rule(430).
+
+ Positive Examples: 0
+imports(v0, v1) :- exports(v0, v2), imports(v2, v1), Rule(431).
+
+ Positive Examples: 0
+imports(v0, v1) :- exports(v2, v1), dealswith(v0, v2), Rule(378).
+
+ Positive Examples: 792
+Confidence: 0.06818181818181818
+Head coverage: 0.22784810126582278
+imports(v0, v1) :- hasofficiallanguage(v2, v0), Iimports(v2, v1), Rule(333).
+
+ Positive Examples: 307
+Confidence: 0.0
+Head coverage: 0.0
+imports(v0, v1) :- hasofficiallanguage(v0, v2), imports(v2, v1), Rule(359).
+
+ Positive Examples: 0
+imports(v0, v1) :- hasofficiallanguage(v2, v1), Iimports(v2, v0), Rule(336).
+
+ Positive Examples: 307
+Confidence: 0.0
+Head coverage: 0.0
+imports(v0, v1) :- hasofficiallanguage(v0, v2), imports(v1, v2), Rule(358).
+
+ Positive Examples: 0
+imports(v0, v1) :- exports(v0, v1), Rule(266).
+
+ Positive Examples: 371
+Confidence: 0.10242587601078167
+Head coverage: 0.16033755274261605
+imports(v0, v1) :- dealswith(v2, v0), Iimports(v2, v1), Rule(465).
+
+ Positive Examples: 580
+Confidence: 0.09137931034482759
+Head coverage: 0.22362869198312235
+imports(v0, v1) :- exports(v2, v0), Iimports(v2, v1), Rule(405).
+
+ Positive Examples: 675
+Confidence: 0.0
+Head coverage: 0.0
+imports(v0, v1) :- exports(v2, v1), Iimports(v2, v0), Rule(408).
+
+ Positive Examples: 675
+Confidence: 0.0
+Head coverage: 0.0

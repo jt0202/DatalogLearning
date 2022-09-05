@@ -1,1 +1,112 @@
-Time spent (in min): 31.098645893732705Time spent (in s): 1865.9187536239624
+Time spent (in min): 31.098645893732705Time spent (in s): 1865.9187536239624---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl precededBy(v0: V, v1: V)
+
+.input precededBy
+
+
+
+.decl genre(v0: V, v1: V)
+
+.input genre
+
+
+
+.decl Iauthor(v0: V, v1: V)
+
+.input Iauthor
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl author(v0: V, v1: V)
+
+.output author
+
+
+
+author(v0, v1) :- precededBy(v0, v2), author(v1, v2), Rule(194).
+
+author(v0, v1) :- precededBy(v2, v1), Iauthor(v2, v0), Rule(172).
+
+True predictions:	3260
+False predictions:	19
+Unknown predictions:	4935
+Retrieved:	0.32544674054108014
+author(v0, v1) :- precededBy(v0, v2), author(v1, v2), Rule(194).
+
+ Positive Examples: 0
+author(v0, v1) :- precededBy(v2, v1), Iauthor(v2, v0), Rule(172).
+
+ Positive Examples: 3372
+Confidence: 0.0
+Head coverage: 0.0
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl precededBy(v0: V, v1: V)
+
+.input precededBy
+
+
+
+.decl genre(v0: V, v1: V)
+
+.input genre
+
+
+
+.decl Iauthor(v0: V, v1: V)
+
+.input Iauthor
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl author(v0: V, v1: V)
+
+.output author
+
+
+
+author(v0, v1) :- precededBy(v0, v2), author(v1, v2), Rule(194).
+
+author(v0, v1) :- precededBy(v2, v1), Iauthor(v2, v0), Rule(172).
+
+True predictions:	3260
+False predictions:	19
+Unknown predictions:	4935
+Retrieved:	0.32544674054108014
+author(v0, v1) :- precededBy(v0, v2), author(v1, v2), Rule(194).
+
+ Positive Examples: 0
+author(v0, v1) :- precededBy(v2, v1), Iauthor(v2, v0), Rule(172).
+
+ Positive Examples: 3372
+Confidence: 0.0
+Head coverage: 0.0

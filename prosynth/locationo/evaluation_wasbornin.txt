@@ -1,1 +1,73 @@
-Time spent (in min): 2.3536945382754006Time spent (in s): 141.22167229652405
+Time spent (in min): 2.3536945382754006Time spent (in s): 141.22167229652405---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl livesin(v0: V, v1: V)
+
+.input livesin
+
+
+
+.decl Iwasbornin(v0: V, v1: V)
+
+.input Iwasbornin
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl wasbornin(v0: V, v1: V)
+
+.output wasbornin
+
+
+
+wasbornin(v0, v1) :- livesin(v0, v2), wasbornin(v1, v2), Rule(130).
+
+wasbornin(v0, v1) :- livesin(v1, v2), Iwasbornin(v0, v2), Rule(109).
+
+wasbornin(v0, v1) :- livesin(v2, v1), Iwasbornin(v2, v0), Rule(108).
+
+wasbornin(v0, v1) :- livesin(v2, v1), wasbornin(v0, v2), Rule(126).
+
+wasbornin(v0, v1) :- livesin(v2, v1), inv_0(v0, v2), Rule(114).
+
+inv_0(v0, v1) :- livesin(v0, v2), livesin(v1, v2), Rule(14).
+
+wasbornin(v0, v1) :- livesin(v0, v1), Rule(78).
+
+True predictions:	492
+False predictions:	273
+Unknown predictions:	7264
+Retrieved:	0.26944140197152244
+wasbornin(v0, v1) :- livesin(v0, v2), wasbornin(v1, v2), Rule(130).
+
+ Positive Examples: 0
+wasbornin(v0, v1) :- livesin(v1, v2), Iwasbornin(v0, v2), Rule(109).
+
+ Positive Examples: 1083
+Confidence: 0.0
+Head coverage: 0.0
+wasbornin(v0, v1) :- livesin(v2, v1), Iwasbornin(v2, v0), Rule(108).
+
+ Positive Examples: 146
+Confidence: 0.0
+Head coverage: 0.0
+wasbornin(v0, v1) :- livesin(v2, v1), wasbornin(v0, v2), Rule(126).
+
+ Positive Examples: 0
+wasbornin(v0, v1) :- livesin(v0, v1), Rule(78).
+
+ Positive Examples: 473
+Confidence: 0.0613107822410148
+Head coverage: 0.01588170865279299

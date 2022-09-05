@@ -1,0 +1,45 @@
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl livesin(v0: V, v1: V)
+
+.input livesin
+
+
+
+.decl Iwasbornin(v0: V, v1: V)
+
+.input Iwasbornin
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl wasbornin(v0: V, v1: V)
+
+.output wasbornin
+
+
+
+wasbornin(v0, v1) :- livesin(v0, v1), Rule(78).
+
+True predictions:	29
+False predictions:	326
+Unknown predictions:	118
+Retrieved:	0.01588170865279299
+wasbornin(v0, v1) :- livesin(v0, v1), Rule(78).
+
+ Positive Examples: 473
+Confidence: 0.0613107822410148
+Head coverage: 0.01588170865279299

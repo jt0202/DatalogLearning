@@ -1,1 +1,118 @@
-No rules foundTime spent (in min): 67.40602128108343Time spent (in s): 4044.3612768650055
+No rules foundTime spent (in min): 67.40602128108343Time spent (in s): 4044.3612768650055---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl exports(v0: V, v1: V)
+
+.input exports
+
+
+
+.decl dealswith(v0: V, v1: V)
+
+.input dealswith
+
+
+
+.decl hascurrency(v0: V, v1: V)
+
+.input hascurrency
+
+
+
+.decl imports(v0: V, v1: V)
+
+.input imports
+
+
+
+.decl Ihasofficiallanguage(v0: V, v1: V)
+
+.input Ihasofficiallanguage
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl hasofficiallanguage(v0: V, v1: V)
+
+.output hasofficiallanguage
+
+
+
+hasofficiallanguage(v0, v1) :- dealswith(v2, v1), Ihasofficiallanguage(v2, v0), Rule(408).
+
+hasofficiallanguage(v0, v1) :- dealswith(v1, v2), Ihasofficiallanguage(v2, v0), Rule(403).
+
+hasofficiallanguage(v0, v1) :- dealswith(v2, v0), Ihasofficiallanguage(v2, v1), Rule(405).
+
+hasofficiallanguage(v0, v1) :- imports(v0, v2), hasofficiallanguage(v1, v2), Rule(538).
+
+hasofficiallanguage(v0, v1) :- exports(v2, v1), Ihasofficiallanguage(v2, v0), Rule(336).
+
+hasofficiallanguage(v0, v1) :- dealswith(v0, v2), hasofficiallanguage(v1, v2), Rule(430).
+
+hasofficiallanguage(v0, v1) :- imports(v2, v1), Ihasofficiallanguage(v2, v0), Rule(516).
+
+hasofficiallanguage(v0, v1) :- dealswith(v2, v0), hasofficiallanguage(v1, v2), Rule(428).
+
+hasofficiallanguage(v0, v1) :- dealswith(v0, v2), Ihasofficiallanguage(v2, v1), Rule(407).
+
+hasofficiallanguage(v0, v1) :- exports(v0, v2), hasofficiallanguage(v1, v2), Rule(358).
+
+True predictions:	187
+False predictions:	87
+Unknown predictions:	10077
+Retrieved:	0.6012861736334405
+hasofficiallanguage(v0, v1) :- dealswith(v2, v1), Ihasofficiallanguage(v2, v0), Rule(408).
+
+ Positive Examples: 587
+Confidence: 0.0
+Head coverage: 0.0
+hasofficiallanguage(v0, v1) :- dealswith(v1, v2), Ihasofficiallanguage(v2, v0), Rule(403).
+
+ Positive Examples: 539
+Confidence: 0.0
+Head coverage: 0.0
+hasofficiallanguage(v0, v1) :- dealswith(v2, v0), Ihasofficiallanguage(v2, v1), Rule(405).
+
+ Positive Examples: 587
+Confidence: 0.06473594548551959
+Head coverage: 0.12218649517684887
+hasofficiallanguage(v0, v1) :- imports(v0, v2), hasofficiallanguage(v1, v2), Rule(538).
+
+ Positive Examples: 0
+hasofficiallanguage(v0, v1) :- exports(v2, v1), Ihasofficiallanguage(v2, v0), Rule(336).
+
+ Positive Examples: 424
+Confidence: 0.0
+Head coverage: 0.0
+hasofficiallanguage(v0, v1) :- dealswith(v0, v2), hasofficiallanguage(v1, v2), Rule(430).
+
+ Positive Examples: 0
+hasofficiallanguage(v0, v1) :- imports(v2, v1), Ihasofficiallanguage(v2, v0), Rule(516).
+
+ Positive Examples: 307
+Confidence: 0.0
+Head coverage: 0.0
+hasofficiallanguage(v0, v1) :- dealswith(v2, v0), hasofficiallanguage(v1, v2), Rule(428).
+
+ Positive Examples: 0
+hasofficiallanguage(v0, v1) :- dealswith(v0, v2), Ihasofficiallanguage(v2, v1), Rule(407).
+
+ Positive Examples: 539
+Confidence: 0.07792207792207792
+Head coverage: 0.13504823151125403
+hasofficiallanguage(v0, v1) :- exports(v0, v2), hasofficiallanguage(v1, v2), Rule(358).
+
+ Positive Examples: 0

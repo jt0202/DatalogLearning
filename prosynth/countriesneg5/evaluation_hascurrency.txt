@@ -1,1 +1,106 @@
-No rules foundTime spent (in min): 63.6774210413297Time spent (in s): 3820.645262479782
+No rules foundTime spent (in min): 63.6774210413297Time spent (in s): 3820.645262479782---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl imports(v0: V, v1: V)
+
+.input imports
+
+
+
+.decl hasofficiallanguage(v0: V, v1: V)
+
+.input hasofficiallanguage
+
+
+
+.decl exports(v0: V, v1: V)
+
+.input exports
+
+
+
+.decl dealswith(v0: V, v1: V)
+
+.input dealswith
+
+
+
+.decl Ihascurrency(v0: V, v1: V)
+
+.input Ihascurrency
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl hascurrency(v0: V, v1: V)
+
+.output hascurrency
+
+
+
+hascurrency(v0, v1) :- imports(v2, v1), Ihascurrency(v2, v0), Rule(336).
+
+hascurrency(v0, v1) :- dealswith(v2, v0), Ihascurrency(v2, v1), Rule(513).
+
+hascurrency(v0, v1) :- dealswith(v0, v2), Ihascurrency(v2, v1), Rule(515).
+
+hascurrency(v0, v1) :- exports(v0, v2), hascurrency(v1, v2), Rule(490).
+
+hascurrency(v0, v1) :- exports(v2, v1), Ihascurrency(v2, v0), Rule(468).
+
+hascurrency(v0, v1) :- hasofficiallanguage(v2, v1), Ihascurrency(v2, v0), Rule(408).
+
+hascurrency(v0, v1) :- hasofficiallanguage(v0, v2), hascurrency(v1, v2), Rule(430).
+
+hascurrency(v0, v1) :- imports(v0, v2), hascurrency(v1, v2), Rule(358).
+
+True predictions:	79
+False predictions:	110
+Unknown predictions:	2901
+Retrieved:	0.79
+hascurrency(v0, v1) :- imports(v2, v1), Ihascurrency(v2, v0), Rule(336).
+
+ Positive Examples: 108
+Confidence: 0.0
+Head coverage: 0.0
+hascurrency(v0, v1) :- dealswith(v2, v0), Ihascurrency(v2, v1), Rule(513).
+
+ Positive Examples: 204
+Confidence: 0.0196078431372549
+Head coverage: 0.04
+hascurrency(v0, v1) :- dealswith(v0, v2), Ihascurrency(v2, v1), Rule(515).
+
+ Positive Examples: 212
+Confidence: 0.014150943396226415
+Head coverage: 0.03
+hascurrency(v0, v1) :- exports(v0, v2), hascurrency(v1, v2), Rule(490).
+
+ Positive Examples: 0
+hascurrency(v0, v1) :- exports(v2, v1), Ihascurrency(v2, v0), Rule(468).
+
+ Positive Examples: 183
+Confidence: 0.0
+Head coverage: 0.0
+hascurrency(v0, v1) :- hasofficiallanguage(v2, v1), Ihascurrency(v2, v0), Rule(408).
+
+ Positive Examples: 90
+Confidence: 0.0
+Head coverage: 0.0
+hascurrency(v0, v1) :- hasofficiallanguage(v0, v2), hascurrency(v1, v2), Rule(430).
+
+ Positive Examples: 0
+hascurrency(v0, v1) :- imports(v0, v2), hascurrency(v1, v2), Rule(358).
+
+ Positive Examples: 0

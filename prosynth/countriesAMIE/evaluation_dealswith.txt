@@ -1,0 +1,98 @@
+---------Start----------.type V
+
+
+
+.decl Rule(n: number)
+
+.input Rule
+
+
+
+.decl hascurrency(v0: V, v1: V)
+
+.input hascurrency
+
+
+
+.decl imports(v0: V, v1: V)
+
+.input imports
+
+
+
+.decl hasofficiallanguage(v0: V, v1: V)
+
+.input hasofficiallanguage
+
+
+
+.decl exports(v0: V, v1: V)
+
+.input exports
+
+
+
+.decl Idealswith(v0: V, v1: V)
+
+.input Idealswith
+
+
+
+.decl inv_0(v0: V, v1: V)
+
+.output inv_0
+
+
+
+.decl dealswith(v0: V, v1: V)
+
+.output dealswith
+
+
+
+dealswith(v0, v1) :- imports(v0, v2), exports(v1 , v2).
+
+dealswith(v0, v1) :- exports(v0, v2), exports(v1 , v2).
+
+dealswith(v0, v1) :- hasofficiallanguage(v0, v2), hasofficiallanguage(v1 , v2).
+
+dealswith(v0, v1) :- Idealswith(v0, v2), Idealswith(v2 , v1).
+
+dealswith(v0, v1) :- Idealswith(v0, v2), Idealswith(v1 , v2).
+
+dealswith(v0, v1) :- Idealswith(v2, v0), Idealswith(v2 , v1).
+
+True predictions:	472
+False predictions:	133
+Unknown predictions:	10527
+Retrieved:	0.9076923076923077
+dealswith(v0, v1) :- imports(v0, v2), exports(v1 , v2).
+
+ Positive Examples: 1373
+Confidence: 0.056081573197378005
+Head coverage: 0.14807692307692308
+dealswith(v0, v1) :- exports(v0, v2), exports(v1 , v2).
+
+ Positive Examples: 1624
+Confidence: 0.04125615763546798
+Head coverage: 0.12884615384615383
+dealswith(v0, v1) :- hasofficiallanguage(v0, v2), hasofficiallanguage(v1 , v2).
+
+ Positive Examples: 3453
+Confidence: 0.01621778163915436
+Head coverage: 0.1076923076923077
+dealswith(v0, v1) :- Idealswith(v0, v2), Idealswith(v2 , v1).
+
+ Positive Examples: 1139
+Confidence: 0.30728709394205445
+Head coverage: 0.6730769230769231
+dealswith(v0, v1) :- Idealswith(v0, v2), Idealswith(v1 , v2).
+
+ Positive Examples: 5765
+Confidence: 0.056548135299219426
+Head coverage: 0.6269230769230769
+dealswith(v0, v1) :- Idealswith(v2, v0), Idealswith(v2 , v1).
+
+ Positive Examples: 1364
+Confidence: 0.16422287390029325
+Head coverage: 0.4307692307692308
