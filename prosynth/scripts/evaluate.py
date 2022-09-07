@@ -21,7 +21,7 @@ with open(problemDirName + "/Rule.facts", "w") as numbers:
         i = i +1
 
 entities = set()
-kb = open("dbpb.tsv")
+kb = open("yago.tsv")
 # File assumed to be in tsv format and not include any '/' sign 
 for line in kb:
     line = line.split('\t')

@@ -572,7 +572,7 @@ SignalHandler::instance()->setMsg(R"_(exports(v0,v1,1,(max(max(@level_num_0,@lev
    Rule(335,_,@level_num_0),
    dealswith(v0,v2,_,@level_num_1),
    Iexports(v2,v1,_,@level_num_2).
-in file /home/johannes/DatalogLearning/prosynth/countriesneg5/rule.dl [53:1-53:67])_");
+in file /home/johannes_tantow/DatalogLearning/prosynth/countriesneg5/rule.dl [53:1-53:67])_");
 if(!(rel_1_Iexports->empty()) && !(rel_3_dealswith->empty()) && !(rel_2_Rule->empty())) {
 [&](){
 const Tuple<RamDomain,3> key({{RamDomain(335),0,0}});
