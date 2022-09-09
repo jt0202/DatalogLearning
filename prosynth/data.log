@@ -185,3 +185,17 @@
 {name: 'filmsneg5', z3: 22, souffle: 22, runtime: 3731.4876911640167, setting_delta: 1}
 {name: 'filmsneg5', z3: 24, souffle: 24, runtime: 3685.9783103466034, setting_delta: 1}
 {name: 'filmsneg5', z3: 24, souffle: 24, runtime: 3684.5173814296722, setting_delta: 1}
+{name: 'countriesneg5', z3: 1, souffle: 1, runtime: 306.9123659133911, setting_delta: 1}
+{name: 'countriesneg5', z3: 1, souffle: 1, runtime: 320.5849311351776, setting_delta: 1}
+{name: 'countriesneg5', z3: 1, souffle: 1, runtime: 326.3116557598114, setting_delta: 1}
+{name: 'countriesneg5', z3: 1, souffle: 1, runtime: 364.0278089046478, setting_delta: 1}
+{name: 'countriesneg5', z3: 13, souffle: 13, runtime: 3830.268730401993, setting_delta: 1}
+{name: 'familyneg5', z3: 1, souffle: 1, runtime: 78.26881337165833, setting_delta: 1}
+{name: 'familyneg5', z3: 1, souffle: 1, runtime: 70.57026886940002, setting_delta: 1}
+{name: 'filmsneg5', z3: 1, souffle: 1, runtime: 166.85492992401123, setting_delta: 1}
+{name: 'filmsneg5', z3: 1, souffle: 1, runtime: 166.77055478096008, setting_delta: 1}
+{name: 'filmsneg5', z3: 1, souffle: 1, runtime: 166.8263864517212, setting_delta: 1}
+{name: 'filmsneg5', z3: 1, souffle: 1, runtime: 151.55235624313354, setting_delta: 1}
+{name: 'filmsneg5', z3: 1, souffle: 1, runtime: 151.1559157371521, setting_delta: 1}
+{name: 'locationsneg5', z3: 1, souffle: 1, runtime: 63.27003216743469, setting_delta: 1}
+{name: 'locationsneg5', z3: 1, souffle: 1, runtime: 70.94148135185242, setting_delta: 1}
