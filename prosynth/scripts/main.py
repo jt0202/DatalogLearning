@@ -35,7 +35,7 @@ entities = []
 
 #delete all previous facts
 for file in os.listdir(problemDirName):
-    if file.endswith(".facts"):
+    if file.endswith(".facts") or file.endswith(".dl"):
         with open(problemDirName + "/" + file, "w") as factfile:
             pass
 
@@ -84,7 +84,7 @@ for rel in outputRelations:
 
     i = 0
     it = 0
-    negativeExampleAmount = floor(length * 0.01)
+    negativeExampleAmount = floor(length * 0.05)
     while i < negativeExampleAmount:
         if it > 5000:
             break

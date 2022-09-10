@@ -1,1 +1,1 @@
-Time spent (in min): 3.6516085584958393Time spent (in s): 219.09651350975037
+Time spent (in min): 3.6768773476282757Time spent (in s): 220.61264085769653

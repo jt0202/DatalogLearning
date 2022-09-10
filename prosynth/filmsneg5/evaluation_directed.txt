@@ -1,1 +1,1 @@
-No rules foundTime spent (in min): 5.000226227442424Time spent (in s): 300.0135736465454
+Time spent (in min): 5.410720463593801Time spent (in s): 324.64322781562805

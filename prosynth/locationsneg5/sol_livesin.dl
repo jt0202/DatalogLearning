@@ -15,8 +15,8 @@
 .decl livesin(v0: V, v1: V)
 .output livesin
 
-livesin(v0, v1) :- wasbornin(v2, v1), livesin(v0, v2), Rule(126).
 livesin(v0, v1) :- wasbornin(v2, v1), Ilivesin(v2, v0), Rule(108).
 livesin(v0, v1) :- wasbornin(v1, v2), Ilivesin(v0, v2), Rule(109).
-livesin(v0, v1) :- wasbornin(v0, v1), Rule(78).
+livesin(v0, v1) :- wasbornin(v2, v1), livesin(v0, v2), Rule(126).
 livesin(v0, v1) :- wasbornin(v0, v2), livesin(v1, v2), Rule(130).
+livesin(v0, v1) :- wasbornin(v0, v1), Rule(78).

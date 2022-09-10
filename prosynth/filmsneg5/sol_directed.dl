@@ -24,16 +24,16 @@
 .decl directed(v0: V, v1: V)
 .output directed
 
-directed(v0, v1) :- ismarriedto(v2, v1), Idirected(v2, v0), Rule(408).
-directed(v0, v1) :- created(v0, v1), Rule(268).
+directed(v0, v1) :- produced(v0, v2), directed(v1, v2), Rule(538).
 directed(v0, v1) :- actedin(v0, v1), Rule(264).
+directed(v0, v1) :- actedin(v2, v1), Idirected(v2, v0), Rule(336).
+directed(v0, v1) :- ismarriedto(v2, v1), Idirected(v2, v0), Rule(408).
 directed(v0, v1) :- created(v0, v2), directed(v1, v2), Rule(490).
+directed(v0, v1) :- produced(v0, v1), Rule(270).
+directed(v0, v1) :- produced(v2, v1), Idirected(v2, v0), Rule(516).
+directed(v0, v1) :- created(v0, v1), Rule(268).
+directed(v0, v1) :- actedin(v2, v1), directed(v0, v2), Rule(354).
+directed(v0, v1) :- ismarriedto(v0, v2), directed(v1, v2), Rule(430).
 directed(v0, v1) :- actedin(v0, v2), directed(v1, v2), Rule(358).
 directed(v0, v1) :- created(v2, v1), Idirected(v2, v0), Rule(468).
-directed(v0, v1) :- produced(v2, v1), Idirected(v2, v0), Rule(516).
-directed(v0, v1) :- ismarriedto(v0, v2), directed(v1, v2), Rule(430).
-directed(v0, v1) :- produced(v0, v1), Rule(270).
-directed(v0, v1) :- produced(v0, v2), directed(v1, v2), Rule(538).
-directed(v0, v1) :- actedin(v2, v1), Idirected(v2, v0), Rule(336).
 directed(v0, v1) :- actedin(v1, v2), Idirected(v0, v2), Rule(337).
-directed(v0, v1) :- actedin(v2, v1), directed(v0, v2), Rule(354).

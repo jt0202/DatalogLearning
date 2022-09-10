@@ -24,11 +24,11 @@
 .decl ismarriedto(v0: V, v1: V)
 .output ismarriedto
 
-ismarriedto(v0, v1) :- produced(v2, v1), Iismarriedto(v2, v0), Rule(408).
 ismarriedto(v0, v1) :- created(v0, v2), ismarriedto(v1, v2), Rule(358).
+ismarriedto(v0, v1) :- directed(v2, v1), Iismarriedto(v2, v0), Rule(468).
 ismarriedto(v0, v1) :- produced(v0, v2), ismarriedto(v1, v2), Rule(430).
 ismarriedto(v0, v1) :- actedin(v2, v1), Iismarriedto(v2, v0), Rule(516).
+ismarriedto(v0, v1) :- produced(v2, v1), Iismarriedto(v2, v0), Rule(408).
 ismarriedto(v0, v1) :- actedin(v0, v2), ismarriedto(v1, v2), Rule(538).
 ismarriedto(v0, v1) :- directed(v0, v2), ismarriedto(v1, v2), Rule(490).
 ismarriedto(v0, v1) :- created(v2, v1), Iismarriedto(v2, v0), Rule(336).
-ismarriedto(v0, v1) :- directed(v2, v1), Iismarriedto(v2, v0), Rule(468).
